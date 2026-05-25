@@ -1,0 +1,105 @@
+.wayusContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.container {
+    width: 100%;
+    padding: 120px 80px 80px;
+    position: relative;
+    /* background: linear-gradient(180deg, #285260 0%, #141414 100%); */
+    background: linear-gradient(180deg, #548C92 0%, #285260 100%);
+}
+
+.container:before,
+.container:after {
+    content: " ";
+    grid-area: 1 / 1 / 2 / 2;
+    display: table;
+}
+
+.horizontalwrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.pillwrap {
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    border: 1px solid #ffdaa41f;
+    background-image: radial-gradient(circle farthest-corner at 50% 50%, #ffffff0d, #fff3);
+    box-shadow: 0 4px 16px 0 #ffeed61f;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border-radius: 40px;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 18px;
+    display: flex;
+}
+
+.pilldot {
+    background-image: linear-gradient(143deg, #ffdaa4, #ff9641 57%);
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+}
+
+.pilltext {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 90%;
+    color: #fff;
+}
+
+.paragpaph {
+    width: 50%;
+    font-size: 20px;
+    line-height: 150%;
+    opacity: .8;
+    color: #fff;
+
+    font-variation-settings: "wght" 250;
+    margin-bottom: 0;
+}
+
+.videoContainer {
+    position: relative;
+    width: 100%;
+    height: 130vh;
+    clip-path: inset(0 0 0 0);
+    background-color: #141414;
+}
+
+.fullsizevideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.videoOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(90deg, #141414, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, #141414);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* .scroll {
+    width: 100%;
+    height: 200px;
+    background-color: transparent;
+} */

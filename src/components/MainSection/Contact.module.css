@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap');
+.contact {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 120px 48px;
+    background: linear-gradient(180deg, #141414 0%, #141414 100%);
+
+}
+
+.contactBackground {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 10% 10% , rgba(185, 96, 24, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, rgba(255, 219, 164, 0) 0%, transparent 50%),
+        linear-gradient(145deg, #1a1a1a00 0%, #0d0d0d00 100%);
+    background-size: cover;
+    background-position: center;
+}
+
+.contactOverlay {
+    position: absolute;
+    inset: 0;
+}
+
+.contactInner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.sectionLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #c9b896;
+    margin-bottom: 16px;
+}
+
+.sectionLabel::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #ff8a3d;
+    border-radius: 50%;
+}
+
+.sectionTitle {
+    display:flex;
+    flex-direction: column;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.1;
+    font-weight: 400;
+    color: #f5efe6;
+    margin: 0 0 32px;
+    letter-spacing: -1px;
+}
+
+.cursive {
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(90deg, #ffb37a, #ff7a2e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.contactInner p {
+    color: #d4c9b8;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.formFull {
+    grid-column: span 2;
+}
+
+.input,
+.textarea {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f5efe6;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    width: 100%;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: #8a7d68;
+}
+
+.textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit {
+    grid-column: span 2;
+    background: linear-gradient(180deg, #ffb37a, #ff8a3d);
+    color: #1a1a1a;
+    border: none;
+    padding: 16px;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .contact {
+        padding: 80px 24px;
+    }
+
+    .contactInner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .form {
+        grid-template-columns: 1fr;
+    }
+
+    .formFull,
+    .submit {
+        grid-column: span 1;
+    }
+}

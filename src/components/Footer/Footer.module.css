@@ -1,0 +1,141 @@
+.footer {
+  padding: 4rem 0 2rem;
+  background: var(--bg-charcoal);
+  border-top: 1px solid rgba(201, 169, 98, 0.12);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  gap: 4rem;
+  padding-bottom: 3rem;
+}
+
+.brand {
+  max-width: 20rem;
+}
+
+.logoMark {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--border-gold);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.logoText {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.28em;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.colTitle {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+
+.col ul {
+  list-style: none;
+}
+
+.col li {
+  margin-bottom: 0.6rem;
+}
+
+.col a {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.col a:hover {
+  color: var(--gold-light);
+}
+
+.contact {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.social {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social a {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-gold);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.social a:hover {
+  background: rgba(201, 169, 98, 0.12);
+  box-shadow: 0 0 20px var(--glow-gold);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 2rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.legal {
+  display: flex;
+  gap: 2rem;
+}
+
+.legal a:hover {
+  color: var(--gold-light);
+}
+
+@media (max-width: 900px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+
+  .columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}

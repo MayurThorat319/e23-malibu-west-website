@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap');
+
+.section {
+    padding: 10px 48px 100px 48px;
+    background: linear-gradient(180deg, #141414 0%, #141414 100%);
+
+}
+
+.sectionLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #c9b896;
+    margin-bottom: 16px;
+}
+
+.sectionLabel::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #ff8a3d;
+    border-radius: 50%;
+}
+
+.sectionTitle {
+    display:flex;
+    flex-direction: column;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.1;
+    font-weight: 400;
+    color: #f5efe6;
+    margin: 0 0 48px;
+    letter-spacing: -1px;
+    max-width: 800px;
+}
+
+.cursive {
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(90deg, #ffb37a, #ff7a2e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.faq {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faqItem {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px 0;
+}
+
+.faqQ {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #f5efe6;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+}
+
+.faqIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+}
+
+.faqIconOpen {
+    transform: rotate(45deg);
+    background: #ff8a3d;
+}
+
+.faqA {
+    padding-top: 16px;
+    color: #c9b896;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 700px;
+}
+
+@media (max-width: 900px) {
+    .section {
+        padding: 80px 24px;
+    }
+}

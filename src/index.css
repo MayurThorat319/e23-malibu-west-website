@@ -1,0 +1,134 @@
+:root {
+  --bg-deep: #030303;
+  --bg-charcoal: #0a0a0a;
+  --bg-elevated: #111111;
+  --gold: #c9a962;
+  --gold-light: #e8d5a3;
+  --gold-dark: #8a7340;
+  --gold-gradient: linear-gradient(
+    135deg,
+    #8a7340 0%,
+    #c9a962 35%,
+    #f0e6c8 55%,
+    #c9a962 75%,
+    #8a7340 100%
+  );
+  --text-primary: #f5f5f5;
+  --text-muted: rgba(245, 245, 245, 0.62);
+  --border-gold: rgba(201, 169, 98, 0.35);
+  --glow-gold: rgba(201, 169, 98, 0.25);
+  --section-pad: clamp(4rem, 8vw, 7rem);
+  --container: min(1280px, 92vw);
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 0;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(201, 169, 98, 0.35);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.15;
+}
+
+.goldText {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.container {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.sectionLabel {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.sectionTitle {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-gold),
+    transparent
+  );
+}
