@@ -17,9 +17,9 @@
     position: relative;
     overflow: visible;
     background:
-        radial-gradient(circle at 50% -50%, #2a82a0 0%, transparent 70%),
-        radial-gradient(circle at 50% -30%, rgb(51, 152, 180) 0%, transparent 40%),
-        linear-gradient(180deg, #221d1a 0%, #38bbc465 100%);
+        radial-gradient(circle at 50% -50%, #81bbc1 0%, transparent 70%),
+        radial-gradient(circle at 50% -30%, #548C92 0%, transparent 40%),
+        linear-gradient(180deg, #285260 0%, #172f3165 100%);
     margin-top: 50px;
     height: auto;
     width: 100%;
