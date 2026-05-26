@@ -10,6 +10,8 @@ import Contact from "./components/MainSection/Contact";
 import Amenities from "./components/MainSection/Amenities"
 
 import Layout from "./Layout";
+import { ProjectShowcase } from "./components/MainSection/ProjectShowcase";
+import GalleryScroll from "./components/MainSection/GalleryScroll";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
       <Amenities/>
       <PerfectMove />
       <Slider />
+      <ProjectShowcase />
+      <GalleryScroll />
       <FaqSection />
       <Contact />
     </Layout>
