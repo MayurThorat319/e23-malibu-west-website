@@ -1,0 +1,134 @@
+.sg-main {
+  background: #000;
+  color: #fff;
+}
+
+.sg-wrapper {
+  position: relative;
+}
+
+/* Hero */
+.sg-hero {
+  height: 50vh;
+  width: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sg-title {
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: -0.03em;
+  padding: 20px 10px; /* add vertical breathing space */
+  margin: 0;
+
+  font-family: "Dancing Script", cursive;
+
+  background-image: linear-gradient(
+    90deg,
+    #ffdaa4,
+    #ff9b42,
+    #ff6200
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  -webkit-text-stroke: 1px rgba(255, 238, 214, 0.12);
+
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(255, 98, 0, 0.15);
+}
+
+@media (min-width: 1536px) {
+  .sg-title {
+    font-size: 4.5rem;
+  }
+}
+
+/* Gallery */
+.sg-gallery {
+  background: #020617;
+  width: 100%;
+  padding: 0;
+}
+
+.sg-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.sg-col {
+  display: grid;
+  gap: 8px;
+}
+
+.sg-col-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.sg-fig {
+  width: 100%;
+  margin: 0;
+}
+
+.sg-fig-fill {
+  height: 100%;
+}
+
+.sg-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  vertical-align: bottom;
+}
+
+.sg-img-tall {
+  height: 24rem;
+}
+
+.sg-img-fill {
+  height: 100%;
+  width: 100%;
+}
+
+/* Footer */
+.sg-footer {
+  background: #020617;
+  overflow: hidden;
+}
+
+.sg-footer-title {
+  font-size: 16vw;
+  transform: translateY(5rem);
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  background: linear-gradient(to right, #9ca3af, #1f2937);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sg-footer-bar {
+  background: #000;
+  height: 10rem;
+  position: relative;
+  z-index: 10;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}

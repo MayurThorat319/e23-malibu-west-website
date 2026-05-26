@@ -9,6 +9,8 @@ import FaqSection from "./components/MainSection/faqs";
 import Contact from "./components/MainSection/Contact";
 
 import Layout from "./Layout";
+import { ProjectShowcase } from "./components/MainSection/ProjectShowcase";
+import GalleryScroll from "./components/MainSection/GalleryScroll";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       <AboutSection />
       <PerfectMove />
       <Slider />
+      <ProjectShowcase />
+      <GalleryScroll />
       <FaqSection />
       <Contact />
     </Layout>
