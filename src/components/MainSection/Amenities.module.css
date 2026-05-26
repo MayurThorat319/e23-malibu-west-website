@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@300;400;500;600&display=swap');
+
 .section {
     position: relative;
     background-color: #0d1a17;
@@ -32,13 +33,11 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.96) 0%,
-        rgba(0, 0, 0, 0.882) 30%,
-        rgba(0, 0, 0, 0.634) 70%,
-        rgba(0, 0, 0, 0.22) 100%
-    );
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.96) 0%,
+            rgba(0, 0, 0, 0.882) 30%,
+            rgba(0, 0, 0, 0.634) 70%,
+            rgba(0, 0, 0, 0.22) 100%);
     backdrop-filter: blur(4px);
 }
 
@@ -59,8 +58,13 @@
 }
 
 @keyframes bgZoomSlow {
-    from { transform: scale(1.5); }
-    to   { transform: scale(1); }
+    from {
+        transform: scale(1.5);
+    }
+
+    to {
+        transform: scale(1);
+    }
 }
 
 /* ── Header ── */
@@ -160,16 +164,16 @@
     width: 100%;
     height: 2px;
     background: linear-gradient(to right,
-        rgba(255,255,255,1) 0%,
-        rgba(255,255,255,1) 70%,
-        rgba(255,255,255,0) 100%);
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 70%,
+            rgba(255, 255, 255, 0) 100%);
 }
 
 .cardright::before {
     background: linear-gradient(to left,
-        rgba(255,255,255,1) 0%,
-        rgba(255,255,255,1) 70%,
-        rgba(255,255,255,0) 100%);
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 70%,
+            rgba(255, 255, 255, 0) 100%);
 }
 
 .cardright::after,
@@ -181,16 +185,16 @@
     width: 100%;
     height: 2px;
     background: linear-gradient(to right,
-        rgba(255,255,255,1) 0%,
-        rgba(255,255,255,1) 70%,
-        rgba(255,255,255,0) 100%);
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 70%,
+            rgba(255, 255, 255, 0) 100%);
 }
 
 .cardright::after {
     background: linear-gradient(to left,
-        rgba(255,255,255,1) 0%,
-        rgba(255,255,255,1) 70%,
-        rgba(255,255,255,0) 100%);
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 70%,
+            rgba(255, 255, 255, 0) 100%);
 }
 
 .cardCenter {
@@ -240,17 +244,18 @@
 .centerTopVisible {
     opacity: 1;
 }
+
 /* ── Card Content ── */
 .cardContent {
     background: #ffffff;
-    padding: 28px 36px 32px;
+    padding: 20px 36px 32px;
     text-align: center;
 }
 
 .cardLabel {
-   font-family: 'Cronde', serif;
-    font-size: 0.65rem;
-    font-weight: 600;
+    font-family: 'Cronde', serif;
+    font-size: 2rem;
+    font-weight: 800;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #2a2a2a;
@@ -258,13 +263,13 @@
 }
 
 .cardDesc {
-    font-family: 'Cormorant Garamond', serif;
+      font-family: "cormorant garamond", serif;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 500;
     color: #686767;
     line-height: 1.5;
     margin-bottom: 10px;
-    font-style: italic;
+    /* font-style: italic; */
 }
 
 .cardLink {
@@ -284,10 +289,17 @@
     transition: gap 0.3s ease;
 }
 
-.cardLink:hover { gap: 12px; }
+.cardLink:hover {
+    gap: 12px;
+}
 
-.cardLink svg { transition: transform 0.3s ease; }
-.cardLink:hover svg { transform: translateX(4px); }
+.cardLink svg {
+    transition: transform 0.3s ease;
+}
+
+.cardLink:hover svg {
+    transform: translateX(4px);
+}
 
 /* Side card label */
 .sideLabel {
