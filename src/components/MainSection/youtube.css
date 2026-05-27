@@ -1,0 +1,268 @@
+.gallery-section {
+  position: relative;
+  height: auto;
+  padding-top: 1.5rem;
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+}
+.gallery-header {
+  text-align: center;
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  padding: 0 clamp(1rem, 4vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gallery-subtitle {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #c9a96e;
+  margin: 0;
+}
+.subtitle-number {
+  font-family: "Cormorant SC", serif;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  line-height: 1;
+}
+.subtitle-text {
+  font-family: "Cormorant SC", serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.gallery-title {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 400;
+  color: #111827;
+  font-family: "Junge", serif;
+  letter-spacing: 0.02em;
+}
+.gallery-description {
+  color: #4b5563;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  margin: 0;
+  font-family: "Jura", sans-serif;
+  line-height: 1.5;
+}
+.gallery-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 1rem 0;
+}
+.divider-line {
+  height: 1px;
+  width: clamp(20px, 4vw, 30px);
+  background-color: #d1d5db;
+}
+.divider-diamond {
+  width: 5px;
+  height: 5px;
+  background-color: #c9a96e;
+  transform: rotate(45deg);
+}
+.gallery-rows-container {
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.gallery-rows-container::-webkit-scrollbar {
+  display: none;
+}
+.gallery-motion-container {
+  display: flex;
+  width: max-content;
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+.gallery-item {
+  position: relative;
+  width: clamp(280px, 85vw, 450px);
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #cbd5e1;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: block;
+}
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+.gallery-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover .gallery-item-image {
+  transform: scale(1.05);
+}
+.gallery-item-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  pointer-events: none;
+  z-index: 2;
+}
+.gallery-item-title {
+  color: #ffffff;
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  font-family: "Junge", serif;
+  line-height: 1.2;
+}
+.gallery-item-line {
+  height: 1px;
+  width: clamp(60px, 15vw, 100px);
+  background-color: #c9a96e;
+  margin: 6px 0;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+.gallery-item-subtitle-text {
+  color: #fffdeb;
+  margin: 0;
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  font-family: "Jura", sans-serif;
+  line-height: 1.2;
+}
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.gallery-item:hover .gallery-item-overlay {
+  opacity: 1;
+}
+.gallery-play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(50px, 8vw, 68px);
+  height: clamp(36px, 6vw, 48px);
+  background: #ff0000;
+  border-radius: clamp(10px, 2vw, 14px);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gallery-play-btn svg {
+  width: clamp(24px, 5vw, 36px);
+  height: clamp(24px, 5vw, 36px);
+  color: #ffffff;
+  margin-left: 4px;
+}
+.gallery-play-btn:hover {
+  background: #e60000;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.35);
+}
+/* =========================================
+   Desktop: CSS Marquee Animation
+   ========================================= */
+@media (min-width: 769px) {
+  .gallery-rows-container {
+    overflow: hidden;
+  }
+  .gallery-motion-container {
+    animation: infiniteScroll 25s linear infinite;
+  }
+  .gallery-rows-container:hover .gallery-motion-container {
+    animation-play-state: paused;
+  }
+}
+@keyframes infiniteScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+/* =========================================
+   Mobile: JS transform-based scroll (iOS safe)
+   ========================================= */
+@media (max-width: 768px) {
+  .gallery-item-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.25);
+  }
+  .gallery-rows-container {
+    overflow: hidden; 
+  }
+  .gallery-motion-container {
+    animation: none;
+    will-change: transform;
+  }
+  .gallery-item:hover { transform: none; }
+  .gallery-item:hover .gallery-item-image { transform: none; }
+}
+@keyframes infiniteScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (max-width: 1024px) {
+  .gallery-item-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.15);
+  }
+}
+/* =========================================
+   Desktop: CSS Marquee Animation
+   ========================================= */
+@media (min-width: 769px) {
+  .gallery-rows-container {
+    overflow: hidden;
+  }
+  .gallery-motion-container {
+    animation: infiniteScroll 25s linear infinite;
+  }
+  .gallery-rows-container:hover .gallery-motion-container {
+    animation-play-state: paused;
+  }
+}
+@keyframes infiniteScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+/* =========================================
+   Mobile: JS transform-based scroll (iOS safe)
+   ========================================= */
+@media (max-width: 768px) {
+  .gallery-item-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.25);
+  }
+  .gallery-rows-container {
+    overflow: hidden; /* ← NOT scroll; JS transform handles all movement */
+  }
+  /* animation: none keeps desktop keyframes from leaking in */
+  .gallery-motion-container {
+    animation: none;
+    will-change: transform; /* tells iOS to GPU-composite this layer */
+  }
+  .gallery-item:hover { transform: none; }
+  .gallery-item:hover .gallery-item-image { transform: none; }
+}
