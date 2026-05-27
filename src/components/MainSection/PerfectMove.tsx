@@ -34,7 +34,7 @@ const cardData = [
 
 const PerfectMove = () => {
   return (
-    <section id="perfect-move" className={styles.perfectMoveContainer}>
+    <section id="work" className={styles.perfectMoveContainer}>
       <div className={styles.container}>
         <div className={styles.contentWrap}>
           <div className={styles.pillWrap}>

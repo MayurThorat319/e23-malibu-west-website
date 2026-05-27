@@ -1,5 +1,5 @@
 import React from "react";
-// import Header from "./components/Header/Header";
+import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
 
@@ -10,7 +10,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <SmoothScroll>
-      {/* <Header /> */}
+      <Header />
 
       <main>{children}</main>
 

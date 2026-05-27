@@ -98,7 +98,7 @@ export default function Amenities() {
     const nextSlide = amenitiesData[getIdx(1)];
 
     return (
-        <section className={styles.section}>
+        <section className={styles.section} id="amenities">
             <div
                 key={`bg-bottom-${bottomImg}`}
                 className={styles.bgBottom}
