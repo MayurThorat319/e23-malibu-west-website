@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import "./slider.css";
 import {
+  FaBath,
   FaBed,
   FaBuilding,
-  FaCity,
   FaMapMarkerAlt,
   FaUtensils,
+  FaWater,
 } from "react-icons/fa";
 
 interface Slide {
@@ -17,35 +18,53 @@ interface Slide {
   description: string;
   image: string;
   bottomTitle: string;
+
+  price: string;
+  bedrooms: number;
+  bathrooms: number;
 }
 
 const slides: Slide[] = [
   {
     id: 1,
-    title: "Luxury 2BHK",
-    heading: "Luxury 2BHK",
+    title: "LUXURY 2BHK",
+    heading: "LUXURY 2BHK",
     description:
-      "Experience elevated living with breathtaking views, modern design, and world class amenities.",
+      "Experience elevated living with breathtaking views, modern design and world class amenities.",
     image: "images/slider-1.jpg",
     bottomTitle: "The Sagar Ratna",
+
+    price: "₹2.10",
+    bedrooms: 2,
+    bathrooms: 2,
   },
+
   {
     id: 2,
-    title: "Luxury 3BHK",
-    heading: "Luxury 3BHK",
+    title: "LUXURY 3BHK",
+    heading: "LUXURY 3BHK",
     description:
-      "Experience elevated living with breathtaking views, modern design, and world class amenities.",
+      "Experience elevated living with breathtaking views, modern design and world class amenities.",
     image: "images/slider-2.jpg",
     bottomTitle: "The Sagar Nivas",
+
+    price: "₹2.45",
+    bedrooms: 3,
+    bathrooms: 3,
   },
+
   {
     id: 3,
-    title: "Luxury 4BHK",
-    heading: "Luxury 4BHK",
+    title: "LUXURY 3BHK",
+    heading: "LUXURY 3BHK",
     description:
-      "Experience elevated living with breathtaking views, modern design, and world class amenities.",
+      "Experience elevated living with breathtaking views, modern design and world class amenities.",
     image: "images/slider-3.jpg",
     bottomTitle: "The Anant Sagar",
+
+    price: "₹2.67",
+    bedrooms: 3,
+    bathrooms: 3,
   },
 ];
 
@@ -209,6 +228,8 @@ export default function Slider() {
 
               <h1 className="detail-heading">{activeSlide.heading}</h1>
 
+              <h2 className="detail-subtitle">{activeSlide.bottomTitle}</h2>
+
               <div className="gold-line" />
 
               <div className="detail-description">
@@ -226,9 +247,9 @@ export default function Slider() {
 
                 <div className="feature-card">
                   <div className="feature-icon">
-                    <FaCity />
+                    <FaWater />
                   </div>
-                  <p className="feature-des">Stunning Cityscape Views</p>
+                  <p className="feature-des">Sea Facing Views</p>
                 </div>
 
                 <div className="feature-card">
@@ -249,53 +270,55 @@ export default function Slider() {
               <div className="price-box">
                 <div className="price-left">
                   <span className="price-label">STARTING AT</span>
-                  <h2 className="price-number">₹2.35* CR</h2>
+                  <h2 className="price-number">
+                    {activeSlide.price} <span>CR</span>
+                  </h2>
                   <p className="tc-text">T&C APPLY</p>
                 </div>
 
                 <div className="price-divider" />
 
                 <div className="price-mini">
-                  <div className="mini-icon">
-                    <FaBed />
+                  <div className="price-top">
+                    <div className="mini-icon">
+                      <FaBed />
+                    </div>
+
+                    <h4>{activeSlide.bedrooms}</h4>
                   </div>
 
-                  <div>
-                    <h4>2</h4>
-                    <span>BEDROOMS</span>
-                  </div>
+                  <span>BEDROOMS</span>
                 </div>
 
                 <div className="price-divider" />
 
                 <div className="price-mini">
-                  <div className="mini-icon">
-                    <FaBuilding />
+                  <div className="price-top">
+                    <div className="mini-icon">
+                      <FaBath />
+                    </div>
+
+                    <h4>{activeSlide.bathrooms}</h4>
                   </div>
 
-                  <div>
-                    <h4>1</h4>
-                    <span>WASHROOM</span>
-                  </div>
+                  <span>WASHROOM</span>
                 </div>
               </div>
 
               {/* BUTTONS */}
               <div className="detail-buttons">
                 <button className="gold-btn">
-                  {" "}
-                  <FaMapMarkerAlt /> Schedule a Site Visit
+                  <FaMapMarkerAlt /> Book a Site Visit
                 </button>
 
                 <button className="outline-btn">
-                  {" "}
                   <FaBuilding /> View Floor Plan
                 </button>
               </div>
             </div>
 
             {/* RIGHT SMALL IMAGES */}
-            <div className="detail-right">
+            {/* <div className="detail-right">
               <div className="mini-card">
                 <img src="images/slider-2.jpg" alt="" />
                 <div className="mini-overlay" />
@@ -307,7 +330,7 @@ export default function Slider() {
                 <div className="mini-overlay" />
                 <p>Premium Bathroom</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
