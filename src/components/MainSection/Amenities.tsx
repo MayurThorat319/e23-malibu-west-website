@@ -11,16 +11,16 @@ interface Amenity {
 }
 
 const amenitiesData: Amenity[] = [
-    { id: 1, number: 1, title: "EXCLUSIVE GYM", description: "Gym It's A Sanctuary Where Fitness Meets Luxury, Ensuring An Unparalleled Experience Along with A Stunning Backdrop, As You Work Towards Your Health And Wellness Aspirations.", image: "/images/gym.png" },
-    { id: 2, number: 2, title: "SACRED GARDEN", description: "The Sacred Garden, Thoughtfully Designed To Provide An Oasis Of Peace And Spiritual Connection Amidst The Bustle Of Daily Life. This Tranquil Sanatan Space Is Perfect For Introspection, Relaxation And Mindfulness, Blending Nature's Beauty With An Ambience Of Sacred Calm.", image: "/images/garden.png" },
-    { id: 3, number: 3, title: "INFINITY POOL", description: "Experience The Pinnacle Of Luxury With Kopar-Khairane's First and Only Breathtaking Infinity Pool, Perched On the 27th Floor, Offering Uninterrupted Views of The Stunning Skyline and Sun-set.", image: "/images/swimming.png" },
-    { id: 4, number: 4, title: "THE BANQUET HALL", description: "Presenting Kopar-Khairane's First and Only Sky-Banquet The Perfect Venue For All Your Special Occasions. Our Spacious And Aesthetically Designed Banquet Provides A Stunning Backdrop For Unforgettable Moments.", image: "/images/hall.png" },
-    { id: 5, number: 5, title: "WORK FROM HOME", description: "Experience The Perfect Blend Or Productivity And Comfort With Our Thoughtfully Designed Work-From-Home-Area. Tailored To Meet The Needs Of Today's Professionals, This Dedicated Space Within The Project Ensures A Seamless Work-Life Balance While Offering All The Conveniences You Need To Stay Focused And Inspired.", image: "/images/office.png" },
-    { id: 6, number: 6, title: "MEDITATION CENTER", description: "A Serene Sanctuary Designed to Help You Reconnect With Your Inner Self And Find Peace Amidst Life's Hustle, Nestled in a Tranquil Environment, Along with Stunning Views in The Backdrop, Our Center Offers a Harmonious Blend Of Spirituality, Mindfulness And Relaxation To Rejuvenate Your Mind, Body And Soul.", image: "/images/maditation.png" },
-    { id: 7, number: 7, title: "JOGGING TRACK", description: "Discover The Perfect Place To Stay Active And Energized With Our Jogging Track, A Well Designed Pathway That Combines Fitness With The Beauty of Nature. Whether You're A Seasoned Runner Or Just Starting Your Fitness Journey. This Track Offers A Safe, Scenic And Inspiring Space For All.", image: "/images/jogging.png" },
-    { id: 8, number: 8, title: "FOOTBALL TURF", description: "Presenting Kopar-Khairane's First Ever Sky-Turf For Players Of All Levels To Experience The Thrill Of The Game. Whether You're Training, Competing, Or Just Enjoying A Casual Match With Friends, Our Turf Offers The Perfect Environment To Unleash Your Passion For Football.", image: "/images/football.png" },
-    { id: 9, number: 9, title: "ROOFTOP LOUNGE", description: "Whether It's A Sunset Cocktail, A Romantic Dinner, Or A Vibrant Celebration, Our Rooftop Party Lounge With Stunning Sea Views Promises A Magical Experience like No Other, Where Every Moment Becomes A Cherished Memory.", image: "/images/rooftop.png" },
-    { id: 10, number: 10, title: "KIDS PLAY AREA", description: "A Vibrant And Exciting Space Designed To Spark Joy. Creativity And Adventure For Children Of All Ages. Our Play Area Is Thoughtfully Crafted With A Mix Of Fun, Safety And Imagination To Create A Haven Where Kids Can Explore, Learn And Thrive.", image: "/images/play_area.png" },
+    { id: 1, number: 1, title: "EXCLUSIVE GYM", description: "More than a gym, it’s a luxurious wellness sanctuary — where inspiring views, energy, and elegance come together to elevate every step of your fitness journey.", image: "/images/gym.png" },
+    { id: 2, number: 2, title: "SACRED GARDEN", description: "A Sacred Garden designed to soothe the soul - a serene retreat where silence, spirituality, and nature embrace you with a sense of peace beyond the everyday.", image: "/images/garden.png" },
+    { id: 3, number: 3, title: "INFINITY POOL", description: "Experience Kopar Khairane’s first and only rooftop infinity pool on the 27th floor — where endless skyline views and golden sunsets create moments of pure escape above the city.", image: "/images/swimming.png" },
+    { id: 4, number: 4, title: "THE BANQUET HALL", description: "A breathtaking Sky Banquet in the clouds — an elegant space crafted for unforgettable celebrations, cherished moments, and memories that last a lifetime.", image: "/images/hall.png" },
+    { id: 5, number: 5, title: "WORK FROM HOME", description: "A thoughtfully designed work-from-home space where comfort meets focus — inspiring productivity, balance, and the freedom to work peacefully within the comfort of your own world.", image: "/images/office.png" },
+    { id: 6, number: 6, title: "MEDITATION CENTER", description: "A tranquil sanctuary where serenity, mindfulness, and breathtaking views come together — creating a soulful escape to relax, reconnect, and rejuvenate your mind, body, and spirit.", image: "/images/maditation.png" },
+    { id: 7, number: 7, title: "JOGGING TRACK", description: "A serene jogging track where fitness flows through nature — inspiring every stride with fresh air, peaceful surroundings, and a sense of everyday renewal.", image: "/images/jogging.png" },
+    { id: 8, number: 8, title: "Sky Sports Turf", description: "Kopar Khairane’s first-ever Sky Sports Turf — a premium arena where passion rises above the city, bringing the thrill of pro basketball/ football to life for every enthusiast and athlete.", image: "/images/football.png" },
+    { id: 9, number: 9, title: "ROOFTOP LOUNGE", description: "From sunset evenings to unforgettable celebrations, the rooftop party lounge offers breathtaking sea views and an atmosphere where every moment feels timeless, intimate, and truly unforgettable.", image: "/images/rooftop.png" },
+    { id: 10, number: 10, title: "KIDS PLAY AREA", description: "A joyful haven where imagination runs free — a safe, vibrant play space that inspires curiosity, creativity, and endless moments of childhood wonder.", image: "/images/play_area.png" },
 ];
 
 const ChevronLeft = () => (
@@ -111,8 +111,9 @@ export default function Amenities() {
 
             {/* ── Header ── */}
             <div className={styles.header}>
+                <div className={styles.luxsubtitle}>Amenities</div>
+                <div className={styles.luxdiamond}><span></span><i></i><span></span></div>
                 <div className={styles.titleBlock}>
-                    <div className={styles.titleLine} />
                     <motion.h2
                         className={styles.title}
                         initial="hidden"
@@ -126,7 +127,7 @@ export default function Amenities() {
                             },
                         }}
                     >
-                        {"Exclusively".split("").map((char, index) => (
+                        {"Exclusively For You".split("").map((char, index) => (
                             <motion.span
                                 key={index}
                                 variants={{
@@ -151,30 +152,10 @@ export default function Amenities() {
 
                         <br />
 
-                        {"For You".split("").map((char, index) => (
-                            <motion.span
-                                key={`second-${index}`}
-                                variants={{
-                                    hidden: {
-                                        opacity: 0,
-                                        y: 40,
-                                    },
-                                    visible: {
-                                        opacity: 1,
-                                        y: 0,
-                                    },
-                                }}
-                                transition={{
-                                    duration: 0.5,
-                                    ease: "easeOut",
-                                }}
-                                style={{ display: "inline-block" }}
-                            >
-                                {char === " " ? "\u00A0" : char}
-                            </motion.span>
-                        ))}
+
                     </motion.h2>
                 </div>
+
                 <motion.p
                     className={styles.subtitle}
                     initial={{ opacity: 0, x: 80 }}
@@ -186,8 +167,7 @@ export default function Amenities() {
                         delay: 0.4,
                     }}
                 >
-                    Refinement and creativity intertwine with dreamlike destinations
-                    and soulful moments on each sojourn with Taj.
+                    Step into a world of thoughtfully curated spaces, where wellness, leisure, and effortless luxury become part of everyday living.
                 </motion.p>
             </div>
 
@@ -227,8 +207,30 @@ export default function Amenities() {
                                 className={`${styles.centerTop} ${topVisible ? styles.centerTopVisible : ""}`}
                                 style={{ backgroundImage: `url(${topImg})` }}
                             />
+                            <div className={styles.cardContent}>
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={centerSlide.id}
+                                        initial={{ opacity: 0, y: 50 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -30 }}
+                                        transition={{ duration: 0.6, ease: "easeInOut" }}
+                                    >
+                                        <p className={styles.cardLabel}>
+                                            {centerSlide.title}
+                                        </p>
+
+                                        <p className={styles.cardDesc}>
+                                            {centerSlide.description}
+                                        </p>
+
+
+                                    </motion.div>
+                                </AnimatePresence>
+                            </div>
                         </div>
-                        <div className={styles.cardContent}>
+
+                        {/* <div className={styles.cardContent}>
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={centerSlide.id}
@@ -250,7 +252,7 @@ export default function Amenities() {
                                     </button>
                                 </motion.div>
                             </AnimatePresence>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* RIGHT SIDE */}
