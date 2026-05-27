@@ -144,7 +144,7 @@ export default function Slider() {
     <>
       <section className="ocean-slider" id="layout">
         <div className="slider-top-text">
-          TOGETHER, WE CAN SAVE OUR PLANET'S FUTURE
+          CONFIGURATIONS
         </div>
 
         {/* SLIDER */}
