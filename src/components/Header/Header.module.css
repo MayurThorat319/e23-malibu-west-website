@@ -7,11 +7,12 @@
   padding: 1.25rem 0;
   transition: background 0.5s var(--ease-luxury), padding 0.5s var(--ease-luxury),
     backdrop-filter 0.5s var(--ease-luxury);
+
 }
 
 .scrolled {
   padding: 0.85rem 0;
-  background: rgba(3, 3, 3, 0.82);
+  background: #172f31b7;
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-gold);
 }
@@ -25,32 +26,10 @@
 
 .logo {
   display: flex;
-  align-items: center;
-  gap: 0.65rem;
+  width: 10vw;
+  height: 3vw;
 }
 
-.logoMark {
-  width: 2.25rem;
-  height: 2.25rem;
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 600;
-  background: var(--gold-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  border: 1px solid var(--border-gold);
-  border-radius: 4px;
-}
-
-.logoText {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  letter-spacing: 0.28em;
-  font-weight: 500;
-}
 
 .nav {
   display: flex;
@@ -58,12 +37,18 @@
 }
 
 .navLink {
-  font-size: 0.68rem;
+  font-size: 0.88rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: #fff;
   transition: color 0.35s ease;
   position: relative;
+  font-family: 'Cronde', serif;
+
+}
+
+.scrollNav {
+  color: var(--text-muted);
 }
 
 .navLink::after {
@@ -89,11 +74,17 @@
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  font-family: 'Cronde', serif;
   padding: 0.75rem 1.5rem;
-  border: 1px solid var(--border-gold);
-  color: var(--gold-light);
+  border: 1px solid #f6dda5;
+  color: #fff6e1;
   transition: background 0.45s var(--ease-luxury), color 0.45s ease,
     box-shadow 0.45s ease;
+}
+
+.ctascroll {
+  border: 1px solid var(--border-gold);
+  color: var(--gold-light);
 }
 
 .cta:hover {
@@ -120,6 +111,7 @@
 }
 
 @media (max-width: 1024px) {
+
   .nav,
   .cta {
     display: none;

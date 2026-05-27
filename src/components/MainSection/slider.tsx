@@ -123,7 +123,7 @@ export default function Slider() {
 
   return (
     <>
-      <section className="ocean-slider">
+      <section className="ocean-slider" id="layout">
         <div className="slider-top-text">
           TOGETHER, WE CAN SAVE OUR PLANET'S FUTURE
         </div>

@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Header.module.css";
 
-// TypeScript automatic is array ki type infer kar lega (string types)
 const LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Work" },
+  { href: "#hero", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#insights", label: "Insights" },
+  { href: "#amenities", label: "Amenities" },
+  { href: "#work", label: "Work" },
+  { href: "#layout", label: "Layout" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -18,14 +17,56 @@ export default function Header() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
+  // NEW STATES
+  const [showHeader, setShowHeader] = useState(true);
+
+  const lastScrollY = useRef(0);
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // HEADER SHOW/HIDE ON SCROLL
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      setScrolled(currentScrollY > 40);
+
+      // SCROLL DOWN = HIDE
+      if (currentScrollY > lastScrollY.current && currentScrollY > 120) {
+        setShowHeader(false);
+      }
+
+      // SCROLL UP = SHOW
+      else {
+        setShowHeader(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+
+      // AUTO HIDE AFTER 3 SEC WHEN USER STOPS
+      if (hideTimer.current) {
+        clearTimeout(hideTimer.current);
+      }
+
+      hideTimer.current = setTimeout(() => {
+        if (window.scrollY > 120 && !menuOpen) {
+          setShowHeader(false);
+        }
+      }, 2000);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+
+      if (hideTimer.current) {
+        clearTimeout(hideTimer.current);
+      }
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -35,13 +76,22 @@ export default function Header() {
     <motion.header
       className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}
       initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      animate={{
+        y: showHeader ? 0 : -140,
+        opacity: showHeader ? 1 : 0.9,
+      }}
+      transition={{
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
       <div className={`container ${styles.inner}`}>
         <a href="#home" className={styles.logo}>
-          <span className={styles.logoMark}>EV</span>
-          <span className={styles.logoText}>MALIBU WEST</span>
+          <img
+            className={styles.cardImg}
+            src="/images/Malibu_logo.png"
+            alt="logo"
+          />
         </a>
 
         <nav className={styles.nav} aria-label="Main">
@@ -49,7 +99,7 @@ export default function Header() {
             <motion.a
               key={link.href}
               href={link.href}
-              className={styles.navLink}
+              className={`${styles.navLink} ${scrolled ? styles.scrollNav : ""}`}
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 + i * 0.06, duration: 0.6 }}
@@ -61,11 +111,11 @@ export default function Header() {
 
         <motion.a
           href="#contact"
-          className={styles.cta}
+          className={`${styles.cta} ${scrolled ? styles.ctascroll : ""}`}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
         >
-          Let&apos;s Elevate
+          contact Now
         </motion.a>
 
         <button
