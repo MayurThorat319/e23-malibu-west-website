@@ -3,7 +3,7 @@
 .section {
     position: relative;
     background-color: #0d1a17;
-    padding: 60px 0 80px;
+    padding: 20px 0 80px;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
 }
@@ -34,11 +34,11 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.96) 0%,
-            rgba(0, 0, 0, 0.882) 30%,
-            rgba(0, 0, 0, 0.634) 70%,
-            rgba(0, 0, 0, 0.22) 100%);
-    backdrop-filter: blur(4px);
+            #162f37ef 0%,
+            #2f7078c0 30%,
+            #4a79896b 70%,
+            #6eb3bb3d 100%);
+    backdrop-filter: blur(1.5px);
 }
 
 .bgBottom {
@@ -70,9 +70,10 @@
 /* ── Header ── */
 .header {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-    padding: 0 80px 50px;
+    padding: 0 40px 50px;
     position: relative;
     z-index: 2;
 }
@@ -93,23 +94,38 @@
 
 .title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-size: clamp(2.2rem, 4.1vw, 4.2rem);
     font-weight: 300;
     color: #f5f0e8;
     line-height: 1.1;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     margin: 0;
+
+}
+
+.luxsubtitle {
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #d7bf7c;
+    font-size: 25px;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    font-family: 'Cronde', serif;
+
 }
 
 .subtitle {
-    max-width: 380px;
-    color: #b0b8b4;
-    font-size: 0.82rem;
+    max-width: 680px;
+    color: #e4e4e4;
+    font-size: 1.0rem;
+
     font-weight: 300;
-    line-height: 1.8;
-    letter-spacing: 0.03em;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
     padding-top: 8px;
+    text-align: center;
+    font-family: 'Cronde', serif;
 }
 
 /* ── Carousel Wrapper ── */
@@ -144,7 +160,7 @@
     flex-direction: column;
     width: 300px;
     height: 480px;
-    filter: brightness(0.6);
+    overflow: hidden;
     align-items: center;
     justify-content: center;
     border-left: 2px solid rgba(255, 255, 255, 1);
@@ -210,7 +226,7 @@
 ────────────────────────────────────────── */
 .imagePlaceholder {
     width: 100%;
-    height: 320px;
+    height: 100%;
     overflow: hidden;
     position: relative;
 }
@@ -227,6 +243,19 @@
     background-position: center;
     background-repeat: no-repeat;
     will-change: opacity;
+}
+
+.centerBottom::after,
+.centerTop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            #0f323e 0%,
+            #162f37ee 20%,
+            #162f37b0 30%,
+            #4a798900 80%,
+            #6eb3bb00 100%);
 }
 
 /* Bottom image */
@@ -246,10 +275,22 @@
 }
 
 /* ── Card Content ── */
-.cardContent {
+/* .cardContent {
     background: #ffffff;
     padding: 20px 36px 32px;
     text-align: center;
+} */
+.cardContent {
+    text-align: center;
+    position: absolute;
+    bottom: 1px;
+    z-index: 10;
+    padding: 20px 36px 2px;
+    width: 100%;
+    left: 0;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform, opacity;
 }
 
 .cardLabel {
@@ -258,18 +299,44 @@
     font-weight: 800;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #2a2a2a;
+    /* color: #2a2a2a; */
+    color: #fff;
     margin-bottom: 14px;
 }
 
 .cardDesc {
-      font-family: "cormorant garamond", serif;
+    font-family: "cormorant garamond", serif;
     font-size: 1rem;
     font-weight: 500;
-    color: #686767;
+    /* color: #686767; */
+    color: #f1f1f1;
     line-height: 1.5;
     margin-bottom: 10px;
     /* font-style: italic; */
+}
+
+.luxdiamond {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 5px auto 5px;
+    color: #c9b48a;
+}
+
+.luxdiamond span {
+
+    width: 60px;
+    height: 1px;
+    background: #c9b48a;
+}
+
+.luxdiamond i {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #c9b48a;
+    transform: rotate(45deg);
+    display: inline-block;
 }
 
 .cardLink {
@@ -306,12 +373,13 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
     font-weight: 300;
-    color: #f5f0e8;
+    color: #ffffff;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-align: center;
     line-height: 1.4;
     padding: 24px;
+
 }
 
 /* ── Nav Buttons ── */
@@ -321,7 +389,6 @@
     border-radius: 50%;
     border: 2px solid rgb(255, 255, 255);
     background: rgba(255, 255, 255, 0.26);
-    backdrop-filter: blur(8px);
     color: #ffffff;
     cursor: pointer;
     display: flex;
