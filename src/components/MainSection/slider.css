@@ -27,6 +27,126 @@ video {
    SLIDER
 ========================================= */
 
+/* =========================================
+   SLIDER HEADER (UPDATED TO MATCH DESIGN)
+========================================= */
+
+.slider-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0 10px;
+}
+
+.slider-header-left {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0px;
+}
+
+.slider-pretitle {
+  color: #d6b37a; /* Elegant luxury gold from your file layout */
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.slider-main-title {
+  font-family: "Cronde", serif;
+  font-size: 2.7rem;
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.slider-main-title span {
+  color: #d6b37a; /* Gold accent styling */
+}
+
+.slider-gold-line {
+  width: 50px;
+  height: 1.5px;
+  background: #d6b37a;
+  margin-bottom: 20px;
+  opacity: 0.85;
+}
+
+.slider-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  max-width: 510px;
+  font-family: "Inter", sans-serif;
+}
+
+.slider-header-right {
+  margin-bottom: 8px; /* Perfectly balances text bottom alignment */
+}
+
+.explore-all-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.explore-all-btn .arrow {
+  transition: transform 0.3s ease;
+}
+
+.explore-all-btn:hover {
+  border-color: #d6b37a;
+  background: rgba(214, 179, 122, 0.04);
+}
+
+.explore-all-btn:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN ADAPTATIONS
+========================================= */
+@media (max-width: 992px) {
+  .slider-header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+  .slider-header-right {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .explore-all-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-main-title {
+    font-size: 1.85rem;
+  }
+  .slider-subtitle {
+    font-size: 0.95rem;
+  }
+}
+
 .ocean-slider {
   width: 100%;
   min-height: 100vh;
@@ -35,12 +155,30 @@ video {
   flex-direction: column;
   justify-content: center;
 
-  background: black;
+  /* ADD THIS */
+  padding: 120px 40px 80px;
+
+  background: url("/images/slider.jpeg") center center / cover no-repeat;
+
   overflow: hidden;
-
   position: relative;
+}
 
-  padding: 0 40px;
+.ocean-slider::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  z-index: 0;
+}
+
+.slider-header-container,
+.cards-wrapper,
+.slider-dots {
+  position: relative;
+  z-index: 2;
 }
 
 .slider-top-text {
@@ -122,23 +260,48 @@ video {
 .vertical-text {
   position: absolute;
 
-  left: 16px;
+  left: 0;
   top: 50%;
 
   transform: translateY(-50%) rotate(-180deg);
 
   writing-mode: vertical-rl;
 
-  letter-spacing: 5px;
-  font-size: 10px;
+  white-space: nowrap;
 
-  color: rgba(255, 255, 255, 0.9);
+  padding: 22px 6px;
+
+  letter-spacing: 3px;
+  font-size: 10px;
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.96);
+
+  background: linear-gradient(
+    180deg,
+    rgba(126, 104, 5, 0.96) 0%,
+    rgba(45, 114, 133, 0.95) 48%,
+    rgba(2, 21, 27, 0.96) 100%
+  );
+
+  backdrop-filter: blur(12px);
+
+  border-radius: 10px 0 0 10px;
+
+  border-right: 2px solid rgba(255, 255, 255, 0.35);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .bottom-title {
   position: absolute;
-
-  bottom: 18px;
+  bottom: 22px;
 
   width: 100%;
 
@@ -150,8 +313,31 @@ video {
   letter-spacing: 7px;
 
   font-family: "Cinzel";
-
   font-weight: 300;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* GOLD LINE */
+.bottom-title::after {
+  content: "";
+
+  width: 58px;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(214, 179, 122, 0),
+    #d6b37a,
+    rgba(214, 179, 122, 0)
+  );
+
+  box-shadow: 0 0 12px rgba(214, 179, 122, 0.4);
 }
 
 /* =========================================

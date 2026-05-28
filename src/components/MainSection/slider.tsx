@@ -143,62 +143,71 @@ export default function Slider() {
   return (
     <>
       <section className="ocean-slider" id="layout">
-        <div className="slider-top-text">
-          CONFIGURATIONS
+        
+        {/* NEW DESIGN HEADER */}
+        <div className="slider-header-container">
+          <div className="slider-header-left">
+            <span className="slider-pretitle">CONFIGURATIONS</span>
+            <h1 className="slider-main-title">
+              Elevated living. <span>Thoughtfully designed.</span>
+            </h1>
+            <div className="slider-gold-line" />
+            <p className="slider-subtitle">
+              Discover timeless spaces crafted for comfort, elegance, and modern lifestyles.
+            </p>
+          </div>
         </div>
 
         {/* SLIDER */}
-        {/* SLIDER */}
-<div className="cards-wrapper">
-  {slides.map((slide, index) => {
-    // Shifting the position calculation by +1 aligns position === 1 exactly with index === currentIndex
-    const position = (index - currentIndex + 1 + slides.length) % slides.length;
-    const isActiveSource =
-      activeSlide?.id === slide.id && detailState !== "closed";
-    return (
-      <div
-        key={slide.id}
-        ref={(el) => {
-          cardRefs.current[slide.id] = el;
-        }}
-        className={`
+        <div className="cards-wrapper">
+          {slides.map((slide, index) => {
+            const position =
+              (index - currentIndex + 1 + slides.length) % slides.length;
+            const isActiveSource =
+              activeSlide?.id === slide.id && detailState !== "closed";
+            return (
+              <div
+                key={slide.id}
+                ref={(el) => {
+                  cardRefs.current[slide.id] = el;
+                }}
+                className={`
           ocean-card
           ${position === 1 ? "main-card" : "side-card"}
           ${isActiveSource ? "source-card" : ""}
         `}
-        onClick={() => handleOpen(slide)}
-      >
-        <img src={slide.image} alt={slide.title} />
-        <div className="overlay" />
-        <div className="card-hover">
-          <div className="hover-line" />
-          <div className="hover-content">
-            <span>VIEW</span>
-            <div className="hover-arrow">↗</div>
-          </div>
+                onClick={() => handleOpen(slide)}
+              >
+                <img src={slide.image} alt={slide.title} />
+                <div className="overlay" />
+                <div className="card-hover">
+                  <div className="hover-line" />
+                  <div className="hover-content">
+                    <span>VIEW</span>
+                    <div className="hover-arrow">↗</div>
+                  </div>
+                </div>
+                <div className="card-content">
+                  <div className="vertical-text">{slide.title}</div>
+                  {position === 1 && (
+                    <div className="bottom-title">{slide.bottomTitle}</div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
-        <div className="card-content">
-          <div className="vertical-text">{slide.title}</div>
-          {position === 1 && (
-            <div className="bottom-title">{slide.bottomTitle}</div>
-          )}
-        </div>
-      </div>
-    );
-  })}
-</div>
 
-{/* DOTS */}
-<div className="slider-dots">
-  {slides.map((_, index) => (
-    <button
-      key={index}
-      // Direct comparison works perfectly now
-      className={`dot ${currentIndex === index ? "active-dot" : ""}`}
-      onClick={() => setCurrentIndex(index)}
-    />
-  ))}
-</div>
+        {/* DOTS */}
+        <div className="slider-dots">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              className={`dot ${currentIndex === index ? "active-dot" : ""}`}
+              onClick={() => setCurrentIndex(index)}
+            />
+          ))}
+        </div>
       </section>
 
       {/* DETAIL PAGE — shared element morph */}
@@ -312,21 +321,6 @@ export default function Slider() {
                 </button>
               </div>
             </div>
-
-            {/* RIGHT SMALL IMAGES */}
-            {/* <div className="detail-right">
-              <div className="mini-card">
-                <img src="images/slider-2.jpg" alt="" />
-                <div className="mini-overlay" />
-                <p>Master Bedroom</p>
-              </div>
-
-              <div className="mini-card">
-                <img src="images/slider-1.jpg" alt="" />
-                <div className="mini-overlay" />
-                <p>Premium Bathroom</p>
-              </div>
-            </div> */}
           </div>
         </div>
       )}

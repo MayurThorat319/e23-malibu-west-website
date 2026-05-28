@@ -1,0 +1,153 @@
+.building-reveal-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    180deg,
+    #548c92 0%,
+    #285260 100%
+  );
+}
+
+.grid-bg {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.building-container {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.building-wrapper {
+  position: relative;
+
+  width: min(32vw, 420px);
+  height: 88vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+  will-change: transform, opacity;
+  transition: transform 0.1s linear;
+}
+
+.building-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.building-svg,
+.photo-reveal {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.photo-reveal {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  filter: blur(15px);
+  transition:
+    opacity 3s ease-in-out,
+    filter 3s ease-in-out;
+  z-index: 1;
+}
+
+/* Photo starts fading in once intersection happens and asset is downloaded */
+.is-visible.is-image-loaded .photo-reveal {
+  opacity: 1;
+  filter: blur(0);
+  transition-delay: 11s;
+}
+
+/* SVG ANIMATION ENGINE */
+.stage line,
+.stage path {
+  fill: none;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  opacity: 0;
+}
+
+.is-visible .stage line,
+.is-visible .stage path {
+  opacity: 1;
+  animation: drawBuildingLine 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes drawBuildingLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* PRODUCTION TIMELINES BASED ON STRUCTURAL BUILD UP */
+.is-visible .s-ground path,
+.is-visible .s-ground line {
+  animation-delay: 0s;
+}
+.is-visible .s-upper path,
+.is-visible .s-upper line {
+  animation-delay: 1.5s;
+}
+.is-visible .s-lower path,
+.is-visible .s-lower line {
+  animation-delay: 3.5s;
+}
+.is-visible .s-deck path,
+.is-visible .s-deck line {
+  animation-delay: 5.5s;
+}
+.is-visible .s-sign path,
+.is-visible .s-sign line {
+  animation-delay: 7.8s;
+}
+.is-visible .s-crown path,
+.is-visible .s-crown line {
+  animation-delay: 9s;
+}
+
+/* COMPLETE FADE AND CLEAN REMOVAL OF THE SCHEMATIC LINE DRAWINGS */
+.is-visible.is-image-loaded .stage {
+  animation: fadeOutBlueprint 2s ease-in-out forwards;
+  animation-delay: 13.5s;
+}
+
+@keyframes fadeOutBlueprint {
+  to {
+    opacity: 0; /* Changed from 0.25 to completely hide the lines */
+    visibility: hidden; /* Removes it entirely from user interaction/rendering passes */
+  }
+}
