@@ -1,25 +1,57 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./youtube.css";
 interface VideoData {
   id: string;
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
 }
 interface GalleryItemProps {
   videoData: VideoData;
 }
 const videosData: VideoData[] = [
-  { id: "Lb9DHrE1ovw", title: "Project Overview",    subtitle: "Phase 1 - Groundbreaking"  },
-  { id: "1v5Xd-OBCcY", title: "Structural Progress", subtitle: "Phase 2 - Pillars & Slabs" },
-  { id: "4KGN3-ku_EY", title: "Drone Footage",        subtitle: "Aerial View Update"        },
-  { id: "WkdnTLbwmhg", title: "Interior Work",        subtitle: "Wiring & Plumbing"         },
-  { id: "rgRxtWKx6pQ", title: "Final Touches",        subtitle: "Painting & Decor"          },
+  { id: "Lb9DHrE1ovw" },
+  { id: "1v5Xd-OBCcY" },
+  { id: "4KGN3-ku_EY" },
+  { id: "WkdnTLbwmhg" },
+  { id: "rgRxtWKx6pQ" },
 ];
 const infiniteVideos: VideoData[] = [...videosData, ...videosData];
 /* ── Card ──────────────────────────────────────────────── */
+/* ── Card ──────────────────────────────────────────────── */
 const GalleryItem: React.FC<GalleryItemProps> = ({ videoData }) => {
+  const [title, setTitle] = useState(videoData.title || "Loading...");
+  const [subtitle, setSubtitle] = useState(
+    videoData.subtitle || "Loading..."
+  );
+
   const thumbnailUrl = `https://img.youtube.com/vi/${videoData.id}/maxresdefault.jpg`;
-  const youtubeUrl   = `https://www.youtube.com/watch?v=${videoData.id}`;
+
+  const youtubeUrl = `https://www.youtube.com/watch?v=${videoData.id}`;
+
+  useEffect(() => {
+    const fetchVideoDetails = async () => {
+      try {
+        const response = await fetch(
+          `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoData.id}&format=json`
+        );
+
+        const data = await response.json();
+
+        setTitle(data.title || "Untitled Video");
+
+        setSubtitle(data.author_name || "YouTube");
+      } catch (error) {
+        console.error("Error fetching video details:", error);
+
+        setTitle("Video Unavailable");
+
+        setSubtitle("YouTube");
+      }
+    };
+
+    fetchVideoDetails();
+  }, [videoData.id]);
+
   return (
     <a
       href={youtubeUrl}
@@ -29,20 +61,31 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ videoData }) => {
     >
       <img
         src={thumbnailUrl}
-        alt={videoData.title}
+        alt={title}
         className="gallery-item-image"
+        loading="lazy"
+        decoding="async"
         onError={(e) => {
           (e.target as HTMLImageElement).src =
             `https://img.youtube.com/vi/${videoData.id}/hqdefault.jpg`;
         }}
       />
+
       <div className="gallery-item-gradient">
-        <h3 className="gallery-item-title">{videoData.title}</h3>
+        <h3 className="gallery-item-title">{title}</h3>
+
         <div className="gallery-item-line" />
-        <p className="gallery-item-subtitle-text">{videoData.subtitle}</p>
+
+        <p className="gallery-item-subtitle-text">
+          {subtitle}
+        </p>
       </div>
+
       <div className="gallery-item-overlay">
-        <span className="gallery-play-btn" aria-label="Play video">
+        <span
+          className="gallery-play-btn"
+          aria-label="Play video"
+        >
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M8 5.14v14l11-7-11-7z" />
           </svg>

@@ -201,7 +201,7 @@
 }
 .t-container {
   width: 100%;
-  max-width: 1300px;
+  /* max-width: 1300px; */
   margin: 0 auto;
   padding: 0 40px;
   text-align: center;
@@ -223,13 +223,7 @@
 .slider {
   position: relative;
 }
-.slider-viewport {
-  overflow: hidden;
-}
-.slider-track {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+
 .slide {
   flex: 0 0 100%;
   padding: 0 12px;
