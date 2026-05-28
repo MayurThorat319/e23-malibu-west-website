@@ -13,10 +13,34 @@ import Layout from "./Layout";
 import { ProjectShowcase } from "./components/MainSection/ProjectShowcase";
 import GalleryScroll from "./components/MainSection/GalleryScroll";
 import VideoTestimonials from "./components/MainSection/VideoTestimonials";
+import { lazy, Suspense, useEffect, useState } from "react";
+const EnquiryDialog = lazy(() => import("./components/Form/form"));
+
 
 function App() {
+  const [isDialogOpen, setDialogOpen] = useState(false);
+
+  const handleOpenDialog = () => setDialogOpen(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDialogOpen(true);
+    }, 25000);
+
+    return () => clearTimeout(timer);
+  }, []);
+  
   return (
-    <Layout>
+     <>
+      {isDialogOpen && (
+        <Suspense fallback={null}>
+          <EnquiryDialog
+            isOpen={isDialogOpen}
+            onClose={() => setDialogOpen(false)}
+          />
+        </Suspense>
+      )}
+    <Layout onOpenDialog={handleOpenDialog}>
       <Hero />
       <WayUsSection />
       <AboutSection />
@@ -29,6 +53,7 @@ function App() {
       {/* <Contact /> */}
       <VideoTestimonials />
     </Layout>
+    </>
   );
 }
 //

@@ -9,11 +9,16 @@ const LINKS = [
   { href: "#about", label: "About" },
   { href: "#amenities", label: "Amenities" },
   { href: "#work", label: "Work" },
-  { href: "#layout", label: "Layout" },
+  { href: "#layout", label: "Configuration" },
+  { href: "#feedback", label: "Feedback" },
   { href: "#contact", label: "Contact" },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  onOpenDialog: () => void;
+}
+
+export default function Header({ onOpenDialog }: HeaderProps) {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
@@ -109,14 +114,15 @@ export default function Header() {
           ))}
         </nav>
 
-        <motion.a
-          href="#contact"
+        <motion.button
+          type="button"
+          onClick={onOpenDialog}
           className={`${styles.cta} ${scrolled ? styles.ctascroll : ""}`}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
         >
-          contact Now
-        </motion.a>
+          Contact Now
+        </motion.button>
 
         <button
           type="button"

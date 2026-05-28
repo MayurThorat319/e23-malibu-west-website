@@ -5,12 +5,13 @@ import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
 
 interface LayoutProps {
   children: React.ReactNode;
+   onOpenDialog: () => void;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, onOpenDialog, }: LayoutProps) => {
   return (
     <SmoothScroll>
-      <Header />
+       <Header onOpenDialog={onOpenDialog} />
 
       <main>{children}</main>
 
