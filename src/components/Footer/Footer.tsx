@@ -4,13 +4,11 @@ import Reveal from "./Reveal";
 import { StaggerContainer, StaggerItem } from "./Stagger";
 import styles from "./Footer.module.css";
 
-// 1. Column item ke liye interface banaya
 interface FooterColumn {
   title: string;
   links: string[];
 }
 
-// 2. COLUMNS array ko explicitly typed kiya
 const COLUMNS: FooterColumn[] = [
   {
     title: "Services",
@@ -33,8 +31,13 @@ export default function Footer() {
         <div className={styles.top}>
           <Reveal direction="up">
             <div className={styles.brand}>
-              <span className={styles.logoMark}>M</span>
-              <span className={styles.logoText}>MALIBU WEST</span>
+              <img
+  src="/images/Malibu_logo.png"
+  alt="Malibu West Logo"
+  className={styles.logoImage}
+/>
+              {/* <span className={styles.logoText}>MALIBU WEST</span> */}
+
               <p className={styles.tagline}>
                 Designing experiences. Building brands that endure.
               </p>
@@ -46,6 +49,7 @@ export default function Footer() {
               <StaggerItem key={col.title}>
                 <div className={styles.col}>
                   <h4 className={styles.colTitle}>{col.title}</h4>
+
                   <ul>
                     {col.links.map((link) => (
                       <li key={link}>
@@ -59,18 +63,66 @@ export default function Footer() {
 
             <StaggerItem>
               <div className={styles.col}>
-                <h4 className={styles.colTitle}>Let&apos;s Connect</h4>
+                <h4 className={styles.colTitle}>Let's Connect</h4>
+
                 <p className={styles.contact}>
-                  hello@aviora.studio
-                  <br />
-                  +1 (555) 012-3456
+
+                  <a
+                    href="https://www.evgroup.in/home.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contactLink}
+                  >
+                    www.evgroup.in
+                  </a>
+
+
+                  <a
+                    href="https://wa.me/918291668777"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contactLink}
+                  >
+                    +91 82916 68777
+                  </a>
                 </p>
+
                 <div className={styles.social}>
-                  {["In", "X", "Ig", "Li"].map((s) => (
-                    <a key={s} href="#" aria-label={s}>
-                      {s}
-                    </a>
-                  ))}
+                  <a
+                    href="https://www.facebook.com/evgindia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                  >
+                    fb
+                  </a>
+
+                  <a
+                    href="https://www.instagram.com/evhomesofficial"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                  >
+                    ig
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/company/ev-homes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    in
+                  </a>
+
+                  <a
+                    href="https://www.youtube.com/@evhomes3892"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                  >
+                    yt
+                  </a>
                 </div>
               </div>
             </StaggerItem>
@@ -78,9 +130,13 @@ export default function Footer() {
         </div>
 
         <div className="divider" />
+
         <Reveal direction="up" delay={0.1}>
           <div className={styles.bottom}>
-            <span>© {new Date().getFullYear()} AVIORA. All rights reserved.</span>
+            <span>
+              © {new Date().getFullYear()} E V Group. All rights reserved.
+            </span>
+
             <div className={styles.legal}>
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Service</a>

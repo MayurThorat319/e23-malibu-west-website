@@ -95,7 +95,7 @@ export default function VideoTestimonials() {
   }, []);
 
   return (
-    <section className="scroll-section">
+    <section className="scroll-section" id="feedback">
       {/* PART 1 — sideways-scrolling video tour */}
       <div className="scroll-wrap" ref={wrapRef}>
         <div className="scroll-sticky">

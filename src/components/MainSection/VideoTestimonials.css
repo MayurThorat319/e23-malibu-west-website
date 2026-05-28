@@ -200,11 +200,25 @@
 .testimonial-section {
   position: relative;
   min-height: 100vh;
+
   padding: 40px 0 120px;
+
   display: flex;
   align-items: center;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(11, 59, 65, 0.18) 70%,
+      rgba(11, 59, 65, 0.45) 82%,
+      rgba(11, 59, 65, 0.75) 92%,
+      #0b3b41 100%
+    );
+
   z-index: 3;
 }
+
 .t-container {
   width: 100%;
   /* max-width: 1300px; */

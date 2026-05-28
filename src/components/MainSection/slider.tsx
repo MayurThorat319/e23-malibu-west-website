@@ -10,6 +10,7 @@ import {
   FaUtensils,
   FaWater,
 } from "react-icons/fa";
+import EnquiryDialog from "../Form/form";
 
 interface Slide {
   id: number;
@@ -78,6 +79,7 @@ export default function Slider() {
   >("closed");
   const [currentIndex, setCurrentIndex] = useState(0);
   const cardRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   /* AUTO SLIDE */
   useEffect(() => {
@@ -143,7 +145,6 @@ export default function Slider() {
   return (
     <>
       <section className="ocean-slider" id="layout">
-        
         {/* NEW DESIGN HEADER */}
         <div className="slider-header-container">
           <div className="slider-header-left">
@@ -153,7 +154,8 @@ export default function Slider() {
             </h1>
             <div className="slider-gold-line" />
             <p className="slider-subtitle">
-              Discover timeless spaces crafted for comfort, elegance, and modern lifestyles.
+              Discover timeless spaces crafted for comfort, elegance, and modern
+              lifestyles.
             </p>
           </div>
         </div>
@@ -312,11 +314,17 @@ export default function Slider() {
 
               {/* BUTTONS */}
               <div className="detail-buttons">
-                <button className="gold-btn">
+                <button
+                  className="gold-btn"
+                  onClick={() => setIsFormOpen(true)}
+                >
                   <FaMapMarkerAlt /> Book a Site Visit
                 </button>
 
-                <button className="outline-btn">
+                <button
+                  className="outline-btn"
+                  onClick={() => setIsFormOpen(true)}
+                >
                   <FaBuilding /> View Floor Plan
                 </button>
               </div>
@@ -324,6 +332,8 @@ export default function Slider() {
           </div>
         </div>
       )}
+
+      <EnquiryDialog isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </>
   );
 }
