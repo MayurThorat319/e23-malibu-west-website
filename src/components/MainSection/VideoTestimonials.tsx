@@ -2,40 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./VideoTestimonials.css";
 import YouTube from "./youtube";
 
-const testimonials = [
-  {
-    quote:
-      "From the first walkthrough to closing day, the team made everything feel effortless. The video tour alone sold us on the home before we ever stepped inside.",
-    name: "Victor Torp",
-    role: "Investor",
-    image:
-      "https://cdn.prod.website-files.com/673b33468a2959171deea037/673b33468a2959171deea064_user3.jpg",
-  },
-  {
-    quote:
-      "Their attention to detail is unmatched. Every property they curated matched exactly what we were looking for — beautiful, well-located, and a sound investment.",
-    name: "Marvin McKinney",
-    role: "Retailer",
-    image:
-      "https://cdn.prod.website-files.com/673b33468a2959171deea037/673b33468a2959171deea069_EMFOd31ZSlQZRrJDSi4mzonlo.jpeg.webp",
-  },
-  {
-    quote:
-      "Working with them felt less like a transaction and more like a partnership. They understood the lifestyle we wanted and delivered exactly that.",
-    name: "Kristin Stamm",
-    role: "Property Owner",
-    image:
-      "https://cdn.prod.website-files.com/673b33468a2959171deea037/673b33468a2959171deea067_MojlcylOqVppDs3aMqled981tU.jpeg.webp",
-  },
-  {
-    quote:
-      "The cinematic tours give a real sense of space and light. I made an offer remotely with full confidence — and it was exactly as shown.",
-    name: "Gwendolyn Crooks",
-    role: "Investor",
-    image:
-      "https://cdn.prod.website-files.com/673b33468a2959171deea037/673b33468a2959171deea068_M86kBciDZu5lc6pcg7NMsndgw.jpeg.webp",
-  },
-];
+
 
 // function QuoteIcon() {
 //   return (
@@ -96,8 +63,6 @@ export default function VideoTestimonials() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
-  const [perView, setPerView] = useState(2);
 
   // Sideways scroll
   useEffect(() => {
@@ -119,25 +84,6 @@ export default function VideoTestimonials() {
       window.removeEventListener("resize", onScroll);
     };
   }, []);
-
-  // Responsive per-view
-  useEffect(() => {
-    const update = () => setPerView(window.innerWidth >= 900 ? 2 : 1);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  const totalPages = Math.max(1, testimonials.length - perView + 1);
-  const clamped = Math.min(index, totalPages - 1);
-  // const prev = () => setIndex((i) => (i - 1 + totalPages) % totalPages);
-  // const next = () => setIndex((i) => (i + 1) % totalPages);
-
-  // Autoplay
-  useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % totalPages), 5000);
-    return () => clearInterval(id);
-  }, [totalPages]);
 
   return (
     <section className="scroll-section">
@@ -276,21 +222,11 @@ export default function VideoTestimonials() {
             </p>
           </div>
 
-          <div className="slider">
-            <div className="slider-viewport">
-              <div
-                className="slider-track"
-                style={{ transform: `translateX(-${clamped * (100 / perView)}%)` }}
-              >
-               <YouTube/>
-              </div>
-            </div>
-
-            <div className="slider-controls">
+        <div className="slider">
+  <YouTube />
+</div>
 
 
-            </div>
-          </div>
         </div>
       </section>
 

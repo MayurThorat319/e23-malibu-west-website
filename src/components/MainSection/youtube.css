@@ -1,9 +1,11 @@
+
 .gallery-section {
   position: relative;
   height: auto;
-  padding-top: 1.5rem;
+  padding-top: clamp(2rem, 5vw, 4rem);
   padding-bottom: clamp(2rem, 5vw, 3rem);
 }
+
 .gallery-header {
   text-align: center;
   margin-bottom: clamp(1.5rem, 4vw, 3rem);
@@ -12,6 +14,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+
 .gallery-subtitle {
   display: inline-flex;
   align-items: baseline;
@@ -20,17 +24,20 @@
   color: #c9a96e;
   margin: 0;
 }
+
 .subtitle-number {
   font-family: "Cormorant SC", serif;
   font-size: clamp(1.1rem, 3vw, 1.5rem);
   line-height: 1;
 }
+
 .subtitle-text {
   font-family: "Cormorant SC", serif;
   font-size: clamp(0.9rem, 2vw, 1.1rem);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
 .gallery-title {
   font-size: clamp(1.8rem, 5vw, 3rem);
   font-weight: 400;
@@ -38,6 +45,7 @@
   font-family: "Junge", serif;
   letter-spacing: 0.02em;
 }
+
 .gallery-description {
   color: #4b5563;
   font-size: clamp(0.9rem, 2vw, 1.05rem);
@@ -45,6 +53,8 @@
   font-family: "Jura", sans-serif;
   line-height: 1.5;
 }
+
+
 .gallery-divider {
   display: flex;
   align-items: center;
@@ -52,32 +62,40 @@
   gap: 12px;
   margin: 1rem 0;
 }
+
 .divider-line {
   height: 1px;
   width: clamp(20px, 4vw, 30px);
   background-color: #d1d5db;
 }
+
 .divider-diamond {
   width: 5px;
   height: 5px;
   background-color: #c9a96e;
   transform: rotate(45deg);
 }
+
+
 .gallery-rows-container {
   display: flex;
   flex-direction: column;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
 .gallery-rows-container::-webkit-scrollbar {
   display: none;
 }
+
 .gallery-motion-container {
   display: flex;
   width: max-content;
   gap: clamp(1rem, 2.5vw, 1.5rem);
   padding: 0 clamp(1rem, 4vw, 2rem);
 }
+
+
 .gallery-item {
   position: relative;
   width: clamp(280px, 85vw, 450px);
@@ -90,9 +108,11 @@
   transition: transform 0.3s ease;
   display: block;
 }
+
 .gallery-item:hover {
   transform: scale(1.02);
 }
+
 .gallery-item-image {
   width: 100%;
   height: 100%;
@@ -100,9 +120,12 @@
   display: block;
   transition: transform 0.5s ease;
 }
+
 .gallery-item:hover .gallery-item-image {
   transform: scale(1.05);
 }
+
+
 .gallery-item-gradient {
   position: absolute;
   bottom: 0;
@@ -123,6 +146,7 @@
   pointer-events: none;
   z-index: 2;
 }
+
 .gallery-item-title {
   color: #ffffff;
   margin: 0;
@@ -132,6 +156,7 @@
   font-family: "Junge", serif;
   line-height: 1.2;
 }
+
 .gallery-item-line {
   height: 1px;
   width: clamp(60px, 15vw, 100px);
@@ -139,6 +164,7 @@
   margin: 6px 0;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
+
 .gallery-item-subtitle-text {
   color: #fffdeb;
   margin: 0;
@@ -147,6 +173,7 @@
   font-family: "Jura", sans-serif;
   line-height: 1.2;
 }
+
 .gallery-item-overlay {
   position: absolute;
   inset: 0;
@@ -158,9 +185,11 @@
   justify-content: center;
   z-index: 1;
 }
+
 .gallery-item:hover .gallery-item-overlay {
   opacity: 1;
 }
+
 .gallery-play-btn {
   display: inline-flex;
   align-items: center;
@@ -172,17 +201,21 @@
   box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .gallery-play-btn svg {
   width: clamp(24px, 5vw, 36px);
   height: clamp(24px, 5vw, 36px);
   color: #ffffff;
   margin-left: 4px;
 }
+
 .gallery-play-btn:hover {
   background: #e60000;
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(255, 0, 0, 0.35);
 }
+
+
 /* =========================================
    Desktop: CSS Marquee Animation
    ========================================= */
@@ -190,17 +223,21 @@
   .gallery-rows-container {
     overflow: hidden;
   }
+
   .gallery-motion-container {
     animation: infiniteScroll 25s linear infinite;
   }
+
   .gallery-rows-container:hover .gallery-motion-container {
     animation-play-state: paused;
   }
 }
+
 @keyframes infiniteScroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
 /* =========================================
    Mobile: JS transform-based scroll (iOS safe)
    ========================================= */
@@ -209,26 +246,34 @@
     opacity: 1;
     background: rgba(0, 0, 0, 0.25);
   }
+
   .gallery-rows-container {
     overflow: hidden; 
   }
+
   .gallery-motion-container {
     animation: none;
     will-change: transform;
   }
+
   .gallery-item:hover { transform: none; }
   .gallery-item:hover .gallery-item-image { transform: none; }
 }
+
 @keyframes infiniteScroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+
 @media (max-width: 1024px) {
   .gallery-item-overlay {
     opacity: 1;
     background: rgba(0, 0, 0, 0.15);
   }
 }
+
+
 /* =========================================
    Desktop: CSS Marquee Animation
    ========================================= */
@@ -236,17 +281,21 @@
   .gallery-rows-container {
     overflow: hidden;
   }
+
   .gallery-motion-container {
     animation: infiniteScroll 25s linear infinite;
   }
+
   .gallery-rows-container:hover .gallery-motion-container {
     animation-play-state: paused;
   }
 }
+
 @keyframes infiniteScroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
 /* =========================================
    Mobile: JS transform-based scroll (iOS safe)
    ========================================= */
@@ -255,14 +304,17 @@
     opacity: 1;
     background: rgba(0, 0, 0, 0.25);
   }
+
   .gallery-rows-container {
     overflow: hidden; /* ← NOT scroll; JS transform handles all movement */
   }
+
   /* animation: none keeps desktop keyframes from leaking in */
   .gallery-motion-container {
     animation: none;
     will-change: transform; /* tells iOS to GPU-composite this layer */
   }
+
   .gallery-item:hover { transform: none; }
   .gallery-item:hover .gallery-item-image { transform: none; }
 }

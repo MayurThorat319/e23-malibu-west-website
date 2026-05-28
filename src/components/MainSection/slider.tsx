@@ -148,61 +148,57 @@ export default function Slider() {
         </div>
 
         {/* SLIDER */}
-        <div className="cards-wrapper">
-          {slides.map((slide, index) => {
-            const position =
-              (index - currentIndex + slides.length) % slides.length;
-            const isActiveSource =
-              activeSlide?.id === slide.id && detailState !== "closed";
-            return (
-              <div
-                key={slide.id}
-                ref={(el) => {
-                  cardRefs.current[slide.id] = el;
-                }}
-                className={`
-                  ocean-card
-                  ${position === 1 ? "main-card" : "side-card"}
-                  ${isActiveSource ? "source-card" : ""}
-                `}
-                onClick={() => handleOpen(slide)}
-              >
-                <img src={slide.image} alt={slide.title} />
-                <div className="overlay" />
-                <div className="card-hover">
-                  <div className="hover-line" />
-
-                  <div className="hover-content">
-                    <span>VIEW</span>
-
-                    <div className="hover-arrow">↗</div>
-                  </div>
-                </div>
-                <div className="card-content">
-                  <div className="vertical-text">{slide.title}</div>
-                  {position === 1 && (
-                    <div className="bottom-title">{slide.bottomTitle}</div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+        {/* SLIDER */}
+<div className="cards-wrapper">
+  {slides.map((slide, index) => {
+    // Shifting the position calculation by +1 aligns position === 1 exactly with index === currentIndex
+    const position = (index - currentIndex + 1 + slides.length) % slides.length;
+    const isActiveSource =
+      activeSlide?.id === slide.id && detailState !== "closed";
+    return (
+      <div
+        key={slide.id}
+        ref={(el) => {
+          cardRefs.current[slide.id] = el;
+        }}
+        className={`
+          ocean-card
+          ${position === 1 ? "main-card" : "side-card"}
+          ${isActiveSource ? "source-card" : ""}
+        `}
+        onClick={() => handleOpen(slide)}
+      >
+        <img src={slide.image} alt={slide.title} />
+        <div className="overlay" />
+        <div className="card-hover">
+          <div className="hover-line" />
+          <div className="hover-content">
+            <span>VIEW</span>
+            <div className="hover-arrow">↗</div>
+          </div>
         </div>
-
-        {/* DOTS */}
-        <div className="slider-dots">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              className={`dot ${
-                (currentIndex + 1) % slides.length === index ? "active-dot" : ""
-              }`}
-              onClick={() =>
-                setCurrentIndex(index === 0 ? slides.length - 1 : index - 1)
-              }
-            />
-          ))}
+        <div className="card-content">
+          <div className="vertical-text">{slide.title}</div>
+          {position === 1 && (
+            <div className="bottom-title">{slide.bottomTitle}</div>
+          )}
         </div>
+      </div>
+    );
+  })}
+</div>
+
+{/* DOTS */}
+<div className="slider-dots">
+  {slides.map((_, index) => (
+    <button
+      key={index}
+      // Direct comparison works perfectly now
+      className={`dot ${currentIndex === index ? "active-dot" : ""}`}
+      onClick={() => setCurrentIndex(index)}
+    />
+  ))}
+</div>
       </section>
 
       {/* DETAIL PAGE — shared element morph */}
