@@ -44,6 +44,7 @@ interface RevealProps {
   duration?: number;
   once?: boolean;
   amount?: number;
+  animation?: "slide" | "flip";
   as?: keyof typeof motion; // Taaki sirf valid Framer Motion elements hi pass ho sakein (jaise 'div', 'section', etc.)
 }
 

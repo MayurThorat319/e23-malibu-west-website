@@ -27,6 +27,58 @@ const COLUMNS: FooterColumn[] = [
 export default function Footer() {
   return (
     <footer className={styles.footer}>
+      <div className={styles.waveTop} aria-hidden="true">
+ <svg
+  viewBox="0 0 1440 160"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id="waveLineGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="rgba(255,255,255,0.45)" />
+      <stop offset="100%" stopColor="rgba(255, 255, 255, 0.63)" />
+    </linearGradient>
+
+    <linearGradient id="waveFillGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="rgba(139, 247, 247, 0.56)" />
+      <stop offset="100%" stopColor="rgba(22,55,66,0)" />
+    </linearGradient>
+  </defs>
+
+  <path
+    d="M0,80 C240,20 480,140 720,80 C960,20 1200,140 1440,80"
+    fill="none"
+    stroke="url(#waveLineGradient)"
+    strokeWidth="1.5"
+  />
+
+  <path
+    d="M0,95 C240,35 480,155 720,95 C960,35 1200,155 1440,95"
+    fill="none"
+    stroke="url(#waveLineGradient)"
+    strokeOpacity="0.7"
+    strokeWidth="1.2"
+  />
+
+  <path
+    d="M0,110 C240,50 480,170 720,110 C960,50 1200,170 1440,110"
+    fill="none"
+    stroke="url(#waveLineGradient)"
+    strokeOpacity="0.4"
+    strokeWidth="1"
+  />
+
+  <path
+    d="M0,120 
+       C240,60 480,180 720,120 
+       C960,60 1200,180 1440,120 
+       L1440,160 
+       L0,160 Z"
+    fill="url(#waveFillGradient)"
+  />
+</svg>
+</div>
+
       <div className="container">
         <div className={styles.top}>
           <Reveal direction="up">
