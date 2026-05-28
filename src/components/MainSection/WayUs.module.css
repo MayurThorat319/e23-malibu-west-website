@@ -6,6 +6,25 @@
 
 }
 
+.revealWrapper {
+    position: relative;
+    width: 100%;
+    height: 130vh; /* controls scroll duration */
+    clip-path: inset(0 0 0 0);
+
+    background: linear-gradient(180deg, #548C92 0%, #285260 100%);
+}
+
+.revealSticky {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
 .container {
     width: 100%;
     padding: 120px 80px 80px;

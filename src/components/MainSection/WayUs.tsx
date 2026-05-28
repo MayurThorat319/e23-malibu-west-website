@@ -1,3 +1,4 @@
+import BuildingReveal from "./buildingReveal";
 import styles from "./WayUs.module.css";
 const WayUsSection = () => {
     return (
@@ -14,7 +15,8 @@ const WayUsSection = () => {
                     </p>
                 </div>
             </div>
-            <div className={styles.videoContainer}>
+
+            {/* <div className={styles.videoContainer}>
                 <div className={styles.videoOverlay} />
                
                 <video
@@ -28,7 +30,14 @@ const WayUsSection = () => {
                     <source src="/videos/Hero.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-            </div>
+            </div> */}
+
+         <div className={styles.revealWrapper}>
+    <div className={styles.videoOverlay}>
+        <BuildingReveal />
+    </div>
+</div>
+
             <div className={styles.scroll} />
         </section>
 
