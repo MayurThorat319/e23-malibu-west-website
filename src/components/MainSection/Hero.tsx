@@ -10,7 +10,7 @@ const Hero = () => {
                 className={styles.heroVideo}
                 poster="/poster.jpg"
             >
-                <source src="/videos/vid_flip.mp4" type="video/mp4" />
+                <source src="/videos/start_vid.webm" type="video/mp4" />
             </video>
             <div className={styles.blockcontainer}>
                 <div className={styles.heroContentWrap}>
