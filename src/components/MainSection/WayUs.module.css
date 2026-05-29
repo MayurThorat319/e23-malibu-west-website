@@ -27,10 +27,12 @@
 
 .container {
     width: 100%;
-    padding: 120px 80px 80px;
+    
+    padding: 60px 80px 10px; 
+    
     position: relative;
-    /* background: linear-gradient(180deg, #285260 0%, #141414 100%); */
     background: linear-gradient(180deg, #548C92 0%, #285260 100%);
+    z-index: 2; 
 }
 
 .container:before,
@@ -115,6 +117,32 @@
     background-image: linear-gradient(90deg, #141414, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, #141414);
     pointer-events: none;
     z-index: -1;
+}
+
+
+
+/* Updated Wave Container */
+.waveContainer {
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    overflow: visible; /* CRITICAL: Allows the drop shadow to render outside the box */
+    line-height: 0;
+    
+    /* 99.5% prevents a tiny 1px white line glitch that happens on some monitors */
+    transform: translateY(99.5%); 
+    pointer-events: none;
+    z-index: 10; /* Ensures the shadow casts over the reveal layer below */
+}
+
+/* Updated SVG constraints */
+.waveSvg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 380px;   
+  overflow: visible;
 }
 
 /* .scroll {
