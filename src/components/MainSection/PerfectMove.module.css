@@ -2,8 +2,9 @@
 
 .perfectMoveContainer {
     display: block;
+    width: 100%;
+    overflow-x: hidden;
     background: linear-gradient(180deg, #141414 0%, #141414 100%);
-
 }
 
 .container {
@@ -14,6 +15,7 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
+    box-sizing: border-box;
 }
 
 .contentWrap {
@@ -85,38 +87,49 @@
 }
 
 .cardWrapper {
-    grid-column-gap: 24px;
-    grid-row-gap: 24px;
-    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
     align-items: stretch;
     margin-top: 60px;
-    display: flex;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card {
-    grid-column-gap: 40px;
-    grid-row-gap: 40px;
     border: 1px solid #ffdaa41f;
     background-image: radial-gradient(
         circle farthest-corner at 50% 50%,
         #00000000 49%,
         #ffffff0d
     );
+
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 
     border-radius: 24px;
-    flex-flow: column;
-    flex: 1;
+
+    flex: 1 1 calc(25% - 24px);
+    min-width: 260px;
+    max-width: calc(25% - 24px);
+
     justify-content: flex-start;
     align-items: flex-start;
+
     padding: 40px 24px 100px;
+
     transition: all 0.4s ease;
 
     display: flex;
+    flex-direction: column;
+    gap: 40px;
+
     position: relative;
     overflow: hidden;
     z-index: 1;
+
+    box-sizing: border-box;
 }
 
 .card::before {
@@ -145,20 +158,19 @@
     border: 1px solid rgba(255, 170, 0, 0.35);
     transform: translateY(-4px);
 }
+
 .cardIcon {
     width: 32px;
     height: 32px;
     color: #ffdaa4;
+    flex-shrink: 0;
 }
 
 .contentWrapcard {
-    grid-column-gap: 24px;
-    grid-row-gap: 24px;
-    flex-flow: column;
-    justify-content: flex-start;
-    align-items: flex-start;
     display: flex;
-
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
 }
 
 .h3Heading {
@@ -172,7 +184,9 @@
 
 .paragraphSmall {
     font-size: 16px;
+    line-height: 170%;
     color: #fff;
+    margin: 0;
 }
 
 .image {
@@ -181,7 +195,99 @@
     max-width: none;
     position: absolute;
     inset: auto 0% 0%;
-    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform: translate3d(0px, 0px, 0px)
+        scale3d(1, 1, 1)
+        rotateX(0deg)
+        rotateY(0deg)
+        rotateZ(0deg)
+        skew(0deg, 0deg);
+
     transform-style: preserve-3d;
     opacity: 1;
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 1200px) {
+    .card {
+        flex: 1 1 calc(50% - 24px);
+        max-width: calc(50% - 24px);
+    }
+
+    .contentWrap {
+        width: 80%;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding: 100px 24px 60px;
+    }
+
+    .contentWrap {
+        width: 100%;
+        gap: 24px;
+    }
+
+    .h2Heading {
+        font-size: 42px;
+    }
+
+    .handwriting {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    .cardWrapper {
+        gap: 18px;
+    }
+
+    .card {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-width: 100%;
+        padding: 32px 20px 60px;
+    }
+
+    .h2Heading {
+        font-size: 34px;
+    }
+
+    .handwriting {
+        font-size: 48px;
+        line-height: 80%;
+    }
+
+    .pillText {
+        font-size: 14px;
+    }
+
+    .h3Heading {
+        font-size: 20px;
+    }
+
+    .paragraphSmall {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 80px 16px 50px;
+    }
+
+    .h2Heading {
+        font-size: 28px;
+    }
+
+    .handwriting {
+        font-size: 40px;
+    }
+
+    .card {
+        padding: 28px 18px 50px;
+    }
 }

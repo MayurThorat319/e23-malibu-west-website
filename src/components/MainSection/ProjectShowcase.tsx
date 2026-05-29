@@ -90,8 +90,9 @@ export function ProjectShowcase() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       className="ps-section"
+      id="projects"
     >
-      <h2 className="ps-heading">Selected Work</h2>
+      <h2 className="ps-heading">Our Projects</h2>
 
       <div
         className="ps-preview"

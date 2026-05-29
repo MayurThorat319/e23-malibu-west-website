@@ -166,7 +166,19 @@
   opacity: 0.7;
 }
 
+/* TABLET ADJUSTMENTS */
 @media (max-width: 900px) {
+  /* Scale down the wave height and adjust the negative margin to match */
+  .footer {
+    margin-top: -100px; 
+    padding-top: 8rem; /* Reduce the large top padding for smaller screens */
+  }
+
+  .waveTop {
+    height: 100px;
+  }
+
+  /* Your existing tablet styles */
   .top {
     grid-template-columns: 1fr;
   }
@@ -176,7 +188,19 @@
   }
 }
 
+/* MOBILE ADJUSTMENTS */
 @media (max-width: 500px) {
+  /* Scale down the wave height even further for phones */
+  .footer {
+    margin-top: -60px;
+    padding-top: 5rem; /* Tighter padding for phones */
+  }
+
+  .waveTop {
+    height: 60px;
+  }
+
+  /* Your existing mobile styles */
   .columns {
     grid-template-columns: 1fr;
   }
