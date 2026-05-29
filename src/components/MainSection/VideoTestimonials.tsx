@@ -103,21 +103,26 @@ export default function VideoTestimonials() {
             <div className="video-bg-div" />
             <div className="video-container">
               <div className="video-grid">
-                <div className="video-content-div">
-                  <div className="overflow-hidden-div">
-                    <h2 className="h2-heading">
-                      Step Inside with Our Exclusive Video Tours
-                    </h2>
-                  </div>
-                  <div className="vertical-line" />
-                  <div className="overflow-hidden-div">
-                    <p className="paragraph">
-                      Explore every corner of our premium properties through
-                      immersive cinematic walkthroughs — get the real feel
-                      before you visit.
-                    </p>
-                  </div>
-                </div>
+                <div className="video-content-div testimonials-content">
+  <span className="testimonial-tag">
+    CLIENT TESTIMONIALS
+  </span>
+
+  <h2 className="testimonial-heading">
+    Homes That
+    <span className="script-line">Truly Feel</span>
+    Like Home
+  </h2>
+
+  <p className="testimonial-description">
+    Real experiences from residents who turned aspirations into
+    <span className="script-span"> everyday living with EV Homes.</span>
+  </p>
+
+  <button className="testimonial-btn">
+    Discover their stories
+  </button>
+</div>
               </div>
             </div>
             
