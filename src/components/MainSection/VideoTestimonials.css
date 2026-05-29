@@ -5,6 +5,77 @@
   --sage: #a8c09a;
 }
 
+.testimonials-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 520px;
+}
+
+.testimonial-tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.42em;
+  color: rgba(241, 210, 137, 0.8);
+  margin-bottom: 2rem;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.testimonial-heading {
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-size: 3.2rem; /* Slightly larger to match the visual hierarchy */
+  line-height: 1.1;
+  font-weight: 400; /* Bumped slightly from 300 to match the image's legibility */
+  color: #f5f1eb;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-style: italic; /* <--- This creates the slanted serif look */
+}
+
+.script-line {
+  /* 'Great Vibes' or 'Alex Brush' closely matches the elegant signature script in your image */
+  font-family: "Great Vibes", "Allura", cursive; 
+  font-size: 4rem; /* Script fonts usually need a size bump to match serif proportions */
+  color: #d8bb72;
+  line-height: 0.9;
+  margin-left: 0.2rem;
+  font-style: normal; /* Prevents the script from over-slanting */
+  font-weight: 400;
+}
+
+.script-span {
+  color: #d8bb72;
+}
+
+.testimonial-description {
+  margin-top: 2.2rem;
+  max-width: 520px;
+  font-size: 1.4rem;
+  line-height: 1.7;
+  color: rgba(255, 248, 235, 0.88);
+  font-family: "Cormorant Garamond", serif;
+}
+
+.testimonial-btn {
+  margin-top: 3rem;
+  background: transparent;
+  border: none;
+  color: #d8bb72;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  padding: 0;
+  font-family: "Cormorant Garamond", serif;
+  transition: opacity 0.3s ease;
+
+  align-self: center;
+}
+
+.testimonial-btn:hover {
+  opacity: 0.7;
+}
+
 .scroll-section {
   position: relative;
   background-image:
@@ -47,7 +118,7 @@
 .video-bg-div {
   position: absolute;
   inset: 0 auto 0 0;
-  width: 50%;
+  width: 40%;
   background: #192947;
 }
 .video-container {
@@ -339,7 +410,7 @@
 .video-review-wrapper {
   position: absolute;
   inset: 0 0 0 auto;
-  width: 50%;
+  width: 60%;
   height: 100%;
   z-index: 2;
   display: flex;
@@ -454,12 +525,14 @@
 }
 
 .video-review-text {
+  font-family: "Inter", system-ui, sans-serif; /* Keeps it modern and clean */
   font-size: 1.15rem;
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.95);
   max-width: 55%;
   margin: auto 0;
-  font-style: italic;
+  font-style: italic; 
+  font-weight: 500; /* <--- Adds that slight medium boldness seen in the image */
 }
 
 .video-review-bottom {
@@ -537,6 +610,20 @@
 }
 
 @media (max-width: 767px) {
+
+    .testimonial-description,
+  .testimonial-btn {
+    display: none;
+  }
+
+  .testimonial-heading {
+    font-size: 3rem;
+    align-items: center; /* Centers the script line within the flex column */
+  }
+
+  .script-line {
+    font-size: 2.8rem;
+  }
   /* Keep the main section strictly constrained to the viewport */
   .video-section {
     flex-direction: column;
@@ -683,5 +770,73 @@
   .paragraph {
     font-size: 0.85rem;
     line-height: 1.6;
+  }
+}
+
+/* ===============================
+   Large Screens / 1600px Responsive
+================================= */
+@media (min-width: 1600px) {
+  .video-section {
+    /* max-width: 1600px; */
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .video-container {
+    max-width: 1800px;
+    margin: 0 auto;
+ 
+  }
+
+  .video-bg-div {
+    width: 48%;
+    max-width: 733px;
+    left: 0;
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
+  }
+
+  .video-grid {
+    gap: 80px;
+    align-items: center;
+  }
+
+  .video-content-div {
+    max-width: 560px;
+  }
+
+  .video-review-wrapper {
+    width: 58%;
+    padding-right: 40px;
+  }
+
+  .video-review-slide {
+    width: 500px;
+    padding-right: 32px;
+  }
+
+  .video-review-card {
+    min-height: 320px;
+    padding: 40px;
+  }
+
+  .video-review-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    max-width: 58%;
+  }
+
+  .testimonial-heading {
+    font-size: 4rem;
+  }
+
+  .script-line {
+    font-size: 4.8rem;
+  }
+
+  .testimonial-description {
+    font-size: 1.5rem;
+    max-width: 580px;
   }
 }

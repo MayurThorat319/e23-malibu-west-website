@@ -87,9 +87,7 @@ export default function AboutEVHomes() {
             type="button"
             className="ev-about__cta"
             onClick={() => {
-              document
-                .getElementById("projects")
-                ?.scrollIntoView({ behavior: "smooth" });
+              window.open("https://evhomes.tech", "_blank");
             }}
           >
             <span>EXPLORE PROJECTS</span>
