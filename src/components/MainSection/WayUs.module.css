@@ -1,111 +1,244 @@
+/* --- Base Layout --- */
 .wayusContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: center;
-
 }
 
-.revealWrapper {
-    position: relative;
-    width: 100%;
-    height: 130vh; /* controls scroll duration */
-    clip-path: inset(0 0 0 0);
-
-    background: linear-gradient(180deg, #548C92 0%, #285260 100%);
-}
-
-.revealSticky {
-    position: sticky;
-    top: 0;
-
-    width: 100%;
-    height: 100vh;
-
-    overflow: hidden;
-}
-
+/* 1. Main Unified Container */
+/* 1. Main Unified Container */
 .container {
     width: 100%;
+    /* RESTORED: This makes the dark green background big again */
+    min-height: 70vh; 
     
-    padding: 60px 80px 10px; 
+    display: flex;
+    align-items: center; 
+    padding: 0px 80px;
     
     position: relative;
-    background: linear-gradient(180deg, #548C92 0%, #285260 100%);
+    background-color: #102128; 
     z-index: 2; 
+    color: #ffffff;
 }
 
-.container:before,
-.container:after {
-    content: " ";
-    grid-area: 1 / 1 / 2 / 2;
-    display: table;
-}
-
-.horizontalwrap {
+/* 2. Hero Content (Text & Features) */
+.heroContent {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    
+    position: relative;
+    z-index: 20; 
+    
+    /* RESTORED: Pushes your text into the right position */
+    transform: translateY(60px); 
+}
+
+/* 3. Absolute Wave Container */
+.waveContainer {
+    position: absolute;
+    /* Aligns the top of the wave to the very bottom of the container */
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    
+    /* THE MAGIC FIX: Pushes the wave almost 100% downward. 
+       This attaches the flat top of the wave to the flat bottom of the container, 
+       letting the curves hang down cleanly over the next section without any straight lines! */
+    transform: translateY(99%); 
+    
+    pointer-events: none; 
+    z-index: 10; 
+}
+
+.waveSvg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 280px; 
+    overflow: visible;
+}
+
+
+/* --- Left Column Styling --- */
+.leftCol {
+    max-width: 55%;
+}
+
+.welcomeTag {
+    display: flex;
+    align-items: center;
+    /* gap: 15px; */
+        margin-top: -170px; /* move up */
+
+    margin-bottom: 15px;
+    color: #cca25d;
+    font-size: 14px;
+}
+
+.trackingWidest {
+    letter-spacing: 0.3em;
+    font-weight: 500;
+}
+
+.welcomeLine {
+    height: 1px;
+    width: 60px;
+    background-color: #cca25d;
+}
+
+.mainHeading {
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-family: "Playfair Display", serif;
+}
+
+.goldText {
+    color: #cca25d;
+    font-style: italic;
+    font-size: 40px;
+}
+
+.ornateDivider {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    color: #cca25d;
+}
+
+.diamond {
+    font-size: 12px;
+    margin-right: 15px;
+}
+
+.dividerLine {
+    flex-grow: 1;
+    max-width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, #cca25d, transparent);
+}
+
+.description {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin-bottom: 40px;
+    font-weight: 300;
+    max-width: 90%;
+}
+
+/* --- Buttons --- */
+.buttonGroup {
+    display: flex;
+    gap: 20px;
+}
+
+.btnPrimary, .btnSecondary {
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.btnPrimary {
+    background-color: #b08945;
+    background: linear-gradient(135deg, #cca25d 0%, #a47a32 100%);
+    color: #fff;
+    border: none;
+}
+
+.btnPrimary:hover {
+    background: linear-gradient(135deg, #e3ba73 0%, #b08945 100%);
+}
+
+.btnSecondary {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #cca25d;
+}
+
+.btnSecondary:hover {
+    background-color: rgba(204, 162, 93, 0.1);
+}
+
+.arrow {
+    font-size: 18px;
+}
+
+.calendarIcon {
+    font-size: 16px;
+}
+
+/* --- Right Column (Features) --- */
+.rightCol {
+    display: flex;
+    gap: 40px;
     align-items: flex-start;
 }
 
-.pillwrap {
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    border: 1px solid #ffdaa41f;
-    background-image: radial-gradient(circle farthest-corner at 50% 50%, #ffffff0d, #fff3);
-    box-shadow: 0 4px 16px 0 #ffeed61f;
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
-    border-radius: 40px;
-    flex-flow: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px 18px;
+.featureItem {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 140px;
 }
 
-.pilldot {
-    background-image: linear-gradient(143deg, #ffdaa4, #ff9641 57%);
+.iconCircle {
+    width: 70px;
+    height: 70px;
+    border: 1px solid rgba(204, 162, 93, 0.5);
     border-radius: 50%;
-    width: 8px;
-    height: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(204, 162, 93, 0.1);
+    color: #cca25d;
 }
 
-.pilltext {
+.featureTitle {
     font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.featureDesc {
+    font-size: 13px;
+    color: #a0aab2;
+    line-height: 1.4;
     font-weight: 300;
-    line-height: 90%;
-    color: #fff;
 }
 
-.paragpaph {
-    width: 50%;
-    font-size: 20px;
-    line-height: 150%;
-    opacity: .8;
-    color: #fff;
-
-    font-variation-settings: "wght" 250;
-    margin-bottom: 0;
+.verticalDivider {
+    width: 1px;
+    height: 120px;
+    background: linear-gradient(180deg, transparent, rgba(204, 162, 93, 0.3), transparent);
+    margin-top: 20px;
 }
 
-.videoContainer {
+
+/* --- Lower Reveal Wrappers (From your original code) --- */
+.revealWrapper {
     position: relative;
     width: 100%;
-    height: 130vh;
-    clip-path: inset(0 0 0 0);
-    background-color: #141414;
-}
-
-.fullsizevideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100vh;
-    object-fit: cover;
-    pointer-events: none;
-    z-index: 5;
+    clip-path: inset(0 0 0 0);
+    background-color: #141414; /* Dark background under the wave */
 }
 
 .videoOverlay {
@@ -119,34 +252,8 @@
     z-index: -1;
 }
 
-
-
-/* Updated Wave Container */
-.waveContainer {
-    position: absolute;
-    bottom: 0; 
-    left: 0;
+.scroll {
     width: 100%;
-    overflow: visible; /* CRITICAL: Allows the drop shadow to render outside the box */
-    line-height: 0;
-    
-    /* 99.5% prevents a tiny 1px white line glitch that happens on some monitors */
-    transform: translateY(99.5%); 
-    pointer-events: none;
-    z-index: 10; /* Ensures the shadow casts over the reveal layer below */
-}
-
-/* Updated SVG constraints */
-.waveSvg {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 380px;   
-  overflow: visible;
-}
-
-/* .scroll {
-    width: 100%;
-    height: 200px;
+    height: 50px;
     background-color: transparent;
-} */
+}
