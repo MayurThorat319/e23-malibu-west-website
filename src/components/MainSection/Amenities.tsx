@@ -186,10 +186,11 @@ export default function Amenities() {
                             <motion.p
                                 key={prevSlide.title}
                                 className={styles.sideLabel}
-                                initial={{ opacity: 0, x: -40 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 40 }}
-                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                // Desktop pe side se aayega, mobile pe niche se upar!
+                                initial={{ opacity: 0, x: window.innerWidth > 650 ? -40 : 0, y: window.innerWidth <= 650 ? 20 : 0 }}
+                                animate={{ opacity: 1, x: 0, y: 0 }}
+                                exit={{ opacity: 0, x: window.innerWidth > 650 ? 40 : 0, y: window.innerWidth <= 650 ? -20 : 0 }}
+                                transition={{ duration: 0.4, ease: "easeInOut" }}
                             >
                                 {prevSlide.title}
                             </motion.p>
@@ -268,10 +269,10 @@ export default function Amenities() {
                             <motion.p
                                 key={nextSlide.title}
                                 className={styles.sideLabel}
-                                initial={{ opacity: 0, x: 40 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -40 }}
-                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                initial={{ opacity: 0, x: window.innerWidth > 650 ? 40 : 0, y: window.innerWidth <= 650 ? 20 : 0 }}
+                                animate={{ opacity: 1, x: 0, y: 0 }}
+                                exit={{ opacity: 0, x: window.innerWidth > 650 ? -40 : 0, y: window.innerWidth <= 650 ? -20 : 0 }}
+                                transition={{ duration: 0.4, ease: "easeInOut" }}
                             >
                                 {nextSlide.title}
                             </motion.p>

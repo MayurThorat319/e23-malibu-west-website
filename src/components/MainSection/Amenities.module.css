@@ -94,7 +94,7 @@
 
 .title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 4.1vw, 4.2rem);
+    font-size: clamp(1.8rem, 4.1vw, 4.2rem);
     font-weight: 300;
     color: #f5f0e8;
     line-height: 1.1;
@@ -401,4 +401,219 @@
     background: rgba(201, 168, 76, 0.2);
     border-color: #c9a84c;
     color: #c9a84c;
+}
+
+@media (max-width: 1250px) {
+
+    .cardright,
+    .cardSide {
+        width: 220px;
+    }
+
+    .cardCenter {
+        padding: 0 1.5rem;
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+    .cardright,
+    .cardSide {
+        width: 180px;
+    }
+
+    .cardCenter {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .cardright,
+    .cardSide {
+        width: 130px;
+        height: 400px;
+    }
+
+
+    .cardCenter {
+        padding: 0 1rem;
+        height: 420px;
+
+    }
+
+    .luxsubtitle {
+        letter-spacing: 0.1em;
+        font-size: 21px;
+    }
+
+    .luxdiamond span {
+        width: 45px;
+    }
+
+    .subtitle {
+        max-width: 680px;
+        font-size: 0.9rem;
+    }
+
+    .cardLabel {
+        font-size: 1.5rem;
+    }
+
+    .cardDesc {
+        font-size: 0.9rem;
+    }
+
+    .track {
+        padding: 0 10px;
+    }
+
+    .navBtn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .sideLabel {
+        font-size: 0.9rem;
+        padding: 24px 2px;
+
+    }
+}
+
+@media (max-width: 650px) {
+    .luxsubtitle {
+        font-size: 19px;
+    }
+
+    .luxdiamond span {
+        width: 40px;
+    }
+
+    .title {
+        font-size: clamp(1.3rem, 5vw, 3.5rem);
+    }
+
+    .header {
+        padding: 20px 15px;
+    }
+
+    .cardright .navBtn svg {
+        transform: rotate(90deg);
+    }
+
+    .cardSide .navBtn svg {
+        transform: rotate(-270deg);
+    }
+
+    .track {
+        display: block;
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .cardright {
+        order: 1;
+        width: 100%;
+        max-width: 450px;
+        height: 65px;
+        margin: 0 auto;
+        border: none;
+        border-top: 2px solid rgba(255, 255, 255, 0.2);
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .cardCenter {
+        order: 2;
+        width: 100%;
+        max-width: 450px;
+        height: 420px;
+        margin: 0 auto;
+        padding: 0;
+        display: block;
+        position: relative;
+    }
+
+    .imagePlaceholder {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: block;
+        overflow: hidden;
+        border-radius: 4px;
+    }
+
+    .centerBottom,
+    .centerTop {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        display: block;
+    }
+
+    .cardSide {
+        order: 3;
+        width: 100%;
+        max-width: 450px;
+        height: 65px;
+        margin: 0 auto;
+        border: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    /* अनचाहे सूडो एलिमेंट्स को हटाना */
+    .cardright::before,
+    .cardSide::before,
+    .cardright::after,
+    .cardSide::after {
+        display: none !important;
+    }
+
+    .sideLabel {
+        font-size: 0.9rem;
+        padding: 0;
+        text-align: left;
+    }
+
+    /* कंटेंट ओवरले सेटिंग्स */
+    .cardContent {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 40px 20px 20px;
+      
+        box-sizing: border-box;
+    }
+
+    .cardLabel {
+        font-size: 1.3rem;
+        margin-bottom: 6px;
+        letter-spacing: 0.12em;
+    }
+
+    .cardDesc {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        color: #e0e0e0;
+    }
+
+    .navBtn {
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
+    }
 }
