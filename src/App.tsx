@@ -46,9 +46,9 @@ function App() {
       <WayUsSection />
       <AboutSection />
       <Amenities/>
-      <PerfectMove />
+      {/* <PerfectMove /> */}
       <Slider />
-      <ProjectShowcase />
+      {/* <ProjectShowcase /> */}
       <GalleryScroll />
       {/* <FaqSection /> */}
       {/* <Contact /> */}
