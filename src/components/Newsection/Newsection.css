@@ -1,244 +1,88 @@
 
+
+.app-container {
+  position: relative;
+  width: 100%;
+}
+
+/* 1. Kill any default browser spacing that ruins full-screen layouts */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  background-color: #050505;
-  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* Stops any side-to-side scrolling */
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-}
-
-.app-container {
-  background-color: transparent;
-  color: #f8f9fa;
-}
-
-/* ========================================================
-   LAYOUT & PARALLAX MECHANICS
-======================================================== */
-.parallax-section {
-  height: 300vh; 
-}
-
-.sticky-wrapper {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.bg-motion-wrapper {
-  position: absolute;
+/* 2. Pin to all 4 corners instead of using vw/vh */
+.bg-fixed {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 200vh;
+  bottom: 0; 
+  z-index: -1; 
 }
 
-.image-container {
-  position: relative;
-  height: 100vh;
+/* 3. Make the image fill that pinned box */
+.bg-fixed img {
   width: 100%;
-}
-
-.image-container img {
   height: 100%;
-  width: 100%;
-  object-fit: cover;
+  object-fit: cover; 
+  /* object-position: center bottom;  */
+  display: block;
+  filter: url(#water-distortion);
 }
 
-.sand-layer {
-  margin-top: -1px;
-}
-
-/* ========================================================
-   CONTENT OVERLAYS & ALIGNMENT
-======================================================== */
+/* --- THE TEXT --- */
+/* Fixed to the screen so framer-motion can animate it perfectly */
 .content-overlay {
-  position: relative;
-  z-index: 10;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: white;
+  z-index: 1;
 }
 
 .scene-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  padding: 0 2rem;
+  color: #ffffff;
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* ========================================================
-   TYPOGRAPHY
-======================================================== */
 .hero-heading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  line-height: 1;
+  font-size: clamp(4rem, 8vw, 8rem);
   margin: 0;
-  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0,0,0,0.2); 
+  line-height: 1.1;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .text-serif {
-  font-family: 'Didot', 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: clamp(3.5rem, 10vw, 9rem);
-  letter-spacing: -0.02em;
-  margin-bottom: 0;
-  transform: translateY(-40px); 
+  font-family: "Georgia", serif;
+  font-weight: bold;
 }
 
 .text-script {
-  font-family: 'Didot', 'Playfair Display', serif;
-  font-size: clamp(4rem, 12vw, 11rem);
-  margin-left: -1.5rem;
-  color: #e0e0e0;
-  font-weight: 300;
-  transform: translateY(-60px) rotate(-2deg); 
+  font-family: "Georgia", serif;
+  font-weight: bold;
 }
 
 .subtitle {
-  margin-top: 1.5rem;
-  font-size: 11px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  font-family: sans-serif;
+  letter-spacing: 1px;
 }
 
-.mb-spaced {
-  margin-bottom: 1.25rem;
-  color: #c9a96e; 
-}
-
-.coastal-body {
-  margin-top: 2rem;
-  max-width: 36rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.description {
-  font-size: 0.875rem;
-  line-height: 1.625;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-  margin: 0;
-}
-
-/* ========================================================
-   GLASSMORPHISM BUTTON
-======================================================== */
-.primary-button {
-  margin-top: 2rem;
-  display: inline-block;
-  padding: 0.75rem 2rem;
-  background: oklch(0.55 0.09 200); /* Pulled from your Tailwind config */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 100px;
-  color: white;
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.primary-button:hover {
-  background: rgba(255, 255, 255, 1);
-  color: #000;
-  border-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-/* ========================================================
-   SCROLL INDICATOR
-======================================================== */
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-}
-
-.pulse-line {
-  width: 1px;
-  height: 2.5rem; 
-  background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
-  margin-bottom: 0.5rem;
-  background-size: 100% 200%;
-  animation: flowDown 2s ease-in-out infinite, pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.arrow-down {
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  animation: bounceSubtle 2s ease-in-out infinite;
-}
-
-@keyframes flowDown {
-  0% {
-    background-position: 0 -100%;
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    background-position: 0 100%;
-    opacity: 0;
-  }
-}
-
-@keyframes bounceSubtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(4px); }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: .5;
-  }
+/* --- THE SCROLL TRICK --- */
+/* This makes the page twice as tall as your screen, allowing you to scroll! */
+.scroll-space {
+  height: 200vh; 
+  width: 100%;
 }

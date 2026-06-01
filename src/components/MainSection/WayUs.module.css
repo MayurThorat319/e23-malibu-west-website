@@ -7,18 +7,12 @@
 }
 
 /* 1. Main Unified Container */
-/* 1. Main Unified Container */
 .container {
     width: 100%;
-    /* RESTORED: This makes the dark green background big again */
-    min-height: 70vh; 
-    
+    position: relative;
     display: flex;
     align-items: center; 
-    padding: 0px 80px;
-    
-    position: relative;
-    background-color: #102128; 
+    padding: 80px 80px 160px 80px; 
     z-index: 2; 
     color: #ffffff;
 }
@@ -31,28 +25,17 @@
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    
     position: relative;
     z-index: 20; 
-    
-    /* RESTORED: Pushes your text into the right position */
-    transform: translateY(60px); 
 }
 
 /* 3. Absolute Wave Container */
 .waveContainer {
     position: absolute;
-    /* Aligns the top of the wave to the very bottom of the container */
-    bottom: 0; 
+    top: 0;
     left: 0;
     width: 100%;
-    line-height: 0;
-    
-    /* THE MAGIC FIX: Pushes the wave almost 100% downward. 
-       This attaches the flat top of the wave to the flat bottom of the container, 
-       letting the curves hang down cleanly over the next section without any straight lines! */
-    transform: translateY(99%); 
-    
+    height: 100%; 
     pointer-events: none; 
     z-index: 10; 
 }
@@ -61,10 +44,9 @@
     position: relative;
     display: block;
     width: 100%;
-    height: 280px; 
+    height: 100%; 
     overflow: visible;
 }
-
 
 /* --- Left Column Styling --- */
 .leftCol {
@@ -74,9 +56,6 @@
 .welcomeTag {
     display: flex;
     align-items: center;
-    /* gap: 15px; */
-        margin-top: -170px; /* move up */
-
     margin-bottom: 15px;
     color: #cca25d;
     font-size: 14px;
@@ -91,6 +70,7 @@
     height: 1px;
     width: 60px;
     background-color: #cca25d;
+    margin-left: 15px; /* Added slight gap spacing */
 }
 
 .mainHeading {
@@ -231,14 +211,13 @@
     margin-top: 20px;
 }
 
-
-/* --- Lower Reveal Wrappers (From your original code) --- */
+/* --- Lower Reveal Wrappers --- */
 .revealWrapper {
     position: relative;
     width: 100%;
     height: 100vh;
     clip-path: inset(0 0 0 0);
-    background-color: #141414; /* Dark background under the wave */
+    background-color: #141414;
 }
 
 .videoOverlay {
