@@ -15,6 +15,7 @@ import GalleryScroll from "./components/MainSection/GalleryScroll";
 import VideoTestimonials from "./components/MainSection/VideoTestimonials";
 import { lazy, Suspense, useEffect, useState } from "react";
 import AboutEVHomes from "./components/Aboutev/Aboutev";
+import EleganceHorizons from "./components/MainSection/EleganceHorizons";
 const EnquiryDialog = lazy(() => import("./components/Form/form"));
 
 
@@ -44,7 +45,8 @@ function App() {
     <Layout onOpenDialog={handleOpenDialog}>
       <Hero />
       <WayUsSection />
-      <AboutSection />
+      <EleganceHorizons />
+      {/* <AboutSection /> */}
       <Amenities/>
       <PerfectMove />
       <Slider />
