@@ -159,7 +159,7 @@ export default function EleganceHorizons() {
   return (
     <section className="eh-section">
       <div className="eh-top">
-        <div>
+        <div className="eh-scrollable-title-box">
           <h2 className="eh-title">
             Where Timeless
             <br />

@@ -3,14 +3,14 @@ import "./App.css";
 import Hero from "./components/MainSection/Hero";
 import WayUsSection from "./components/MainSection/WayUs";
 // import AboutSection from "./components/MainSection/About";
-import PerfectMove from "./components/MainSection/PerfectMove";
+// import PerfectMove from "./components/MainSection/PerfectMove";
 import Slider from "./components/MainSection/slider";
 // import FaqSection from "./components/MainSection/faqs";
 // import Contact from "./components/MainSection/Contact";
 import Amenities from "./components/MainSection/Amenities"
 
 import Layout from "./Layout";
-import { ProjectShowcase } from "./components/MainSection/ProjectShowcase";
+// import { ProjectShowcase } from "./components/MainSection/ProjectShowcase";
 import GalleryScroll from "./components/MainSection/GalleryScroll";
 import VideoTestimonials from "./components/MainSection/VideoTestimonials";
 import { lazy, Suspense, useEffect, useState } from "react";
@@ -32,9 +32,9 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
-  
+
   return (
-     <>
+    <>
       {isDialogOpen && (
         <Suspense fallback={null}>
           <EnquiryDialog
@@ -43,23 +43,28 @@ function App() {
           />
         </Suspense>
       )}
-    <Layout onOpenDialog={handleOpenDialog}>
-            <NewSection />
+      <Layout onOpenDialog={handleOpenDialog}>
+        <Hero />
+        <WayUsSection />
+        <div className="section-Eleganc">
+          <EleganceHorizons />
+        </div>
+        {/* <AboutSection /> */}
+        <div className="section-Amenities">
+          <Amenities />
+        </div>
+        {/* <PerfectMove /> */}
+        <div className="section-Slider">
+          <Slider />
+        </div>
 
-      <Hero />
-      <WayUsSection />
-      <EleganceHorizons />
-      {/* <AboutSection /> */}
-      <Amenities/>
-      {/* <PerfectMove /> */}
-      <Slider />
-      {/* <ProjectShowcase /> */}
-      <GalleryScroll />
-      {/* <FaqSection /> */}
-      {/* <Contact /> */}
-      <VideoTestimonials />
-      <AboutEVHomes/>
-    </Layout>
+        {/* <ProjectShowcase /> */}
+        <GalleryScroll />
+        {/* <FaqSection /> */}
+        {/* <Contact /> */}
+        <VideoTestimonials />
+        <AboutEVHomes />
+      </Layout>
     </>
   );
 }
