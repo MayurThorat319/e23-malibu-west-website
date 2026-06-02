@@ -1,71 +1,88 @@
+.eh-section,
+.eh-section * {
+  box-sizing: border-box;
+}
+
 .eh-section {
   background: linear-gradient(180deg, #f6f4ef 0%, #efece4 100%);
-  padding: 25px 6vw;
+  padding: 4vh 6vw;
   color: #2b2a27;
   font-family: "Inter", system-ui, sans-serif;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 }
+
 .eh-top {
   display: grid;
   grid-template-columns: 1.1fr 1.4fr;
-  gap: 64px;
+  gap: 40px;
   align-items: start;
-  margin-bottom: 7vh;
+  margin-bottom: 4vh;
+  flex-shrink: 0;
 }
+
 .eh-title {
   font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
   font-weight: 400;
-  font-size: clamp(2.2rem, 3.4vw, 3.4rem);
-  line-height: 1.1;
+  font-size: clamp(1.8rem, 3.8vw, 4rem);
+  line-height: 1.15;
   letter-spacing: -0.5px;
   margin: 0;
   color: #2b2a27;
 }
+
 .eh-copy {
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1.65;
   color: #5a584f;
   max-width: 720px;
   margin: 0;
 }
+
 .eh-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 24px;
+  flex: 1;
+  align-items: center;
+  min-height: 0;
 }
+
 .eh-card {
   position: relative;
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid rgba(180, 170, 140, 0.25);
   border-radius: 18px;
-  padding: 44px 28px 36px;
+  padding: 3vh 24px;
   text-align: center;
   backdrop-filter: blur(6px);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   overflow: hidden;
 }
+
 .eh-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 50px -25px rgba(120, 100, 60, 0.35);
 }
+
 .eh-icon-wrap {
   position: relative;
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 28px;
+  width: 30vh;
+  height: 30vh;
+  margin: 0 auto 2vh;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
 }
-/* .eh-svg {
+
+.eh-svg {
+  overflow: visible;
   width: 100%;
   height: 100%;
-  position: relative;
-  z-index: 1;
-} */
- .eh-svg {
-  overflow: visible;
 }
 
 .eh-icon-wrap::before {
@@ -73,46 +90,37 @@
   position: absolute;
   inset: 15%;
   border-radius: 50%;
-
-  /* background:
-    radial-gradient(
-      circle,
-      rgba(140,255,248,.25) 0%,
-      rgba(140,255,248,.1) 40%,
-      transparent 75%
-    ); */
-
   filter: blur(25px);
-
   animation: ehHalo 4s ease-in-out infinite;
 }
 
 @keyframes ehHalo {
-  0%,100% {
+
+  0%,
+  100% {
     transform: scale(.9);
-    opacity:.5;
+    opacity: .5;
   }
+
   50% {
     transform: scale(1.15);
-    opacity:1;
+    opacity: 1;
   }
 }
 
-/* ---- Glowing neon line treatment (like the video) ---- */
-/* Every stroke gets a soft teal glow and a continuous luminous pulse */
 .eh-line {
   stroke: #74d8d1;
-
-  filter:
-    drop-shadow(0 0 2px rgba(116,216,209,.5))
-    drop-shadow(0 0 8px rgba(116,216,209,.25));
-
+  filter: drop-shadow(0 0 2px rgba(116, 216, 209, .5)) drop-shadow(0 0 8px rgba(116, 216, 209, .25));
   animation: ehGlow 3s ease-in-out infinite;
 }
+
 @keyframes ehGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     filter: drop-shadow(0 0 1px rgba(60, 170, 165, 0.35));
   }
+
   50% {
     filter: drop-shadow(0 0 4px rgba(60, 190, 185, 0.7));
   }
@@ -121,8 +129,9 @@
 .eh-title-divider {
   display: flex;
   align-items: center;
-  width: 320px;
-  margin-top: 24px;
+  width: 100%;
+  max-width: 370px;
+  margin-top: 2vh;
 }
 
 .eh-title-divider span {
@@ -151,21 +160,14 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-/* A bright light that travels along the stroke path */
 .eh-trace {
   fill: none;
   stroke: #9efcf4;
   stroke-linecap: round;
   stroke-linejoin: round;
-
   stroke-dasharray: 20 250;
   stroke-dashoffset: 270;
-
-  filter:
-    drop-shadow(0 0 4px #9efcf4)
-    drop-shadow(0 0 10px #9efcf4)
-    drop-shadow(0 0 18px #9efcf4);
-
+  filter: drop-shadow(0 0 4px #9efcf4) drop-shadow(0 0 10px #9efcf4) drop-shadow(0 0 18px #9efcf4);
   animation: ehTrace 2.5s linear infinite;
 }
 
@@ -175,61 +177,113 @@
   }
 }
 
-/* Soft pulsing aura behind the icon */
 .eh-aura {
   transform-origin: center;
   animation: ehPulse 4.5s ease-in-out infinite;
 }
+
 @keyframes ehPulse {
-  0%, 100% { opacity: 0.55; transform: scale(0.92); }
-  50%      { opacity: 1;    transform: scale(1.08); }
+
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
 }
-/* Rotating warm light sweep across the icon */
+
 .eh-shine {
   position: absolute;
   inset: -20%;
   border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    rgba(150, 235, 230, 0) 0deg,
-    rgba(170, 245, 240, 0.5) 60deg,
-    rgba(130, 220, 215, 0.15) 120deg,
-    rgba(150, 235, 230, 0) 220deg,
-    rgba(150, 235, 230, 0) 360deg
-  );
+  background: conic-gradient(from 0deg, rgba(150, 235, 230, 0) 0deg, rgba(170, 245, 240, 0.5) 60deg, rgba(130, 220, 215, 0.15) 120deg, rgba(150, 235, 230, 0) 220deg, rgba(150, 235, 230, 0) 360deg);
   filter: blur(22px);
   animation: ehSpin 9s linear infinite;
   pointer-events: none;
   z-index: 0;
   opacity: 0.85;
 }
+
 @keyframes ehSpin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 .eh-rays {
   transform-origin: 60px 60px;
   animation: ehRays 6s ease-in-out infinite;
 }
+
 @keyframes ehRays {
-  0%, 100% { opacity: 0.6; }
-  50%      { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
+
 .eh-card-title {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-weight: 500;
-  font-size: 1.7rem;
-  margin: 0 0 10px;
+  font-size: clamp(1.2rem, 1.8vw, 2rem);
+  margin: 0 0 8px;
   color: #2b2a27;
 }
+
 .eh-card-sub {
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
   color: #8a8678;
   margin: 0;
-  line-height: 1.7;
+  line-height: 1.5;
 }
+
+@media (max-height: 750px) and (min-width: 901px) {
+
+  .eh-top {
+    margin-bottom: 2vh;
+  }
+
+  .eh-card {
+    padding: 2vh 20px;
+  }
+
+  .eh-icon-wrap {
+    margin-bottom: 1vh;
+  }
+}
+
 @media (max-width: 900px) {
-  .eh-top { grid-template-columns: 1fr; gap: 28px; }
-  .eh-grid { grid-template-columns: 1fr; }
-  .eh-section { padding: 64px 5vw; }
+  .eh-section {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 40px 5vw;
+    display: block;
+  }
+
+  .eh-top {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .eh-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .eh-icon-wrap {
+    width: 140px;
+    height: 140px;
+  }
 }
