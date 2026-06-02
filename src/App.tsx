@@ -44,6 +44,7 @@ function App() {
         </Suspense>
       )}
       <Layout onOpenDialog={handleOpenDialog}>
+        <NewSection/>
         <Hero />
         <WayUsSection />
         <div className="section-Eleganc">
