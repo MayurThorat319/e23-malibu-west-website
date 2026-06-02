@@ -1,5 +1,5 @@
 .sg-main {
-  background: #000;
+  background: #175057;
   color: #fff;
 }
 
@@ -11,7 +11,6 @@
 .sg-hero {
   height: 50vh;
   width: 100%;
-  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +53,6 @@
 
 /* Gallery */
 .sg-gallery {
-  background: #020617;
   width: 100%;
   padding: 0;
 }

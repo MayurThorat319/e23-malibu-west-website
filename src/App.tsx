@@ -48,9 +48,9 @@ function App() {
       <EleganceHorizons />
       {/* <AboutSection /> */}
       <Amenities/>
-      <PerfectMove />
+      {/* <PerfectMove /> */}
       <Slider />
-      <ProjectShowcase />
+      {/* <ProjectShowcase /> */}
       <GalleryScroll />
       {/* <FaqSection /> */}
       {/* <Contact /> */}
