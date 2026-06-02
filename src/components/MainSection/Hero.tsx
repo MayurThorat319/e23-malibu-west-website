@@ -13,7 +13,7 @@ const Hero = () => {
     });
 
     // Fade out text as you scroll
-    const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+    // const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
     // Water Distortion: Starts at 0, distorts the background color as you scroll
     const distortionScale = useTransform(scrollYProgress, [0, 1], [0, 80]);

@@ -4,10 +4,10 @@ import "./Newsection.css";
 
 export default function NewSection() {
   const ref = useRef(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end end"], 
+    offset: ["start start", "end end"],
   });
 
   const textY = useTransform(scrollYProgress, [0, 1], ["0px", "500px"]);
@@ -20,11 +20,11 @@ export default function NewSection() {
       {/* SVG Filter Definition */}
       <svg style={{ position: "absolute", width: 0, height: 0 }}>
         <filter id="new-water-distortion">
-          <feTurbulence 
-            type="fractalNoise" 
-            baseFrequency="0.015 0.05" 
-            numOctaves="2" 
-            result="noise" 
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.015 0.05"
+            numOctaves="2"
+            result="noise"
           />
           <motion.feDisplacementMap
             in="SourceGraphic"
@@ -37,9 +37,9 @@ export default function NewSection() {
       </svg>
 
       <div className="new-sticky-section">
-        
+
         <div className="base-background">
-          <img src="images/wave.png" alt="Sand Background" /> 
+          <img src="images/wave.png" alt="Sand Background" />
         </div>
 
         <div className="distortion-wrapper">
