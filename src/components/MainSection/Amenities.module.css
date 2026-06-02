@@ -6,6 +6,7 @@
     padding: 20px 0 80px;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
+    height: 100vh;
 }
 
 /* ──────────────────────────────────────────
@@ -159,7 +160,7 @@
     display: flex;
     flex-direction: column;
     width: 300px;
-    height: 480px;
+    height: 58vh;
     overflow: hidden;
     align-items: center;
     justify-content: center;
@@ -215,7 +216,7 @@
 
 .cardCenter {
     flex: 1;
-    height: 500px;
+    height: 60vh;
     z-index: 2;
     padding: 0 2rem;
     position: relative;
@@ -486,6 +487,10 @@
         font-size: 19px;
     }
 
+    .section {
+        padding: 0px 0 80px;
+    }
+
     .luxdiamond span {
         width: 40px;
     }
@@ -495,7 +500,7 @@
     }
 
     .header {
-        padding: 20px 15px;
+        padding: 10px 15px;
     }
 
     .cardright .navBtn svg {
@@ -509,7 +514,7 @@
     .track {
         display: block;
         flex-direction: column;
-        gap: 16px;
+        gap: 10px;
         padding: 0 15px;
         width: 100%;
         box-sizing: border-box;
@@ -519,7 +524,7 @@
         order: 1;
         width: 100%;
         max-width: 450px;
-        height: 65px;
+        height: 60px;
         margin: 0 auto;
         border: none;
         border-top: 2px solid rgba(255, 255, 255, 0.2);
@@ -533,7 +538,7 @@
         order: 2;
         width: 100%;
         max-width: 450px;
-        height: 420px;
+        height: 55vh;
         margin: 0 auto;
         padding: 0;
         display: block;
@@ -547,6 +552,13 @@
         display: block;
         overflow: hidden;
         border-radius: 4px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        line-height: 1.2;
+        letter-spacing: 0.1em;
+        padding-top: 2px;
     }
 
     .centerBottom,
@@ -564,7 +576,7 @@
         order: 3;
         width: 100%;
         max-width: 450px;
-        height: 65px;
+        height: 60px;
         margin: 0 auto;
         border: none;
         border-bottom: 2px solid rgba(255, 255, 255, 0.2);
@@ -588,6 +600,10 @@
         text-align: left;
     }
 
+    .titleBlock {
+        gap: 10px;
+    }
+
     /* कंटेंट ओवरले सेटिंग्स */
     .cardContent {
         position: absolute;
@@ -595,7 +611,7 @@
         left: 0;
         width: 100%;
         padding: 40px 20px 20px;
-      
+
         box-sizing: border-box;
     }
 
