@@ -1,15 +1,16 @@
 .eh-section {
   background: linear-gradient(180deg, #f6f4ef 0%, #efece4 100%);
-  padding: 96px 6vw;
+  padding: 25px 6vw;
   color: #2b2a27;
   font-family: "Inter", system-ui, sans-serif;
+  height: 100vh;
 }
 .eh-top {
   display: grid;
   grid-template-columns: 1.1fr 1.4fr;
   gap: 64px;
   align-items: start;
-  margin-bottom: 72px;
+  margin-bottom: 7vh;
 }
 .eh-title {
   font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
