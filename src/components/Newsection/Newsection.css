@@ -1,50 +1,63 @@
-
-
-.app-container {
+.new-scroll-track {
   position: relative;
-  width: 100%;
+  height: 250vh; 
+  background-color: #000;
+  z-index: 1;
 }
 
-/* 1. Kill any default browser spacing that ruins full-screen layouts */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden; /* Stops any side-to-side scrolling */
-}
-
-/* 2. Pin to all 4 corners instead of using vw/vh */
-.bg-fixed {
-  position: fixed;
+.new-sticky-section {
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; 
-  z-index: -1; 
-}
-
-/* 3. Make the image fill that pinned box */
-.bg-fixed img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  /* object-position: center bottom;  */
-  display: block;
-  filter: url(#water-distortion);
-}
-
-/* --- THE TEXT --- */
-/* Fixed to the screen so framer-motion can animate it perfectly */
-.content-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 100vh;
+  width: 100%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+}
+
+/* New class for the undistorted background */
+.base-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Sits at the back */
+}
+
+.base-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Updated wrapper for the distorted waves */
+.distortion-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; /* Sits above the background */
+  filter: url(#new-water-distortion);
+  pointer-events: none; /* Ensures it doesn't block user clicks */
+}
+
+.distortion-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 10; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .scene-container {
@@ -78,11 +91,4 @@ html, body {
   margin-top: 1rem;
   font-family: sans-serif;
   letter-spacing: 1px;
-}
-
-/* --- THE SCROLL TRICK --- */
-/* This makes the page twice as tall as your screen, allowing you to scroll! */
-.scroll-space {
-  height: 200vh; 
-  width: 100%;
 }

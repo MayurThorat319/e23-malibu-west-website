@@ -45,7 +45,7 @@ function App() {
     <Layout onOpenDialog={handleOpenDialog}>
             <NewSection />
 
-      {/* <Hero /> */}
+      <Hero />
       <WayUsSection />
       <AboutSection />
       <Amenities/>
