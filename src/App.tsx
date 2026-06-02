@@ -2,7 +2,7 @@ import "./App.css";
 
 import Hero from "./components/MainSection/Hero";
 import WayUsSection from "./components/MainSection/WayUs";
-import AboutSection from "./components/MainSection/About";
+// import AboutSection from "./components/MainSection/About";
 import PerfectMove from "./components/MainSection/PerfectMove";
 import Slider from "./components/MainSection/slider";
 // import FaqSection from "./components/MainSection/faqs";
@@ -16,6 +16,7 @@ import VideoTestimonials from "./components/MainSection/VideoTestimonials";
 import { lazy, Suspense, useEffect, useState } from "react";
 import AboutEVHomes from "./components/Aboutev/Aboutev";
 import NewSection from "./components/Newsection/Newsection";
+import EleganceHorizons from "./components/MainSection/EleganceHorizons";
 const EnquiryDialog = lazy(() => import("./components/Form/form"));
 
 
@@ -47,11 +48,12 @@ function App() {
 
       <Hero />
       <WayUsSection />
-      <AboutSection />
+      <EleganceHorizons />
+      {/* <AboutSection /> */}
       <Amenities/>
-      <PerfectMove />
+      {/* <PerfectMove /> */}
       <Slider />
-      <ProjectShowcase />
+      {/* <ProjectShowcase /> */}
       <GalleryScroll />
       {/* <FaqSection /> */}
       {/* <Contact /> */}

@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Palisade";
+  src: url("/fonts/Palisade.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --licorice: #291f1e;
   --ivory: #fffcee;
@@ -18,11 +25,11 @@
   letter-spacing: 0.42em;
   color: rgba(241, 210, 137, 0.8);
   margin-bottom: 2rem;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Cronde", serif;
 }
 
 .testimonial-heading {
-  font-family: "Cormorant Garamond", "Playfair Display", serif;
+  font-family: 'Cronde', serif;
   font-size: 3.2rem; /* Slightly larger to match the visual hierarchy */
   line-height: 1.1;
   font-weight: 400; /* Bumped slightly from 300 to match the image's legibility */
@@ -35,7 +42,7 @@
 
 .script-line {
   /* 'Great Vibes' or 'Alex Brush' closely matches the elegant signature script in your image */
-  font-family: "Great Vibes", "Allura", cursive; 
+  font-family: "Palisade", serif;
   font-size: 4rem; /* Script fonts usually need a size bump to match serif proportions */
   color: #d8bb72;
   line-height: 0.9;
@@ -46,15 +53,17 @@
 
 .script-span {
   color: #d8bb72;
+  font-family: 'Cronde', serif;
 }
 
 .testimonial-description {
   margin-top: 2.2rem;
   max-width: 520px;
   font-size: 1.4rem;
-  line-height: 1.7;
+  line-height: 1.6;
+  letter-spacing: 2px;
   color: rgba(255, 248, 235, 0.88);
-  font-family: "Cormorant Garamond", serif;
+  font-family: 'Cronde', serif;
 }
 
 .testimonial-btn {
@@ -62,11 +71,11 @@
   background: transparent;
   border: none;
   color: #d8bb72;
-  font-size: 1.3rem;
+  font-size: 2.5rem;
   letter-spacing: 0.08em;
   cursor: pointer;
   padding: 0;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Palisade", serif;
   transition: opacity 0.3s ease;
 
   align-self: center;
@@ -88,10 +97,12 @@
     url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2000&q=80");
   background-attachment: scroll, fixed;
   background-size: auto, cover;
-  background-position: 0 0, center;
+  background-position:
+    0 0,
+    center;
   background-repeat: repeat, no-repeat;
   color: var(--ivory);
-  font-family: "Inter", system-ui, sans-serif;
+  /* font-family: "Inter", system-ui, sans-serif; */
 }
 
 .scroll-wrap {
@@ -111,7 +122,8 @@
   width: 100vw;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  padding-left: 150px;
   overflow: hidden;
   will-change: transform, opacity;
 }
@@ -125,7 +137,7 @@
   position: relative;
   width: 100%;
   max-width: 1300px;
-  padding: 0 40px;
+  /* padding: 0 40px; */
   z-index: 2;
 }
 .video-grid {
@@ -418,7 +430,9 @@
   justify-content: center;
   padding: 40px 0;
   will-change: transform, opacity;
-  transition: opacity 0.1s linear, transform 0.1s linear;
+  transition:
+    opacity 0.1s linear,
+    transform 0.1s linear;
 }
 
 .video-review-viewport {
@@ -434,8 +448,8 @@
 /* Desktop & Tablet: Horizontal Flow */
 .video-review-marquee {
   display: flex;
-  flex-direction: row; 
-  width: max-content; 
+  flex-direction: row;
+  width: max-content;
   height: auto;
   animation: reviewMarqueeHorizontal 28s linear infinite;
 }
@@ -445,15 +459,15 @@
 }
 
 .video-review-slide {
-  width: 450px; 
-  padding-right: 24px; 
+  width: 450px;
+  padding-right: 24px;
   padding-bottom: 0;
   box-sizing: border-box;
 }
 
 .video-review-card {
   position: relative;
-  min-height: 280px;
+  height: 300px;
   border-radius: 28px;
   width: 100%;
   overflow: hidden;
@@ -531,8 +545,11 @@
   color: rgba(0, 0, 0, 0.95);
   max-width: 55%;
   margin: auto 0;
-  font-style: italic; 
+  font-style: italic;
   font-weight: 500; /* <--- Adds that slight medium boldness seen in the image */
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .video-review-bottom {
@@ -610,8 +627,7 @@
 }
 
 @media (max-width: 767px) {
-
-    .testimonial-description,
+  .testimonial-description,
   .testimonial-btn {
     display: none;
   }
@@ -628,14 +644,15 @@
   .video-section {
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 40px; 
+    padding-top: 40px;
     height: 100vh;
+    padding-left: 0px;
   }
 
   /* The blue container background stays locked at exactly 45% height */
   .video-bg-div {
     width: 100%;
-    height: 45%; 
+    height: 35%;
     inset: 0 auto auto 0;
   }
 
@@ -643,7 +660,7 @@
   .video-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .video-content-div {
     align-items: center;
     text-align: center;
@@ -653,7 +670,7 @@
 
   .vertical-line {
     width: 40px;
-    margin: 16px auto; 
+    margin: 16px auto;
   }
 
   .paragraph {
@@ -661,31 +678,30 @@
     margin-right: auto;
   }
 
-
   .video-review-wrapper {
     width: 100%;
     position: absolute;
     left: 0;
-    
-    top: 45%; 
-    
-    bottom: 0; 
-    height: auto; 
+
+    top: 35%;
+
+    bottom: 0;
+    height: auto;
     padding: 0 0 20px 0;
     margin-top: 0;
   }
 
   .video-review-marquee {
-    flex-direction: column; 
+    flex-direction: column;
     width: 100%;
     height: max-content;
     animation: reviewMarqueeVertical 28s linear infinite;
   }
 
   .video-review-slide {
-    width: 100%; 
+    width: 100%;
     padding-right: 0;
-    padding-bottom: 24px; 
+    padding-bottom: 24px;
   }
 }
 
@@ -721,7 +737,7 @@
   .video-review-text {
     font-size: 1rem;
     line-height: 1.6;
-    max-width: 85%; 
+    max-width: 85%;
   }
 
   .review-stars {
@@ -758,8 +774,8 @@
 
   /* Keeps the text highly visible on small screens */
   .video-review-text {
-    max-width: 90%; 
-    font-size: 0.95rem; 
+    max-width: 90%;
+    font-size: 0.95rem;
   }
 
   .h2-heading {
@@ -773,13 +789,16 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1160px) {
+@media (min-width: 768px) and (max-width: 1460px) {
+  .video-section {
+    padding-left: 0px;
+  }
   .testimonials-content {
     max-width: 300px;
   }
 
   .testimonial-heading {
-    font-size: 2.6rem;
+    font-size: 3rem;
     line-height: 1.08;
   }
 
@@ -788,7 +807,7 @@
   }
 
   .testimonial-description {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     line-height: 1.55;
     max-width: 100%;
     margin-top: 1.4rem;
@@ -798,7 +817,7 @@
   }
 
   .testimonial-btn {
-    font-size: 1.05rem;
+    font-size: 2rem;
     margin-top: 2rem;
   }
 
@@ -807,14 +826,14 @@
   }
 
   .video-container {
-    padding: 0 24px;
+    padding: 0 60px;
   }
 }
 
 /* ===============================
    Large Screens / 1600px Responsive
 ================================= */
-@media (min-width: 1600px) {
+@media (min-width: 2300px) {
   .video-section {
     /* max-width: 1600px; */
     margin: 0 auto;
@@ -824,11 +843,10 @@
   .video-container {
     max-width: 1800px;
     margin: 0 auto;
- 
   }
 
   .video-bg-div {
-    width: 48%;
+    width: 42%;
     max-width: 733px;
     left: 0;
     border-top-right-radius: 32px;

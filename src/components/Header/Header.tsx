@@ -21,15 +21,17 @@ interface HeaderProps {
 export default function Header({ onOpenDialog }: HeaderProps) {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-
-  // NEW STATES
   const [showHeader, setShowHeader] = useState(true);
 
   const lastScrollY = useRef(0);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  // HEADER SHOW/HIDE ON SCROLL
+
+  // HEADER SHOW/HIDE ON SCROLL (UPDATED WITH menuOpen CHECK)
   useEffect(() => {
     const handleScroll = () => {
+      // 1. AGAR MENU OPEN HAI, TOH KOI SCROLL LOGIC RUN MAT KARO
+      if (menuOpen) return;
+
       const currentScrollY = window.scrollY;
 
       setScrolled(currentScrollY > 40);
@@ -38,7 +40,6 @@ export default function Header({ onOpenDialog }: HeaderProps) {
       if (currentScrollY > lastScrollY.current && currentScrollY > 120) {
         setShowHeader(false);
       }
-
       // SCROLL UP = SHOW
       else {
         setShowHeader(true);
@@ -46,12 +47,13 @@ export default function Header({ onOpenDialog }: HeaderProps) {
 
       lastScrollY.current = currentScrollY;
 
-      // AUTO HIDE AFTER 3 SEC WHEN USER STOPS
+      // AUTO HIDE AFTER 2 SEC WHEN USER STOPS
       if (hideTimer.current) {
         clearTimeout(hideTimer.current);
       }
 
       hideTimer.current = setTimeout(() => {
+        // Dobara check karenge taaki timer chalne ke beech me agar menu khul gaya ho
         if (window.scrollY > 120 && !menuOpen) {
           setShowHeader(false);
         }
@@ -67,11 +69,10 @@ export default function Header({ onOpenDialog }: HeaderProps) {
         clearTimeout(hideTimer.current);
       }
     };
-  }, [menuOpen]);
+  }, [menuOpen]); // Dependency array me menuOpen hona zaroori hai
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-
     return () => {
       document.body.style.overflow = "";
     };
@@ -124,9 +125,10 @@ export default function Header({ onOpenDialog }: HeaderProps) {
           Contact Now
         </motion.button>
 
+        {/* Dynamic class added for burger animation */}
         <button
           type="button"
-          className={styles.burger}
+          className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ""}`}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -139,26 +141,47 @@ export default function Header({ onOpenDialog }: HeaderProps) {
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            className={styles.mobileMenu}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            {LINKS.map((link, i) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                className={styles.mobileLink}
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.08 }}
-                onClick={() => setMenuOpen(false)}
+          <>
+            <motion.div
+              className={styles.backdrop}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMenuOpen(false)}
+            />
+
+            <motion.div
+              className={styles.mobileMenu}
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            >
+              <div className={styles.mobileNavLinks}>
+                {LINKS.map((link, i) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    className={styles.mobileLink}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+              </div>
+
+              {/* Mobile CTA inside sidebar */}
+              <button
+                className={styles.mobileCta}
+                onClick={() => { setMenuOpen(false); onOpenDialog(); }}
               >
-                {link.label}
-              </motion.a>
-            ))}
-          </motion.div>
+                Contact Now
+              </button>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.header>
