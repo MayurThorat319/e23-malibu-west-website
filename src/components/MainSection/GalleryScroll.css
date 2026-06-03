@@ -9,7 +9,7 @@
 
 /* Hero */
 .sg-hero {
-  height: 50vh;
+  height: 25vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -18,21 +18,20 @@
 }
 
 .sg-title {
-  font-size: clamp(3rem, 7vw, 7rem);
-  font-weight: 600;
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 300;
   text-align: center;
-  letter-spacing: -0.03em;
-  padding: 20px 10px; /* add vertical breathing space */
+  letter-spacing:0.1em;
+  padding: 0px 10px;
+  /* add vertical breathing space */
   margin: 0;
 
-  font-family: "Dancing Script", cursive;
+  font-family: "Cronde", serif;
 
-  background-image: linear-gradient(
-    90deg,
-    #ffdaa4,
-    #ff9b42,
-    #ff6200
-  );
+  background-image: linear-gradient(90deg,
+      #ffffff,
+      #f8f1e6,
+      #fff1dc);
 
   -webkit-background-clip: text;
   background-clip: text;
