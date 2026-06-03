@@ -524,7 +524,7 @@
         order: 1;
         width: 100%;
         max-width: 450px;
-        height: 60px;
+        height: 10vh;
         margin: 0 auto;
         border: none;
         border-top: 2px solid rgba(255, 255, 255, 0.2);
@@ -576,7 +576,7 @@
         order: 3;
         width: 100%;
         max-width: 450px;
-        height: 60px;
+        height: 10vh;
         margin: 0 auto;
         border: none;
         border-bottom: 2px solid rgba(255, 255, 255, 0.2);
@@ -596,6 +596,7 @@
 
     .sideLabel {
         font-size: 0.9rem;
+        font-weight: 600;
         padding: 0;
         text-align: left;
     }

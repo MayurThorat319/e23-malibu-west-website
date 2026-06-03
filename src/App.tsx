@@ -17,6 +17,8 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import AboutEVHomes from "./components/Aboutev/Aboutev";
 import NewSection from "./components/Newsection/Newsection";
 import EleganceHorizons from "./components/MainSection/EleganceHorizons";
+import ScrollReveal from "./components/MainSection/ScrollReveal";
+import AboutSection from "./components/MainSection/About";
 const EnquiryDialog = lazy(() => import("./components/Form/form"));
 
 
@@ -44,13 +46,15 @@ function App() {
         </Suspense>
       )}
       <Layout onOpenDialog={handleOpenDialog}>
-        <NewSection/>
+        {/* <NewSection/> */}
         <Hero />
-        <WayUsSection />
+        {/* <WayUsSection /> */}
+        <AboutSection />
+        <ScrollReveal />
         <div className="section-Eleganc">
           <EleganceHorizons />
         </div>
-        {/* <AboutSection /> */}
+
         <div className="section-Amenities">
           <Amenities />
         </div>
@@ -60,7 +64,7 @@ function App() {
         </div>
 
         {/* <ProjectShowcase /> */}
-        <GalleryScroll />
+        {/* <GalleryScroll /> */}
         {/* <FaqSection /> */}
         {/* <Contact /> */}
         <VideoTestimonials />

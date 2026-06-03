@@ -18,21 +18,18 @@
     object-fit: cover;
     z-index: -1;
 }
-
+/* 
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
-    /* background: linear-gradient(180deg,
-            transparent,
-            #285260a6 90%,
-            #285260); */
+  
     background: linear-gradient(180deg,
             transparent,
             #548c9291 90%,
             #548C92);
     z-index: 0;
-}
+} */
 
 .blockcontainer {
     width: 100%;
