@@ -10,7 +10,7 @@ const HeroVideo = () => {
                 className={styles.heroVideo}
                 poster="/poster.jpg"
             >
-                <source src="/videos/Malibu_Hero.mp4" type="video/mp4" />
+                <source src="/videos/Malibu_Hero_1.mp4" type="video/mp4" />
             </video>
             <div className={styles.blockcontainer}>
                 <div className={styles.heroContentWrap}>

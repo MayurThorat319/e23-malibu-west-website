@@ -104,6 +104,14 @@
   background-repeat: repeat, no-repeat;
   color: var(--ivory);
   /* font-family: "Inter", system-ui, sans-serif; */
+  overflow: hidden;
+}
+
+.waves-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  
 }
 
 .scroll-wrap {
@@ -111,6 +119,13 @@
   height: 180vh;
   margin-bottom: 0vh;
 }
+
+.scroll-wrap,
+.testimonial-section {
+  position: relative;
+  z-index: 1;
+}
+
 .scroll-sticky {
   position: sticky;
   top: 0;

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./VideoTestimonials.css";
 import YouTube from "./youtube";
+import Waves from "./Waves";
 
 const videoReviews = [
   {
@@ -97,6 +98,21 @@ export default function VideoTestimonials() {
 
   return (
     <section className="scroll-section" id="feedback">
+       <div className="waves-bg">
+      <Waves
+        lineColor="rgba(84, 159, 172, 0.35)"   // gold lines to match your palette
+        backgroundColor="transparent"
+        waveSpeedX={0.1}
+        waveSpeedY={0.01}
+        waveAmpX={40}
+        waveAmpY={20}
+        friction={0.9}
+        tension={0.01}
+        maxCursorMove={120}
+        xGap={12}
+        yGap={36}
+      />
+    </div>
       <div className="scroll-wrap" ref={wrapRef}>
         <div className="scroll-sticky">
           <section className="video-section" ref={sectionRef}>
