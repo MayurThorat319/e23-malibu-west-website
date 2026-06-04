@@ -1,79 +1,48 @@
-"use client";
-
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "./Hero.module.css";
-
-const Hero = () => {
-    const ref = useRef(null);
-
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start start", "end end"],
-    });
-
-    // Fade out text as you scroll
-    // const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-    // Water Distortion: Starts at 0, distorts the background color as you scroll
-    const distortionScale = useTransform(scrollYProgress, [0, 1], [0, 80]);
-
+const HeroVideo = () => {
     return (
-        <>
-            {/* --- INVISIBLE WATER FILTER --- */}
-            <svg style={{ position: "absolute", width: 0, height: 0 }}>
-                <filter id="solid-water-distortion">
-                    <feTurbulence
-                        type="fractalNoise"
-                        baseFrequency="0.015 0.05"
-                        numOctaves="2"
-                        result="noise"
-                    />
-                    <motion.feDisplacementMap
-                        in="SourceGraphic"
-                        in2="noise"
-                        scale={distortionScale}
-                        xChannelSelector="R"
-                        yChannelSelector="G"
-                    />
-                </filter>
-            </svg>
-
-            {/* --- SCROLL TRACK --- */}
-            <section ref={ref} className={styles.scrollTrack}>
-                
-                {/* --- STICKY SECTION (Locks in place) --- */}
-                <div className={styles.stickySection}>
-                    
-                    {/* NO IMAGE - Just a solid dark background with the wave effect */}
-                    <div className={styles.solidDistortedBg}></div>
-
-                    {/* Centered Content */}
-                    {/* <motion.div 
-                        className={styles.contentContainer}
-                        style={{ opacity: textOpacity }}
-                    >
+        <section id="hero" className={styles.hero}>
+            <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className={styles.heroVideo}
+                poster="/poster.jpg"
+            >
+                <source src="/videos/Malibu_Hero.mp4" type="video/mp4" />
+            </video>
+            <div className={styles.blockcontainer}>
+                <div className={styles.heroContentWrap}>
                         <div className={styles.heroContent}>
-                            <h1 className={styles.mainHeading}>
-                                Your perfect place, just a <br />
-                                <span className={styles.goldText}>click away</span>
-                            </h1>
-                            
-                            <div className={styles.buttonWrap}>
-                                <a href="/#top-properties" className={styles.buttonPrimary}>
-                                    <div className={styles.buttonText}>Get started</div>
-                                </a>
-                                <a href="/#contact" className={styles.buttonSecondary}>
-                                    <div className={styles.buttonText}>Contact us</div>
-                                </a>
+                            {/* <div className={styles.pillWrap}>
+                                <div className={styles.pillDot}>
+                                </div>
+                                <div className={styles.pillText}>Trusted since 2005</div>
                             </div>
+                            <h1 className={styles.h1Heading}>Your perfect place, just a
+                                <span className={styles.handwriting}>click away</span>
+                            </h1> */}
                         </div>
-                    </motion.div> */}
+                        <div className={styles.buttonWrap}>
+                            <a data-w-id="8313cf5e-8c41-fedb-fcf2-f412f14b610e" href="/#top-properties" className={styles.buttonPrimary} >
+                                <div className={styles.primaryButtonBg} style={{ opacity: 0, display: "none" }}>
+                                </div>
+                                <div className={styles.buttonText}>Get started</div>
+                              
+                            </a>
+                            <a data-w-id="597bc061-c384-46fc-8ccf-134180d4672d" href="/#contact" className={styles.buttonSecondary} style={{ willChange: "transform", transform: "translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)", transformStyle: "preserve-3d" }}>
+                                <div className={styles.secondaryButtonBg} style={{ opacity: 0, display: "none" }}>
+                                </div>
+                                <div className={styles.buttonText}>Contact us</div>
+                                
+                            </a>
+                        </div>
+                    </div>
+            </div>
+        </section>
 
-                </div>
-            </section>
-        </>
     );
 };
 
-export default Hero;
+export default HeroVideo;
