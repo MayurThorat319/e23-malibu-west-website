@@ -111,7 +111,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  
+  /* pointer-events: none; remove this line if you want cursor interaction */
 }
 
 .scroll-wrap {
@@ -240,18 +240,18 @@
 
 .testimonial-section {
   position: relative;
-  min-height: 100vh;
-  padding: 40px 0 120px;
+  min-height: 60vh;
+  padding: 0px 0 120px;
   display: flex;
   align-items: center;
-  background: linear-gradient(
+  /* background: linear-gradient(
     to bottom,
     transparent 0%,
     rgba(11, 59, 65, 0.18) 70%,
     rgba(11, 59, 65, 0.45) 82%,
     rgba(11, 59, 65, 0.75) 92%,
     #0b3b41 100%
-  );
+  ); */
   z-index: 3;
 }
 
@@ -649,7 +649,7 @@
   }
 
   .testimonial-heading {
-    font-size: 3rem;
+    font-size: 2.4rem;
     align-items: center; /* Centers the script line within the flex column */
   }
 
@@ -805,12 +805,12 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1460px) {
+@media (min-width: 768px) and (max-width: 1020px) {
   .video-section {
     padding-left: 0px;
   }
   .testimonials-content {
-    max-width: 300px;
+    max-width: 250px;
   }
 
   .testimonial-heading {
@@ -843,6 +843,12 @@
 
   .video-container {
     padding: 0 60px;
+  }
+}
+
+@media (min-width: 1021px) and (max-width: 1360px) {
+  .testimonials-content {
+    max-width: 260px;
   }
 }
 
