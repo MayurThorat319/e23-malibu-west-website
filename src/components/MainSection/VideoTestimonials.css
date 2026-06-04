@@ -91,11 +91,11 @@
   background-image:
     linear-gradient(
       180deg,
-      rgba(102, 145, 152, 0.82) 0%,
-      rgba(63, 96, 108, 0.88) 50%,
-      rgba(29, 46, 58, 0.96) 100%
-    ),
-    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2000&q=80");
+      rgb(102, 145, 152) 0%,
+      rgb(63, 96, 108) 50%,
+      rgb(29, 46, 58) 100%
+    );
+   /* url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2000&q=80");*/
   background-attachment: scroll, fixed;
   background-size: auto, cover;
   background-position:
