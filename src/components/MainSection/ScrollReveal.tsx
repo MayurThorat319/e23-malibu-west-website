@@ -8,34 +8,41 @@ type Tile = {
   w: number;
   h: number;
   delay: number;
+  maxOpacity: number;
 };
 
 const IMG = (id: string, w = 600, h = 700) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
 
 const TILES: Tile[] = [
-  { url: IMG("1582719478250-c89cae4dc85b"), x: -23, y: -38, w: 11, h: 30, delay: 0.0 },
-  { url: IMG("1600585154340-be6161a56a0c"), x: 22, y: -30, w: 15, h: 40, delay: 0.05 },
-  { url: IMG("1545324418-cc1a3fa10c00"), x: -41, y: -2, w: 15, h: 40, delay: 0.1 },
-  { url: IMG("1600607687939-ce8a6c25118c"), x: 43, y: -15, w: 11, h: 30, delay: 0.12 },
-  { url: IMG("1512917774080-9991f1c4c750"), x: -1, y: 1, w: 15, h: 40, delay: 0.18 },
-  { url: IMG("1564013799919-ab600027ffc6"), x: -20, y: 30, w: 11, h: 30, delay: 0.25 },
-  { url: IMG("1600585154526-990dced4db0d"), x: 24, y: 30, w: 11, h: 30, delay: 0.28 },
-  { url: IMG("1600210492486-724fe5c67fb0"), x: -35, y: 45, w: 14, h: 35, delay: 0.32 },
-  { url: IMG("1600566753376-12c8ab7fb75b"), x: 38, y: 42, w: 12, h: 32, delay: 0.35 },
+  { url: IMG("1582719478250-c89cae4dc85b"), x: -23, y: -38, w: 11, h: 30, delay: 0.0, maxOpacity: 0.8 },
+  { url: IMG("1600585154340-be6161a56a0c"), x: 22, y: -30, w: 15, h: 40, delay: 0.05, maxOpacity: 0.7 },
+  { url: IMG("1545324418-cc1a3fa10c00"), x: -41, y: -2, w: 15, h: 40, delay: 0.1, maxOpacity: 0.9 },
+  { url: IMG("1600607687939-ce8a6c25118c"), x: 43, y: -15, w: 11, h: 30, delay: 0.12, maxOpacity: 0.3 },
+  { url: IMG("1512917774080-9991f1c4c750"), x: -1, y: 1, w: 15, h: 40, delay: 0.18, maxOpacity: 0.2 },
+  { url: IMG("1564013799919-ab600027ffc6"), x: -20, y: 30, w: 11, h: 30, delay: 0.25, maxOpacity: 0.5 },
+  { url: IMG("1600585154526-990dced4db0d"), x: 24, y: 30, w: 11, h: 30, delay: 0.28, maxOpacity: 1.0 },
+  { url: IMG("1600210492486-724fe5c67fb0"), x: -35, y: 45, w: 14, h: 35, delay: 0.32, maxOpacity: 0.9 },
+  { url: IMG("1600566753376-12c8ab7fb75b"), x: 38, y: 42, w: 12, h: 32, delay: 0.35, maxOpacity: 0.7 },
 ];
 
-const CITY = IMG("1542314831-068cd1dbfeeb", 1600, 900);
+const CITY_VIDEO = "/videos/Malibu_Hero.mp4";
 
 function easeOut(t: number) {
   return 1 - Math.pow(1 - t, 3);
 }
+
+function easeOutQuart(t: number) {
+  return 1 - Math.pow(1 - t, 4);
+}
+
 function clamp(v: number, a = 0, b = 1) {
   return Math.max(a, Math.min(b, v));
 }
 
 export function ScrollReveal() {
   const wrapRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null); 
   const [p, setP] = useState(0);
 
   useEffect(() => {
@@ -62,43 +69,64 @@ export function ScrollReveal() {
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
-  const phase1 = clamp(p / 0.45); 
+    if (p > 0.32 && p <= 0.60) {
+      if (video.paused) {
+        video.play().catch((err) => console.log("Autoplay check:", err));
+      }
+    } else {
+      if (!video.paused) {
+        video.pause();
+      }
+    }
+  }, [p]); 
 
-  const continuousScrollProgress = clamp((p - 0.45) / 0.55);
-  const continuousScrollY = continuousScrollProgress * -50; 
+  const phase1 = clamp(p / 0.20);
+  const continuousScrollProgress = clamp((p - 0.20) / 0.80);
+  const continuousScrollY = continuousScrollProgress * -60;
 
-  const cityMoveUpProgress = clamp((p - 0.45) / 0.20);
+  const cityMoveUpProgress = clamp((p - 0.20) / 0.12);
   const cityMoveUpEase = easeOut(cityMoveUpProgress);
-  
-  const bottomY = 50;  
-  const midwayY = 25;  
+
+  const bottomY = p < 0.20 ? 150 : 75;
+  const midwayY = 25;
   const currentInitialY = bottomY + (midwayY - bottomY) * cityMoveUpEase;
 
-  const cityGrowProgress = clamp((p - 0.65) / 0.35);
+  const cityGrowProgress = clamp((p - 0.32) / 0.13);
   const cityGrowEase = easeOut(cityGrowProgress);
 
-  const cityY = currentInitialY + (0 - midwayY) * cityGrowEase;
+  const expandY = currentInitialY + (0 - midwayY) * cityGrowEase;
+
+  const cityShrinkProgress = clamp((p - 0.60) / 0.40);
+  const cityShrinkEase = easeOutQuart(cityShrinkProgress);
 
   const cityStartW = 32;
   const cityStartH = 40;
   const cityEndW = 100;
   const cityEndH = 100;
 
-  const cityW = cityStartW + (cityEndW - cityStartW) * cityGrowEase;
-  const cityH = cityStartH + (cityEndH - cityStartH) * cityGrowEase;
-  const cityRadius = 18 * (1 - cityGrowEase);
-  
-  const cityOpacity = p >= 0.45 ? 1 : 0;
+  let cityW = cityStartW + (cityEndW - cityStartW) * cityGrowEase;
+  let cityH = cityStartH + (cityEndH - cityStartH) * cityGrowEase;
+  let cityRadius = 18 * (1 - cityGrowEase);
+  let cityY = expandY;
+
+  if (p > 0.60) {
+    cityW = cityEndW - (cityEndW - cityStartW) * cityShrinkEase;
+    cityH = cityEndH - (cityEndH - cityStartH) * cityShrinkEase;
+    cityRadius = 18 * cityShrinkEase;
+  }
 
   return (
     <div ref={wrapRef} className={styles.wrapper}>
       <div className={styles.sticky}>
+        {/* Layer 1: Surrounding choti tiles */}
         {TILES.map((t, i) => {
           const local = clamp((phase1 - t.delay) / (1 - t.delay));
           const e = easeOut(local);
           const tileStartY = 60;
-          
           const ty = tileStartY + (t.y - tileStartY) * e + continuousScrollY;
 
           return (
@@ -111,7 +139,7 @@ export function ScrollReveal() {
                 left: `calc(50% + ${t.x}vw)`,
                 top: `calc(50% + ${ty}vh)`,
                 transform: `translate(-50%, -50%)`,
-                opacity: local * 0.6, 
+                opacity: local * t.maxOpacity,
               }}
             >
               <img src={t.url} alt="" loading="lazy" />
@@ -120,23 +148,17 @@ export function ScrollReveal() {
         })}
 
         <div className={styles.center}>
-          <svg className={styles.star} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-            <path d="M12 2v6.5l4.6-4.6 2.1 2.1L14.1 11H21v3h-6.9l4.6 4.6-2.1 2.1L12 16.1V23h-3v-6.9l-4.6 4.6-2.1-2.1L6.9 14H0v-3h6.9L2.3 6.4l2.1-2.1L9 8.9V2z" />
-          </svg>
-
           <h2 className={styles.heading}>
-            Some horizons are admired. Others are lived in.
+            Some Views are seen.
+            <br />
+            Others are lived.
           </h2>
-
-          <div className={styles.years}>
-            <div className={styles.yearsNum}>
-              15<span className={styles.plus}>+</span>
-            </div>
-            <div className={styles.yearsLabel}>YEARS OF EXPERIENCE</div>
-          </div>
+          <div className={styles.luxdiamond}><span></span>✦<span></span></div>
+          <p className={styles.subheading}>
+            Life Unfolds differently from here.
+          </p>
         </div>
 
-        {/* Layer 3: Badi city image */}
         <div
           className={styles.cityImg}
           style={{
@@ -146,11 +168,23 @@ export function ScrollReveal() {
             top: `calc(50% + ${cityY}vh)`,
             transform: "translate(-50%, -50%)",
             borderRadius: `${cityRadius}px`,
-            opacity: cityOpacity,
-            display: p >= 0.45 ? "block" : "none",
+            opacity: 1,
+            overflow: "hidden"
           }}
         >
-          <img src={CITY} alt="City skyline" />
+          <video
+            ref={videoRef}
+            src={CITY_VIDEO}
+            loop
+            muted
+            playsInline
+            preload="auto"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover"
+            }}
+          />
         </div>
       </div>
     </div>
