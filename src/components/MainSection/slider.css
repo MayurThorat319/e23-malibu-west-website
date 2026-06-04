@@ -47,7 +47,8 @@ video {
 }
 
 .slider-pretitle {
-  color: #d6b37a;
+  /* color: #d6b37a; */
+  color: #1c9696;
   /* Elegant luxury gold from your file layout */
   font-size: 0.85rem;
   font-weight: 600;
@@ -60,26 +61,29 @@ video {
   font-family: "Cronde", serif;
   font-size: 2.7rem;
   font-weight: 300;
-  color: #ffffff;
+  color: #000;
   line-height: 1.2;
   margin-bottom: 16px;
 }
 
 .slider-main-title span {
-  color: #d6b37a;
+  /* color: #d6b37a; */
+  color: #1c9696;
   /* Gold accent styling */
 }
 
 .slider-gold-line {
   width: 50px;
   height: 1.5px;
-  background: #d6b37a;
+  /* background: #d6b37a; */
+  background: #1c9696;
   margin-bottom: 20px;
   opacity: 0.85;
 }
 
 .slider-subtitle {
-  color: rgba(255, 255, 255, 0.6);
+  /* color: rgba(255, 255, 255, 0.6); */
+  color: #000;
   font-size: 1.3rem;
   line-height: 1.5;
   max-width: 510px;
@@ -164,7 +168,8 @@ video {
   /* ADD THIS */
   padding: 120px 40px 80px;
 
-  background:#175057;
+  /* background:#175057; */
+  background: #FFF7E4;
 
   overflow: hidden;
   position: relative;
