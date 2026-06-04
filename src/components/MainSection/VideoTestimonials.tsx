@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./VideoTestimonials.css";
 import YouTube from "./youtube";
+import Waves from "./Waves";
 
 const videoReviews = [
   {
@@ -57,7 +58,7 @@ export default function VideoTestimonials() {
       const rect = wrap.getBoundingClientRect();
       const total = wrap.offsetHeight - window.innerHeight;
       const progress = Math.min(1, Math.max(0, -rect.top / total));
-      
+
       const x = -progress * 65;
       const y = -progress * 40;
 
@@ -70,17 +71,17 @@ export default function VideoTestimonials() {
       section.style.opacity = `${Math.max(sectionOpacity, 0)}`;
 
       if (cards) {
-        const fadeStart = 0.1; 
-        const fadeEnd = 0.35; 
-        
+        const fadeStart = 0.1;
+        const fadeEnd = 0.35;
+
         let cardsOpacity = 1;
         if (progress > fadeStart) {
           cardsOpacity = 1 - (progress - fadeStart) / (fadeEnd - fadeStart);
         }
-        
+
         cardsOpacity = Math.min(1, Math.max(0, cardsOpacity));
         cards.style.opacity = `${cardsOpacity}`;
-        
+
         cards.style.pointerEvents = cardsOpacity <= 0.02 ? "none" : "auto";
         cards.style.transform = `translate3d(0, ${-(progress * 30)}px, 0)`;
       }
@@ -97,6 +98,21 @@ export default function VideoTestimonials() {
 
   return (
     <section className="scroll-section" id="feedback">
+      <div className="waves-bg">
+        <Waves
+          lineColor="rgba(84, 159, 172, 0.35)" // gold lines to match your palette
+          backgroundColor="transparent"
+          waveSpeedX={0.1}
+          waveSpeedY={0.01}
+          waveAmpX={40}
+          waveAmpY={20}
+          friction={0.9}
+          tension={0.01}
+          maxCursorMove={120}
+          xGap={12}
+          yGap={36}
+        />
+      </div>
       <div className="scroll-wrap" ref={wrapRef}>
         <div className="scroll-sticky">
           <section className="video-section" ref={sectionRef}>
@@ -104,28 +120,29 @@ export default function VideoTestimonials() {
             <div className="video-container">
               <div className="video-grid">
                 <div className="video-content-div testimonials-content">
-  <span className="testimonial-tag">
-    CLIENT TESTIMONIALS
-  </span>
+                  <span className="testimonial-tag">CLIENT TESTIMONIALS</span>
 
-  <h2 className="testimonial-heading">
-    Homes That
-    <span className="script-line">Truly Feel</span>
-    Like Home
-  </h2>
+                  <h2 className="testimonial-heading">
+                    Homes That
+                    <span className="script-line">Truly Feel</span>
+                    Like Home
+                  </h2>
 
-  <p className="testimonial-description">
-    Real experiences from residents who turned aspirations into
-    <span className="script-span"> everyday living with EV Homes.</span>
-  </p>
+                  <p className="testimonial-description">
+                    Real experiences from residents who turned aspirations into
+                    <span className="script-span">
+                      {" "}
+                      everyday living with EV Homes.
+                    </span>
+                  </p>
 
-  <button className="testimonial-btn">
-    Discover their stories
-  </button>
-</div>
+                  <button className="testimonial-btn">
+                    Discover their stories
+                  </button>
+                </div>
               </div>
             </div>
-            
+
             <div className="video-review-wrapper" ref={cardsRef}>
               <div className="video-review-viewport">
                 <div className="video-review-marquee">
@@ -133,14 +150,18 @@ export default function VideoTestimonials() {
                     <div className="video-review-slide" key={i}>
                       <div
                         className="video-review-card"
-                        style={{ "--card-bg": `url(${review.bg})` } as React.CSSProperties}
+                        style={
+                          {
+                            "--card-bg": `url(${review.bg})`,
+                          } as React.CSSProperties
+                        }
                       >
                         <div className="review-top">
                           <div className="review-stars">★★★★★</div>
                         </div>
                         <p className="video-review-text">{review.quote}</p>
                         <div className="video-gold-line" />
-                        
+
                         <div className="video-review-bottom">
                           <div className="video-review-footer">
                             <img
@@ -153,10 +174,12 @@ export default function VideoTestimonials() {
                               <span>{review.role}</span>
                             </div>
                           </div>
-                          
-                          <div 
+
+                          <div
                             className="instagram-play-btn"
-                            onClick={() => window.open(review.instagramUrl, "_blank")}
+                            onClick={() =>
+                              window.open(review.instagramUrl, "_blank")
+                            }
                             style={{ cursor: "pointer" }}
                           >
                             <svg
@@ -211,9 +234,7 @@ export default function VideoTestimonials() {
             </div>
           </section>
         </div>
-      </div>
-
-      <section id="testimonials" className="testimonial-section">
+  <section id="testimonials" className="testimonial-section">
         <div className="t-container">
           <div className="t-head">
             <div className="overflow-hidden-div">
@@ -229,6 +250,10 @@ export default function VideoTestimonials() {
           </div>
         </div>
       </section>
+
+      </div>
+
+    
 
       {open && (
         <div
