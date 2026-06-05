@@ -197,11 +197,25 @@
   background: var(--dm-bg);
 }
 
+/* 
 .dm-hero-img {
   display: flex;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  
+} */
+.dm-hero-img {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.start-animation .dm-hero-img {
+  clip-path: inset(0 0% 0 0);
 }
 
 .dm-about-lede {

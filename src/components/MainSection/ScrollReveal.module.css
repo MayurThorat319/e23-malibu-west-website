@@ -16,6 +16,66 @@
   justify-content: center;
 }
 
+.scrollIndicator {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  width: 40px;
+  height: auto;
+  width: 400px;
+  height: 400px;
+  opacity: 0.1;
+  animation: floatAround 3s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.scrollIndiTwo {
+  position: absolute;
+  top: 10%;
+  width: 400px;
+  height: 450px;
+  left: -3%;
+  opacity: 0.1;
+  rotate: 30deg;
+  animation: slowSpin 3s ease-in-out infinite;
+    overflow: hidden;
+
+}
+
+@keyframes slowSpin {
+  0% {
+    transform: translateY(0px);
+    rotate: 30deg;
+  }
+
+  50% {
+    transform: translateY(-15px);
+    rotate: 32deg;
+  }
+
+  100% {
+    transform: translateY(0px);
+    rotate: 30deg;
+  }
+}
+
+@keyframes floatAround {
+  0% {
+    transform: translateY(0px);
+    rotate: 0deg;
+  }
+
+  50% {
+    transform: translateY(-15px);
+    rotate: 1deg;
+  }
+
+  100% {
+    transform: translateY(0px);
+    rotate: 0deg;
+  }
+}
+
 .center {
   position: relative;
   z-index: 2;
@@ -140,6 +200,7 @@
   will-change: transform, width, height, border-radius;
   box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.45);
 }
+
 .cityImg img,
 .cityImg video {
   width: 100%;
