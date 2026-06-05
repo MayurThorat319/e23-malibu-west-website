@@ -14,7 +14,7 @@ import Layout from "./Layout";
 // import GalleryScroll from "./components/MainSection/GalleryScroll";
 import VideoTestimonials from "./components/MainSection/VideoTestimonials";
 import { lazy, Suspense, useEffect, useState } from "react";
-import AboutEVHomes from "./components/Aboutev/Aboutev";
+// import AboutEVHomes from "./components/Aboutev/Aboutev";
 // import NewSection from "./components/Newsection/Newsection";
 import EleganceHorizons from "./components/MainSection/EleganceHorizons";
 import ScrollReveal from "./components/MainSection/ScrollReveal";
