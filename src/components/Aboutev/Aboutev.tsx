@@ -28,11 +28,11 @@ export default function AboutEVHomes() {
 
   return (
     <section className="ev-about">
-      <img
+      {/* <img
         src="/images/aboutbg.png"
         alt="EV Homes luxury residential tower at night"
         className="ev-about__bg"
-      />
+      /> */}
 
       <div className="ev-about__overlay" />
 

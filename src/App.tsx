@@ -67,7 +67,7 @@ function App() {
         {/* <GalleryScroll /> */}
         {/* <FaqSection /> */}
         {/* <Contact /> */}
-        <AboutEVHomes />
+        {/* <AboutEVHomes /> */}
         <VideoTestimonials />
       </Layout>
     </>

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./VideoTestimonials.css";
 import YouTube from "./youtube";
 import LiquidEther from "./LiquidEther";
+import AboutEVHomes from "../Aboutev/Aboutev";
 
 const videoReviews = [
   {
@@ -98,29 +99,31 @@ export default function VideoTestimonials() {
 
   return (
     <section className="scroll-section" id="feedback">
-     <div className="liquid-bg">
-      
- <LiquidEther
-  mouseForce={8}
-  iterationsViscous={8}
-  iterationsPoisson={12}
-  cursorSize={120}
-  resolution={0.25}
-  autoDemo={true}
-  autoSpeed={0.25}
-  autoIntensity={2.2}
-  takeoverDuration={0.15}
-  autoResumeDelay={3000}
-  autoRampDuration={0.3}
-  colors={[
-  "#0b6669",
-  "#239dad",
-  "#27a8cf",
-  "#00d0df",
-]}
-/>
-</div>
+      <div className="liquid-bg">
+
+        <LiquidEther
+          mouseForce={8}
+          iterationsViscous={8}
+          iterationsPoisson={12}
+          cursorSize={120}
+          resolution={0.25}
+          autoDemo={true}
+          autoSpeed={0.25}
+          autoIntensity={2.2}
+          takeoverDuration={0.15}
+          autoResumeDelay={3000}
+          autoRampDuration={0.3}
+          colors={[
+            "#0b6669",
+            "#239dad",
+            "#27a8cf",
+            "#00d0df",
+          ]}
+        />
+      </div>
+       <AboutEVHomes />
       <div className="scroll-wrap" ref={wrapRef}>
+        
         <div className="scroll-sticky">
           <section className="video-section" ref={sectionRef}>
             <div className="video-bg-div" />
@@ -241,25 +244,25 @@ export default function VideoTestimonials() {
             </div>
           </section>
         </div>
-  <section id="testimonials" className="testimonial-section">
-        <div className="t-container">
-          <div className="t-head">
-            <div className="overflow-hidden-div">
-              <h2 className="h2-heading">Feedback From Our Valued Clients</h2>
+        <section id="testimonials" className="testimonial-section">
+          <div className="t-container">
+            <div className="t-head">
+              <div className="overflow-hidden-div">
+                <h2 className="h2-heading">Feedback From Our Valued Clients</h2>
+              </div>
+              <p>
+                Real experiences, Trusted Partnership, Proven results.
+              </p>
             </div>
-            <p>
-             Real experiences, Trusted Partnership, Proven results.
-            </p>
+            <div className="slider">
+              <YouTube />
+            </div>
           </div>
-          <div className="slider">
-            <YouTube />
-          </div>
-        </div>
-      </section>
+        </section>
 
       </div>
 
-    
+
 
       {open && (
         <div
