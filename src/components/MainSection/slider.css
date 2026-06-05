@@ -201,6 +201,193 @@ video {
    FLOATING LEAVES
 ========================================= */
 
+.corner-leaf {
+  position: absolute;
+  top: -40px;
+  width: 620px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+  opacity: 0.32;
+
+  will-change: transform;
+  transition: transform 0.2s linear;
+  mix-blend-mode: multiply;
+}
+
+/* LEFT LEAF */
+.corner-leaf-left {
+  left: -60px;
+
+  animation:
+    leafFloatLeft 12s ease-in-out infinite alternate,
+    leafRotateLeft 18s ease-in-out infinite;
+}
+
+/* RIGHT LEAF */
+.corner-leaf-right {
+  right: -60px;
+
+  animation:
+    leafFloatRight 14s ease-in-out infinite alternate,
+    leafRotateRight 20s ease-in-out infinite;
+}
+
+/* =========================================
+   LEFT LEAF FLOAT
+========================================= */
+
+@keyframes leafFloatLeft {
+  0% {
+    transform:
+      translate3d(0px, 0px, 0)
+      scale(1)
+      rotate(-1deg);
+  }
+
+  25% {
+    transform:
+      translate3d(18px, 12px, 0)
+      scale(1.02)
+      rotate(1deg);
+  }
+
+  50% {
+    transform:
+      translate3d(35px, 22px, 0)
+      scale(1.04)
+      rotate(2deg);
+  }
+
+  75% {
+    transform:
+      translate3d(15px, 10px, 0)
+      scale(1.02)
+      rotate(0deg);
+  }
+
+  100% {
+    transform:
+      translate3d(-10px, 25px, 0)
+      scale(1)
+      rotate(-2deg);
+  }
+}
+
+/* =========================================
+   RIGHT LEAF FLOAT
+========================================= */
+
+@keyframes leafFloatRight {
+  0% {
+    transform:
+      translate3d(0px, 0px, 0)
+      scale(1)
+      rotate(1deg);
+  }
+
+  25% {
+    transform:
+      translate3d(-20px, 10px, 0)
+      scale(1.03)
+      rotate(-1deg);
+  }
+
+  50% {
+    transform:
+      translate3d(-38px, 25px, 0)
+      scale(1.05)
+      rotate(-2deg);
+  }
+
+  75% {
+    transform:
+      translate3d(-18px, 14px, 0)
+      scale(1.02)
+      rotate(0deg);
+  }
+
+  100% {
+    transform:
+      translate3d(10px, 28px, 0)
+      scale(1)
+      rotate(2deg);
+  }
+}
+
+/* EXTRA MICRO ROTATION */
+
+@keyframes leafRotateLeft {
+  0% {
+    filter: blur(0px);
+  }
+
+  50% {
+    filter: blur(0.4px);
+  }
+
+  100% {
+    filter: blur(0px);
+  }
+}
+
+@keyframes leafRotateRight {
+  0% {
+    filter: blur(0px);
+  }
+
+  50% {
+    filter: blur(0.5px);
+  }
+
+  100% {
+    filter: blur(0px);
+  }
+}
+
+@media (max-width: 992px) {
+  .corner-leaf { width: 200px; opacity: 0.6; }
+}
+@media (max-width: 480px) {
+  .corner-leaf { width: 140px; opacity: 0.5; }
+}
+
+.top-leaf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  /* max-height: 320px; */
+  object-fit: cover;
+  object-position: top center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
+  opacity: 1;
+  transform-origin: top center;
+  will-change: transform;
+  animation: topLeafSway 7s ease-in-out infinite;
+}
+
+@keyframes topLeafSway {
+  0%   { transform: rotate(-0.6deg) translate(0, 0); }
+  25%  { transform: rotate(0.4deg)  translate(4px, 2px); }
+  50%  { transform: rotate(0.8deg)  translate(6px, 3px); }
+  75%  { transform: rotate(-0.3deg) translate(-3px, 2px); }
+  100% { transform: rotate(-0.6deg) translate(0, 0); }
+}
+
+@media (max-width: 992px) {
+  .top-leaf { max-height: 220px; opacity: 0.7; }
+}
+
+@media (max-width: 480px) {
+  .top-leaf { max-height: 150px; opacity: 0.6; }
+}
+
+
 .leaf {
   position: absolute;
 

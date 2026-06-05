@@ -142,13 +142,51 @@ export default function Slider() {
         : {}
       : { top: 0, left: 0, width: "100%", height: "100%" };
 
+      const leftLeafRef = useRef<HTMLImageElement | null>(null);
+const rightLeafRef = useRef<HTMLImageElement | null>(null);
+
+useEffect(() => {
+  const handleMouseMove = (e: MouseEvent) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 30;
+    const y = (e.clientY / window.innerHeight - 0.5) * 30;
+
+    if (leftLeafRef.current) {
+      leftLeafRef.current.style.transform =
+        `translate(${x * 0.4}px, ${y * 0.4}px)`;
+    }
+
+    if (rightLeafRef.current) {
+      rightLeafRef.current.style.transform =
+        `translate(${x * -0.4}px, ${y * -0.4}px)`;
+    }
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
+
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+  };
+}, []);
   return (
     <>
       <section className="ocean-slider" id="layout">
         {/* MOVING LEAVES BACKGROUND */}
-        {[1, 2, 3, 4, 5].map((leaf) => (
+        {/* {[1, 2, 3, 4, 5].map((leaf) => (
           <div key={leaf} className="leaf" />
-        ))}
+        ))} */}
+      <img
+  ref={leftLeafRef}
+  src="/images/left.png"
+  alt=""
+  className="corner-leaf corner-leaf-left"
+/>
+
+<img
+  ref={rightLeafRef}
+  src="/images/right.png"
+  alt=""
+  className="corner-leaf corner-leaf-right"
+/>
 
         {/* NEW DESIGN HEADER */}
         <div className="slider-header-container">

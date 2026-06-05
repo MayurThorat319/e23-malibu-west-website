@@ -76,9 +76,9 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ videoData }) => {
 
         <div className="gallery-item-line" />
 
-        <p className="gallery-item-subtitle-text">
+        {/* <p className="gallery-item-subtitle-text">
           {subtitle}
-        </p>
+        </p> */}
       </div>
 
       <div className="gallery-item-overlay">

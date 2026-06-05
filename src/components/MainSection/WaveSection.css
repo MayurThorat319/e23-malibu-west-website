@@ -1,0 +1,45 @@
+/* WaveSection.css */
+
+.wave-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #020617;
+}
+
+/* Waves canvas background */
+.wave-section .line-waves-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Optional content */
+.wave-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.wave-content h1 {
+  font-size: 4rem;
+  margin-bottom: 12px;
+}
+
+.wave-content p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}

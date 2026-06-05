@@ -88,10 +88,10 @@
 
 .scroll-section {
   position: relative;
-  background-image:
+ background-image:
     linear-gradient(
       180deg,
-      rgb(102, 145, 152) 0%,
+      rgb(158, 228, 255) 0%,
       rgb(63, 96, 108) 50%,
       rgb(29, 46, 58) 100%
     );
@@ -107,10 +107,35 @@
   overflow: hidden;
 }
 
+.liquid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+
+  /* GPU optimization */
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.scroll-section {
+  position: relative;
+  overflow: hidden;
+
+  /* isolate paint */
+  contain: layout paint style;
+}
+
+.video-review-marquee {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
 .waves-bg {
   position: absolute;
   inset: 0;
-  z-index: 10;
+  z-index: 0;
 }
 
 .scroll-wrap {
@@ -122,17 +147,7 @@
 .scroll-wrap,
 .testimonial-section {
   position: relative;
-  z-index: 20;
-  pointer-events: none;
-}
-
-.video-content-div,
-.video-review-wrapper,
-.testimonial-btn,
-.instagram-play-btn,
-.slider,
-.t-container {
-  pointer-events: auto;
+  z-index: 1;
 }
 
 .scroll-sticky {
@@ -151,7 +166,6 @@
   padding-left: 90px;
   overflow: hidden;
   will-change: transform, opacity;
-  z-index: 2;
 }
 .video-bg-div {
   position: absolute;
