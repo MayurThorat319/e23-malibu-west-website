@@ -157,7 +157,7 @@ const cards = [
 export default function EleganceHorizons() {
   const gridRef = useLucideDrawerAnimation<HTMLDivElement>();
   return (
-    <section className="eh-section">
+    <section className="eh-section" id="work">
       <div className="eh-top">
         <div className="eh-scrollable-title-box">
           <h2 className="eh-title">
