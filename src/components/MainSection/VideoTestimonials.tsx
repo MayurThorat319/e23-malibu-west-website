@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./VideoTestimonials.css";
 import YouTube from "./youtube";
-import Waves from "./Waves";
+import LiquidEther from "./LiquidEther";
 
 const videoReviews = [
   {
@@ -98,21 +98,28 @@ export default function VideoTestimonials() {
 
   return (
     <section className="scroll-section" id="feedback">
-      <div className="waves-bg">
-        <Waves
-          lineColor="rgba(84, 159, 172, 0.35)" // gold lines to match your palette
-          backgroundColor="transparent"
-          waveSpeedX={0.1}
-          waveSpeedY={0.01}
-          waveAmpX={40}
-          waveAmpY={20}
-          friction={0.9}
-          tension={0.01}
-          maxCursorMove={120}
-          xGap={12}
-          yGap={36}
-        />
-      </div>
+     <div className="liquid-bg">
+      
+ <LiquidEther
+  mouseForce={8}
+  iterationsViscous={8}
+  iterationsPoisson={12}
+  cursorSize={120}
+  resolution={0.25}
+  autoDemo={true}
+  autoSpeed={0.25}
+  autoIntensity={2.2}
+  takeoverDuration={0.15}
+  autoResumeDelay={3000}
+  autoRampDuration={0.3}
+  colors={[
+  "#0b6669",
+  "#239dad",
+  "#27a8cf",
+  "#00d0df",
+]}
+/>
+</div>
       <div className="scroll-wrap" ref={wrapRef}>
         <div className="scroll-sticky">
           <section className="video-section" ref={sectionRef}>
