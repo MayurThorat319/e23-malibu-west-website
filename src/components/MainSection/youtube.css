@@ -332,7 +332,7 @@
   }
 }
 
-@media (min-width: 2300px) {
+@media (min-width: 1600px) {
   .gallery-item {
     width: clamp(280px, 85vw, 550px);
   }
