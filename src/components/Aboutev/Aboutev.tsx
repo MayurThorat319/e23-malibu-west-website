@@ -27,7 +27,7 @@ export default function AboutEVHomes() {
   });
 
   return (
-    <section className="ev-about">
+    <section className="ev-about" id="about">
       <img
         src="/images/aboutbg.png"
         alt="EV Homes luxury residential tower at night"
