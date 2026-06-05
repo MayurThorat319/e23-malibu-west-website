@@ -26,7 +26,7 @@ const COLUMNS: FooterColumn[] = [
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} id="contact">
       <div className={styles.waveTop} aria-hidden="true">
  <svg
   viewBox="0 0 1440 160"
