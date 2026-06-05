@@ -20,9 +20,9 @@ const infiniteVideos: VideoData[] = [...videosData, ...videosData];
 /* ── Card ──────────────────────────────────────────────── */
 const GalleryItem: React.FC<GalleryItemProps> = ({ videoData }) => {
   const [title, setTitle] = useState(videoData.title || "Loading...");
-  const [subtitle, setSubtitle] = useState(
-    videoData.subtitle || "Loading..."
-  );
+  // const [subtitle, setSubtitle] = useState(
+  //   videoData.subtitle || "Loading..."
+  // );
 
   const thumbnailUrl = `https://img.youtube.com/vi/${videoData.id}/maxresdefault.jpg`;
 
@@ -39,13 +39,13 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ videoData }) => {
 
         setTitle(data.title || "Untitled Video");
 
-        setSubtitle(data.author_name || "YouTube");
+        // setSubtitle(data.author_name || "YouTube");
       } catch (error) {
         console.error("Error fetching video details:", error);
 
         setTitle("Video Unavailable");
 
-        setSubtitle("YouTube");
+        // setSubtitle("YouTube");
       }
     };
 
