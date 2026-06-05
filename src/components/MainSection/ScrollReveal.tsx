@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./ScrollReveal.module.css";
+import { motion } from "framer-motion";
 
 type Tile = {
   url: string;
@@ -42,7 +43,7 @@ function clamp(v: number, a = 0, b = 1) {
 
 export function ScrollReveal() {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null); 
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [p, setP] = useState(0);
 
   useEffect(() => {
@@ -82,7 +83,7 @@ export function ScrollReveal() {
         video.pause();
       }
     }
-  }, [p]); 
+  }, [p]);
 
   const phase1 = clamp(p / 0.20);
   const continuousScrollProgress = clamp((p - 0.20) / 0.80);
@@ -121,6 +122,9 @@ export function ScrollReveal() {
 
   return (
     <div ref={wrapRef} className={styles.wrapper}>
+      <img src="/images/bgdesignTop.png" alt="Scroll down" className={styles.scrollIndicator} />
+      <img src="/images/bgdesign.png" alt="Scroll down" className={styles.scrollIndiTwo} />
+
       <div className={styles.sticky}>
         {/* Layer 1: Surrounding choti tiles */}
         {TILES.map((t, i) => {
@@ -148,15 +152,87 @@ export function ScrollReveal() {
         })}
 
         <div className={styles.center}>
-          <h2 className={styles.heading}>
+          {/* <h2 className={styles.heading}>
             Some Views are seen.
             <br />
             Others are lived.
-          </h2>
-          <div className={styles.luxdiamond}><span></span>✦<span></span></div>
-          <p className={styles.subheading}>
-            Life Unfolds differently from here.
-          </p>
+          </h2> */}
+          <motion.h2
+            className={styles.heading}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.4 }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.06,
+                },
+              },
+            }}
+          >
+            {" Some Views are seen.".split("").map((char, index) => (
+              <motion.span
+                key={index}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 40,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                  },
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                }}
+                style={{ display: "inline-block" }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+
+            <br />
+            {"Others are lived.".split("").map((char, index) => (
+              <motion.span
+                key={index}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 40,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                  },
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                }}
+                style={{ display: "inline-block" }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.4 }}
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+              delay: 0.4,
+            }}>
+            <div className={styles.luxdiamond}><span></span>✦<span></span></div>
+            <p className={styles.subheading}>
+              Life Unfolds differently from here.
+            </p>
+          </motion.div>
+
         </div>
 
         <div
