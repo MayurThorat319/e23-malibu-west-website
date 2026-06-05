@@ -30,25 +30,30 @@
 
 .testimonial-heading {
   font-family: "Cronde", serif;
-  font-size: 3.2rem; /* Slightly larger to match the visual hierarchy */
+  font-size: 3.2rem;
+  /* Slightly larger to match the visual hierarchy */
   line-height: 1.1;
-  font-weight: 400; /* Bumped slightly from 300 to match the image's legibility */
+  font-weight: 400;
+  /* Bumped slightly from 300 to match the image's legibility */
   color: #f5f1eb;
   margin: 0;
   display: flex;
   flex-direction: column;
-  font-style: italic; /* <--- This creates the slanted serif look */
+  font-style: italic;
+  /* <--- This creates the slanted serif look */
   gap: 1rem;
 }
 
 .script-line {
   /* 'Great Vibes' or 'Alex Brush' closely matches the elegant signature script in your image */
   font-family: "Palisade", serif;
-  font-size: 4rem; /* Script fonts usually need a size bump to match serif proportions */
+  font-size: 4rem;
+  /* Script fonts usually need a size bump to match serif proportions */
   color: #d8bb72;
   line-height: 0.9;
   margin-left: 0.2rem;
-  font-style: normal; /* Prevents the script from over-slanting */
+  font-style: normal;
+  /* Prevents the script from over-slanting */
   font-weight: 400;
 }
 
@@ -88,12 +93,10 @@
 
 .scroll-section {
   position: relative;
-  background-image: linear-gradient(
-    180deg,
-    rgb(158, 228, 255) 0%,
-    rgb(63, 96, 108) 50%,
-    rgb(29, 46, 58) 100%
-  );
+  background-image: linear-gradient(180deg,
+      rgb(158, 228, 255) 0%,
+      rgb(63, 96, 108) 50%,
+      rgb(29, 46, 58) 100%);
   /* url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2000&q=80");*/
   background-attachment: scroll, fixed;
   background-size: auto, cover;
@@ -104,6 +107,23 @@
   color: var(--ivory);
   /* font-family: "Inter", system-ui, sans-serif; */
   overflow: hidden;
+}
+
+.scroll-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+
+  background: linear-gradient(180deg,
+      #fff8e8 10%,
+      #d7ffff72 40%,
+      transparent 100%);
+
+  pointer-events: none;
+  z-index: 2;
 }
 
 .liquid-bg {
@@ -155,6 +175,7 @@
   height: 100vh;
   overflow: hidden;
 }
+
 .video-section {
   position: relative;
   height: 100vh;
@@ -166,12 +187,14 @@
   overflow: hidden;
   will-change: transform, opacity;
 }
+
 .video-bg-div {
   position: absolute;
   inset: 0 auto 0 0;
   width: 40%;
   background: #192947;
 }
+
 .video-container {
   position: relative;
   width: 100%;
@@ -179,17 +202,20 @@
   /* padding: 0 40px; */
   z-index: 2;
 }
+
 .video-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
 }
+
 .video-content-div {
   max-width: 460px;
   display: flex;
   flex-direction: column;
 }
+
 .overflow-hidden-div {
   overflow: hidden;
 }
@@ -203,12 +229,14 @@
   color: var(--ivory);
   margin: 0;
 }
+
 .vertical-line {
   width: 100%;
   height: 1px;
   background-color: rgba(255, 252, 238, 0.12);
   margin-top: 18px;
 }
+
 .paragraph {
   margin: 20px 0 0;
   color: var(--ivory-80);
@@ -216,6 +244,7 @@
   font-size: 1rem;
   line-height: 1.6;
 }
+
 .card {
   display: flex;
   gap: 20px;
@@ -227,12 +256,14 @@
   border-radius: 12px;
   overflow: hidden;
 }
+
 .card-image {
   width: 50%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
+
 .properties-content-div {
   flex: 1;
   display: flex;
@@ -240,12 +271,14 @@
   justify-content: space-between;
   padding: 18px;
 }
+
 .card-para {
   margin: 0;
   font-size: 0.9rem;
   color: var(--ivory-80);
   line-height: 1.5;
 }
+
 .button-link {
   align-self: flex-start;
   color: var(--ivory);
@@ -257,6 +290,7 @@
   border-bottom: 1px solid var(--sage);
   transition: color 0.3s;
 }
+
 .button-link:hover {
   color: var(--sage);
 }
@@ -284,13 +318,16 @@
   padding: 0 40px;
   text-align: center;
 }
+
 .t-head {
   max-width: 720px;
   margin: 0 auto 10px;
 }
+
 .t-head .h2-heading {
   margin-bottom: 20px;
 }
+
 .t-head p {
   color: var(--ivory-80);
   margin: 0;
@@ -308,11 +345,13 @@
   padding: 0 12px;
   box-sizing: border-box;
 }
+
 @media (min-width: 900px) {
   .slide {
     flex: 0 0 50%;
   }
 }
+
 .testimonial-card {
   background: rgba(20, 14, 13, 0.55);
   backdrop-filter: blur(6px);
@@ -331,17 +370,20 @@
   height: 100%;
   box-shadow: 0 20px 60px -30px rgba(0, 0, 0, 0.6);
 }
+
 .testimonial-card:hover {
   transform: translateY(-6px);
   border-color: rgba(168, 192, 154, 0.45);
   background: rgba(20, 14, 13, 0.75);
 }
+
 .quotes-icon {
   width: 36px;
   height: 36px;
   color: var(--sage);
   opacity: 0.85;
 }
+
 .testimonial-para {
   font-size: 1rem;
   line-height: 1.65;
@@ -349,12 +391,14 @@
   margin: 0;
   font-style: italic;
 }
+
 .t-author {
   display: flex;
   align-items: center;
   gap: 14px;
   margin-top: auto;
 }
+
 .client-image {
   width: 56px;
   height: 56px;
@@ -362,11 +406,13 @@
   object-fit: cover;
   border: 1px solid rgba(168, 192, 154, 0.4);
 }
+
 .user-name {
   font-size: 0.95rem;
   color: var(--ivory);
   font-weight: 500;
 }
+
 .profession {
   font-size: 0.75rem;
   color: rgba(255, 252, 238, 0.6);
@@ -382,6 +428,7 @@
   gap: 24px;
   margin-top: 40px;
 }
+
 .arrow {
   width: 48px;
   height: 48px;
@@ -398,16 +445,19 @@
     border-color 0.3s,
     transform 0.3s;
 }
+
 .arrow:hover {
   background: var(--sage);
   border-color: var(--sage);
   color: var(--licorice);
   transform: scale(1.05);
 }
+
 .dots {
   display: flex;
   gap: 8px;
 }
+
 .dot {
   width: 8px;
   height: 8px;
@@ -420,6 +470,7 @@
     background 0.3s,
     width 0.3s;
 }
+
 .dot.active {
   background: var(--sage);
   width: 24px;
@@ -436,12 +487,14 @@
   justify-content: center;
   padding: 20px;
 }
+
 .lightbox-content {
   width: 100%;
   max-width: 940px;
   aspect-ratio: 16/9;
   position: relative;
 }
+
 .lightbox-close {
   position: absolute;
   top: -40px;
@@ -452,6 +505,7 @@
   font-size: 28px;
   cursor: pointer;
 }
+
 .lightbox-content iframe {
   width: 100%;
   height: 100%;
@@ -527,13 +581,11 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(
-      to right,
+    linear-gradient(to right,
       rgb(255, 255, 255) 0%,
       rgba(255, 255, 255, 0.94) 38%,
       rgba(255, 255, 255, 0.574) 60%,
-      rgba(255, 255, 255, 0) 100%
-    ),
+      rgba(255, 255, 255, 0) 100%),
     var(--card-bg);
   background-size: cover;
   background-position: center right;
@@ -552,7 +604,7 @@
   z-index: 1;
 }
 
-.video-review-card > * {
+.video-review-card>* {
   position: relative;
   z-index: 2;
 }
@@ -579,14 +631,16 @@
 }
 
 .video-review-text {
-  font-family: "Inter", system-ui, sans-serif; /* Keeps it modern and clean */
+  font-family: "Inter", system-ui, sans-serif;
+  /* Keeps it modern and clean */
   font-size: 1.15rem;
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.95);
   max-width: 55%;
   margin: auto 0;
   font-style: italic;
-  font-weight: 500; /* <--- Adds that slight medium boldness seen in the image */
+  font-weight: 500;
+  /* <--- Adds that slight medium boldness seen in the image */
   flex: 1;
   display: flex;
   align-items: center;
@@ -632,6 +686,7 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
@@ -641,6 +696,7 @@
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(-50%);
   }
@@ -650,23 +706,28 @@
   .video-container {
     padding: 0 24px;
   }
+
   .video-grid {
     gap: 20px;
   }
+
   .video-content-div {
     max-width: 100%;
     padding-right: 20px;
   }
+
   .video-review-card {
     min-height: 260px;
     padding: 24px;
   }
+
   .video-review-text {
     font-size: 1.05rem;
   }
 }
 
 @media (max-width: 767px) {
+
   .testimonial-description,
   .testimonial-btn {
     display: none;
@@ -674,12 +735,14 @@
 
   .testimonial-heading {
     font-size: 2.4rem;
-    align-items: center; /* Centers the script line within the flex column */
+    align-items: center;
+    /* Centers the script line within the flex column */
   }
 
   .script-line {
     font-size: 2.8rem;
   }
+
   /* Keep the main section strictly constrained to the viewport */
   .video-section {
     flex-direction: column;
@@ -833,6 +896,7 @@
   .video-section {
     padding-left: 0px;
   }
+
   .testimonials-content {
     max-width: 250px;
   }
@@ -877,9 +941,9 @@
 }
 
 @media (min-width: 1600px) {
-.t-head p {
-  font-size: 1.5rem;
-}
+  .t-head p {
+    font-size: 1.5rem;
+  }
 }
 
 /* ===============================
