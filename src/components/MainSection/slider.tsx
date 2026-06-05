@@ -145,6 +145,11 @@ export default function Slider() {
   return (
     <>
       <section className="ocean-slider" id="layout">
+        {/* MOVING LEAVES BACKGROUND */}
+        {[1, 2, 3, 4, 5].map((leaf) => (
+          <div key={leaf} className="leaf" />
+        ))}
+
         {/* NEW DESIGN HEADER */}
         <div className="slider-header-container">
           <div className="slider-header-left">
@@ -205,7 +210,7 @@ export default function Slider() {
           {slides.map((_, index) => (
             <button
               key={index}
-              className={`dot ${currentIndex === index ? "active-dot" : ""}`}
+              className={`dot-slider ${currentIndex === index ? "active-dot" : ""}`}
               onClick={() => setCurrentIndex(index)}
             />
           ))}

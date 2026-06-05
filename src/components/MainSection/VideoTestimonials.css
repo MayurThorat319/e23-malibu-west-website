@@ -110,8 +110,7 @@
 .waves-bg {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  /* pointer-events: none; remove this line if you want cursor interaction */
+  z-index: 10;
 }
 
 .scroll-wrap {
@@ -123,7 +122,17 @@
 .scroll-wrap,
 .testimonial-section {
   position: relative;
-  z-index: 1;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.video-content-div,
+.video-review-wrapper,
+.testimonial-btn,
+.instagram-play-btn,
+.slider,
+.t-container {
+  pointer-events: auto;
 }
 
 .scroll-sticky {
@@ -142,6 +151,7 @@
   padding-left: 90px;
   overflow: hidden;
   will-change: transform, opacity;
+  z-index: 2;
 }
 .video-bg-div {
   position: absolute;
