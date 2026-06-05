@@ -248,8 +248,7 @@ export default function VideoTestimonials() {
               <h2 className="h2-heading">Feedback From Our Valued Clients</h2>
             </div>
             <p>
-              Stories from homeowners, investors, and partners who trusted us to
-              shape their next chapter.
+             Real experiences, Trusted Partnership, Proven results.
             </p>
           </div>
           <div className="slider">
