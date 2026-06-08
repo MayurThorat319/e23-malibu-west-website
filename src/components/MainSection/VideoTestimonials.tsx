@@ -50,76 +50,78 @@ export default function VideoTestimonials() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      const wrap = wrapRef.current;
-      const section = sectionRef.current;
-      const cards = cardsRef.current;
-      if (!wrap || !section) return;
+  let rafId = 0;
+  let ticking = false;
 
-      const rect = wrap.getBoundingClientRect();
-      const total = wrap.offsetHeight - window.innerHeight;
-      const progress = Math.min(1, Math.max(0, -rect.top / total));
+  const update = () => {
+    ticking = false;
+    const wrap = wrapRef.current;
+    const section = sectionRef.current;
+    const cards = cardsRef.current;
+    if (!wrap || !section) return;
 
-      const x = -progress * 65;
-      const y = -progress * 40;
+    const rect = wrap.getBoundingClientRect();
+    const total = wrap.offsetHeight - window.innerHeight;
+    const progress = Math.min(1, Math.max(0, -rect.top / total));
 
-      let sectionOpacity = 1;
-      if (progress > 0.7) {
-        sectionOpacity = 1 - (progress - 0.7) / 0.3;
-      }
+    const x = -progress * 65;
+    const y = -progress * 40;
+    const sectionOpacity = progress > 0.7 ? Math.max(0, 1 - (progress - 0.7) / 0.3) : 1;
 
-      section.style.transform = `translate3d(${x}vw, ${y}vh, 0)`;
-      section.style.opacity = `${Math.max(sectionOpacity, 0)}`;
+    // batch writes
+    section.style.transform = `translate3d(${x}vw, ${y}vh, 0)`;
+    section.style.opacity = `${sectionOpacity}`;
 
-      if (cards) {
-        const fadeStart = 0.1;
-        const fadeEnd = 0.35;
+    if (cards) {
+      const fadeStart = 0.1;
+      const fadeEnd = 0.35;
+      let cardsOpacity = progress > fadeStart
+        ? 1 - (progress - fadeStart) / (fadeEnd - fadeStart)
+        : 1;
+      cardsOpacity = Math.min(1, Math.max(0, cardsOpacity));
+      cards.style.opacity = `${cardsOpacity}`;
+      cards.style.pointerEvents = cardsOpacity <= 0.02 ? "none" : "auto";
+      cards.style.transform = `translate3d(0, ${-(progress * 30)}px, 0)`;
+    }
+  };
 
-        let cardsOpacity = 1;
-        if (progress > fadeStart) {
-          cardsOpacity = 1 - (progress - fadeStart) / (fadeEnd - fadeStart);
-        }
+  const onScroll = () => {
+    if (!ticking) {
+      rafId = requestAnimationFrame(update);
+      ticking = true;
+    }
+  };
 
-        cardsOpacity = Math.min(1, Math.max(0, cardsOpacity));
-        cards.style.opacity = `${cardsOpacity}`;
+  update();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  return () => {
+    cancelAnimationFrame(rafId);
+    window.removeEventListener("scroll", onScroll);
+    window.removeEventListener("resize", onScroll);
+  };
+}, []);
 
-        cards.style.pointerEvents = cardsOpacity <= 0.02 ? "none" : "auto";
-        cards.style.transform = `translate3d(0, ${-(progress * 30)}px, 0)`;
-      }
-    };
-
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
 
   return (
     <section className="scroll-section" id="feedback">
       <div className="liquid-bg">
 
-        <LiquidEther
-          mouseForce={8}
-          iterationsViscous={8}
-          iterationsPoisson={12}
-          cursorSize={120}
-          resolution={0.25}
-          autoDemo={true}
-          autoSpeed={0.25}
-          autoIntensity={2.2}
-          takeoverDuration={0.15}
-          autoResumeDelay={3000}
-          autoRampDuration={0.3}
-          colors={[
-            "#0b6669",
-            "#239dad",
-            "#27a8cf",
-            "#00d0df",
-          ]}
-        />
+       <LiquidEther
+  mouseForce={8}
+  iterationsViscous={4}    // was 8
+  iterationsPoisson={8}    // was 12
+  cursorSize={120}
+  resolution={0.18}        // was 0.25 — biggest win
+  autoDemo={true}
+  autoSpeed={0.2}
+  autoIntensity={1.8}
+  takeoverDuration={0.15}
+  autoResumeDelay={3000}
+  autoRampDuration={0.3}
+  colors={["#0b6669","#239dad","#27a8cf","#00d0df"]}
+/>
+
       </div>
        <AboutEVHomes />
       <div className="scroll-wrap" ref={wrapRef}>
