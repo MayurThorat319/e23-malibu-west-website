@@ -15,6 +15,7 @@
   min-height: 100vh;
   padding: 10vh 24px 0px;
   overflow-x: hidden;
+  content-visibility: auto;
 }
 
 .dm-header {

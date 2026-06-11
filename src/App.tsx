@@ -66,9 +66,9 @@ function App() {
             <Slider />
           </div>
         </Suspense>
-       <Suspense fallback={<div />}>
-  <VideoTestimonials />
-</Suspense>
+        <Suspense fallback={<div />}>
+          <VideoTestimonials />
+        </Suspense>
       </Layout>
     </>
   );

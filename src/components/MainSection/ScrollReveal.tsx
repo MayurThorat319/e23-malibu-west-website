@@ -196,12 +196,17 @@ export function ScrollReveal() {
     <div ref={wrapRef} className={styles.wrapper}>
       <img
         src="/images/bgdesignTop.png"
-        alt="Scroll down"
+        alt=""
+        loading="lazy"
+        decoding="async"
         className={styles.scrollIndicator}
       />
+
       <img
         src="/images/bgdesign.png"
-        alt="Scroll down"
+        alt=""
+        loading="lazy"
+        decoding="async"
         className={styles.scrollIndiTwo}
       />
 
@@ -225,7 +230,7 @@ export function ScrollReveal() {
                 opacity: local * t.maxOpacity,
               }}
             >
-              <img src={t.url} alt="" loading="lazy" />
+              <img src={t.url} alt="" loading="lazy" decoding="async" />
             </div>
           );
         })}
@@ -235,7 +240,7 @@ export function ScrollReveal() {
             className={styles.heading}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once: true, amount: 0.4 }}
             variants={{
               visible: {
                 transition: {

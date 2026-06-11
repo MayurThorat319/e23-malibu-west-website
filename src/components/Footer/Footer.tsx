@@ -83,6 +83,8 @@ export default function Footer() {
                 src="/images/Malibu_logo.png"
                 alt="Malibu West Logo"
                 className={styles.logoImage}
+                loading="lazy"
+  decoding="async"
               />
 
               <p className={styles.tagline}>
@@ -181,8 +183,8 @@ export default function Footer() {
                     src="/images/malibu_qr.jpg"
                     alt="MAHARERA QR Code"
                     className={styles.qrImage}
-                    loading="lazy"
-                  />
+loading="lazy"
+  decoding="async"                  />
 
                   <p className={styles.qrText}>MAHARERA Registration Number:</p>
 
