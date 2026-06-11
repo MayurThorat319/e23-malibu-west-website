@@ -85,6 +85,8 @@ export default function Header({ onOpenDialog }: HeaderProps) {
             className={styles.cardImg}
             src="/images/Malibu_logo.png"
             alt="logo"
+            loading="lazy"
+  decoding="async"
           />
         </a>
 

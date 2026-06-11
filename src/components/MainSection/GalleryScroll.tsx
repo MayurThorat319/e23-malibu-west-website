@@ -56,7 +56,8 @@ const GalleryScroll = forwardRef<HTMLElement>((_props, ref) => {
           <div className="sg-col">
             {leftImages.map((src, i) => (
               <figure key={i} className="sg-fig">
-                <img src={src} alt="" className="sg-img sg-img-tall" />
+                <img src={src} alt="" className="sg-img sg-img-tall" loading="lazy"
+  decoding="async"/>
               </figure>
             ))}
           </div>
@@ -64,7 +65,8 @@ const GalleryScroll = forwardRef<HTMLElement>((_props, ref) => {
           <div className="sg-col sg-col-sticky">
             {middleImages.map((src, i) => (
               <figure key={i} className="sg-fig sg-fig-fill">
-                <img src={src} alt="" className="sg-img sg-img-fill" />
+                <img src={src} alt="" className="sg-img sg-img-fill" loading="lazy"
+  decoding="async" />
               </figure>
             ))}
           </div>
@@ -72,7 +74,8 @@ const GalleryScroll = forwardRef<HTMLElement>((_props, ref) => {
           <div className="sg-col">
             {rightImages.map((src, i) => (
               <figure key={i} className="sg-fig">
-                <img src={src} alt="" className="sg-img sg-img-tall" />
+                <img src={src} alt="" className="sg-img sg-img-tall" loading="lazy"
+  decoding="async"/>
               </figure>
             ))}
           </div>

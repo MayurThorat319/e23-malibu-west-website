@@ -109,10 +109,10 @@ export default function VideoTestimonials() {
       <div className="liquid-bg">
         <LiquidEther
           mouseForce={8}
-          iterationsViscous={4} 
-          iterationsPoisson={8} 
+          iterationsViscous={4}
+          iterationsPoisson={8}
           cursorSize={120}
-          resolution={0.18} 
+          resolution={0.18}
           autoDemo={true}
           autoSpeed={0.2}
           autoIntensity={1.8}
@@ -178,6 +178,8 @@ export default function VideoTestimonials() {
                               src={review.img}
                               alt={review.name}
                               className="video-review-avatar"
+                              loading="lazy"
+                              decoding="async"
                             />
                             <div>
                               <h4>{review.name}</h4>

@@ -36,11 +36,21 @@ export default function NewSection() {
 
       <div className="new-sticky-section">
         <div className="base-background">
-          <img src="images/wave.png" alt="Sand Background" />
+          <img
+            src="images/wave.png"
+            alt="Sand Background"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
         <div className="distortion-wrapper">
-          <img src="images/wavescut3.png" alt="Water Waves" />
+          <img
+            src="images/wavescut3.png"
+            alt="Water Waves"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
         <motion.div
@@ -55,7 +65,6 @@ export default function NewSection() {
             <p className="subtitle">Scroll to dive in</p>
           </div>
         </motion.div>
-
       </div>
     </div>
   );

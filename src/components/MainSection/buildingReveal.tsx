@@ -144,6 +144,8 @@ useEffect(() => {
             alt="Malibu Heights Real Reveal"
             className="photo-reveal"
             onLoad={() => setImageLoaded(true)}
+            loading="lazy"
+  decoding="async"
           />
         </div>
       </div>

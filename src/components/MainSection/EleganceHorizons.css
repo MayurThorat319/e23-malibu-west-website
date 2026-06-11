@@ -13,6 +13,8 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
 }
 
 .eh-top {
