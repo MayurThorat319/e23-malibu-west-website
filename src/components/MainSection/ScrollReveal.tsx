@@ -329,7 +329,7 @@ export function ScrollReveal() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="none"
             style={{
               width: "100%",
               height: "100%",

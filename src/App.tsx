@@ -1,19 +1,24 @@
 import "./App.css";
 
 import Hero from "./components/MainSection/Hero";
-import Slider from "./components/MainSection/slider";
-import Amenities from "./components/MainSection/Amenities"
+const Slider = lazy(() => import("./components/MainSection/slider"));
+const Amenities = lazy(() => import("./components/MainSection/Amenities"));
 import Layout from "./Layout";
-import VideoTestimonials from "./components/MainSection/VideoTestimonials";
+const VideoTestimonials = lazy(
+  () => import("./components/MainSection/VideoTestimonials"),
+);
 import { lazy, Suspense, useEffect, useState } from "react";
-import EleganceHorizons from "./components/MainSection/EleganceHorizons";
-import ScrollReveal from "./components/MainSection/ScrollReveal";
-import AboutSection from "./components/MainSection/About";
+const EleganceHorizons = lazy(
+  () => import("./components/MainSection/EleganceHorizons"),
+);
+const ScrollReveal = lazy(
+  () => import("./components/MainSection/ScrollReveal"),
+);
+const AboutSection = lazy(() => import("./components/MainSection/About"));
 const EnquiryDialog = lazy(() => import("./components/Form/form"));
 
 function App() {
   const [isDialogOpen, setDialogOpen] = useState(false);
-
   const handleOpenDialog = () => setDialogOpen(true);
 
   useEffect(() => {
@@ -38,20 +43,32 @@ function App() {
         {/* <NewSection/> */}
         <Hero />
         {/* <WayUsSection /> */}
-        <AboutSection />
-        <ScrollReveal />
-        <div className="section-Eleganc">
-          <EleganceHorizons />
-        </div>
+        <Suspense fallback={<div />}>
+          <AboutSection />
+        </Suspense>
+        <Suspense fallback={<div />}>
+          <ScrollReveal />
+        </Suspense>
+        <Suspense fallback={<div />}>
+          <div className="section-Eleganc">
+            <EleganceHorizons />
+          </div>
+        </Suspense>
 
-        <div className="section-Amenities">
-          <Amenities />
-        </div>
+        <Suspense fallback={<div />}>
+          <div className="section-Amenities">
+            <Amenities />
+          </div>
+        </Suspense>
         {/* <PerfectMove /> */}
-        <div className="section-Slider">
-          <Slider />
-        </div>
-        <VideoTestimonials />
+        <Suspense fallback={<div />}>
+          <div className="section-Slider">
+            <Slider />
+          </div>
+        </Suspense>
+       <Suspense fallback={<div />}>
+  <VideoTestimonials />
+</Suspense>
       </Layout>
     </>
   );
