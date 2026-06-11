@@ -114,7 +114,6 @@ export default function LiquidEther({
     }
 
     const paletteTex = makePaletteTexture(colors);
-    // Hard-code transparent background vector (alpha 0)
     const bgVec4 = new THREE.Vector4(0, 0, 0, 0);
 
     class CommonClass {
@@ -139,7 +138,6 @@ export default function LiquidEther({
           antialias: false,
           alpha: true,
         });
-        // Always transparent
         this.renderer.autoClear = false;
         this.renderer.setClearColor(new THREE.Color(0x000000), 0);
         this.renderer.setPixelRatio(this.pixelRatio);
@@ -269,6 +267,8 @@ export default function LiquidEther({
         this.mouseMoved = true;
       }
       onDocumentMouseMove(event: MouseEvent) {
+        // Guard for mobile viewport
+        if (typeof window !== "undefined" && window.innerWidth <= 768) return;
         if (!this.updateHoverState(event.clientX, event.clientY)) return;
         if (this.onInteract) this.onInteract();
         if (this.isAutoActive && !this.hasUserControl && !this.takeoverActive) {
@@ -288,6 +288,8 @@ export default function LiquidEther({
         this.hasUserControl = true;
       }
       onDocumentTouchStart(event: TouchEvent) {
+        // Guard for mobile viewport
+        if (typeof window !== "undefined" && window.innerWidth <= 768) return;
         if (event.touches.length !== 1) return;
         const t = event.touches[0];
         if (!this.updateHoverState(t.clientX, t.clientY)) return;
@@ -296,6 +298,8 @@ export default function LiquidEther({
         this.hasUserControl = true;
       }
       onDocumentTouchMove(event: TouchEvent) {
+        // Guard for mobile viewport
+        if (typeof window !== "undefined" && window.innerWidth <= 768) return;
         if (event.touches.length !== 1) return;
         const t = event.touches[0];
         if (!this.updateHoverState(t.clientX, t.clientY)) return;
@@ -379,15 +383,21 @@ export default function LiquidEther({
       update() {
         if (!this.enabled) return;
         const now = performance.now();
-        const idle = now - this.manager.lastUserInteraction;
-        if (idle < this.resumeDelay) {
-          if (this.active) this.forceStop();
-          return;
+        const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
+        // Skip idle and hover suspension checks if we are on a mobile device
+        if (!isMobile) {
+          const idle = now - this.manager.lastUserInteraction;
+          if (idle < this.resumeDelay) {
+            if (this.active) this.forceStop();
+            return;
+          }
+          if (this.mouse.isHoverInside) {
+            if (this.active) this.forceStop();
+            return;
+          }
         }
-        if (this.mouse.isHoverInside) {
-          if (this.active) this.forceStop();
-          return;
-        }
+
         if (!this.active) {
           this.active = true;
           this.current.copy(this.mouse.coords);
@@ -1091,6 +1101,8 @@ export default function LiquidEther({
         Mouse.autoIntensity = props.autoIntensity;
         Mouse.takeoverDuration = props.takeoverDuration;
         Mouse.onInteract = () => {
+          // Keep active if on mobile viewports
+          if (typeof window !== "undefined" && window.innerWidth <= 768) return;
           this.lastUserInteraction = performance.now();
           if (this.autoDriver) this.autoDriver.forceStop();
         };

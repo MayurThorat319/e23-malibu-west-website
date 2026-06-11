@@ -1,6 +1,7 @@
 import "./App.css";
 
 import Hero from "./components/MainSection/Hero";
+import SEO from "./components/SEO";
 const Slider = lazy(() => import("./components/MainSection/slider"));
 const Amenities = lazy(() => import("./components/MainSection/Amenities"));
 import Layout from "./Layout";
@@ -39,6 +40,14 @@ function App() {
           />
         </Suspense>
       )}
+
+        <SEO
+        title="EV23 Malibu West | Luxury Waterfront Residences"
+        description="Luxury waterfront residences in Navi Mumbai."
+        path="/"
+        image="/images/Malibu_logo.png"
+      />
+      
       <Layout onOpenDialog={handleOpenDialog}>
         {/* <NewSection/> */}
         <Hero />
