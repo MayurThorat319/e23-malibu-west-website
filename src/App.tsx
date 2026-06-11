@@ -66,13 +66,16 @@ function App() {
             <Slider />
           </div>
         </Suspense>
-       <Suspense fallback={<div />}>
-  <VideoTestimonials />
-</Suspense>
+        <Suspense fallback={<div />}>
+          <div className="section-video">
+            <VideoTestimonials />
+          </div>
+
+        </Suspense>
       </Layout>
     </>
   );
 }
-//
+
 
 export default App;
