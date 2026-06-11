@@ -4,7 +4,7 @@ import "./buildingReveal.css";
 export default function BuildingReveal() {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false); // Tracks asset load status
+  const [imageLoaded, setImageLoaded] = useState(false); 
 const sceneRef = useRef<HTMLDivElement | null>(null);
 
 useEffect(() => {
@@ -59,10 +59,7 @@ useEffect(() => {
       <div className="grid-bg" />
 
       <div className="building-container">
-        {/* Dynamic class added when visible AND image asset is fully loaded */}
         <div ref={sceneRef} className={`building-wrapper ${visible ? "is-visible" : ""} ${imageLoaded ? "is-image-loaded" : ""}`}>
-          
-          {/* ACCURATE ISOMETRIC LINE DRAWING SVG */}
           <svg
             viewBox="0 0 450 950"
             className="building-svg"
@@ -72,13 +69,10 @@ useEffect(() => {
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            {/* BASE / GROUND PODIUM */}
             <g className="stage s-ground">
               <path d="M 65 890 L 410 900 L 410 855 L 70 820 Z" />
               <path d="M 200 500 L 200 850" />
             </g>
-
-            {/* LEFT BALCONY COLUMN (STACKED BOXES) */}
             <g className="stage s-lower">
               {Array.from({ length: 16 }).map((_, i) => {
                 const y = 780 - i * 32; 
@@ -91,8 +85,6 @@ useEffect(() => {
                 );
               })}
             </g>
-
-            {/* CENTER SPARK / MAIN DIVIDER VERTICAL WALL */}
             <g className="stage s-upper">
               <path d="M 185 830 L 185 240 L 215 230 L 215 820 Z" />
               <path d="M 215 230 L 245 240 L 245 810" />
@@ -108,8 +100,6 @@ useEffect(() => {
                 );
               })}
             </g>
-
-            {/* RIGHT BALCONY COLUMN (STACKED BOXES WITH ISOMETRIC ANGLE) */}
             <g className="stage s-deck">
               {Array.from({ length: 18 }).map((_, i) => {
                 const y = 810 - i * 32;
@@ -122,14 +112,10 @@ useEffect(() => {
                 );
               })}
             </g>
-
-            {/* MIDDLE CONNECTIVE PODIUM AND CORNICE */}
             <g className="stage s-sign">
               <path d="M 85 540 L 185 520 L 245 530 L 345 510" />
               <path d="M 85 548 L 185 528 L 245 538 L 345 518" />
             </g>
-
-            {/* TOP WAVY ARCHITECTURE & HATCHED CROWN */}
             <g className="stage s-crown">
               <path d="M 140 210 L 215 180 L 290 200 L 350 185" />
               <path d="M 145 210 L 145 150 L 215 120 L 295 140 L 295 200" />
@@ -153,13 +139,11 @@ useEffect(() => {
               ))}
             </g>
           </svg>
-
-          {/* REAL BUILDING IMAGE OVERLAY */}
           <img
             src="/images/ev_malibu.png"
             alt="Malibu Heights Real Reveal"
             className="photo-reveal"
-            onLoad={() => setImageLoaded(true)} // Toggles state when fully loaded
+            onLoad={() => setImageLoaded(true)}
           />
         </div>
       </div>

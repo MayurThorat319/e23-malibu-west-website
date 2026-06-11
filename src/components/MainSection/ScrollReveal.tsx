@@ -16,15 +16,87 @@ const IMG = (id: string, w = 600, h = 700) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
 
 const TILES: Tile[] = [
-  { url: IMG("1582719478250-c89cae4dc85b"), x: -23, y: -38, w: 11, h: 30, delay: 0.0, maxOpacity: 0.8 },
-  { url: IMG("1600585154340-be6161a56a0c"), x: 22, y: -30, w: 15, h: 40, delay: 0.05, maxOpacity: 0.7 },
-  { url: IMG("1545324418-cc1a3fa10c00"), x: -41, y: -2, w: 15, h: 40, delay: 0.1, maxOpacity: 0.9 },
-  { url: IMG("1600607687939-ce8a6c25118c"), x: 43, y: -15, w: 11, h: 30, delay: 0.12, maxOpacity: 0.3 },
-  { url: IMG("1512917774080-9991f1c4c750"), x: -1, y: 1, w: 15, h: 40, delay: 0.18, maxOpacity: 0.2 },
-  { url: IMG("1564013799919-ab600027ffc6"), x: -20, y: 30, w: 11, h: 30, delay: 0.25, maxOpacity: 0.5 },
-  { url: IMG("1600585154526-990dced4db0d"), x: 24, y: 30, w: 11, h: 30, delay: 0.28, maxOpacity: 1.0 },
-  { url: IMG("1600210492486-724fe5c67fb0"), x: -35, y: 45, w: 14, h: 35, delay: 0.32, maxOpacity: 0.9 },
-  { url: IMG("1600566753376-12c8ab7fb75b"), x: 38, y: 42, w: 12, h: 32, delay: 0.35, maxOpacity: 0.7 },
+  {
+    url: IMG("1582719478250-c89cae4dc85b"),
+    x: -23,
+    y: -38,
+    w: 11,
+    h: 30,
+    delay: 0.0,
+    maxOpacity: 0.8,
+  },
+  {
+    url: IMG("1600585154340-be6161a56a0c"),
+    x: 22,
+    y: -30,
+    w: 15,
+    h: 40,
+    delay: 0.05,
+    maxOpacity: 0.7,
+  },
+  {
+    url: IMG("1545324418-cc1a3fa10c00"),
+    x: -41,
+    y: -2,
+    w: 15,
+    h: 40,
+    delay: 0.1,
+    maxOpacity: 0.9,
+  },
+  {
+    url: IMG("1600607687939-ce8a6c25118c"),
+    x: 43,
+    y: -15,
+    w: 11,
+    h: 30,
+    delay: 0.12,
+    maxOpacity: 0.3,
+  },
+  {
+    url: IMG("1512917774080-9991f1c4c750"),
+    x: -1,
+    y: 1,
+    w: 15,
+    h: 40,
+    delay: 0.18,
+    maxOpacity: 0.2,
+  },
+  {
+    url: IMG("1564013799919-ab600027ffc6"),
+    x: -20,
+    y: 30,
+    w: 11,
+    h: 30,
+    delay: 0.25,
+    maxOpacity: 0.5,
+  },
+  {
+    url: IMG("1600585154526-990dced4db0d"),
+    x: 24,
+    y: 30,
+    w: 11,
+    h: 30,
+    delay: 0.28,
+    maxOpacity: 1.0,
+  },
+  {
+    url: IMG("1600210492486-724fe5c67fb0"),
+    x: -35,
+    y: 45,
+    w: 14,
+    h: 35,
+    delay: 0.32,
+    maxOpacity: 0.9,
+  },
+  {
+    url: IMG("1600566753376-12c8ab7fb75b"),
+    x: 38,
+    y: 42,
+    w: 12,
+    h: 32,
+    delay: 0.35,
+    maxOpacity: 0.7,
+  },
 ];
 
 const CITY_VIDEO = "/videos/Malibu_Hero.mp4";
@@ -74,7 +146,7 @@ export function ScrollReveal() {
     const video = videoRef.current;
     if (!video) return;
 
-    if (p > 0.32 && p <= 0.60) {
+    if (p > 0.32 && p <= 0.6) {
       if (video.paused) {
         video.play().catch((err) => console.log("Autoplay check:", err));
       }
@@ -85,14 +157,14 @@ export function ScrollReveal() {
     }
   }, [p]);
 
-  const phase1 = clamp(p / 0.20);
-  const continuousScrollProgress = clamp((p - 0.20) / 0.80);
+  const phase1 = clamp(p / 0.2);
+  const continuousScrollProgress = clamp((p - 0.2) / 0.8);
   const continuousScrollY = continuousScrollProgress * -60;
 
-  const cityMoveUpProgress = clamp((p - 0.20) / 0.12);
+  const cityMoveUpProgress = clamp((p - 0.2) / 0.12);
   const cityMoveUpEase = easeOut(cityMoveUpProgress);
 
-  const bottomY = p < 0.20 ? 150 : 75;
+  const bottomY = p < 0.2 ? 150 : 75;
   const midwayY = 25;
   const currentInitialY = bottomY + (midwayY - bottomY) * cityMoveUpEase;
 
@@ -101,7 +173,7 @@ export function ScrollReveal() {
 
   const expandY = currentInitialY + (0 - midwayY) * cityGrowEase;
 
-  const cityShrinkProgress = clamp((p - 0.60) / 0.40);
+  const cityShrinkProgress = clamp((p - 0.6) / 0.4);
   const cityShrinkEase = easeOutQuart(cityShrinkProgress);
 
   const cityStartW = 32;
@@ -114,7 +186,7 @@ export function ScrollReveal() {
   let cityRadius = 18 * (1 - cityGrowEase);
   let cityY = expandY;
 
-  if (p > 0.60) {
+  if (p > 0.6) {
     cityW = cityEndW - (cityEndW - cityStartW) * cityShrinkEase;
     cityH = cityEndH - (cityEndH - cityStartH) * cityShrinkEase;
     cityRadius = 18 * cityShrinkEase;
@@ -122,11 +194,18 @@ export function ScrollReveal() {
 
   return (
     <div ref={wrapRef} className={styles.wrapper}>
-      <img src="/images/bgdesignTop.png" alt="Scroll down" className={styles.scrollIndicator} />
-      <img src="/images/bgdesign.png" alt="Scroll down" className={styles.scrollIndiTwo} />
+      <img
+        src="/images/bgdesignTop.png"
+        alt="Scroll down"
+        className={styles.scrollIndicator}
+      />
+      <img
+        src="/images/bgdesign.png"
+        alt="Scroll down"
+        className={styles.scrollIndiTwo}
+      />
 
       <div className={styles.sticky}>
-        {/* Layer 1: Surrounding choti tiles */}
         {TILES.map((t, i) => {
           const local = clamp((phase1 - t.delay) / (1 - t.delay));
           const e = easeOut(local);
@@ -152,11 +231,6 @@ export function ScrollReveal() {
         })}
 
         <div className={styles.center}>
-          {/* <h2 className={styles.heading}>
-            Some Views are seen.
-            <br />
-            Others are lived.
-          </h2> */}
           <motion.h2
             className={styles.heading}
             initial="hidden"
@@ -216,7 +290,6 @@ export function ScrollReveal() {
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
-
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -226,13 +299,15 @@ export function ScrollReveal() {
               duration: 1,
               ease: "easeOut",
               delay: 0.4,
-            }}>
-            <div className={styles.luxdiamond}><span></span>✦<span></span></div>
+            }}
+          >
+            <div className={styles.luxdiamond}>
+              <span></span>✦<span></span>
+            </div>
             <p className={styles.subheading}>
               Life Unfolds differently from here.
             </p>
           </motion.div>
-
         </div>
 
         <div
@@ -245,7 +320,7 @@ export function ScrollReveal() {
             transform: "translate(-50%, -50%)",
             borderRadius: `${cityRadius}px`,
             opacity: 1,
-            overflow: "hidden"
+            overflow: "hidden",
           }}
         >
           <video
@@ -258,7 +333,7 @@ export function ScrollReveal() {
             style={{
               width: "100%",
               height: "100%",
-              objectFit: "cover"
+              objectFit: "cover",
             }}
           />
         </div>

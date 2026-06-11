@@ -1,26 +1,15 @@
 import "./App.css";
 
 import Hero from "./components/MainSection/Hero";
-// import WayUsSection from "./components/MainSection/WayUs";
-// import AboutSection from "./components/MainSection/About";
-// import PerfectMove from "./components/MainSection/PerfectMove";
 import Slider from "./components/MainSection/slider";
-// import FaqSection from "./components/MainSection/faqs";
-// import Contact from "./components/MainSection/Contact";
 import Amenities from "./components/MainSection/Amenities"
-
 import Layout from "./Layout";
-// import { ProjectShowcase } from "./components/MainSection/ProjectShowcase";
-// import GalleryScroll from "./components/MainSection/GalleryScroll";
 import VideoTestimonials from "./components/MainSection/VideoTestimonials";
 import { lazy, Suspense, useEffect, useState } from "react";
-// import AboutEVHomes from "./components/Aboutev/Aboutev";
-// import NewSection from "./components/Newsection/Newsection";
 import EleganceHorizons from "./components/MainSection/EleganceHorizons";
 import ScrollReveal from "./components/MainSection/ScrollReveal";
 import AboutSection from "./components/MainSection/About";
 const EnquiryDialog = lazy(() => import("./components/Form/form"));
-
 
 function App() {
   const [isDialogOpen, setDialogOpen] = useState(false);
@@ -62,12 +51,6 @@ function App() {
         <div className="section-Slider">
           <Slider />
         </div>
-
-        {/* <ProjectShowcase /> */}
-        {/* <GalleryScroll /> */}
-        {/* <FaqSection /> */}
-        {/* <Contact /> */}
-        {/* <AboutEVHomes /> */}
         <VideoTestimonials />
       </Layout>
     </>

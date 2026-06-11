@@ -35,17 +35,16 @@ const MAP = {
   blur: blurIn,
 };
 
-// 1. Props ke liye rigid types define kiye
 interface RevealProps {
   children: React.ReactNode;
   className?: string;
-  direction?: "up" | "left" | "right" | "scale" | "blur"; // Limited options set kiye
+  direction?: "up" | "left" | "right" | "scale" | "blur";
   delay?: number;
   duration?: number;
   once?: boolean;
   amount?: number;
   animation?: "slide" | "flip";
-  as?: keyof typeof motion; // Taaki sirf valid Framer Motion elements hi pass ho sakein (jaise 'div', 'section', etc.)
+  as?: keyof typeof motion;
 }
 
 export default function Reveal({
@@ -58,7 +57,6 @@ export default function Reveal({
   amount = 0.2,
   as = "div",
 }: RevealProps) {
-  // 2. Element type aur dynamic variants ko safe cast kiya
   const Component = (motion[as] || motion.div) as any;
   const variant = MAP[direction] || variants;
 

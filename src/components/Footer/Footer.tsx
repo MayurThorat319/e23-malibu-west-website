@@ -11,16 +11,12 @@ interface FooterColumn {
 
 const COLUMNS: FooterColumn[] = [
   {
-    title: "Services",
-    links: ["UI/UX Design", "3D & Motion", "Digital Marketing", "Branding"],
-  },
-  {
     title: "Company",
-    links: ["About", "Work", "Careers", "Contact"],
+    links: ["About", "Contact"],
   },
   {
     title: "Resources",
-    links: ["Insights", "Case Studies", "Privacy", "Terms"],
+    links: ["Privacy Policy", "Terms & Conditions"],
   },
 ];
 
@@ -28,67 +24,66 @@ export default function Footer() {
   return (
     <footer className={styles.footer} id="contact">
       <div className={styles.waveTop} aria-hidden="true">
- <svg
-  viewBox="0 0 1440 160"
-  preserveAspectRatio="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <defs>
-    <linearGradient id="waveLineGradient" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stopColor="rgba(255,255,255,0.45)" />
-      <stop offset="100%" stopColor="rgba(255, 255, 255, 0.63)" />
-    </linearGradient>
+        <svg
+          viewBox="0 0 1440 160"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="waveLineGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="rgba(255,255,255,0.45)" />
+              <stop offset="100%" stopColor="rgba(255, 255, 255, 0.63)" />
+            </linearGradient>
 
-    <linearGradient id="waveFillGradient" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stopColor="rgba(139, 247, 247, 0.56)" />
-      <stop offset="100%" stopColor="rgba(22,55,66,0)" />
-    </linearGradient>
-  </defs>
+            <linearGradient id="waveFillGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="rgba(139, 247, 247, 0.56)" />
+              <stop offset="100%" stopColor="rgba(22,55,66,0)" />
+            </linearGradient>
+          </defs>
 
-  <path
-    d="M0,80 C240,20 480,140 720,80 C960,20 1200,140 1440,80"
-    fill="none"
-    stroke="url(#waveLineGradient)"
-    strokeWidth="1.5"
-  />
+          <path
+            d="M0,80 C240,20 480,140 720,80 C960,20 1200,140 1440,80"
+            fill="none"
+            stroke="url(#waveLineGradient)"
+            strokeWidth="1.5"
+          />
 
-  <path
-    d="M0,95 C240,35 480,155 720,95 C960,35 1200,155 1440,95"
-    fill="none"
-    stroke="url(#waveLineGradient)"
-    strokeOpacity="0.7"
-    strokeWidth="1.2"
-  />
+          <path
+            d="M0,95 C240,35 480,155 720,95 C960,35 1200,155 1440,95"
+            fill="none"
+            stroke="url(#waveLineGradient)"
+            strokeOpacity="0.7"
+            strokeWidth="1.2"
+          />
 
-  <path
-    d="M0,110 C240,50 480,170 720,110 C960,50 1200,170 1440,110"
-    fill="none"
-    stroke="url(#waveLineGradient)"
-    strokeOpacity="0.4"
-    strokeWidth="1"
-  />
+          <path
+            d="M0,110 C240,50 480,170 720,110 C960,50 1200,170 1440,110"
+            fill="none"
+            stroke="url(#waveLineGradient)"
+            strokeOpacity="0.4"
+            strokeWidth="1"
+          />
 
-  <path
-    d="M0,120 
+          <path
+            d="M0,120 
        C240,60 480,180 720,120 
        C960,60 1200,180 1440,120 
        L1440,160 
        L0,160 Z"
-    fill="url(#waveFillGradient)"
-  />
-</svg>
-</div>
+            fill="url(#waveFillGradient)"
+          />
+        </svg>
+      </div>
 
       <div className="container">
         <div className={styles.top}>
           <Reveal direction="up">
             <div className={styles.brand}>
               <img
-  src="/images/Malibu_logo.png"
-  alt="Malibu West Logo"
-  className={styles.logoImage}
-/>
-              {/* <span className={styles.logoText}>MALIBU WEST</span> */}
+                src="/images/Malibu_logo.png"
+                alt="Malibu West Logo"
+                className={styles.logoImage}
+              />
 
               <p className={styles.tagline}>
                 Designing experiences. Building brands that endure.
@@ -118,7 +113,6 @@ export default function Footer() {
                 <h4 className={styles.colTitle}>Let's Connect</h4>
 
                 <p className={styles.contact}>
-
                   <a
                     href="https://www.evgroup.in/home.html"
                     target="_blank"
@@ -127,7 +121,6 @@ export default function Footer() {
                   >
                     www.evgroup.in
                   </a>
-
 
                   <a
                     href="https://wa.me/918291668777"
@@ -175,6 +168,25 @@ export default function Footer() {
                   >
                     yt
                   </a>
+                </div>
+              </div>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className={styles.col}>
+                <h4 className={styles.colTitle}>MAHARERA</h4>
+
+                <div className={styles.qrContainer}>
+                  <img
+                    src="/images/malibu_qr.jpg"
+                    alt="MAHARERA QR Code"
+                    className={styles.qrImage}
+                    loading="lazy"
+                  />
+
+                  <p className={styles.qrText}>MAHARERA Registration Number:</p>
+
+                  <p className={styles.qrNumber}>P51700078094</p>
                 </div>
               </div>
             </StaggerItem>

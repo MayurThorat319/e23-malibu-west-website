@@ -1,10 +1,6 @@
 import { animate, svg } from "animejs";
 import { useEffect, useRef } from "react";
 
-/**
- * Attaches an anime.js "draw" animation to every SVG path/circle/polyline/line/rect
- * found inside the ref'd container. Mirrors the snippet from animejs docs.
- */
 export function useLucideDrawerAnimation<T extends HTMLElement = HTMLDivElement>() {
   const root = useRef<T | null>(null);
 

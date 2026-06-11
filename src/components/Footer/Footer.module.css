@@ -1,23 +1,17 @@
 .footer {
   position: relative;
-
   margin-top: -160px;
-
   padding: 12rem 0 2rem;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(29, 46, 58, 0) 0%,
-      rgba(29, 46, 58, 0.45) 12%,
-      rgb(22, 55, 66) 28%,
-      rgb(16, 67, 73) 45%,
-      #0b3b41 65%,
-      #285260 100%
-    );
-
+  background: linear-gradient(
+    to bottom,
+    rgba(29, 46, 58, 0) 0%,
+    rgba(29, 46, 58, 0.45) 12%,
+    rgb(22, 55, 66) 28%,
+    rgb(16, 67, 73) 45%,
+    #0b3b41 65%,
+    #285260 100%
+  );
   border-top: none;
-
   z-index: 10;
 }
 .waveTop {
@@ -42,7 +36,7 @@
   display: grid;
   grid-template-columns: 1.2fr 2fr;
   gap: 4rem;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
 }
 
 .brand {
@@ -73,7 +67,7 @@
 
 .columns {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
 }
 
@@ -126,7 +120,9 @@
   font-size: 0.7rem;
   letter-spacing: 0.05em;
   color: var(--gold);
-  transition: background 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .social a:hover {
@@ -166,19 +162,45 @@
   opacity: 0.7;
 }
 
-/* TABLET ADJUSTMENTS */
+.qrContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.qrImage {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(201, 169, 98, 0.3);
+}
+
+.qrText {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 0 0 4px;
+  line-height: 1.4;
+}
+
+.qrNumber {
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 @media (max-width: 900px) {
-  /* Scale down the wave height and adjust the negative margin to match */
   .footer {
-    margin-top: -100px; 
-    padding-top: 8rem; /* Reduce the large top padding for smaller screens */
+    margin-top: -100px;
+    padding-top: 8rem;
   }
 
   .waveTop {
     height: 100px;
   }
 
-  /* Your existing tablet styles */
   .top {
     grid-template-columns: 1fr;
   }
@@ -188,20 +210,29 @@
   }
 }
 
-/* MOBILE ADJUSTMENTS */
 @media (max-width: 500px) {
-  /* Scale down the wave height even further for phones */
   .footer {
     margin-top: -60px;
-    padding-top: 5rem; /* Tighter padding for phones */
+    padding-top: 5rem;
   }
 
   .waveTop {
     height: 60px;
   }
 
-  /* Your existing mobile styles */
   .columns {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .qrImage {
+    width: 85px;
+  }
+
+  .qrText {
+    font-size: 11px;
+  }
+
+  .qrNumber {
+    font-size: 12px;
   }
 }
