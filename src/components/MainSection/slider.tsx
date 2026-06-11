@@ -168,6 +168,8 @@ export default function Slider() {
           src="/images/left.png"
           alt=""
           className="corner-leaf corner-leaf-left"
+          loading="lazy"
+          decoding="async"
         />
 
         <img
@@ -175,6 +177,8 @@ export default function Slider() {
           src="/images/right.png"
           alt=""
           className="corner-leaf corner-leaf-right"
+          loading="lazy"
+          decoding="async"
         />
 
         <div className="slider-header-container">
@@ -210,7 +214,12 @@ export default function Slider() {
         `}
                 onClick={() => handleOpen(slide)}
               >
-                <img src={slide.image} alt={slide.title} />
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div className="overlay" />
                 <div className="card-hover">
                   <div className="hover-line" />
@@ -250,6 +259,8 @@ export default function Slider() {
             src={activeSlide.image}
             alt={activeSlide.heading}
             className="detail-bg"
+            loading="lazy"
+            decoding="async"
           />
           <div className="detail-overlay" />
 

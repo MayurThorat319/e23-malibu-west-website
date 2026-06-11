@@ -844,6 +844,9 @@
     min-height: 230px;
     padding: 20px;
   }
+  .t-head p { 
+    line-height: 1.4;
+  }
 
   .video-review-text {
     max-width: 90%;

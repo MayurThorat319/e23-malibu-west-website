@@ -293,6 +293,8 @@ export default function AboutSection() {
             src="/images/aboutImage.png"
             alt="10 Marina Bay - Garden View"
             className="dm-hero-img"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </section>

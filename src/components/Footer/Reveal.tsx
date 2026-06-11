@@ -53,7 +53,7 @@ export default function Reveal({
   direction = "up",
   delay = 0,
   duration = 0.9,
-  once = true,
+  // once = true,
   amount = 0.2,
   as = "div",
 }: RevealProps) {
@@ -65,7 +65,7 @@ export default function Reveal({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount }}
+      viewport={{ once: true, amount }}
       variants={variant}
       transition={{
         duration,
