@@ -107,7 +107,7 @@ export default function AboutSection() {
               </h2>
             </div>
           </motion.div>
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.4 }}
@@ -125,7 +125,7 @@ export default function AboutSection() {
                 Live Above It All.
               </span>
             </p>
-          </motion.p>
+          </motion.div>
 
           <div className="dm-features-row dm-desktop-only">
             <motion.div
