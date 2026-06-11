@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useRef } from "react";
 import { ArrowRight, Home, Sparkles, Leaf } from "lucide-react";
 import { useInView } from "framer-motion";
@@ -28,12 +27,6 @@ export default function AboutEVHomes() {
 
   return (
     <section className="ev-about">
-      {/* <img
-        src="/images/aboutbg.png"
-        alt="EV Homes luxury residential tower at night"
-        className="ev-about__bg"
-      /> */}
-
       <div className="ev-about__overlay" />
 
       <div className="ev-about__inner">
@@ -53,7 +46,6 @@ export default function AboutEVHomes() {
                 aria-hidden="true"
               />
             </span>
-
             <span className="ev-about__title-homes">Homes</span>
           </h2>
 
@@ -70,12 +62,8 @@ export default function AboutEVHomes() {
                   <span className="ev-about__feature-icon">
                     <Icon strokeWidth={1.5} />
                   </span>
-
-                  <span className="ev-about__feature-label">
-                    {label}
-                  </span>
+                  <span className="ev-about__feature-label">{label}</span>
                 </li>
-
                 {index < features.length - 1 && (
                   <span className="ev-about__feature-divider" />
                 )}
@@ -94,46 +82,44 @@ export default function AboutEVHomes() {
             <ArrowRight strokeWidth={2} />
           </button>
         </div>
+        <div className="ev-about__right-side">
+          <div className="ev-about__image-container">
+            <img
+              src="/images/building.png"
+              alt="EV Homes Luxury Architecture"
+              className="ev-about__building-img"
+            />
+          </div>
+          <aside
+            className="ev-about__stats"
+            aria-label="EV Homes track record"
+            ref={statsRef}
+          >
+            {stats.map((s, i) => {
+              const numericValue = parseInt(String(s.value));
+              const suffix = String(s.value).replace(String(numericValue), "");
 
-        <aside
-          className="ev-about__stats"
-          aria-label="EV Homes track record"
-          ref={statsRef}
-        >
-          {stats.map((s, i) => {
-            const numericValue = parseInt(String(s.value));
+              return (
+                <div key={s.label} className="ev-about__stat">
+                  <div className="ev-about__stat-value counter-wrapper">
+                    <Counter
+                      value={isInView ? numericValue : 0}
+                      fontSize={58}
+                      textColor="#6fd3d8"
+                      fontWeight={500}
+                    />
+                    <span className="counter-symbol">{suffix}</span>
+                  </div>
 
-            const suffix = String(s.value).replace(
-              String(numericValue),
-              ""
-            );
-
-            return (
-              <div key={s.label} className="ev-about__stat">
-                <div className="ev-about__stat-value counter-wrapper">
-                  <Counter
-                    value={isInView ? numericValue : 0}
-                    fontSize={58}
-                    textColor="#6fd3d8"
-                    fontWeight={500}
-                  />
-
-                  <span className="counter-symbol">
-                    {suffix}
-                  </span>
+                  <div className="ev-about__stat-label">{s.label}</div>
+                  {i < stats.length - 1 && (
+                    <span className="ev-about__stat-divider" />
+                  )}
                 </div>
-
-                <div className="ev-about__stat-label">
-                  {s.label}
-                </div>
-
-                {i < stats.length - 1 && (
-                  <span className="ev-about__stat-divider" />
-                )}
-              </div>
-            );
-          })}
-        </aside>
+              );
+            })}
+          </aside>
+        </div>
       </div>
     </section>
   );

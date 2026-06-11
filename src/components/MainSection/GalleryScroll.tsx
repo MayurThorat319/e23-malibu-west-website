@@ -12,7 +12,6 @@ const leftImages = [
 const middleImages = [
   "https://images.unsplash.com/photo-1718969604981-de826f44ce15?w=500&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1476180814856-a36609db0493?w=500&auto=format&fit=crop",
-//   "https://images.unsplash.com/photo-1595407660626-db35dcd16609?w=500&auto=format&fit=crop",
 ];
 
 const rightImages = [
@@ -24,22 +23,19 @@ const rightImages = [
 ];
 
 const GalleryScroll = forwardRef<HTMLElement>((_props, ref) => {
-  // Optional: smooth scroll with Lenis if installed. Safe no-op otherwise.
   useEffect(() => {
     let lenis: any;
     let raf = 0;
     (async () => {
       try {
-        const { default: Lenis } = await import(/* @vite-ignore */ "lenis");
+        const { default: Lenis } = await import("lenis");
         lenis = new Lenis();
         const loop = (t: number) => {
           lenis.raf(t);
           raf = requestAnimationFrame(loop);
         };
         raf = requestAnimationFrame(loop);
-      } catch {
-        /* lenis not installed — native scroll is fine */
-      }
+      } catch {}
     })();
     return () => {
       cancelAnimationFrame(raf);
@@ -51,9 +47,7 @@ const GalleryScroll = forwardRef<HTMLElement>((_props, ref) => {
     <main className="sg-main" ref={ref}>
       <div className="sg-wrapper">
         <section className="sg-hero">
-          <h1 className="sg-title">
-            Gallery Section
-          </h1>
+          <h1 className="sg-title">Gallery Section</h1>
         </section>
       </div>
 

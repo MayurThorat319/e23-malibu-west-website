@@ -211,9 +211,6 @@
   box-shadow: 0 8px 20px rgba(255, 0, 0, 0.35);
 }
 
-/* =========================================
-   Desktop: CSS Marquee Animation
-   ========================================= */
 @media (min-width: 769px) {
   .gallery-rows-container {
     overflow: hidden;
@@ -237,9 +234,6 @@
   }
 }
 
-/* =========================================
-   Mobile: JS transform-based scroll (iOS safe)
-   ========================================= */
 @media (max-width: 768px) {
   .gallery-item-overlay {
     opacity: 1;
@@ -263,15 +257,6 @@
   }
 }
 
-@keyframes infiniteScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 @media (max-width: 1024px) {
   .gallery-item-overlay {
     opacity: 1;
@@ -279,9 +264,6 @@
   }
 }
 
-/* =========================================
-   Desktop: CSS Marquee Animation
-   ========================================= */
 @media (min-width: 769px) {
   .gallery-rows-container {
     overflow: hidden;
@@ -296,18 +278,6 @@
   }
 }
 
-@keyframes infiniteScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* =========================================
-   Mobile: JS transform-based scroll (iOS safe)
-   ========================================= */
 @media (max-width: 768px) {
   .gallery-item-overlay {
     opacity: 1;
@@ -315,18 +285,18 @@
   }
 
   .gallery-rows-container {
-    overflow: hidden; /* ← NOT scroll; JS transform handles all movement */
+    overflow: hidden; 
   }
 
-  /* animation: none keeps desktop keyframes from leaking in */
   .gallery-motion-container {
     animation: none;
-    will-change: transform; /* tells iOS to GPU-composite this layer */
+    will-change: transform;
   }
 
   .gallery-item:hover {
     transform: none;
   }
+  
   .gallery-item:hover .gallery-item-image {
     transform: none;
   }

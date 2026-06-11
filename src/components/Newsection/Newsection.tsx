@@ -16,8 +16,6 @@ export default function NewSection() {
 
   return (
     <div className="new-scroll-track" ref={ref}>
-
-      {/* SVG Filter Definition */}
       <svg style={{ position: "absolute", width: 0, height: 0 }}>
         <filter id="new-water-distortion">
           <feTurbulence
@@ -37,7 +35,6 @@ export default function NewSection() {
       </svg>
 
       <div className="new-sticky-section">
-
         <div className="base-background">
           <img src="images/wave.png" alt="Sand Background" />
         </div>
@@ -46,7 +43,6 @@ export default function NewSection() {
           <img src="images/wavescut3.png" alt="Water Waves" />
         </div>
 
-        {/* The Text */}
         <motion.div
           className="content-overlay"
           style={{ y: textY, opacity: textOpacity }}

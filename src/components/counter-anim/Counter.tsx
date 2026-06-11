@@ -10,7 +10,6 @@ interface NumberProps {
 }
 
 function Number({ mv, number }: NumberProps) {
-  // 1. We no longer need the 'height' prop because we will use 'em' sizing.
   const y = useTransform(mv, (latest: number) => {
     const placeValue = latest % 10;
     const offset = (10 + number - placeValue) % 10;
@@ -19,7 +18,6 @@ function Number({ mv, number }: NumberProps) {
     if (offset > 5) {
       memo -= 10;
     }
-    // 2. Output the translation string dynamically in 'em' units.
     return `${memo}em`; 
   });
 
@@ -57,7 +55,6 @@ function Digit({ digit }: DigitProps) {
   }, [finalValue, animatedValue]);
 
   return (
-    // 3. Force height to 1em so it scales perfectly with the parent font-size.
     <span className="counter-digit" style={{ height: "1em" }}>
       {Array.from({ length: 10 }, (_, i) => (
         <Number key={i} mv={animatedValue} number={i} />
@@ -87,7 +84,7 @@ export default function Counter({
       <span
         className="counter-counter"
         style={{
-          fontSize, // Sets the baseline size, but CSS !important can now override it
+          fontSize,
           color: textColor,
           fontWeight,
         }}

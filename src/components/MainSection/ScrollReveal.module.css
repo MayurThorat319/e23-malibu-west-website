@@ -2,7 +2,8 @@
   position: relative;
   width: 100%;
   height: 350vh;
-  background: #FFF7E4;
+  background: #fff7e4;
+  overflow-x: clip;
 }
 
 .sticky {
@@ -38,8 +39,7 @@
   opacity: 0.1;
   rotate: 30deg;
   animation: slowSpin 3s ease-in-out infinite;
-    overflow: hidden;
-
+  overflow: hidden;
 }
 
 @keyframes slowSpin {
@@ -86,7 +86,6 @@
   pointer-events: none;
   color: #0e1414;
   transform: translateY(-110px);
-
 }
 
 .star {
@@ -95,7 +94,9 @@
 }
 
 .heading {
-  font-family: cormorant garamond, serif;
+  font-family:
+    cormorant garamond,
+    serif;
   font-size: clamp(1.5rem, 3.2vw, 3.25rem);
   line-height: 1.15;
   font-weight: 500;
@@ -135,7 +136,9 @@
 }
 
 .subheading {
-  font-family: cormorant garamond, serif;
+  font-family:
+    cormorant garamond,
+    serif;
   font-style: italic;
   color: #1c9696;
   font-size: clamp(1rem, 1.5vw, 2rem);
@@ -180,7 +183,6 @@
   background: #d6d8d9;
   will-change: transform, opacity;
   box-shadow: 0 12px 40px -16px rgba(0, 0, 0, 0.15);
-
   filter: grayscale(10%) contrast(95%);
 }
 
@@ -207,4 +209,10 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    letter-spacing: 0.3rem;
+  }
 }

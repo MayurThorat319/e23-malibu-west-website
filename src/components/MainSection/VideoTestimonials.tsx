@@ -50,82 +50,80 @@ export default function VideoTestimonials() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-  let rafId = 0;
-  let ticking = false;
+    let rafId = 0;
+    let ticking = false;
 
-  const update = () => {
-    ticking = false;
-    const wrap = wrapRef.current;
-    const section = sectionRef.current;
-    const cards = cardsRef.current;
-    if (!wrap || !section) return;
+    const update = () => {
+      ticking = false;
+      const wrap = wrapRef.current;
+      const section = sectionRef.current;
+      const cards = cardsRef.current;
+      if (!wrap || !section) return;
 
-    const rect = wrap.getBoundingClientRect();
-    const total = wrap.offsetHeight - window.innerHeight;
-    const progress = Math.min(1, Math.max(0, -rect.top / total));
+      const rect = wrap.getBoundingClientRect();
+      const total = wrap.offsetHeight - window.innerHeight;
+      const progress = Math.min(1, Math.max(0, -rect.top / total));
 
-    const x = -progress * 65;
-    const y = -progress * 40;
-    const sectionOpacity = progress > 0.7 ? Math.max(0, 1 - (progress - 0.7) / 0.3) : 1;
+      const x = -progress * 65;
+      const y = -progress * 40;
+      const sectionOpacity =
+        progress > 0.7 ? Math.max(0, 1 - (progress - 0.7) / 0.3) : 1;
 
-    // batch writes
-    section.style.transform = `translate3d(${x}vw, ${y}vh, 0)`;
-    section.style.opacity = `${sectionOpacity}`;
+      // batch writes
+      section.style.transform = `translate3d(${x}vw, ${y}vh, 0)`;
+      section.style.opacity = `${sectionOpacity}`;
 
-    if (cards) {
-      const fadeStart = 0.1;
-      const fadeEnd = 0.35;
-      let cardsOpacity = progress > fadeStart
-        ? 1 - (progress - fadeStart) / (fadeEnd - fadeStart)
-        : 1;
-      cardsOpacity = Math.min(1, Math.max(0, cardsOpacity));
-      cards.style.opacity = `${cardsOpacity}`;
-      cards.style.pointerEvents = cardsOpacity <= 0.02 ? "none" : "auto";
-      cards.style.transform = `translate3d(0, ${-(progress * 30)}px, 0)`;
-    }
-  };
+      if (cards) {
+        const fadeStart = 0.1;
+        const fadeEnd = 0.35;
+        let cardsOpacity =
+          progress > fadeStart
+            ? 1 - (progress - fadeStart) / (fadeEnd - fadeStart)
+            : 1;
+        cardsOpacity = Math.min(1, Math.max(0, cardsOpacity));
+        cards.style.opacity = `${cardsOpacity}`;
+        cards.style.pointerEvents = cardsOpacity <= 0.02 ? "none" : "auto";
+        cards.style.transform = `translate3d(0, ${-(progress * 30)}px, 0)`;
+      }
+    };
 
-  const onScroll = () => {
-    if (!ticking) {
-      rafId = requestAnimationFrame(update);
-      ticking = true;
-    }
-  };
+    const onScroll = () => {
+      if (!ticking) {
+        rafId = requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
 
-  update();
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
-  return () => {
-    cancelAnimationFrame(rafId);
-    window.removeEventListener("scroll", onScroll);
-    window.removeEventListener("resize", onScroll);
-  };
-}, []);
-
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   return (
     <section className="scroll-section" id="feedback">
       <div className="liquid-bg">
-
-       <LiquidEther
-  mouseForce={8}
-  iterationsViscous={4}    // was 8
-  iterationsPoisson={8}    // was 12
-  cursorSize={120}
-  resolution={0.18}        // was 0.25 — biggest win
-  autoDemo={true}
-  autoSpeed={0.2}
-  autoIntensity={1.8}
-  takeoverDuration={0.15}
-  autoResumeDelay={3000}
-  autoRampDuration={0.3}
-  colors={["#0b6669","#239dad","#27a8cf","#00d0df"]}
-/>
-
+        <LiquidEther
+          mouseForce={8}
+          iterationsViscous={4} 
+          iterationsPoisson={8} 
+          cursorSize={120}
+          resolution={0.18} 
+          autoDemo={true}
+          autoSpeed={0.2}
+          autoIntensity={1.8}
+          takeoverDuration={0.15}
+          autoResumeDelay={3000}
+          autoRampDuration={0.3}
+          colors={["#0b6669", "#239dad", "#27a8cf", "#00d0df"]}
+        />
       </div>
-       <AboutEVHomes />
+      <AboutEVHomes />
       <div className="scroll-wrap" ref={wrapRef}>
-        
         <div className="scroll-sticky">
           <section className="video-section" ref={sectionRef}>
             <div className="video-bg-div" />
@@ -252,19 +250,14 @@ export default function VideoTestimonials() {
               <div className="overflow-hidden-div">
                 <h2 className="h2-heading">Feedback From Our Valued Clients</h2>
               </div>
-              <p>
-                Real experiences, Trusted Partnership, Proven results.
-              </p>
+              <p>Real experiences, Trusted Partnership, Proven results.</p>
             </div>
             <div className="slider">
               <YouTube />
             </div>
           </div>
         </section>
-
       </div>
-
-
 
       {open && (
         <div

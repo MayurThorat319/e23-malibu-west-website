@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
 import "./slider.css";
 import {
@@ -81,7 +80,6 @@ export default function Slider() {
   const cardRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const [isFormOpen, setIsFormOpen] = useState(false);
 
-  /* AUTO SLIDE */
   useEffect(() => {
     if (detailState !== "closed") return;
     const interval = setInterval(() => {
@@ -90,7 +88,6 @@ export default function Slider() {
     return () => clearInterval(interval);
   }, [detailState]);
 
-  /* OPEN DETAIL — capture clicked card rect, then expand to fullscreen */
   const handleOpen = (slide: Slide) => {
     const el = cardRefs.current[slide.id];
     if (!el) return;
@@ -103,13 +100,11 @@ export default function Slider() {
     });
     setActiveSlide(slide);
     setDetailState("opening");
-    // Next frame -> trigger transition to fullscreen
     requestAnimationFrame(() => {
       requestAnimationFrame(() => setDetailState("open"));
     });
   };
 
-  /* CLOSE DETAIL — animate back to the originating card */
   const handleClose = () => {
     if (!activeSlide) return;
     const el = cardRefs.current[activeSlide.id];
@@ -142,53 +137,46 @@ export default function Slider() {
         : {}
       : { top: 0, left: 0, width: "100%", height: "100%" };
 
-      const leftLeafRef = useRef<HTMLImageElement | null>(null);
-const rightLeafRef = useRef<HTMLImageElement | null>(null);
+  const leftLeafRef = useRef<HTMLImageElement | null>(null);
+  const rightLeafRef = useRef<HTMLImageElement | null>(null);
 
-useEffect(() => {
-  const handleMouseMove = (e: MouseEvent) => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 30;
-    const y = (e.clientY / window.innerHeight - 0.5) * 30;
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
 
-    if (leftLeafRef.current) {
-      leftLeafRef.current.style.transform =
-        `translate(${x * 0.4}px, ${y * 0.4}px)`;
-    }
+      if (leftLeafRef.current) {
+        leftLeafRef.current.style.transform = `translate(${x * 0.4}px, ${y * 0.4}px)`;
+      }
 
-    if (rightLeafRef.current) {
-      rightLeafRef.current.style.transform =
-        `translate(${x * -0.4}px, ${y * -0.4}px)`;
-    }
-  };
+      if (rightLeafRef.current) {
+        rightLeafRef.current.style.transform = `translate(${x * -0.4}px, ${y * -0.4}px)`;
+      }
+    };
 
-  window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
-  return () => {
-    window.removeEventListener("mousemove", handleMouseMove);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
   return (
     <>
       <section className="ocean-slider" id="layout">
-        {/* MOVING LEAVES BACKGROUND */}
-        {/* {[1, 2, 3, 4, 5].map((leaf) => (
-          <div key={leaf} className="leaf" />
-        ))} */}
-      <img
-  ref={leftLeafRef}
-  src="/images/left.png"
-  alt=""
-  className="corner-leaf corner-leaf-left"
-/>
+        <img
+          ref={leftLeafRef}
+          src="/images/left.png"
+          alt=""
+          className="corner-leaf corner-leaf-left"
+        />
 
-<img
-  ref={rightLeafRef}
-  src="/images/right.png"
-  alt=""
-  className="corner-leaf corner-leaf-right"
-/>
+        <img
+          ref={rightLeafRef}
+          src="/images/right.png"
+          alt=""
+          className="corner-leaf corner-leaf-right"
+        />
 
-        {/* NEW DESIGN HEADER */}
         <div className="slider-header-container">
           <div className="slider-header-left">
             <span className="slider-pretitle">CONFIGURATIONS</span>
@@ -203,7 +191,6 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* SLIDER */}
         <div className="cards-wrapper">
           {slides.map((slide, index) => {
             const position =
@@ -243,7 +230,6 @@ useEffect(() => {
           })}
         </div>
 
-        {/* DOTS */}
         <div className="slider-dots">
           {slides.map((_, index) => (
             <button
@@ -255,7 +241,6 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* DETAIL PAGE — shared element morph */}
       {activeSlide && (
         <div
           className={`detail-page detail-${detailState}`}
@@ -286,7 +271,6 @@ useEffect(() => {
                 <p>{activeSlide.description}</p>
               </div>
 
-              {/* FEATURES */}
               <div className="feature-grid">
                 <div className="feature-card">
                   <div className="feature-icon">
@@ -316,7 +300,7 @@ useEffect(() => {
                   <p className="feature-des">King-Sized Bedrooms</p>
                 </div>
               </div>
-              {/* PRICE BOX */}
+
               <div className="price-box">
                 <div className="price-left">
                   <span className="price-label">STARTING AT</span>
@@ -355,7 +339,6 @@ useEffect(() => {
                 </div>
               </div>
 
-              {/* BUTTONS */}
               <div className="detail-buttons">
                 <button
                   className="gold-btn"

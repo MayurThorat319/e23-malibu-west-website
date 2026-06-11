@@ -5,7 +5,9 @@
   right: 0;
   z-index: 1000;
   padding: 1.25rem 0;
-  transition: background 0.5s var(--ease-luxury), padding 0.5s var(--ease-luxury),
+  transition:
+    background 0.5s var(--ease-luxury),
+    padding 0.5s var(--ease-luxury),
     backdrop-filter 0.5s var(--ease-luxury);
 }
 
@@ -49,7 +51,7 @@
   color: #fff;
   transition: color 0.35s ease;
   position: relative;
-  font-family: 'Cronde', serif;
+  font-family: "Cronde", serif;
 }
 
 .scrollNav {
@@ -79,13 +81,15 @@
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-family: 'Cronde', serif;
+  font-family: "Cronde", serif;
   padding: 0.75rem 1.5rem;
   border: 1px solid #f6dda5;
   color: #fff6e1;
   background: transparent;
   cursor: pointer;
-  transition: background 0.45s var(--ease-luxury), color 0.45s ease,
+  transition:
+    background 0.45s var(--ease-luxury),
+    color 0.45s ease,
     box-shadow 0.45s ease;
 }
 
@@ -99,7 +103,6 @@
   box-shadow: 0 0 32px var(--glow-gold);
 }
 
-/* --- BURGER BUTTON & ANIMATION --- */
 .burger {
   display: none;
   flex-direction: column;
@@ -110,7 +113,6 @@
   border: none;
   cursor: pointer;
   z-index: 1001;
-  /* Keeps it above the sidebar */
   padding: 0;
 }
 
@@ -118,11 +120,13 @@
   width: 100%;
   height: 2px;
   background: #f6dda5;
-  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    background-color 0.3s ease;
   transform-origin: left center;
 }
 
-/* Turns burger into an 'X' */
 .burgerOpen span:nth-child(1) {
   transform: rotate(45deg) translate(1px, -1px);
 }
@@ -135,7 +139,6 @@
   transform: rotate(-45deg) translate(1px, 1px);
 }
 
-/* --- SIDEBAR DRAWER STYLES --- */
 .backdrop {
   display: none;
   position: fixed;
@@ -149,7 +152,6 @@
   display: none;
 }
 
-/* --- RESPONSIVE BREAKPOINTS --- */
 @media (min-width: 1000px) {
   .cta {
     padding: 0.75rem 1.2rem;
@@ -166,7 +168,6 @@
 }
 
 @media (max-width: 1024px) {
-
   .nav,
   .cta {
     display: none;
@@ -205,23 +206,24 @@
   }
 
   .mobileLink {
-    font-family: 'Cronde', serif;
+    font-family: "Cronde", serif;
     font-size: 1.15rem;
-    letter-spacing: 0.20em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #fff6e1;
     text-decoration: none;
-    transition: color 0.3s ease, padding-left 0.3s ease;
+    transition:
+      color 0.3s ease,
+      padding-left 0.3s ease;
   }
 
   .mobileLink:hover {
     color: #f6dda5;
     padding-left: 8px;
-    /* Subtle interaction nudge */
   }
 
   .mobileCta {
-    font-family: 'Cronde', serif;
+    font-family: "Cronde", serif;
     font-size: 0.8rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -242,23 +244,22 @@
   .logo {
     width: 70px;
   }
-
 }
 
 @media (max-width: 500px) {
-
   .mobileNavLinks {
     gap: 1.5rem;
   }
 
   .mobileLink {
-    font-family: 'Cronde', serif;
+    font-family: "Cronde", serif;
     font-size: 0.9rem;
-    letter-spacing: 0.20em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #fff6e1;
     text-decoration: none;
-    transition: color 0.3s ease, padding-left 0.3s ease;
+    transition:
+      color 0.3s ease,
+      padding-left 0.3s ease;
   }
-
 }

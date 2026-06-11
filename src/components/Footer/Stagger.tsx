@@ -2,10 +2,9 @@
 
 import { motion } from "framer-motion";
 
-// 1. StaggerContainer ke props ke liye interface
 interface StaggerContainerProps {
   children: React.ReactNode;
-  className?: string; // ? ka matlab ye optional hai
+  className?: string; 
   delay?: number;
 }
 
@@ -32,7 +31,6 @@ export function StaggerContainer({
   );
 }
 
-// 2. StaggerItem ke props ke liye interface
 interface StaggerItemProps {
   children: React.ReactNode;
   className?: string;

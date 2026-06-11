@@ -16,36 +16,24 @@ const videosData: VideoData[] = [
   { id: "rgRxtWKx6pQ" },
 ];
 const infiniteVideos: VideoData[] = [...videosData, ...videosData];
-/* ── Card ──────────────────────────────────────────────── */
-/* ── Card ──────────────────────────────────────────────── */
 const GalleryItem: React.FC<GalleryItemProps> = ({ videoData }) => {
   const [title, setTitle] = useState(videoData.title || "Loading...");
-  // const [subtitle, setSubtitle] = useState(
-  //   videoData.subtitle || "Loading..."
-  // );
 
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoData.id}/maxresdefault.jpg`;
-
+  const thumbnailUrl = `https://img.youtube.com/vi/${videoData.id}/hqdefault.jpg`;
   const youtubeUrl = `https://www.youtube.com/watch?v=${videoData.id}`;
 
   useEffect(() => {
     const fetchVideoDetails = async () => {
       try {
         const response = await fetch(
-          `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoData.id}&format=json`
+          `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoData.id}&format=json`,
         );
 
         const data = await response.json();
-
         setTitle(data.title || "Untitled Video");
-
-        // setSubtitle(data.author_name || "YouTube");
       } catch (error) {
         console.error("Error fetching video details:", error);
-
         setTitle("Video Unavailable");
-
-        // setSubtitle("YouTube");
       }
     };
 
@@ -75,17 +63,10 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ videoData }) => {
         <h3 className="gallery-item-title">{title}</h3>
 
         <div className="gallery-item-line" />
-
-        {/* <p className="gallery-item-subtitle-text">
-          {subtitle}
-        </p> */}
       </div>
 
       <div className="gallery-item-overlay">
-        <span
-          className="gallery-play-btn"
-          aria-label="Play video"
-        >
+        <span className="gallery-play-btn" aria-label="Play video">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M8 5.14v14l11-7-11-7z" />
           </svg>
@@ -94,37 +75,37 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ videoData }) => {
     </a>
   );
 };
-/* ── Section ───────────────────────────────────────────── */
+
 export default function YouTube() {
-  const rowsRef     = useRef<HTMLDivElement>(null);   // outer container
-  const innerRef    = useRef<HTMLDivElement>(null);   // ← NEW: inner strip we translate
-  const rafRef      = useRef<number>(0);
-  const xPosRef     = useRef<number>(0);              // current translateX value
-  const isDragging  = useRef<boolean>(false);
-  const lastTouchX  = useRef<number>(0);
+  const rowsRef = useRef<HTMLDivElement>(null); 
+  const innerRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number>(0);
+  const xPosRef = useRef<number>(0);
+  const isDragging = useRef<boolean>(false);
+  const lastTouchX = useRef<number>(0);
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     const container = rowsRef.current;
-    const inner     = innerRef.current;
+    const inner = innerRef.current;
     if (!container || !inner) return;
-    // JS path only on mobile — desktop uses CSS keyframes
+  
     const mq = window.matchMedia("(max-width: 768px)");
     if (!mq.matches) return;
-    const SPEED = 0.7; // px per frame
+    const SPEED = 0.7; 
     const tick = () => {
       if (!isDragging.current) {
         xPosRef.current -= SPEED;
-        // Seamless infinite loop using the duplicated half-width
+        
         const half = inner.scrollWidth / 2;
         if (Math.abs(xPosRef.current) >= half) {
-          xPosRef.current += half; // jump back without a visible seam
+          xPosRef.current += half; 
         }
         inner.style.transform = `translateX(${xPosRef.current}px)`;
       }
       rafRef.current = requestAnimationFrame(tick);
     };
     rafRef.current = requestAnimationFrame(tick);
-    /* ── Touch handlers ── */
+   
     const onTouchStart = (e: TouchEvent) => {
       isDragging.current = true;
       lastTouchX.current = e.touches[0].clientX;
@@ -135,34 +116,31 @@ export default function YouTube() {
       const delta = e.touches[0].clientX - lastTouchX.current;
       lastTouchX.current = e.touches[0].clientX;
       xPosRef.current += delta;
-      // Keep position within the infinite loop bounds
       const half = inner.scrollWidth / 2;
-      if (xPosRef.current > 0)              xPosRef.current -= half;
+      if (xPosRef.current > 0) xPosRef.current -= half;
       if (Math.abs(xPosRef.current) >= half) xPosRef.current += half;
       inner.style.transform = `translateX(${xPosRef.current}px)`;
     };
     const onTouchEnd = () => {
       if (resumeTimer.current) clearTimeout(resumeTimer.current);
-      // Short pause so finger-flick feels natural before auto-scroll resumes
       resumeTimer.current = setTimeout(() => {
         isDragging.current = false;
       }, 800);
     };
     container.addEventListener("touchstart", onTouchStart, { passive: true });
-    container.addEventListener("touchmove",  onTouchMove,  { passive: true });
-    container.addEventListener("touchend",   onTouchEnd,   { passive: true });
+    container.addEventListener("touchmove", onTouchMove, { passive: true });
+    container.addEventListener("touchend", onTouchEnd, { passive: true });
     return () => {
       cancelAnimationFrame(rafRef.current);
       if (resumeTimer.current) clearTimeout(resumeTimer.current);
       container.removeEventListener("touchstart", onTouchStart);
-      container.removeEventListener("touchmove",  onTouchMove);
-      container.removeEventListener("touchend",   onTouchEnd);
+      container.removeEventListener("touchmove", onTouchMove);
+      container.removeEventListener("touchend", onTouchEnd);
     };
   }, []);
   return (
     <section className="gallery-section overflow-hidden">
       <div className="w-full pt-6 pb-0 max-w-[1920px] mx-auto">
-        {/* rowsRef clips overflow; innerRef is what JS translates */}
         <div ref={rowsRef} className="gallery-rows-container pt-4 pb-10">
           <div ref={innerRef} className="gallery-motion-container">
             {infiniteVideos.map((video, i) => (

@@ -24,7 +24,7 @@ const HeroVideo = () => {
                                 <span className={styles.handwriting}>click away</span>
                             </h1> */}
                         </div>
-                        <div className={styles.buttonWrap}>
+                        {/* <div className={styles.buttonWrap}>
                             <a data-w-id="8313cf5e-8c41-fedb-fcf2-f412f14b610e" href="/#top-properties" className={styles.buttonPrimary} >
                                 <div className={styles.primaryButtonBg} style={{ opacity: 0, display: "none" }}>
                                 </div>
@@ -37,7 +37,7 @@ const HeroVideo = () => {
                                 <div className={styles.buttonText}>Contact us</div>
                                 
                             </a>
-                        </div>
+                        </div> */}
                     </div>
             </div>
         </section>

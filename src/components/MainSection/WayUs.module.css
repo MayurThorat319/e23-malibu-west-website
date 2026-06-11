@@ -1,242 +1,242 @@
-/* --- Base Layout --- */
 .wayusContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-  background: linear-gradient(
-    180deg,
-    #548c92 0%,
-    #285260 100%
-  )
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  background: linear-gradient(180deg, #548c92 0%, #285260 100%);
 }
 
-/* 1. Main Unified Container */
 .container {
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center; 
-padding: 1px 80px 1px 80px;
-    z-index: 2; 
-    color: #ffffff;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 1px 80px 1px 80px;
+  z-index: 2;
+  color: #ffffff;
 }
 
-/* 2. Hero Content (Text & Features) */
 .heroContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 20; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 20;
 }
 
-/* 3. Absolute Wave Container */
 .waveContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 300px; 
-    pointer-events: none; 
-    z-index: 10; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  pointer-events: none;
+  z-index: 10;
 }
 
 .waveSvg {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 300px; 
-    overflow: visible;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 300px;
+  overflow: visible;
 }
 
-/* --- Left Column Styling --- */
 .leftCol {
-    max-width: 55%;
+  max-width: 55%;
 }
 
 .welcomeTag {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    color: #cca25d;
-    font-size: 14px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #cca25d;
+  font-size: 14px;
 }
 
 .trackingWidest {
-    letter-spacing: 0.3em;
-    font-weight: 500;
+  letter-spacing: 0.3em;
+  font-weight: 500;
 }
 
 .welcomeLine {
-    height: 1px;
-    width: 60px;
-    background-color: #cca25d;
-    margin-left: 15px; /* Added slight gap spacing */
+  height: 1px;
+  width: 60px;
+  background-color: #cca25d;
+  margin-left: 15px;
 }
 
 .mainHeading {
-    font-size: 40px;
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    font-family: "Playfair Display", serif;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  font-family: "Playfair Display", serif;
 }
 
 .goldText {
-    color: #cca25d;
-    font-style: italic;
-    font-size: 40px;
+  color: #cca25d;
+  font-style: italic;
+  font-size: 40px;
 }
 
 .ornateDivider {
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-    color: #cca25d;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  color: #cca25d;
 }
 
 .diamond {
-    font-size: 12px;
-    margin-right: 15px;
+  font-size: 12px;
+  margin-right: 15px;
 }
 
 .dividerLine {
-    flex-grow: 1;
-    max-width: 300px;
-    height: 1px;
-    background: linear-gradient(90deg, #cca25d, transparent);
+  flex-grow: 1;
+  max-width: 300px;
+  height: 1px;
+  background: linear-gradient(90deg, #cca25d, transparent);
 }
 
 .description {
-    font-size: 15px;
-    opacity: 0.85;
-    margin-top: -30px;
-    margin-bottom: 40px;
-    font-weight: 300;
-    max-width: 80%;
-}
-/* --- Buttons --- */
-.buttonGroup {
-    display: flex;
-    gap: 20px;
+  font-size: 15px;
+  opacity: 0.85;
+  margin-top: -30px;
+  margin-bottom: 40px;
+  font-weight: 300;
+  max-width: 80%;
 }
 
-.btnPrimary, .btnSecondary {
-    padding: 14px 28px;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
+.buttonGroup {
+  display: flex;
+  gap: 20px;
+}
+
+.btnPrimary,
+.btnSecondary {
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
 }
 
 .btnPrimary {
-    background-color: #b08945;
-    background: linear-gradient(135deg, #cca25d 0%, #a47a32 100%);
-    color: #fff;
-    border: none;
+  background-color: #b08945;
+  background: linear-gradient(135deg, #cca25d 0%, #a47a32 100%);
+  color: #fff;
+  border: none;
 }
 
 .btnPrimary:hover {
-    background: linear-gradient(135deg, #e3ba73 0%, #b08945 100%);
+  background: linear-gradient(135deg, #e3ba73 0%, #b08945 100%);
 }
 
 .btnSecondary {
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #cca25d;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #cca25d;
 }
 
 .btnSecondary:hover {
-    background-color: rgba(204, 162, 93, 0.1);
+  background-color: rgba(204, 162, 93, 0.1);
 }
 
 .arrow {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .calendarIcon {
-    font-size: 16px;
+  font-size: 16px;
 }
 
-/* --- Right Column (Features) --- */
 .rightCol {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
 }
 
 .featureItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 140px;
 }
 
 .iconCircle {
-    width: 70px;
-    height: 70px;
-    border: 1px solid rgba(204, 162, 93, 0.5);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 20px rgba(204, 162, 93, 0.1);
-    color: #cca25d;
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgba(204, 162, 93, 0.5);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(204, 162, 93, 0.1);
+  color: #cca25d;
 }
 
 .featureTitle {
-    font-size: 16px;
-    font-weight: 400;
-    margin-bottom: 10px;
-    color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 .featureDesc {
-    font-size: 13px;
-    color: #a0aab2;
-    line-height: 1.4;
-    font-weight: 300;
+  font-size: 13px;
+  color: #a0aab2;
+  line-height: 1.4;
+  font-weight: 300;
 }
 
 .verticalDivider {
-    width: 1px;
-    height: 120px;
-    background: linear-gradient(180deg, transparent, rgba(204, 162, 93, 0.3), transparent);
-    margin-top: 20px;
+  width: 1px;
+  height: 120px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(204, 162, 93, 0.3),
+    transparent
+  );
+  margin-top: 20px;
 }
 
-/* --- Lower Reveal Wrappers --- */
 .revealWrapper {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    clip-path: inset(0 0 0 0);
-    background-color: #141414;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  clip-path: inset(0 0 0 0);
+  background-color: #141414;
 }
 
 .videoOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(90deg, #141414, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, #141414);
-    pointer-events: none;
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+    90deg,
+    #141414,
+    rgba(0, 0, 0, 0) 15%,
+    rgba(0, 0, 0, 0) 85%,
+    #141414
+  );
+  pointer-events: none;
+  z-index: -1;
 }
 
 .scroll {
-    width: 100%;
-    /* height: 50px; */
-    background-color: transparent;
+  width: 100%;
+  background-color: transparent;
 }

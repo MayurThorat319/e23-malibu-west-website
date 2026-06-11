@@ -26,34 +26,22 @@ export default function Header({ onOpenDialog }: HeaderProps) {
   const lastScrollY = useRef(0);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // HEADER SHOW/HIDE ON SCROLL (UPDATED WITH menuOpen CHECK)
   useEffect(() => {
     const handleScroll = () => {
-      // 1. AGAR MENU OPEN HAI, TOH KOI SCROLL LOGIC RUN MAT KARO
       if (menuOpen) return;
-
       const currentScrollY = window.scrollY;
-
       setScrolled(currentScrollY > 40);
-
-      // SCROLL DOWN = HIDE
       if (currentScrollY > lastScrollY.current && currentScrollY > 120) {
         setShowHeader(false);
-      }
-      // SCROLL UP = SHOW
-      else {
+      } else {
         setShowHeader(true);
       }
-
       lastScrollY.current = currentScrollY;
-
-      // AUTO HIDE AFTER 2 SEC WHEN USER STOPS
       if (hideTimer.current) {
         clearTimeout(hideTimer.current);
       }
 
       hideTimer.current = setTimeout(() => {
-        // Dobara check karenge taaki timer chalne ke beech me agar menu khul gaya ho
         if (window.scrollY > 120 && !menuOpen) {
           setShowHeader(false);
         }
@@ -69,7 +57,7 @@ export default function Header({ onOpenDialog }: HeaderProps) {
         clearTimeout(hideTimer.current);
       }
     };
-  }, [menuOpen]); // Dependency array me menuOpen hona zaroori hai
+  }, [menuOpen]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -125,7 +113,6 @@ export default function Header({ onOpenDialog }: HeaderProps) {
           Contact Now
         </motion.button>
 
-        {/* Dynamic class added for burger animation */}
         <button
           type="button"
           className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ""}`}
@@ -173,10 +160,12 @@ export default function Header({ onOpenDialog }: HeaderProps) {
                 ))}
               </div>
 
-              {/* Mobile CTA inside sidebar */}
               <button
                 className={styles.mobileCta}
-                onClick={() => { setMenuOpen(false); onOpenDialog(); }}
+                onClick={() => {
+                  setMenuOpen(false);
+                  onOpenDialog();
+                }}
               >
                 Contact Now
               </button>

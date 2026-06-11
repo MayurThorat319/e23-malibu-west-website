@@ -16,14 +16,13 @@
   justify-content: center;
 }
 
-/* New class for the undistorted background */
 .base-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Sits at the back */
+  z-index: 1; 
 }
 
 .base-background img {
@@ -33,16 +32,15 @@
   display: block;
 }
 
-/* Updated wrapper for the distorted waves */
 .distortion-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2; /* Sits above the background */
+  z-index: 2; 
   filter: url(#new-water-distortion);
-  pointer-events: none; /* Ensures it doesn't block user clicks */
+  pointer-events: none;
 }
 
 .distortion-wrapper img {

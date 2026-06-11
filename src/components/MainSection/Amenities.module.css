@@ -1,636 +1,603 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@300;400;500;600&display=swap');
-
 .section {
-    position: relative;
-    background-color: #0d1a17;
-    padding: 20px 0 80px;
-    font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
-    height: 100vh;
+  position: relative;
+  background-color: #0d1a17;
+  padding: 20px 0 80px;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+  height: 100vh;
 }
 
-/* ──────────────────────────────────────────
-   BACKGROUND CROSSFADE + ZOOM
-   bgBottom: current image — slow continuous zoom
-   bgTop:    incoming image — starts zoomed in,
-             fades in while zooming out to normal
-   Never goes black: bottom always visible.
-────────────────────────────────────────── */
 .bgBottom,
 .bgTop {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0;
-    will-change: transform, opacity;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  will-change: transform, opacity;
 }
 
 .bgBottom::after,
 .bgTop::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom,
-            #162f37ef 0%,
-            #2f7078c0 30%,
-            #4a79896b 70%,
-            #6eb3bb3d 100%);
-    backdrop-filter: blur(1.5px);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #162f37ef 0%,
+    #2f7078c0 30%,
+    #4a79896b 70%,
+    #6eb3bb3d 100%
+  );
+  backdrop-filter: blur(1.5px);
 }
 
 .bgBottom {
-    animation: bgZoomSlow 7s ease-in-out forwards;
+  animation: bgZoomSlow 7s ease-in-out forwards;
 }
 
 .bgTop {
-    opacity: 0;
-    transform: scale(1.5);
-    transition: opacity 0.8s ease-in-out, transform 30s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: 1;
+  opacity: 0;
+  transform: scale(1.5);
+  transition:
+    opacity 0.8s ease-in-out,
+    transform 30s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
 }
 
 .bgTopVisible {
-    opacity: 1;
-    transform: scale(1);
+  opacity: 1;
+  transform: scale(1);
 }
 
 @keyframes bgZoomSlow {
-    from {
-        transform: scale(1.5);
-    }
+  from {
+    transform: scale(1.5);
+  }
 
-    to {
-        transform: scale(1);
-    }
+  to {
+    transform: scale(1);
+  }
 }
 
-/* ── Header ── */
 .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px 50px;
-    position: relative;
-    z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px 50px;
+  position: relative;
+  z-index: 2;
 }
 
 .titleBlock {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 .titleLine {
-    width: 40px;
-    height: 2px;
-    background: #c9a84c;
-    margin-top: 22px;
-    flex-shrink: 0;
+  width: 40px;
+  height: 2px;
+  background: #c9a84c;
+  margin-top: 22px;
+  flex-shrink: 0;
 }
 
 .title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 4.1vw, 4.2rem);
-    font-weight: 300;
-    color: #f5f0e8;
-    line-height: 1.1;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin: 0;
-
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 4.1vw, 4.2rem);
+  font-weight: 300;
+  color: #f5f0e8;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
 }
 
 .luxsubtitle {
-    text-align: center;
-    letter-spacing: 0.1em;
-    color: #d7bf7c;
-    font-size: 25px;
-    line-height: 1.5rem;
-    text-transform: uppercase;
-    font-family: 'Cronde', serif;
-
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #d7bf7c;
+  font-size: 25px;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+  font-family: "Cronde", serif;
 }
 
 .subtitle {
-    max-width: 680px;
-    color: #e4e4e4;
-    font-size: 1.0rem;
-
-    font-weight: 300;
-    line-height: 1.5;
-    letter-spacing: 0.1em;
-    padding-top: 8px;
-    text-align: center;
-    font-family: 'Cronde', serif;
+  max-width: 680px;
+  color: #e4e4e4;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  padding-top: 8px;
+  text-align: center;
+  font-family: "Cronde", serif;
 }
 
-/* ── Carousel Wrapper ── */
 .carouselWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    z-index: 2;
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 2;
 }
 
 .track {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 0 20px;
-    gap: 0;
-    position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  gap: 0;
+  position: relative;
 }
 
-/* ── Cards ── */
 .card {
-    position: relative;
-    flex-shrink: 0;
-    cursor: pointer;
-    overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .cardright,
 .cardSide {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 58vh;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    border-left: 2px solid rgba(255, 255, 255, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 58vh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px solid rgba(255, 255, 255, 1);
 }
 
 .cardright {
-    border-right: 2px solid rgba(255, 255, 255, 1);
-    border-left: none;
+  border-right: 2px solid rgba(255, 255, 255, 1);
+  border-left: none;
 }
 
 .cardright::before,
 .cardSide::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 1) 70%,
-            rgba(255, 255, 255, 0) 100%);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .cardright::before {
-    background: linear-gradient(to left,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 1) 70%,
-            rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .cardright::after,
 .cardSide::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 1) 70%,
-            rgba(255, 255, 255, 0) 100%);
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .cardright::after {
-    background: linear-gradient(to left,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 1) 70%,
-            rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .cardCenter {
-    flex: 1;
-    height: 60vh;
-    z-index: 2;
-    padding: 0 2rem;
-    position: relative;
+  flex: 1;
+  height: 60vh;
+  z-index: 2;
+  padding: 0 2rem;
+  position: relative;
 }
 
-/* ──────────────────────────────────────────
-   CENTER IMAGE CROSSFADE (same technique)
-────────────────────────────────────────── */
 .imagePlaceholder {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
-
-/* ──────────────────────────────────────────
-   CENTER IMAGE CROSSFADE (NO ZOOM)
-────────────────────────────────────────── */
 
 .centerBottom,
 .centerTop {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    will-change: opacity;
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: opacity;
 }
 
 .centerBottom::after,
 .centerTop::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top,
-            #0f323e 0%,
-            #162f37ee 20%,
-            #162f37b0 30%,
-            #4a798900 80%,
-            #6eb3bb00 100%);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    #0f323e 0%,
+    #162f37ee 20%,
+    #162f37b0 30%,
+    #4a798900 80%,
+    #6eb3bb00 100%
+  );
 }
 
-/* Bottom image */
 .centerBottom {
-    opacity: 1;
+  opacity: 1;
 }
 
-/* Top image only fades */
 .centerTop {
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    z-index: 1;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
 }
 
 .centerTopVisible {
-    opacity: 1;
+  opacity: 1;
 }
 
-/* ── Card Content ── */
-/* .cardContent {
-    background: #ffffff;
-    padding: 20px 36px 32px;
-    text-align: center;
-} */
 .cardContent {
-    text-align: center;
-    position: absolute;
-    bottom: 1px;
-    z-index: 10;
-    padding: 20px 36px 2px;
-    width: 100%;
-    left: 0;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    will-change: transform, opacity;
+  text-align: center;
+  position: absolute;
+  bottom: 1px;
+  z-index: 10;
+  padding: 20px 36px 2px;
+  width: 100%;
+  left: 0;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform, opacity;
 }
 
 .cardLabel {
-    font-family: 'Cronde', serif;
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    /* color: #2a2a2a; */
-    color: #fff;
-    margin-bottom: 14px;
+  font-family: "Cronde", serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 14px;
 }
 
 .cardDesc {
-    font-family: "cormorant garamond", serif;
-    font-size: 1rem;
-    font-weight: 500;
-    /* color: #686767; */
-    color: #f1f1f1;
-    line-height: 1.5;
-    margin-bottom: 10px;
-    /* font-style: italic; */
+  font-family: "cormorant garamond", serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f1f1f1;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
 .luxdiamond {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 5px auto 5px;
-    color: #c9b48a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 5px auto 5px;
+  color: #c9b48a;
 }
 
 .luxdiamond span {
-
-    width: 60px;
-    height: 1px;
-    background: #c9b48a;
+  width: 60px;
+  height: 1px;
+  background: #c9b48a;
 }
 
 .luxdiamond i {
-    width: 8px;
-    height: 8px;
-    border: 1px solid #c9b48a;
-    transform: rotate(45deg);
-    display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #c9b48a;
+  transform: rotate(45deg);
+  display: inline-block;
 }
 
 .cardLink {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #c9a84c;
-    text-decoration: none;
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    transition: gap 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  transition: gap 0.3s ease;
 }
 
 .cardLink:hover {
-    gap: 12px;
+  gap: 12px;
 }
 
 .cardLink svg {
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .cardLink:hover svg {
-    transform: translateX(4px);
+  transform: translateX(4px);
 }
 
-/* Side card label */
 .sideLabel {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: #ffffff;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1.4;
-    padding: 24px;
-
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.4;
+  padding: 24px;
 }
 
-/* ── Nav Buttons ── */
 .navBtn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid rgb(255, 255, 255);
-    background: rgba(255, 255, 255, 0.26);
-    color: #ffffff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.26);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .navBtn:hover {
-    background: rgba(201, 168, 76, 0.2);
-    border-color: #c9a84c;
-    color: #c9a84c;
+  background: rgba(201, 168, 76, 0.2);
+  border-color: #c9a84c;
+  color: #c9a84c;
 }
 
 @media (max-width: 1250px) {
+  .cardright,
+  .cardSide {
+    width: 220px;
+  }
 
-    .cardright,
-    .cardSide {
-        width: 220px;
-    }
-
-    .cardCenter {
-        padding: 0 1.5rem;
-    }
-
+  .cardCenter {
+    padding: 0 1.5rem;
+  }
 }
 
 @media (max-width: 1024px) {
+  .cardright,
+  .cardSide {
+    width: 180px;
+  }
 
-    .cardright,
-    .cardSide {
-        width: 180px;
-    }
-
-    .cardCenter {
-        padding: 0 1rem;
-    }
+  .cardCenter {
+    padding: 0 1rem;
+  }
 }
 
 @media (max-width: 800px) {
+  .cardright,
+  .cardSide {
+    width: 130px;
+    height: 400px;
+  }
 
-    .cardright,
-    .cardSide {
-        width: 130px;
-        height: 400px;
-    }
+  .cardCenter {
+    padding: 0 1rem;
+    height: 420px;
+  }
 
+  .luxsubtitle {
+    letter-spacing: 0.1em;
+    font-size: 21px;
+  }
 
-    .cardCenter {
-        padding: 0 1rem;
-        height: 420px;
+  .luxdiamond span {
+    width: 45px;
+  }
 
-    }
+  .subtitle {
+    max-width: 680px;
+    font-size: 0.9rem;
+  }
 
-    .luxsubtitle {
-        letter-spacing: 0.1em;
-        font-size: 21px;
-    }
+  .cardLabel {
+    font-size: 1.5rem;
+  }
 
-    .luxdiamond span {
-        width: 45px;
-    }
+  .cardDesc {
+    font-size: 0.9rem;
+  }
 
-    .subtitle {
-        max-width: 680px;
-        font-size: 0.9rem;
-    }
+  .track {
+    padding: 0 10px;
+  }
 
-    .cardLabel {
-        font-size: 1.5rem;
-    }
+  .navBtn {
+    width: 35px;
+    height: 35px;
+  }
 
-    .cardDesc {
-        font-size: 0.9rem;
-    }
-
-    .track {
-        padding: 0 10px;
-    }
-
-    .navBtn {
-        width: 35px;
-        height: 35px;
-    }
-
-    .sideLabel {
-        font-size: 0.9rem;
-        padding: 24px 2px;
-
-    }
+  .sideLabel {
+    font-size: 0.9rem;
+    padding: 24px 2px;
+  }
 }
 
 @media (max-width: 650px) {
-    .luxsubtitle {
-        font-size: 19px;
-    }
+  .luxsubtitle {
+    font-size: 19px;
+  }
 
-    .section {
-        padding: 0px 0 80px;
-    }
+  .section {
+    padding: 0px 0 80px;
+  }
 
-    .luxdiamond span {
-        width: 40px;
-    }
+  .luxdiamond span {
+    width: 40px;
+  }
 
-    .title {
-        font-size: clamp(1.3rem, 5vw, 3.5rem);
-    }
+  .title {
+    font-size: clamp(1.3rem, 5vw, 3.5rem);
+  }
 
-    .header {
-        padding: 10px 15px;
-    }
+  .header {
+    padding: 10px 15px;
+  }
 
-    .cardright .navBtn svg {
-        transform: rotate(90deg);
-    }
+  .cardright .navBtn svg {
+    transform: rotate(90deg);
+  }
 
-    .cardSide .navBtn svg {
-        transform: rotate(-270deg);
-    }
+  .cardSide .navBtn svg {
+    transform: rotate(-270deg);
+  }
 
-    .track {
-        display: block;
-        flex-direction: column;
-        gap: 10px;
-        padding: 0 15px;
-        width: 100%;
-        box-sizing: border-box;
-    }
+  .track {
+    display: block;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-    .cardright {
-        order: 1;
-        width: 100%;
-        max-width: 450px;
-        height: 10vh;
-        margin: 0 auto;
-        border: none;
-        border-top: 2px solid rgba(255, 255, 255, 0.2);
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        padding: 0 15px;
-        box-sizing: border-box;
-    }
+  .cardright {
+    order: 1;
+    width: 100%;
+    max-width: 450px;
+    height: 10vh;
+    margin: 0 auto;
+    border: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
 
-    .cardCenter {
-        order: 2;
-        width: 100%;
-        max-width: 450px;
-        height: 55vh;
-        margin: 0 auto;
-        padding: 0;
-        display: block;
-        position: relative;
-    }
+  .cardCenter {
+    order: 2;
+    width: 100%;
+    max-width: 450px;
+    height: 55vh;
+    margin: 0 auto;
+    padding: 0;
+    display: block;
+    position: relative;
+  }
 
-    .imagePlaceholder {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        display: block;
-        overflow: hidden;
-        border-radius: 4px;
-    }
+  .imagePlaceholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
+  }
 
-    .subtitle {
-        font-size: 14px;
-        line-height: 1.2;
-        letter-spacing: 0.1em;
-        padding-top: 2px;
-    }
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    padding-top: 2px;
+  }
 
-    .centerBottom,
-    .centerTop {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        display: block;
-    }
+  .centerBottom,
+  .centerTop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: block;
+  }
 
-    .cardSide {
-        order: 3;
-        width: 100%;
-        max-width: 450px;
-        height: 10vh;
-        margin: 0 auto;
-        border: none;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0 15px;
-        box-sizing: border-box;
-    }
+  .cardSide {
+    order: 3;
+    width: 100%;
+    max-width: 450px;
+    height: 10vh;
+    margin: 0 auto;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
 
-    /* अनचाहे सूडो एलिमेंट्स को हटाना */
-    .cardright::before,
-    .cardSide::before,
-    .cardright::after,
-    .cardSide::after {
-        display: none !important;
-    }
+  .cardright::before,
+  .cardSide::before,
+  .cardright::after,
+  .cardSide::after {
+    display: none !important;
+  }
 
-    .sideLabel {
-        font-size: 0.9rem;
-        font-weight: 600;
-        padding: 0;
-        text-align: left;
-    }
+  .sideLabel {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0;
+    text-align: left;
+  }
 
-    .titleBlock {
-        gap: 10px;
-    }
+  .titleBlock {
+    gap: 10px;
+  }
 
-    /* कंटेंट ओवरले सेटिंग्स */
-    .cardContent {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 40px 20px 20px;
+  .cardContent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 20px 20px;
+    box-sizing: border-box;
+  }
 
-        box-sizing: border-box;
-    }
+  .cardLabel {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    letter-spacing: 0.12em;
+  }
 
-    .cardLabel {
-        font-size: 1.3rem;
-        margin-bottom: 6px;
-        letter-spacing: 0.12em;
-    }
+  .cardDesc {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #e0e0e0;
+  }
 
-    .cardDesc {
-        font-size: 0.85rem;
-        line-height: 1.4;
-        color: #e0e0e0;
-    }
-
-    .navBtn {
-        width: 38px;
-        height: 38px;
-        flex-shrink: 0;
-    }
+  .navBtn {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
 }

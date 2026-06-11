@@ -21,7 +21,6 @@ const cards = [
           r="34"
           fill="url(#eh-glow-a)"
         />
-        {/* pin */}
         <path
           className="eh-line"
           d="M60 18c-12 0-21 9-21 21 0 16 21 38 21 38s21-22 21-38c0-12-9-21-21-21z"
@@ -123,14 +122,12 @@ const cards = [
           r="34"
           fill="url(#eh-glow-c)"
         />
-        {/* sun */}
         <path
           className="eh-line"
           d="M36 66 a24 24 0 0 1 48 0"
           fill="none"
           strokeWidth="2.4"
         />
-        {/* rays */}
         <g className="eh-rays eh-line" strokeWidth="2.2" strokeLinecap="round">
           <line x1="60" y1="22" x2="60" y2="32" />
           <line x1="32" y1="34" x2="38" y2="42" />
@@ -138,7 +135,6 @@ const cards = [
           <line x1="22" y1="58" x2="32" y2="58" />
           <line x1="88" y1="58" x2="98" y2="58" />
         </g>
-        {/* water */}
         <g className="eh-line" fill="none" strokeWidth="1.8">
           <path d="M22 78 q10 -6 20 0 t20 0 t20 0 t16 0" />
           <path d="M22 88 q10 -6 20 0 t20 0 t20 0 t16 0" />
@@ -175,7 +171,7 @@ export default function EleganceHorizons() {
           </div>
         </div>
 
-        <p className="eh-copy">
+        <p className="eh-copy eh-copy-desktop">
           In the heart of Kopar Khairane's most coveted corridor, 23 Malibu West
           is more than a residence — it is a destination of elevated living.
           <br />
@@ -187,6 +183,13 @@ export default function EleganceHorizons() {
           timeless elegance and modern refinement. Here, every sunrise inspires,
           every space rejuvenates, and every moment reflects a life reserved for
           the exceptional.
+        </p>
+
+        <p className="eh-copy eh-copy-mobile">
+          23 Malibu West combines elegant architecture, panoramic views,
+          designer interiors, and curated lifestyle experiences in one iconic
+          address. Spacious decks and skyline vistas create a home designed for
+          refined living every day.
         </p>
       </div>
       <div className="eh-grid" ref={gridRef}>

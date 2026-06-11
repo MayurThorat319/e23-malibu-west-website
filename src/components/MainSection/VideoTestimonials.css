@@ -31,29 +31,23 @@
 .testimonial-heading {
   font-family: "Cronde", serif;
   font-size: 3.2rem;
-  /* Slightly larger to match the visual hierarchy */
   line-height: 1.1;
   font-weight: 400;
-  /* Bumped slightly from 300 to match the image's legibility */
   color: #f5f1eb;
   margin: 0;
   display: flex;
   flex-direction: column;
   font-style: italic;
-  /* <--- This creates the slanted serif look */
   gap: 1rem;
 }
 
 .script-line {
-  /* 'Great Vibes' or 'Alex Brush' closely matches the elegant signature script in your image */
   font-family: "Palisade", serif;
   font-size: 4rem;
-  /* Script fonts usually need a size bump to match serif proportions */
   color: #d8bb72;
   line-height: 0.9;
   margin-left: 0.2rem;
   font-style: normal;
-  /* Prevents the script from over-slanting */
   font-weight: 400;
 }
 
@@ -83,7 +77,6 @@
   padding: 0;
   font-family: "Palisade", serif;
   transition: opacity 0.3s ease;
-
   align-self: center;
 }
 
@@ -93,11 +86,12 @@
 
 .scroll-section {
   position: relative;
-  background-image: linear-gradient(180deg,
-      rgb(158, 228, 255) 0%,
-      rgb(63, 96, 108) 50%,
-      rgb(29, 46, 58) 100%);
-  /* url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2000&q=80");*/
+  background-image: linear-gradient(
+    180deg,
+    rgb(158, 228, 255) 0%,
+    rgb(63, 96, 108) 50%,
+    rgb(29, 46, 58) 100%
+  );
   background-attachment: scroll;
   background-size: auto, cover;
   background-position:
@@ -105,7 +99,6 @@
     center;
   background-repeat: repeat, no-repeat;
   color: var(--ivory);
-  /* font-family: "Inter", system-ui, sans-serif; */
   overflow: hidden;
 }
 
@@ -116,12 +109,12 @@
   left: 0;
   width: 100%;
   height: 150px;
-
-  background: linear-gradient(180deg,
-      #fff8e8 10%,
-      #d7ffff72 40%,
-      transparent 100%);
-
+  background: linear-gradient(
+    180deg,
+    #fff8e8 10%,
+    #d7ffff72 40%,
+    transparent 100%
+  );
   pointer-events: none;
   z-index: 2;
 }
@@ -132,8 +125,6 @@
   z-index: 0;
   overflow: hidden;
   contain: strict;
-
-  /* GPU optimization */
   transform: translateZ(0);
   will-change: transform;
   backface-visibility: hidden;
@@ -142,8 +133,6 @@
 .scroll-section {
   position: relative;
   overflow: hidden;
-
-  /* isolate paint */
   contain: layout paint style;
 }
 
@@ -201,7 +190,6 @@
   position: relative;
   width: 100%;
   max-width: 1300px;
-  /* padding: 0 40px; */
   z-index: 2;
 }
 
@@ -303,14 +291,6 @@
   padding: 0px 0 120px;
   display: flex;
   align-items: center;
-  /* background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(11, 59, 65, 0.18) 70%,
-    rgba(11, 59, 65, 0.45) 82%,
-    rgba(11, 59, 65, 0.75) 92%,
-    #0b3b41 100%
-  ); */
   z-index: 3;
 }
 
@@ -534,7 +514,7 @@
 .video-section,
 .video-review-wrapper {
   will-change: transform, opacity;
-  transform: translate3d(0, 0, 0); /* promote to its own layer */
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }
 
@@ -548,7 +528,6 @@
   align-items: center;
 }
 
-/* Desktop & Tablet: Horizontal Flow */
 .video-review-marquee {
   display: flex;
   flex-direction: row;
@@ -590,11 +569,13 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right,
+    linear-gradient(
+      to right,
       rgb(255, 255, 255) 0%,
       rgba(255, 255, 255, 0.94) 38%,
       rgba(255, 255, 255, 0.574) 60%,
-      rgba(255, 255, 255, 0) 100%),
+      rgba(255, 255, 255, 0) 100%
+    ),
     var(--card-bg);
   background-size: cover;
   background-position: center right;
@@ -613,7 +594,7 @@
   z-index: 1;
 }
 
-.video-review-card>* {
+.video-review-card > * {
   position: relative;
   z-index: 2;
 }
@@ -641,7 +622,6 @@
 
 .video-review-text {
   font-family: "Inter", system-ui, sans-serif;
-  /* Keeps it modern and clean */
   font-size: 1.15rem;
   line-height: 1.7;
   color: rgba(0, 0, 0, 0.95);
@@ -649,7 +629,6 @@
   margin: auto 0;
   font-style: italic;
   font-weight: 500;
-  /* <--- Adds that slight medium boldness seen in the image */
   flex: 1;
   display: flex;
   align-items: center;
@@ -701,16 +680,6 @@
   }
 }
 
-@keyframes reviewMarqueeVertical {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(-50%);
-  }
-}
-
 @media (max-width: 1024px) {
   .video-container {
     padding: 0 24px;
@@ -736,7 +705,6 @@
 }
 
 @media (max-width: 767px) {
-
   .testimonial-description,
   .testimonial-btn {
     display: none;
@@ -745,14 +713,12 @@
   .testimonial-heading {
     font-size: 2.4rem;
     align-items: center;
-    /* Centers the script line within the flex column */
   }
 
   .script-line {
     font-size: 2.8rem;
   }
 
-  /* Keep the main section strictly constrained to the viewport */
   .video-section {
     flex-direction: column;
     justify-content: flex-start;
@@ -761,14 +727,12 @@
     padding-left: 0px;
   }
 
-  /* The blue container background stays locked at exactly 45% height */
   .video-bg-div {
     width: 100%;
     height: 35%;
     inset: 0 auto auto 0;
   }
 
-  /* Text layout grid */
   .video-grid {
     grid-template-columns: 1fr;
   }
@@ -794,9 +758,7 @@
     width: 100%;
     position: absolute;
     left: 0;
-
     top: 35%;
-
     bottom: 0;
     height: auto;
     padding: 0 0 20px 0;
@@ -845,7 +807,6 @@
     line-height: 1.7;
   }
 
-  /* Expanded text width to match the mockup */
   .video-review-text {
     font-size: 1rem;
     line-height: 1.6;
@@ -884,7 +845,6 @@
     padding: 20px;
   }
 
-  /* Keeps the text highly visible on small screens */
   .video-review-text {
     max-width: 90%;
     font-size: 0.95rem;
@@ -924,7 +884,6 @@
     line-height: 1.55;
     max-width: 100%;
     margin-top: 1.4rem;
-
     overflow-wrap: break-word;
     word-break: normal;
   }
@@ -955,12 +914,8 @@
   }
 }
 
-/* ===============================
-   Large Screens / 1600px Responsive
-================================= */
 @media (min-width: 2300px) {
   .video-section {
-    /* max-width: 1600px; */
     margin: 0 auto;
     overflow: hidden;
   }

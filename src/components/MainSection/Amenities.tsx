@@ -33,12 +33,6 @@ const ChevronRight = () => (
         <polyline points="9 18 15 12 9 6" />
     </svg>
 );
-// const ArrowRight = () => (
-//     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//         <line x1="5" y1="12" x2="19" y2="12" />
-//         <polyline points="12 5 19 12 12 19" />
-//     </svg>
-// );
 
 export default function Amenities() {
     const [active, setActive] = useState(0);
@@ -54,7 +48,6 @@ export default function Amenities() {
 
         const newImage = amenitiesData[nextIdx].image;
 
-        // 1. Load new image on top layer (hidden)
         setTopImg(newImage);
         setTopVisible(false);
 
@@ -81,7 +74,6 @@ export default function Amenities() {
         changeSlide(nextIdx);
     }, [active, changeSlide]);
 
-    // Auto-play
     useEffect(() => {
         const interval = setInterval(() => {
             const nextIdx = (active + 1) % amenitiesData.length;
@@ -109,7 +101,6 @@ export default function Amenities() {
                 style={{ backgroundImage: `url(${topImg})` }}
             />
 
-            {/* ── Header ── */}
             <div className={styles.header}>
                 <div className={styles.luxsubtitle}>Amenities</div>
                 <div className={styles.luxdiamond}><span></span><i></i><span></span></div>
@@ -149,10 +140,7 @@ export default function Amenities() {
                                 {char === " " ? "\u00A0" : char}
                             </motion.span>
                         ))}
-
                         <br />
-
-
                     </motion.h2>
                 </div>
 
@@ -173,7 +161,6 @@ export default function Amenities() {
 
             <div className={styles.carouselWrapper}>
                 <div className={styles.track}>
-                    {/* LEFT SIDE */}
                     <div className={`${styles.card} ${styles.cardright}`}>
                         <button
                             className={styles.navBtn}
@@ -186,7 +173,6 @@ export default function Amenities() {
                             <motion.p
                                 key={prevSlide.title}
                                 className={styles.sideLabel}
-                                // Desktop pe side se aayega, mobile pe niche se upar!
                                 initial={{ opacity: 0, x: window.innerWidth > 650 ? -40 : 0, y: window.innerWidth <= 650 ? 20 : 0 }}
                                 animate={{ opacity: 1, x: 0, y: 0 }}
                                 exit={{ opacity: 0, x: window.innerWidth > 650 ? 40 : 0, y: window.innerWidth <= 650 ? -20 : 0 }}
@@ -220,43 +206,15 @@ export default function Amenities() {
                                         <p className={styles.cardLabel}>
                                             {centerSlide.title}
                                         </p>
-
                                         <p className={styles.cardDesc}>
                                             {centerSlide.description}
                                         </p>
-
-
                                     </motion.div>
                                 </AnimatePresence>
                             </div>
                         </div>
-
-                        {/* <div className={styles.cardContent}>
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={centerSlide.id}
-                                    initial={{ opacity: 0, y: 50 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -30 }}
-                                    transition={{ duration: 0.6, ease: "easeInOut" }}
-                                >
-                                    <p className={styles.cardLabel}>
-                                        {centerSlide.title}
-                                    </p>
-
-                                    <p className={styles.cardDesc}>
-                                        {centerSlide.description}
-                                    </p>
-
-                                    <button className={styles.cardLink}>
-                                        MORE <ArrowRight />
-                                    </button>
-                                </motion.div>
-                            </AnimatePresence>
-                        </div> */}
                     </div>
 
-                    {/* RIGHT SIDE */}
                     <div className={`${styles.card} ${styles.cardSide}`}>
                         <button
                             className={styles.navBtn}
