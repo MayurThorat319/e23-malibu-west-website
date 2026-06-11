@@ -300,6 +300,11 @@
   .gallery-item:hover .gallery-item-image {
     transform: none;
   }
+
+  .gallery-item {
+      width: clamp(280px, vw, 400px);
+
+  }
 }
 
 @media (min-width: 1600px) {
