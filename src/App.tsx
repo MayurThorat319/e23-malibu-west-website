@@ -76,12 +76,15 @@ function App() {
           </div>
         </Suspense>
         <Suspense fallback={<div />}>
-          <VideoTestimonials />
+          <div className="section-video">
+            <VideoTestimonials />
+          </div>
+
         </Suspense>
       </Layout>
     </>
   );
 }
-//
+
 
 export default App;
