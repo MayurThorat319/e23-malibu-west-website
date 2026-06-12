@@ -4,12 +4,24 @@ import { motion } from "framer-motion";
 
 type Tile = {
   url: string;
-  x: number;
-  y: number;
-  w: number;
-  h: number;
+  x: number;      
+  y: number;       
+  w: number;      
+  h: number;       
   delay: number;
   maxOpacity: number;
+
+  hideOnMobile?: boolean;
+  mobileX?: number;
+  mobileY?: number;
+  mobileW?: number;
+  mobileH?: number;
+
+  hideOnTablet?: boolean;
+  tabletX?: number;
+  tabletY?: number;
+  tabletW?: number;
+  tabletH?: number;
 };
 
 const IMG = (id: string, w = 600, h = 700) =>
@@ -18,301 +30,224 @@ const IMG = (id: string, w = 600, h = 700) =>
 const TILES: Tile[] = [
   {
     url: IMG("1582719478250-c89cae4dc85b"),
-    x: -23,
-    y: -38,
-    w: 11,
-    h: 30,
-    delay: 0.0,
-    maxOpacity: 0.8,
+    x: -23, y: -38, w: 11, h: 30, delay: 0.0, maxOpacity: 0.8,
+    mobileX: -25, mobileY: -35, mobileW: 40, mobileH: 25,
+    tabletX: -24, tabletY: -36, tabletW: 18, tabletH: 25
   },
   {
     url: IMG("1600585154340-be6161a56a0c"),
-    x: 22,
-    y: -30,
-    w: 15,
-    h: 40,
-    delay: 0.05,
-    maxOpacity: 0.7,
+    x: 22, y: -30, w: 15, h: 40, delay: 0.05, maxOpacity: 0.7,
+    mobileX: 25, mobileY: -30, mobileW: 40, mobileH: 25,
+    tabletX: 24, tabletY: -28, tabletW: 19, tabletH: 30
   },
   {
     url: IMG("1545324418-cc1a3fa10c00"),
-    x: -41,
-    y: -2,
-    w: 15,
-    h: 40,
-    delay: 0.1,
-    maxOpacity: 0.9,
+    x: -41, y: -2, w: 15, h: 40, delay: 0.1, maxOpacity: 0.9,
+    hideOnMobile: true,
+    tabletX: -38, tabletY: -2, tabletW: 20, tabletH: 30
   },
   {
     url: IMG("1600607687939-ce8a6c25118c"),
-    x: 43,
-    y: -15,
-    w: 11,
-    h: 30,
-    delay: 0.12,
-    maxOpacity: 0.3,
+    x: 43, y: -15, w: 11, h: 30, delay: 0.12, maxOpacity: 0.3,
+    hideOnMobile: true,
+    tabletX: 35, tabletY: 10, tabletW: 22, tabletH: 30
   },
   {
     url: IMG("1512917774080-9991f1c4c750"),
-    x: -1,
-    y: 1,
-    w: 15,
-    h: 40,
-    delay: 0.18,
-    maxOpacity: 0.2,
+    x: -1, y: 1, w: 15, h: 40, delay: 0.18, maxOpacity: 0.2,
+    mobileX: -1, mobileY: 1, mobileW: 40, mobileH: 25,
+    tabletX: -1, tabletY: 1, tabletW: 22, tabletH: 30
   },
   {
     url: IMG("1564013799919-ab600027ffc6"),
-    x: -20,
-    y: 30,
-    w: 11,
-    h: 30,
-    delay: 0.25,
-    maxOpacity: 0.5,
+    x: -20, y: 30, w: 11, h: 30, delay: 0.25, maxOpacity: 0.5,
+    mobileX: -28, mobileY: 28, mobileW: 40, mobileH: 25,
+    tabletX: -22, tabletY: 30, tabletW: 18, tabletH: 25
   },
   {
     url: IMG("1600585154526-990dced4db0d"),
-    x: 24,
-    y: 30,
-    w: 11,
-    h: 30,
-    delay: 0.28,
-    maxOpacity: 1.0,
+    x: 24, y: 30, w: 11, h: 30, delay: 0.28, maxOpacity: 1.0,
+    mobileX: 24, mobileY: 35, mobileW: 40, mobileH: 25,
+    tabletX: 12, tabletY: 35, tabletW: 18, tabletH: 25
   },
   {
     url: IMG("1600210492486-724fe5c67fb0"),
-    x: -35,
-    y: 45,
-    w: 14,
-    h: 35,
-    delay: 0.32,
-    maxOpacity: 0.9,
+    x: -35, y: 45, w: 14, h: 35, delay: 0.32, maxOpacity: 0.9,
+    hideOnMobile: true,
+    hideOnTablet: true
   },
   {
     url: IMG("1600566753376-12c8ab7fb75b"),
-    x: 38,
-    y: 42,
-    w: 12,
-    h: 32,
-    delay: 0.35,
-    maxOpacity: 0.7,
+    x: 38, y: 42, w: 12, h: 32, delay: 0.35, maxOpacity: 0.7,
+    hideOnMobile: true,
+    hideOnTablet: true
   },
 ];
 
 const CITY_VIDEO = "/videos/Malibu_Hero.mp4";
-
-function easeOut(t: number) {
-  return 1 - Math.pow(1 - t, 3);
-}
-
-function easeOutQuart(t: number) {
-  return 1 - Math.pow(1 - t, 4);
-}
-
-function clamp(v: number, a = 0, b = 1) {
-  return Math.max(a, Math.min(b, v));
-}
+function easeOut(t: number) { return 1 - Math.pow(1 - t, 3); }
 
 export function ScrollReveal() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [p, setP] = useState(0);
+  const [screenSize, setScreenSize] = useState({ isMobile: false, isTablet: false });
 
   useEffect(() => {
     let raf = 0;
+    const handleResizeAndScroll = () => {
+      const width = window.innerWidth;
+      setScreenSize({
+        isMobile: width < 768,
+        isTablet: width >= 768 && width < 1024, 
+      });
+
+      const el = wrapRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const total = el.offsetHeight - vh;
+      const scrolled = Math.max(0, Math.min(1, -rect.top / total));
+      setP(scrolled);
+    };
+
     const onScroll = () => {
       if (raf) return;
       raf = requestAnimationFrame(() => {
         raf = 0;
-        const el = wrapRef.current;
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const vh = window.innerHeight;
-        const total = el.offsetHeight - vh;
-        const scrolled = clamp(-rect.top / total, 0, 1);
-        setP(scrolled);
+        handleResizeAndScroll();
       });
     };
-    onScroll();
+
+    handleResizeAndScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", handleResizeAndScroll);
+
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", handleResizeAndScroll);
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
     if (p > 0.32 && p <= 0.6) {
-      if (video.paused) {
-        video.play().catch((err) => console.log("Autoplay check:", err));
-      }
+      if (video.paused) video.play().catch((err) => console.log("Autoplay:", err));
     } else {
-      if (!video.paused) {
-        video.pause();
-      }
+      if (!video.paused) video.pause();
     }
   }, [p]);
 
-  const phase1 = clamp(p / 0.2);
-  const continuousScrollProgress = clamp((p - 0.2) / 0.8);
+  const phase1 = Math.max(0, Math.min(1, p / 0.2));
+  const continuousScrollProgress = Math.max(0, Math.min(1, (p - 0.2) / 0.8));
   const continuousScrollY = continuousScrollProgress * -60;
 
-  const cityMoveUpProgress = clamp((p - 0.2) / 0.12);
+  const cityMoveUpProgress = Math.max(0, Math.min(1, (p - 0.2) / 0.12));
   const cityMoveUpEase = easeOut(cityMoveUpProgress);
 
   const bottomY = p < 0.2 ? 150 : 75;
-  const midwayY = 25;
+  const midwayY = screenSize.isMobile ? 30 : screenSize.isTablet ? 28 : 25;
   const currentInitialY = bottomY + (midwayY - bottomY) * cityMoveUpEase;
 
-  const cityGrowProgress = clamp((p - 0.32) / 0.13);
+  const cityGrowProgress = Math.max(0, Math.min(1, (p - 0.32) / 0.13));
   const cityGrowEase = easeOut(cityGrowProgress);
 
   const expandY = currentInitialY + (0 - midwayY) * cityGrowEase;
 
-  const cityShrinkProgress = clamp((p - 0.6) / 0.4);
-  const cityShrinkEase = easeOutQuart(cityShrinkProgress);
+  const cityShrinkProgress = Math.max(0, Math.min(1, (p - 0.6) / 0.4));
+  const cityShrinkEase = (1 - Math.pow(1 - cityShrinkProgress, 4));
 
-  const cityStartW = 32;
-  const cityStartH = 40;
+  const cityStartW = screenSize.isMobile ? 65 : screenSize.isTablet ? 45 : 32;
+  const cityStartH = screenSize.isMobile ? 35 : screenSize.isTablet ? 38 : 40;
   const cityEndW = 100;
   const cityEndH = 100;
 
   let cityW = cityStartW + (cityEndW - cityStartW) * cityGrowEase;
   let cityH = cityStartH + (cityEndH - cityStartH) * cityGrowEase;
-  let cityRadius = 18 * (1 - cityGrowEase);
+  let cityRadius = 12 * (1 - cityGrowEase);
   let cityY = expandY;
 
   if (p > 0.6) {
     cityW = cityEndW - (cityEndW - cityStartW) * cityShrinkEase;
     cityH = cityEndH - (cityEndH - cityStartH) * cityShrinkEase;
-    cityRadius = 18 * cityShrinkEase;
+    cityRadius = 12 * cityShrinkEase;
   }
 
   return (
     <div ref={wrapRef} className={styles.wrapper}>
-      <img
-        src="/images/bgdesignTop.png"
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className={styles.scrollIndicator}
-      />
-
-      <img
-        src="/images/bgdesign.png"
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className={styles.scrollIndiTwo}
-      />
-
+      <img src="/images/bgdesignTop.png" alt="" className={styles.scrollIndicator} />
+      <img src="/images/bgdesign.png" alt="" className={styles.scrollIndiTwo} />
       <div className={styles.sticky}>
         {TILES.map((t, i) => {
-          const local = clamp((phase1 - t.delay) / (1 - t.delay));
+          if (screenSize.isMobile && t.hideOnMobile) return null;
+
+          if (screenSize.isTablet && t.hideOnTablet) return null;
+
+          let currentX = t.x;
+          let currentY = t.y;
+          let currentW = t.w;
+          let currentH = t.h;
+
+          if (screenSize.isMobile) {
+            currentX = t.mobileX !== undefined ? t.mobileX : t.x;
+            currentY = t.mobileY !== undefined ? t.mobileY : t.y;
+            currentW = t.mobileW !== undefined ? t.mobileW : t.w;
+            currentH = t.mobileH !== undefined ? t.mobileH : t.h;
+          } else if (screenSize.isTablet) {
+            currentX = t.tabletX !== undefined ? t.tabletX : t.x;
+            currentY = t.tabletY !== undefined ? t.tabletY : t.y;
+            currentW = t.tabletW !== undefined ? t.tabletW : t.w;
+            currentH = t.tabletH !== undefined ? t.tabletH : t.h;
+          }
+
+          const local = Math.max(0, Math.min(1, (phase1 - t.delay) / (1 - t.delay)));
           const e = easeOut(local);
           const tileStartY = 60;
-          const ty = tileStartY + (t.y - tileStartY) * e + continuousScrollY;
+          const ty = tileStartY + (currentY - tileStartY) * e + continuousScrollY;
 
           return (
             <div
               key={i}
               className={styles.img}
               style={{
-                width: `${t.w}vw`,
-                height: `${t.h}vh`,
-                left: `calc(50% + ${t.x}vw)`,
+                width: `${currentW}vw`,
+                height: `${currentH}vh`,
+                left: `calc(50% + ${currentX}vw)`,
                 top: `calc(50% + ${ty}vh)`,
                 transform: `translate(-50%, -50%)`,
                 opacity: local * t.maxOpacity,
               }}
             >
-              <img src={t.url} alt="" loading="lazy" decoding="async" />
+              <img src={t.url} alt="" loading="lazy" />
             </div>
           );
         })}
 
         <div className={styles.center}>
-          <motion.h2
-            className={styles.heading}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.06,
-                },
-              },
-            }}
-          >
-            {" Some Views are seen.".split("").map((char, index) => (
-              <motion.span
-                key={index}
-                variants={{
-                  hidden: {
-                    opacity: 0,
-                    y: 40,
-                  },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                  },
-                }}
-                transition={{
-                  duration: 0.5,
-                  ease: "easeOut",
-                }}
-                style={{ display: "inline-block" }}
-              >
+          <motion.h2 className={styles.heading}>
+            {"Some Views are seen.".split("").map((char, index) => (
+              <motion.span key={index} style={{ display: "inline-block" }}>
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
-
             <br />
             {"Others are lived.".split("").map((char, index) => (
-              <motion.span
-                key={index}
-                variants={{
-                  hidden: {
-                    opacity: 0,
-                    y: 40,
-                  },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                  },
-                }}
-                transition={{
-                  duration: 0.5,
-                  ease: "easeOut",
-                }}
-                style={{ display: "inline-block" }}
-              >
+              <motion.span key={index} style={{ display: "inline-block" }}>
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
           </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.4 }}
-            transition={{
-              duration: 1,
-              ease: "easeOut",
-              delay: 0.4,
-            }}
-          >
+
+          <div>
             <div className={styles.luxdiamond}>
               <span></span>✦<span></span>
             </div>
             <p className={styles.subheading}>
               Life Unfolds differently from here.
             </p>
-          </motion.div>
+          </div>
         </div>
 
         <div
@@ -334,12 +269,7 @@ export function ScrollReveal() {
             loop
             muted
             playsInline
-            preload="none"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </div>
       </div>
