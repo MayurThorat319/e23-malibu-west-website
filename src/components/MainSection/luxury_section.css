@@ -77,7 +77,7 @@
 
 .lux-subtitle {
   text-align: center;
-  font-family: "Jura", sans-serif;
+  font-family: "Cronde", serif;
   letter-spacing: 0.2em;
   color: var(--lux-muted);
   font-size: clamp(11px, 1.1vw, 13px);
