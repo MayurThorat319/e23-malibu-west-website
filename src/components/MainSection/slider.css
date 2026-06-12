@@ -45,6 +45,7 @@ video {
   letter-spacing: 4px;
   text-transform: uppercase;
   margin-bottom: 16px;
+  font-family: "Cinzel";
 }
 
 .slider-main-title {
@@ -73,7 +74,7 @@ video {
   font-size: 1.3rem;
   line-height: 1.5;
   max-width: 510px;
-  font-family: "Inter", sans-serif;
+  font-family: "Cinzel";
 }
 
 .slider-header-right {
@@ -275,6 +276,7 @@ video {
     opacity: 0.6;
   }
 }
+
 @media (max-width: 480px) {
   .corner-leaf {
     width: 140px;
@@ -303,15 +305,19 @@ video {
   0% {
     transform: rotate(-0.6deg) translate(0, 0);
   }
+
   25% {
     transform: rotate(0.4deg) translate(4px, 2px);
   }
+
   50% {
     transform: rotate(0.8deg) translate(6px, 3px);
   }
+
   75% {
     transform: rotate(-0.3deg) translate(-3px, 2px);
   }
+
   100% {
     transform: rotate(-0.6deg) translate(0, 0);
   }
@@ -555,12 +561,10 @@ video {
   font-size: 10px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.96);
-  background: linear-gradient(
-    180deg,
-    rgba(126, 104, 5, 0.96) 0%,
-    rgba(45, 114, 133, 0.95) 48%,
-    rgba(2, 21, 27, 0.96) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(126, 104, 5, 0.96) 0%,
+      rgba(45, 114, 133, 0.95) 48%,
+      rgba(2, 21, 27, 0.96) 100%);
   backdrop-filter: blur(12px);
   border-radius: 10px 0 0 10px;
   border-right: 2px solid rgba(255, 255, 255, 0.35);
@@ -593,12 +597,10 @@ video {
   width: 58px;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    rgba(214, 179, 122, 0),
-    #d6b37a,
-    rgba(214, 179, 122, 0)
-  );
+  background: linear-gradient(90deg,
+      rgba(214, 179, 122, 0),
+      #d6b37a,
+      rgba(214, 179, 122, 0));
   box-shadow: 0 0 12px rgba(214, 179, 122, 0.4);
 }
 
@@ -668,13 +670,11 @@ video {
 .detail-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(12, 33, 64, 0.96) 0%,
-    rgba(17, 78, 93, 0.84) 38%,
-    rgba(17, 78, 93, 0.18) 72%,
-    rgba(17, 78, 93, 0.05) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(12, 33, 64, 0.96) 0%,
+      rgba(17, 78, 93, 0.84) 38%,
+      rgba(17, 78, 93, 0.18) 72%,
+      rgba(17, 78, 93, 0.05) 100%);
   backdrop-filter: blur(1px);
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -985,12 +985,10 @@ video {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 20%,
-    rgba(255, 255, 255, 0.45) 50%,
-    transparent 80%
-  );
+  background: linear-gradient(120deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 80%);
   transform: translateX(-120%);
   transition: transform 0.8s ease;
 }
@@ -1041,11 +1039,9 @@ video {
   inset: 0;
   padding: 1px;
   border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 226, 160, 0.8),
-    rgba(185, 133, 32, 0.5)
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 226, 160, 0.8),
+      rgba(185, 133, 32, 0.5));
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);

@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 
 type Tile = {
   url: string;
-  x: number;      
-  y: number;       
-  w: number;      
-  h: number;       
+  x: number;
+  y: number;
+  w: number;
+  h: number;
   delay: number;
   maxOpacity: number;
 
@@ -99,7 +99,7 @@ export function ScrollReveal() {
       const width = window.innerWidth;
       setScreenSize({
         isMobile: width < 768,
-        isTablet: width >= 768 && width < 1024, 
+        isTablet: width >= 768 && width < 1024,
       });
 
       const el = wrapRef.current;
@@ -173,6 +173,8 @@ export function ScrollReveal() {
     cityW = cityEndW - (cityEndW - cityStartW) * cityShrinkEase;
     cityH = cityEndH - (cityEndH - cityStartH) * cityShrinkEase;
     cityRadius = 12 * cityShrinkEase;
+    cityY = expandY + (continuousScrollProgress * 20) * cityShrinkEase;
+
   }
 
   return (
