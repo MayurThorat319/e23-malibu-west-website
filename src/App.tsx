@@ -9,8 +9,8 @@ const VideoTestimonials = lazy(
   () => import("./components/MainSection/VideoTestimonials"),
 );
 import { lazy, Suspense, useEffect, useState } from "react";
-const EleganceHorizons = lazy(
-  () => import("./components/MainSection/EleganceHorizons"),
+const LuxurySection = lazy(
+  () => import("./components/MainSection/luxury_section"),
 );
 const ScrollReveal = lazy(
   () => import("./components/MainSection/ScrollReveal"),
@@ -59,15 +59,15 @@ function App() {
           <ScrollReveal />
         </Suspense>
         <Suspense fallback={<div />}>
-          <div className="section-Eleganc">
-            <EleganceHorizons />
-          </div>
+          {/* <div className="section-Eleganc"> */}
+            <LuxurySection />
+          {/* </div> */}
         </Suspense>
 
         <Suspense fallback={<div />}>
-          <div className="section-Amenities">
+          {/* <div className="section-Amenities"> */}
             <Amenities />
-          </div>
+          {/* </div> */}
         </Suspense>
         {/* <PerfectMove /> */}
         <Suspense fallback={<div />}>
