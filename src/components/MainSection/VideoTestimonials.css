@@ -183,7 +183,7 @@
   position: absolute;
   inset: 0 auto 0 0;
   width: 40%;
-  background: #192947;
+  background: #05333faf;
 }
 
 .video-container {
@@ -771,6 +771,16 @@
     height: max-content;
     animation: reviewMarqueeVertical 28s linear infinite;
   }
+
+  @keyframes reviewMarqueeVertical {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50%);
+  }
+}
 
   .video-review-slide {
     width: 100%;

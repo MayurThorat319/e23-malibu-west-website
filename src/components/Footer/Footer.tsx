@@ -3,6 +3,7 @@
 import Reveal from "./Reveal";
 import { StaggerContainer, StaggerItem } from "./Stagger";
 import styles from "./Footer.module.css";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 
 interface FooterColumn {
   title: string;
@@ -134,43 +135,47 @@ export default function Footer() {
                   </a>
                 </p>
 
-                <div className={styles.social}>
-                  <a
-                    href="https://www.facebook.com/evgindia"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                  >
-                    fb
-                  </a>
+              <div className={styles.socialWrapper}>
+  <div className={styles.socialGlass}></div>
 
-                  <a
-                    href="https://www.instagram.com/evhomesofficial"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                  >
-                    ig
-                  </a>
+  <div className={styles.socialIcons}>
+    <a
+      href="https://www.facebook.com/evgindia"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${styles.socialIcon} ${styles.facebook}`}
+    >
+      <FaFacebookF />
+    </a>
 
-                  <a
-                    href="https://www.linkedin.com/company/ev-homes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                  >
-                    in
-                  </a>
+    <a
+      href="https://www.instagram.com/evhomesofficial"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${styles.socialIcon} ${styles.instagram}`}
+    >
+      <FaInstagram />
+    </a>
 
-                  <a
-                    href="https://www.youtube.com/@evhomes3892"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="YouTube"
-                  >
-                    yt
-                  </a>
-                </div>
+    <a
+      href="https://www.linkedin.com/company/ev-homes"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${styles.socialIcon} ${styles.linkedin}`}
+    >
+      <FaLinkedinIn />
+    </a>
+
+    <a
+      href="https://www.youtube.com/@evhomes3892"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${styles.socialIcon} ${styles.youtube}`}
+    >
+      <FaYoutube />
+    </a>
+  </div>
+</div>
               </div>
             </StaggerItem>
 

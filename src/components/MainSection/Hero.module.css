@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap"); */
 
 .hero {
   position: relative;
@@ -60,7 +60,7 @@
   border: 1px solid #ffdaa41f;
   background-image: radial-gradient(
     circle farthest-corner at 50% 50%,
-    x#ffffff0d,
+    #ffffff0d,
     #fff3
   );
   box-shadow: 0 4px 16px 0 #ffeed61f;
