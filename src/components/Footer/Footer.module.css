@@ -2,10 +2,11 @@
   position: relative;
   margin-top: -160px;
   padding: 12rem 0 2rem;
+  /* Updated to use fully opaque solid colors */
   background: linear-gradient(
     to bottom,
-    rgba(29, 46, 58, 0) 0%,
-    rgba(29, 46, 58, 0.45) 12%,
+    rgb(29, 46, 58) 0%,
+    rgb(29, 46, 58) 12%,
     rgb(22, 55, 66) 28%,
     rgb(16, 67, 73) 45%,
     #0b3b41 65%,
@@ -14,6 +15,102 @@
   border-top: none;
   z-index: 10;
 }
+
+.socialWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.socialGlass {
+  position: absolute;
+  inset: 0;
+
+  border-radius: 24px;
+}
+
+.socialIcons {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  /* padding: 10px; */
+}
+
+.socialIcon {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.socialIcon {
+  clip-path: path("M 28 0 C 8 0 0 8 0 28 L 0 72 C 0 92 8 100 28 100 L 72 100 C 92 100 100 92 100 72 L 100 28 C 100 8 92 0 72 0 Z");
+}
+
+.socialIcon svg {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.socialIcon::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0)
+  );
+
+  z-index: 1;
+}
+
+.facebook {
+  background: linear-gradient(135deg, #1877f2, #0d5bd8);
+
+  border: 1px solid rgba(24, 119, 242, 0.4);
+}
+
+.instagram {
+  background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+
+  border: 1px solid rgba(221, 42, 123, 0.4);
+}
+
+.linkedin {
+  background: linear-gradient(135deg, #0a66c2, #004182);
+
+  border: 1px solid rgba(10, 102, 194, 0.4);
+}
+
+.youtube {
+  background: linear-gradient(135deg, #ff0000, #b30000);
+
+  border: 1px solid rgba(255, 0, 0, 0.4);
+}
+
 .waveTop {
   position: absolute;
   top: 0;
@@ -211,6 +308,14 @@
 }
 
 @media (max-width: 500px) {
+  .waveTop {
+    top: 0;
+    transform: translateY(-20%);
+  }
+
+  .waveTop svg {
+    transform: scaleY(-1);
+  }
   .footer {
     margin-top: -60px;
     padding-top: 5rem;

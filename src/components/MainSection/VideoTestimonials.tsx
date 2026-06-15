@@ -3,6 +3,7 @@ import "./VideoTestimonials.css";
 import YouTube from "./youtube";
 import LiquidEther from "./LiquidEther";
 import AboutEVHomes from "../Aboutev/Aboutev";
+import { Warp } from "@paper-design/shaders-react";
 
 const videoReviews = [
   {
@@ -48,6 +49,15 @@ export default function VideoTestimonials() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const onChange = () => setIsMobile(mq.matches);
+    onChange();
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     let rafId = 0;
@@ -69,7 +79,6 @@ export default function VideoTestimonials() {
       const sectionOpacity =
         progress > 0.7 ? Math.max(0, 1 - (progress - 0.7) / 0.3) : 1;
 
-      // batch writes
       section.style.transform = `translate3d(${x}vw, ${y}vh, 0)`;
       section.style.opacity = `${sectionOpacity}`;
 
@@ -107,20 +116,40 @@ export default function VideoTestimonials() {
   return (
     <section className="scroll-section" id="feedback">
       <div className="liquid-bg">
-        <LiquidEther
-          mouseForce={8}
-          iterationsViscous={4}
-          iterationsPoisson={8}
-          cursorSize={120}
-          resolution={0.18}
-          autoDemo={true}
-          autoSpeed={0.2}
-          autoIntensity={1.8}
-          takeoverDuration={0.15}
-          autoResumeDelay={3000}
-          autoRampDuration={0.3}
-          colors={["#0b6669", "#239dad", "#27a8cf", "#00d0df"]}
-        />
+        {isMobile ? (
+          <Warp
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+            }}
+            colors={["#8de7e7", "#2C6A74", "#5DA9B0", "#99d6d3"]}
+            proportion={0.55}
+            softness={0.9}
+            distortion={0.15}
+            swirl={0.75}
+            swirlIterations={7}
+            shape="checks"
+            shapeScale={0.2}
+            speed={0.9}
+          />
+        ) : (
+          <LiquidEther
+            mouseForce={8}
+            iterationsViscous={4}
+            iterationsPoisson={8}
+            cursorSize={120}
+            resolution={0.18}
+            autoDemo={true}
+            autoSpeed={0.2}
+            autoIntensity={1.8}
+            takeoverDuration={0.15}
+            autoResumeDelay={3000}
+            autoRampDuration={0.3}
+            colors={["#0b6669", "#239dad", "#27a8cf", "#00d0df"]}
+          />
+        )}
       </div>
       <AboutEVHomes />
       <div className="scroll-wrap" ref={wrapRef}>
