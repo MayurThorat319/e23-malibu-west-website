@@ -31,13 +31,13 @@ const TILES: Tile[] = [
   {
     url: IMG("1582719478250-c89cae4dc85b"),
     x: -23, y: -38, w: 11, h: 30, delay: 0.0, maxOpacity: 0.8,
-    mobileX: -25, mobileY: -35, mobileW: 40, mobileH: 25,
+    mobileX: -25, mobileY: -55, mobileW: 40, mobileH: 35,
     tabletX: -24, tabletY: -36, tabletW: 18, tabletH: 25
   },
   {
     url: IMG("1600585154340-be6161a56a0c"),
     x: 22, y: -30, w: 15, h: 40, delay: 0.05, maxOpacity: 0.7,
-    mobileX: 25, mobileY: -30, mobileW: 40, mobileH: 25,
+    mobileX: 25, mobileY: -45, mobileW: 40, mobileH: 35,
     tabletX: 24, tabletY: -28, tabletW: 19, tabletH: 30
   },
   {
@@ -55,19 +55,19 @@ const TILES: Tile[] = [
   {
     url: IMG("1512917774080-9991f1c4c750"),
     x: -1, y: 1, w: 15, h: 40, delay: 0.18, maxOpacity: 0.2,
-    mobileX: -1, mobileY: 1, mobileW: 40, mobileH: 25,
+    mobileX: -1, mobileY: -8, mobileW: 40, mobileH: 35,
     tabletX: -1, tabletY: 1, tabletW: 22, tabletH: 30
   },
   {
     url: IMG("1564013799919-ab600027ffc6"),
     x: -20, y: 30, w: 11, h: 30, delay: 0.25, maxOpacity: 0.5,
-    mobileX: -28, mobileY: 28, mobileW: 40, mobileH: 25,
+    mobileX: -28, mobileY: 30, mobileW: 40, mobileH: 35,
     tabletX: -22, tabletY: 30, tabletW: 18, tabletH: 25
   },
   {
     url: IMG("1600585154526-990dced4db0d"),
     x: 24, y: 30, w: 11, h: 30, delay: 0.28, maxOpacity: 1.0,
-    mobileX: 24, mobileY: 35, mobileW: 40, mobileH: 25,
+    mobileX: 24, mobileY: 40, mobileW: 40, mobileH: 35,
     tabletX: 12, tabletY: 35, tabletW: 18, tabletH: 25
   },
   {
@@ -98,8 +98,8 @@ export function ScrollReveal() {
     const handleResizeAndScroll = () => {
       const width = window.innerWidth;
       setScreenSize({
-        isMobile: width < 768,
-        isTablet: width >= 768 && width < 1024,
+        isMobile: width < 500,
+        isTablet: width >= 500 && width < 1024,
       });
 
       const el = wrapRef.current;
