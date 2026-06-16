@@ -2,7 +2,20 @@
   position: relative;
   margin-top: -160px;
   padding: 12rem 0 2rem;
-  /* Updated to use fully opaque solid colors */
+  /* background: linear-gradient(
+    to bottom,
+    rgb(29, 46, 58) 0%,
+    rgb(29, 46, 58) 12%,
+    rgb(22, 55, 66) 28%,
+    rgb(16, 67, 73) 45%,
+    #0b3b41 65%,
+    #285260 100%
+  ); */
+  border-top: none;
+  z-index: 10;
+}
+
+.desktopGradient {
   background: linear-gradient(
     to bottom,
     rgb(29, 46, 58) 0%,
@@ -12,13 +25,65 @@
     #0b3b41 65%,
     #285260 100%
   );
-  border-top: none;
-  z-index: 10;
 }
 
 .socialWrapper {
   position: relative;
   display: inline-block;
+}
+
+.footerMap {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  height: 100px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(11, 119, 152, 0.4);
+  box-shadow: 0 0 12px rgba(11, 119, 152, 0.25);
+  transition: all 0.3s ease;
+  margin: 0 auto 12px;
+}
+
+.footerMap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.footerMap:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(11, 119, 152, 0.6);
+}
+
+.mapOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.footerMap:hover .mapOverlay {
+  opacity: 1;
+}
+
+.addressContainer {
+  text-align: center;
+}
+
+.addressContainer p {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
 }
 
 .socialGlass {
@@ -131,9 +196,9 @@
 
 .top {
   display: grid;
-  grid-template-columns: 1.2fr 2fr;
-  gap: 4rem;
-  padding-bottom: 1rem;
+  grid-template-columns: 1.2fr 5fr;
+  gap: 3rem;
+  align-items: start;
 }
 
 .brand {
@@ -164,8 +229,9 @@
 
 .columns {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5rem;
+  align-items: start;
 }
 
 .colTitle {
@@ -229,11 +295,11 @@
 
 .bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  padding-top: 2rem;
+  padding-top: 1rem;
   font-size: 0.78rem;
   color: var(--text-muted);
 }
@@ -288,6 +354,62 @@
   letter-spacing: 0.04em;
 }
 
+.footer {
+  position: relative;
+  overflow: hidden;
+  margin-top: -160px;
+  padding: 12rem 0 2rem;
+}
+
+/* ================= BACKGROUND ================= */
+
+.bgLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.warpWrapper {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.5s ease;
+}
+
+.show {
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #0743529c
+    /* rgba(11, 114, 109, 0.329),
+    rgba(2, 70, 66, 0.685),
+    rgba(6, 73, 82, 0.479) */
+  );
+}
+
+/* ================= CONTENT LAYER ================= */
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+/* prevent flicker stacking issues */
+.top,
+.bottom,
+.columns {
+  position: relative;
+  z-index: 2;
+}
+
 @media (max-width: 900px) {
   .footer {
     margin-top: -100px;
@@ -311,10 +433,13 @@
   .waveTop {
     top: 0;
     transform: translateY(-20%);
+    display: none;
   }
 
   .waveTop svg {
     transform: scaleY(-1);
+    display: none;
+
   }
   .footer {
     margin-top: -60px;
@@ -339,5 +464,6 @@
 
   .qrNumber {
     font-size: 12px;
+    padding-bottom: 10px;
   }
 }

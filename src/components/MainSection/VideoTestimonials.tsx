@@ -52,7 +52,7 @@ export default function VideoTestimonials() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
+    const mq = window.matchMedia("(max-width: 1024px)");
     const onChange = () => setIsMobile(mq.matches);
     onChange();
     mq.addEventListener("change", onChange);
@@ -132,7 +132,7 @@ export default function VideoTestimonials() {
             swirlIterations={7}
             shape="checks"
             shapeScale={0.2}
-            speed={0.9}
+            speed={1}
           />
         ) : (
           <LiquidEther
