@@ -73,8 +73,8 @@ video {
   color: #000;
   font-size: 1.3rem;
   line-height: 1.5;
-  max-width: 510px;
-  font-family: "Cinzel";
+  max-width: 450px;
+  font-family: "Cormorant Garamond", Georgia, serif;
 }
 
 .slider-header-right {
