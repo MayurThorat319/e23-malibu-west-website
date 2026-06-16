@@ -77,12 +77,12 @@
 
 .lux-subtitle {
   text-align: center;
-  font-family: "Cronde", serif;
-  letter-spacing: 0.2em;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 0.07em;
   color: var(--lux-muted);
-  font-size: clamp(11px, 1.1vw, 13px);
-  line-height: 2;
-  text-transform: uppercase;
+  font-size: clamp(20px, 1.1vw, 13px);
+  line-height: 1.2;
+  /* text-transform: uppercase; */
   margin: 0 auto 60px;
 }
 

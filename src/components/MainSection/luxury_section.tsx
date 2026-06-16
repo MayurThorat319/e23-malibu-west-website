@@ -12,7 +12,11 @@ const cards: CardItem[] = [
     title: "The Address",
     text: "Most Desired. Perfectly Connected.",
     icon: (
-      <svg viewBox="0 0 120 120" className="lux-animated-svg" aria-hidden="true">
+      <svg
+        viewBox="0 0 120 120"
+        className="lux-animated-svg"
+        aria-hidden="true"
+      >
         <defs>
           <radialGradient id="lux-glow-a" cx="50%" cy="45%" r="50%">
             <stop offset="0%" stopColor="#8fdcff" stopOpacity="0.25" />
@@ -66,7 +70,11 @@ const cards: CardItem[] = [
     title: "The Residence",
     text: "Sophisticated Living, Reimagined.",
     icon: (
-      <svg viewBox="0 0 120 120" className="lux-animated-svg" aria-hidden="true">
+      <svg
+        viewBox="0 0 120 120"
+        className="lux-animated-svg"
+        aria-hidden="true"
+      >
         <defs>
           <radialGradient id="lux-glow-b" cx="50%" cy="50%" r="55%">
             <stop offset="0%" stopColor="#8fdcff" stopOpacity="0.25" />
@@ -112,7 +120,11 @@ const cards: CardItem[] = [
     title: "The Experience",
     text: "Every Day Feels Extraordinary.",
     icon: (
-      <svg viewBox="0 0 120 120" className="lux-animated-svg" aria-hidden="true">
+      <svg
+        viewBox="0 0 120 120"
+        className="lux-animated-svg"
+        aria-hidden="true"
+      >
         <defs>
           <radialGradient id="lux-glow-c" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#8fdcff" stopOpacity="0.25" />
@@ -133,7 +145,11 @@ const cards: CardItem[] = [
           fill="none"
           strokeWidth="2.4"
         />
-        <g className="lux-rays lux-line" strokeWidth="2.2" strokeLinecap="round">
+        <g
+          className="lux-rays lux-line"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+        >
           <line x1="60" y1="22" x2="60" y2="32" />
           <line x1="32" y1="34" x2="38" y2="42" />
           <line x1="88" y1="34" x2="82" y2="42" />
@@ -188,7 +204,9 @@ export default function LuxurySection() {
     <section className="lux-section" ref={rootRef}>
       <div className="lux-sticky-boundary">
         <div className="lux-header-sticky">
-          <h2 className="lux-title">Where Timeless Elegance Meets Endless Horizons</h2>
+          <h2 className="lux-title">
+            Where Timeless Elegance Meets Endless Horizons
+          </h2>
 
           <div className="lux-diamond">
             <span></span>
@@ -197,17 +215,16 @@ export default function LuxurySection() {
           </div>
 
           <p className="lux-subtitle">
-            In the heart of Kopar Khairane's most coveted corridor, 23 Malibu West
-            is more than a residence — it is a destination of elevated living.
+            In the heart of Kopar Khairane's most coveted corridor, 23 Malibu
+            West is more than a residence — it is a destination of elevated
+            living.
             <br />
             <br />
-            This landmark address seamlessly blends panoramic water-inspired
-            views, sophisticated architecture, and thoughtfully curated lifestyle
-            experiences. From expansive wrap-around decks and designer interiors
-            to breathtaking skyline vistas, every detail is crafted to embody
-            timeless elegance and modern refinement. Here, every sunrise inspires,
-            every space rejuvenates, and every moment reflects a life reserved for
-            the exceptional.
+            Designed for those who appreciate the finer things in life, 23
+            Malibu West seamlessly blends breathtaking vistas, refined
+            architecture, and exceptional craftsmanship. Every space is
+            thoughtfully created to inspire, offering a living experience that
+            is both sophisticated and effortlessly luxurious.
           </p>
         </div>
 
@@ -224,16 +241,15 @@ export default function LuxurySection() {
 
               <p className="lux-card-text">{text}</p>
 
-              <div className="lux-icon-wrap">
-                {icon}
-              </div>
+              <div className="lux-icon-wrap">{icon}</div>
             </div>
           ))}
         </div>
       </div>
-      
+
       <div className="lux-footer">
-        Waterfront Residences <span>|</span> Timeless Design <span>|</span> Curated Living
+        Waterfront Residences <span>|</span> Timeless Design <span>|</span>{" "}
+        Curated Living
       </div>
 
       <div className="lux-overlay-bottom"></div>
