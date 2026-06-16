@@ -23,31 +23,40 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
   const [lenis, setLenis] = useState<Lenis | null>(null);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     const instance = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 5,
+      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), 
       smoothWheel: true,
       touchMultiplier: 1.8,
+      syncTouch: true,
     });
 
     setLenis(instance);
     document.documentElement.classList.add("lenis");
 
+    let rafId: number;
     function raf(time: number) {
       instance.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
+    // क्लीनअप फ़ंक्शन
     return () => {
       document.documentElement.classList.remove("lenis");
       instance.destroy();
+      cancelAnimationFrame(rafId);
       setLenis(null);
     };
   }, []);
 
   return (
-    <LenisContext.Provider value={lenis}>{children}</LenisContext.Provider>
+    <LenisContext.Provider value={lenis}>
+      {children}
+    </LenisContext.Provider>
   );
 }
