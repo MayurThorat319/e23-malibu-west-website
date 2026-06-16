@@ -20,9 +20,11 @@
       rel="stylesheet"
     />
 
-    <title>EV23 Malibu West | Luxury Waterfront Residences in Navi Mumbai</title>
+    <title>
+      EV23 Malibu West | Luxury Waterfront Residences in Navi Mumbai
+    </title>
 
-     <meta
+    <meta
       name="description"
       content="Discover EV23 Malbiu West: premium luxury waterfront residences with world-class amenities, modern lifestyle spaces, connectivity, and elegant living in Navi Mumbai."
     />
@@ -53,6 +55,69 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
 
+    <script>
+      (function (campaignId) {
+        var cookieNames = [
+          "om-" + campaignId,
+          "omSeen-" + campaignId,
+          "om-success-" + campaignId,
+          "omSuccess-" + campaignId,
+          "om-" + campaignId + "-closed",
+          "omSlideClosed-" + campaignId,
+          "om-global-cookie",
+          "omGlobalSuccessCookie",
+          "om-interaction-cookie",
+          "omGlobalInteractionCookie",
+          "om-success-cookie",
+          "omSuccessCookie",
+          "_omappvp",
+          "_omappvs",
+        ];
+
+        cookieNames.forEach(function (name) {
+          document.cookie =
+            name +
+            "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax";
+          document.cookie =
+            name +
+            "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=." +
+            location.hostname +
+            "; SameSite=Lax";
+        });
+
+        ["localStorage", "sessionStorage"].forEach(function (storageName) {
+          try {
+            var storage = window[storageName];
+            [
+              "omFoldersSeen",
+              "omFoldersOptin",
+              "omFoldersClosed",
+              "omLastSeen",
+              "omSessionStart",
+              "omSessionPageviews",
+            ].forEach(function (key) {
+              storage.removeItem(key);
+            });
+          } catch (error) {
+            // Storage can be unavailable in restricted browser modes.
+          }
+        });
+      })("ugabdmkyycjoomnbtt6n");
+    </script>
+    <!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: Contact Us -->
+    <!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com -->
+    <script>
+      (function (d, u, ac) {
+        var s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "https://a.omappapi.com/app/js/api.min.js";
+        s.async = true;
+        s.dataset.user = u;
+        s.dataset.campaign = ac;
+        d.getElementsByTagName("head")[0].appendChild(s);
+      })(document, 342269, "ugabdmkyycjoomnbtt6n");
+    </script>
+    <!-- / OptinMonster -->
   </head>
   <body>
     <div id="root"></div>
