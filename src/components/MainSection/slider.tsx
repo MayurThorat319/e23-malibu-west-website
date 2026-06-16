@@ -189,7 +189,7 @@ export default function Slider() {
             </h1>
             <div className="slider-gold-line" />
             <p className="slider-subtitle">
-              Discover timeless spaces crafted for comfort, elegance, and modern
+              Discover timeless spaces crafted for comfort, elegance and modern
               lifestyles.
             </p>
           </div>

@@ -140,11 +140,13 @@ h4 {
   top: 0;
   z-index: 1;
 }
-.section-Slider{
+
+.section-Slider {
   position: relative;
-  z-index: 2;
+  z-index: 99999 !important;
 }
-.section-video{
+
+.section-video {
   position: relative;
   z-index: 2;
 }
