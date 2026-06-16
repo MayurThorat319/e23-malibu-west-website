@@ -53,7 +53,7 @@
 
 .script-span {
   color: #d8bb72;
-  font-family: "Cronde", serif;
+  font-family: "Cormorant Garamond", Georgia, serif;
 }
 
 .testimonial-description {
@@ -63,7 +63,7 @@
   line-height: 1.6;
   letter-spacing: 2px;
   color: rgba(255, 248, 235, 0.88);
-  font-family: "Cronde", serif;
+  font-family: "Cormorant Garamond", Georgia, serif;
 }
 
 .testimonial-btn {
@@ -773,14 +773,14 @@
   }
 
   @keyframes reviewMarqueeVertical {
-  from {
-    transform: translateY(0);
-  }
+    from {
+      transform: translateY(0);
+    }
 
-  to {
-    transform: translateY(-50%);
+    to {
+      transform: translateY(-50%);
+    }
   }
-}
 
   .video-review-slide {
     width: 100%;
@@ -854,7 +854,7 @@
     min-height: 230px;
     padding: 20px;
   }
-  .t-head p { 
+  .t-head p {
     line-height: 1.4;
   }
 

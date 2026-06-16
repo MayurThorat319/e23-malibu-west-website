@@ -169,9 +169,10 @@ export default function VideoTestimonials() {
 
                   <p className="testimonial-description">
                     Real experiences from residents who turned aspirations into
+                      everyday living
                     <span className="script-span">
                       {" "}
-                      everyday living with EV Homes.
+                        with EV Homes.
                     </span>
                   </p>
 
