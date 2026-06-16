@@ -14,10 +14,10 @@ const LuxurySection = lazy(() => import("./components/MainSection/luxury_section
 const Amenities = lazy(() => import("./components/MainSection/Amenities"));
 const Slider = lazy(() => import("./components/MainSection/slider"));
 const VideoTestimonials = lazy(() => import("./components/MainSection/VideoTestimonials"));
-const EnquiryDialog = lazy(() => import("./components/Form/form"));
+// const EnquiryDialog = lazy(() => import("./components/Form/form"));
 
 function App() {
-  const [isDialogOpen, setDialogOpen] = useState(false);
+  const [, setDialogOpen] = useState(false);
   const [loadBelowFold, setLoadBelowFold] = useState(false);
   
   const handleOpenDialog = () => setDialogOpen(true);

@@ -1,7 +1,7 @@
 .gallery-section {
   position: relative;
   height: auto;
-  padding-top: clamp(2rem, 5vw, 4rem);
+  padding-top: clamp(2rem, 2vw, 4rem);
   padding-bottom: clamp(2rem, 5vw, 3rem);
 }
 
@@ -93,7 +93,7 @@
 
 .gallery-item {
   position: relative;
-  width: clamp(280px, 85vw, 400px);
+  width: clamp(280px, 85vw, 350px);
   aspect-ratio: 16 / 9;
   flex-shrink: 0;
   border-radius: 1rem;

@@ -3,7 +3,14 @@
 import Reveal from "./Reveal";
 import { StaggerContainer, StaggerItem } from "./Stagger";
 import styles from "./Footer.module.css";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { Warp } from "@paper-design/shaders-react";
 
 interface FooterColumn {
   title: string;
@@ -22,8 +29,56 @@ const COLUMNS: FooterColumn[] = [
 ];
 
 export default function Footer() {
+  const useIsTabletDown = () => {
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1024px)");
+
+    const handler = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsTablet("matches" in e ? e.matches : mq.matches);
+    };
+
+    handler(mq);
+    mq.addEventListener("change", handler);
+
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  return isTablet;
+};
+
+const isTabletDown = useIsTabletDown();
   return (
-    <footer className={styles.footer} id="contact">
+   <footer
+  className={`${styles.footer} ${
+    !isTabletDown ? styles.desktopGradient : ""
+  }`}
+  id="contact"
+>
+  {isTabletDown && (
+    <div className={styles.warpBg}>
+      <Warp
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+        }}
+        colors={["#8de7e7", "#2C6A74", "#5DA9B0", "#99d6d3"]}
+        proportion={0.55}
+        softness={0.9}
+        distortion={0.15}
+        swirl={0.75}
+        swirlIterations={7}
+        shape="checks"
+        shapeScale={0.2}
+        speed={1}
+      />
+
+      <div className={styles.bgOverlay} />
+    </div>
+  )}
       <div className={styles.waveTop} aria-hidden="true">
         <svg
           viewBox="0 0 1440 160"
@@ -85,7 +140,7 @@ export default function Footer() {
                 alt="Malibu West Logo"
                 className={styles.logoImage}
                 loading="lazy"
-  decoding="async"
+                decoding="async"
               />
 
               <p className={styles.tagline}>
@@ -111,6 +166,46 @@ export default function Footer() {
               </StaggerItem>
             ))}
 
+            {/* LOCATION COLUMN */}
+            <StaggerItem>
+              <div className={styles.col}>
+                <h4 className={styles.colTitle}>Location</h4>
+
+                <div
+                  className={styles.footerMap}
+                  onClick={() =>
+                    window.open(
+                      "https://maps.app.goo.gl/DoWusg6pdsduZQBt9",
+                      "_blank",
+                    )
+                  }
+                >
+                  <iframe
+                    src="https://www.google.com/maps?q=E.v+Homes+Vashi+Navi+Mumbai&z=15&output=embed"
+                    loading="lazy"
+                    title="Location Map"
+                  />
+
+                  <div className={styles.mapOverlay}>
+                    <span>View Location</span>
+                  </div>
+                </div>
+
+                {/* <div className={styles.addressContainer}>
+                  <p>
+                    2nd Floor, Office No A-212,
+                    <br />
+                    Vardhaman Chambers,
+                    <br />
+                    Plot No-84, Sector-17,
+                    <br />
+                    Vashi, Navi Mumbai 400703
+                  </p>
+                </div> */}
+              </div>
+            </StaggerItem>
+
+            {/* LET'S CONNECT COLUMN */}
             <StaggerItem>
               <div className={styles.col}>
                 <h4 className={styles.colTitle}>Let's Connect</h4>
@@ -135,50 +230,51 @@ export default function Footer() {
                   </a>
                 </p>
 
-              <div className={styles.socialWrapper}>
-  <div className={styles.socialGlass}></div>
+                <div className={styles.socialWrapper}>
+                  <div className={styles.socialGlass}></div>
 
-  <div className={styles.socialIcons}>
-    <a
-      href="https://www.facebook.com/evgindia"
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${styles.socialIcon} ${styles.facebook}`}
-    >
-      <FaFacebookF />
-    </a>
+                  <div className={styles.socialIcons}>
+                    <a
+                      href="https://www.facebook.com/evgindia"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${styles.socialIcon} ${styles.facebook}`}
+                    >
+                      <FaFacebookF />
+                    </a>
 
-    <a
-      href="https://www.instagram.com/evhomesofficial"
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${styles.socialIcon} ${styles.instagram}`}
-    >
-      <FaInstagram />
-    </a>
+                    <a
+                      href="https://www.instagram.com/evhomesofficial"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${styles.socialIcon} ${styles.instagram}`}
+                    >
+                      <FaInstagram />
+                    </a>
 
-    <a
-      href="https://www.linkedin.com/company/ev-homes"
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${styles.socialIcon} ${styles.linkedin}`}
-    >
-      <FaLinkedinIn />
-    </a>
+                    <a
+                      href="https://www.linkedin.com/company/ev-homes"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${styles.socialIcon} ${styles.linkedin}`}
+                    >
+                      <FaLinkedinIn />
+                    </a>
 
-    <a
-      href="https://www.youtube.com/@evhomes3892"
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${styles.socialIcon} ${styles.youtube}`}
-    >
-      <FaYoutube />
-    </a>
-  </div>
-</div>
+                    <a
+                      href="https://www.youtube.com/@evhomes3892"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${styles.socialIcon} ${styles.youtube}`}
+                    >
+                      <FaYoutube />
+                    </a>
+                  </div>
+                </div>
               </div>
             </StaggerItem>
 
+            {/* MAHARERA COLUMN */}
             <StaggerItem>
               <div className={styles.col}>
                 <h4 className={styles.colTitle}>MAHARERA</h4>
@@ -188,8 +284,9 @@ export default function Footer() {
                     src="/images/malibu_qr.jpg"
                     alt="MAHARERA QR Code"
                     className={styles.qrImage}
-loading="lazy"
-  decoding="async"                  />
+                    loading="lazy"
+                    decoding="async"
+                  />
 
                   <p className={styles.qrText}>MAHARERA Registration Number:</p>
 
@@ -208,10 +305,10 @@ loading="lazy"
               © {new Date().getFullYear()} E V Group. All rights reserved.
             </span>
 
-            <div className={styles.legal}>
+            {/* <div className={styles.legal}>
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Service</a>
-            </div>
+            </div> */}
           </div>
         </Reveal>
       </div>
