@@ -41,11 +41,11 @@ function App() {
 
   return (
     <>
-      {isDialogOpen && (
+      {/* {isDialogOpen && (
         <Suspense fallback={null}>
           <EnquiryDialog isOpen={isDialogOpen} onClose={() => setDialogOpen(false)} />
         </Suspense>
-      )}
+      )} */}
 
       <SEO
         title="EV23 Malibu West | Luxury Waterfront Residences"
