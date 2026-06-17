@@ -36,12 +36,22 @@ const ChevronRight = () => (
 
 export default function Amenities() {
     const [active, setActive] = useState(0);
-
+    const [isMobile, setIsMobile] = useState(false);
     const [bottomImg, setBottomImg] = useState(amenitiesData[0].image);
     const [topImg, setTopImg] = useState(amenitiesData[0].image);
     const [topVisible, setTopVisible] = useState(false);
     const isAnimating = useRef(false);
 
+    const sectionRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        // Safe check for SSR/Next.js and handling client-side resizing
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+
+        checkMobile(); // Initial check
+        window.addEventListener("resize", checkMobile);
+
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
     const changeSlide = useCallback((nextIdx: number) => {
         if (isAnimating.current) return;
         isAnimating.current = true;
@@ -75,11 +85,30 @@ export default function Amenities() {
     }, [active, changeSlide]);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            const nextIdx = (active + 1) % amenitiesData.length;
-            changeSlide(nextIdx);
-        }, 3000);
-        return () => clearInterval(interval);
+        let interval: ReturnType<typeof setInterval>;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    interval = setInterval(() => {
+                        const nextIdx = (active + 1) % amenitiesData.length;
+                        changeSlide(nextIdx);
+                    }, 3000);
+                } else {
+                    clearInterval(interval);
+                }
+            },
+            { threshold: 0.7 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            clearInterval(interval);
+            observer.disconnect();
+        };
     }, [active, changeSlide]);
 
     const getIdx = (offset: number) =>
@@ -90,154 +119,168 @@ export default function Amenities() {
     const nextSlide = amenitiesData[getIdx(1)];
 
     return (
-        <section className={styles.section} id="amenities">
-            <div
-                key={`bg-bottom-${bottomImg}`}
-                className={styles.bgBottom}
-                style={{ backgroundImage: `url(${bottomImg})` }}
-            />
-            <div
-                className={`${styles.bgTop} ${topVisible ? styles.bgTopVisible : ""}`}
-                style={{ backgroundImage: `url(${topImg})` }}
-            />
+        <motion.section
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 200 }}
+            whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            viewport={isMobile ?{ once: true, amount: 0.00 } : { once: false, amount: 0.05 }} // 5% section dikhte hi chal jayega
+            transition={{
+                duration: 2.0, // 2.0s se kam karke 0.8s kiya, isse animation fast aur smooth dikhega
+                ease: "easeOut",
+                delay: 0.1,
+            }}
 
-            <div className={styles.header}>
-                <div className={styles.luxsubtitle}>Amenities</div>
-                <div className={styles.luxdiamond}><span></span><i></i><span></span></div>
-                <div className={styles.titleBlock}>
-                    <motion.h2
-                        className={styles.title}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.4 }}
-                        variants={{
-                            visible: {
-                                transition: {
-                                    staggerChildren: 0.06,
+        >
+            <section className={styles.section} id="amenities" ref={sectionRef}>
+
+                <div
+                    key={`bg-bottom-${bottomImg}`}
+                    className={styles.bgBottom}
+                    style={{ backgroundImage: `url(${bottomImg})` }}
+                />
+                <div
+                    className={`${styles.bgTop} ${topVisible ? styles.bgTopVisible : ""}`}
+                    style={{ backgroundImage: `url(${topImg})` }}
+                />
+
+                <div className={styles.header}>
+                    <div className={styles.luxsubtitle}>Amenities</div>
+                    <div className={styles.luxdiamond}><span></span><i></i><span></span></div>
+                    <div className={styles.titleBlock}>
+                        <motion.h2
+                            className={styles.title}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.4 }}
+                            variants={{
+                                visible: {
+                                    transition: {
+                                        staggerChildren: 0.06,
+                                    },
                                 },
-                            },
+                            }}
+                        >
+                            {"Exclusively For You".split("").map((char, index) => (
+                                <motion.span
+                                    key={index}
+                                    variants={{
+                                        hidden: {
+                                            opacity: 0,
+                                            y: 40,
+                                        },
+                                        visible: {
+                                            opacity: 1,
+                                            y: 0,
+                                        },
+                                    }}
+                                    transition={{
+                                        duration: 0.5,
+                                        ease: "easeOut",
+                                    }}
+                                    style={{ display: "inline-block" }}
+                                >
+                                    {char === " " ? "\u00A0" : char}
+                                </motion.span>
+                            ))}
+                            <br />
+                        </motion.h2>
+                    </div>
+
+                    <motion.p
+                        className={styles.subtitle}
+                        initial={{ opacity: 0, x: 80 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.4 }}
+                        transition={{
+                            duration: 1,
+                            ease: "easeOut",
+                            delay: 0.4,
                         }}
                     >
-                        {"Exclusively For You".split("").map((char, index) => (
-                            <motion.span
-                                key={index}
-                                variants={{
-                                    hidden: {
-                                        opacity: 0,
-                                        y: 40,
-                                    },
-                                    visible: {
-                                        opacity: 1,
-                                        y: 0,
-                                    },
-                                }}
-                                transition={{
-                                    duration: 0.5,
-                                    ease: "easeOut",
-                                }}
-                                style={{ display: "inline-block" }}
-                            >
-                                {char === " " ? "\u00A0" : char}
-                            </motion.span>
-                        ))}
-                        <br />
-                    </motion.h2>
+                        Step into a world of thoughtfully curated spaces, where wellness, leisure, and effortless luxury become part of everyday living.
+                    </motion.p>
                 </div>
 
-                <motion.p
-                    className={styles.subtitle}
-                    initial={{ opacity: 0, x: 80 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{
-                        duration: 1,
-                        ease: "easeOut",
-                        delay: 0.4,
-                    }}
-                >
-                    Step into a world of thoughtfully curated spaces, where wellness, leisure, and effortless luxury become part of everyday living.
-                </motion.p>
-            </div>
-
-            <div className={styles.carouselWrapper}>
-                <div className={styles.track}>
-                    <div className={`${styles.card} ${styles.cardright}`}>
-                        <button
-                            className={styles.navBtn}
-                            onClick={(e) => { e.stopPropagation(); prev(); }}
-                            aria-label="Previous"
-                        >
-                            <ChevronLeft />
-                        </button>
-                        <AnimatePresence mode="wait">
-                            <motion.p
-                                key={prevSlide.title}
-                                className={styles.sideLabel}
-                                initial={{ opacity: 0, x: window.innerWidth > 650 ? -40 : 0, y: window.innerWidth <= 650 ? 20 : 0 }}
-                                animate={{ opacity: 1, x: 0, y: 0 }}
-                                exit={{ opacity: 0, x: window.innerWidth > 650 ? 40 : 0, y: window.innerWidth <= 650 ? -20 : 0 }}
-                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                <div className={styles.carouselWrapper}>
+                    <div className={styles.track}>
+                        <div className={`${styles.card} ${styles.cardright}`}>
+                            <button
+                                className={styles.navBtn}
+                                onClick={(e) => { e.stopPropagation(); prev(); }}
+                                aria-label="Previous"
                             >
-                                {prevSlide.title}
-                            </motion.p>
-                        </AnimatePresence>
-                    </div>
+                                <ChevronLeft />
+                            </button>
+                            <AnimatePresence mode="wait">
+                                <motion.p
+                                    key={prevSlide.title}
+                                    className={styles.sideLabel}
+                                    initial={{ opacity: 0, x: window.innerWidth > 650 ? -40 : 0, y: window.innerWidth <= 650 ? 20 : 0 }}
+                                    animate={{ opacity: 1, x: 0, y: 0 }}
+                                    exit={{ opacity: 0, x: window.innerWidth > 650 ? 40 : 0, y: window.innerWidth <= 650 ? -20 : 0 }}
+                                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                                >
+                                    {prevSlide.title}
+                                </motion.p>
+                            </AnimatePresence>
+                        </div>
 
-                    <div className={`${styles.card} ${styles.cardCenter}`}>
-                        <div className={styles.imagePlaceholder}>
-                            <div
-                                key={`center-bottom-${bottomImg}`}
-                                className={styles.centerBottom}
-                                style={{ backgroundImage: `url(${bottomImg})` }}
-                            />
-                            <div
-                                className={`${styles.centerTop} ${topVisible ? styles.centerTopVisible : ""}`}
-                                style={{ backgroundImage: `url(${topImg})` }}
-                            />
-                            <div className={styles.cardContent}>
-                                <AnimatePresence mode="wait">
-                                    <motion.div
-                                        key={centerSlide.id}
-                                        initial={{ opacity: 0, y: 50 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -30 }}
-                                        transition={{ duration: 0.6, ease: "easeInOut" }}
-                                    >
-                                        <p className={styles.cardLabel}>
-                                            {centerSlide.title}
-                                        </p>
-                                        <p className={styles.cardDesc}>
-                                            {centerSlide.description}
-                                        </p>
-                                    </motion.div>
-                                </AnimatePresence>
+                        <div className={`${styles.card} ${styles.cardCenter}`}>
+                            <div className={styles.imagePlaceholder}>
+                                <div
+                                    key={`center-bottom-${bottomImg}`}
+                                    className={styles.centerBottom}
+                                    style={{ backgroundImage: `url(${bottomImg})` }}
+                                />
+                                <div
+                                    className={`${styles.centerTop} ${topVisible ? styles.centerTopVisible : ""}`}
+                                    style={{ backgroundImage: `url(${topImg})` }}
+                                />
+                                <div className={styles.cardContent}>
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={centerSlide.id}
+                                            initial={{ opacity: 0, y: 50 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -30 }}
+                                            transition={{ duration: 0.6, ease: "easeInOut" }}
+                                        >
+                                            <p className={styles.cardLabel}>
+                                                {centerSlide.title}
+                                            </p>
+                                            <p className={styles.cardDesc}>
+                                                {centerSlide.description}
+                                            </p>
+                                        </motion.div>
+                                    </AnimatePresence>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className={`${styles.card} ${styles.cardSide}`}>
-                        <button
-                            className={styles.navBtn}
-                            onClick={(e) => { e.stopPropagation(); next(); }}
-                            aria-label="Next"
-                        >
-                            <ChevronRight />
-                        </button>
-                        <AnimatePresence mode="wait">
-                            <motion.p
-                                key={nextSlide.title}
-                                className={styles.sideLabel}
-                                initial={{ opacity: 0, x: window.innerWidth > 650 ? 40 : 0, y: window.innerWidth <= 650 ? 20 : 0 }}
-                                animate={{ opacity: 1, x: 0, y: 0 }}
-                                exit={{ opacity: 0, x: window.innerWidth > 650 ? -40 : 0, y: window.innerWidth <= 650 ? -20 : 0 }}
-                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                        <div className={`${styles.card} ${styles.cardSide}`}>
+                            <button
+                                className={styles.navBtn}
+                                onClick={(e) => { e.stopPropagation(); next(); }}
+                                aria-label="Next"
                             >
-                                {nextSlide.title}
-                            </motion.p>
-                        </AnimatePresence>
+                                <ChevronRight />
+                            </button>
+                            <AnimatePresence mode="wait">
+                                <motion.p
+                                    key={nextSlide.title}
+                                    className={styles.sideLabel}
+                                    initial={{ opacity: 0, x: window.innerWidth > 650 ? 40 : 0, y: window.innerWidth <= 650 ? 20 : 0 }}
+                                    animate={{ opacity: 1, x: 0, y: 0 }}
+                                    exit={{ opacity: 0, x: window.innerWidth > 650 ? -40 : 0, y: window.innerWidth <= 650 ? -20 : 0 }}
+                                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                                >
+                                    {nextSlide.title}
+                                </motion.p>
+                            </AnimatePresence>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </motion.section>
+
     );
 }

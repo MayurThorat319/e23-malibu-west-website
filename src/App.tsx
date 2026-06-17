@@ -19,7 +19,7 @@ const VideoTestimonials = lazy(() => import("./components/MainSection/VideoTesti
 function App() {
   const [, setDialogOpen] = useState(false);
   const [loadBelowFold, setLoadBelowFold] = useState(false);
-  
+
   const handleOpenDialog = () => setDialogOpen(true);
 
   useEffect(() => {
@@ -56,13 +56,18 @@ function App() {
 
       <Layout onOpenDialog={handleOpenDialog}>
         {/* Rendered Immediately */}
-        <Hero />
+        <div id="hero">
+          <Hero />
+        </div>
+
 
         {/* Immediate Async Components */}
         <Suspense fallback={<div className="h-[40vh] bg-neutral-900 animate-pulse" />}>
-          <AboutSection />
+          <div id="about">
+            <AboutSection />
+          </div>
         </Suspense>
-        
+
         <Suspense fallback={<div className="h-[60vh] bg-neutral-900 animate-pulse" />}>
           <ScrollReveal />
         </Suspense>
@@ -71,23 +76,25 @@ function App() {
         {loadBelowFold && (
           <>
             <Suspense fallback={<div className="h-[50vh]" />}>
-              <LuxurySection />
+              <div id="work">
+                <LuxurySection />
+              </div>
             </Suspense>
 
             <Suspense fallback={<div className="h-[50vh]" />}>
-              <div id="amenities-section">
+              <div id="amenities" className="section-Amenities">
                 <Amenities />
               </div>
             </Suspense>
 
             <Suspense fallback={<div className="h-[40vh]" />}>
-              <div className="section-Slider">
+              <div className="section-Slider" id="layout">
                 <Slider />
               </div>
             </Suspense>
 
             <Suspense fallback={<div className="h-[50vh]" />}>
-              <div className="section-video">
+              <div className="section-video"  id="Feedback">
                 <VideoTestimonials />
               </div>
             </Suspense>
