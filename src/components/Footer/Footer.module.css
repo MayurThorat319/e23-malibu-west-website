@@ -127,7 +127,7 @@
 }
 
 .socialIcon {
-  clip-path: path("M 28 0 C 8 0 0 8 0 28 L 0 72 C 0 92 8 100 28 100 L 72 100 C 92 100 100 92 100 72 L 100 28 C 100 8 92 0 72 0 Z");
+  border-radius: 50%;
 }
 
 .socialIcon svg {
@@ -230,7 +230,7 @@
 .columns {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 1.5rem;
+  gap: 2.5rem;
   align-items: start;
 }
 

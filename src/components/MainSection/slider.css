@@ -185,14 +185,26 @@ video {
 .corner-leaf-left {
   left: -60px;
 
-  animation:
+  /* animation:
     leafFloatLeft 12s ease-in-out infinite alternate,
-    leafRotateLeft 18s ease-in-out infinite;
+    leafRotateLeft 18s ease-in-out infinite; */
 }
 
 .corner-leaf-right {
   right: -60px;
 
+  /* animation:
+    leafFloatRight 14s ease-in-out infinite alternate,
+    leafRotateRight 20s ease-in-out infinite; */
+}
+
+.ocean-slider.in-view .corner-leaf-left {
+  animation:
+    leafFloatLeft 12s ease-in-out infinite alternate,
+    leafRotateLeft 18s ease-in-out infinite;
+}
+
+.ocean-slider.in-view .corner-leaf-right {
   animation:
     leafFloatRight 14s ease-in-out infinite alternate,
     leafRotateRight 20s ease-in-out infinite;
@@ -298,6 +310,10 @@ video {
   opacity: 1;
   transform-origin: top center;
   will-change: transform;
+  /* animation: topLeafSway 7s ease-in-out infinite; */
+}
+
+.ocean-slider.in-view .top-leaf {
   animation: topLeafSway 7s ease-in-out infinite;
 }
 
@@ -352,34 +368,17 @@ video {
   will-change: transform;
 }
 
-.leaf:nth-child(1) {
-  left: 5%;
-  animation: floatingLeaf1 12s linear infinite;
-}
+.leaf:nth-child(1) { left: 5%; }
+.leaf:nth-child(2) { left: 22%; animation-delay: 2s; }
+.leaf:nth-child(3) { left: 45%; animation-delay: 1s; }
+.leaf:nth-child(4) { left: 68%; animation-delay: 3s; }
+.leaf:nth-child(5) { left: 88%; animation-delay: 1.5s; }
 
-.leaf:nth-child(2) {
-  left: 22%;
-  animation: floatingLeaf2 14s linear infinite;
-  animation-delay: 2s;
-}
-
-.leaf:nth-child(3) {
-  left: 45%;
-  animation: floatingLeaf3 13s linear infinite;
-  animation-delay: 1s;
-}
-
-.leaf:nth-child(4) {
-  left: 68%;
-  animation: floatingLeaf4 15s linear infinite;
-  animation-delay: 3s;
-}
-
-.leaf:nth-child(5) {
-  left: 88%;
-  animation: floatingLeaf5 11s linear infinite;
-  animation-delay: 1.5s;
-}
+.ocean-slider.in-view .leaf:nth-child(1) { animation: floatingLeaf1 12s linear infinite; }
+.ocean-slider.in-view .leaf:nth-child(2) { animation: floatingLeaf2 14s linear infinite; }
+.ocean-slider.in-view .leaf:nth-child(3) { animation: floatingLeaf3 13s linear infinite; }
+.ocean-slider.in-view .leaf:nth-child(4) { animation: floatingLeaf4 15s linear infinite; }
+.ocean-slider.in-view .leaf:nth-child(5) { animation: floatingLeaf5 11s linear infinite; }
 
 @keyframes floatingLeaf1 {
   0% {
@@ -512,8 +511,10 @@ video {
   flex-shrink: 0;
   background: #111;
   border-radius: 24px;
-  transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
+transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1), 
+              opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            }
 
 .main-card {
   width: 62%;
