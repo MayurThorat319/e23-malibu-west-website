@@ -139,7 +139,7 @@ h4 {
 
 .section-Slider {
   position: relative;
-  z-index: 99999 !important;
+  z-index: 99 !important;
 }
 
 .section-video {
