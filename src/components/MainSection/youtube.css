@@ -145,7 +145,7 @@
 .gallery-item-title {
   color: #ffffff;
   margin: 0;
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-size: clamp(1rem, 1vw, 1.25rem);
   letter-spacing: 1px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);

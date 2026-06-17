@@ -15,15 +15,15 @@
 }
 
 .ev-about__right-side {
+  position: relative;
   display: flex;
-  gap: 1.5rem;
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 .ev-about__image-container {
   position: relative;
-  width: clamp(380px, 30vw, 520px);
-  height: 430px;
+  width: clamp(380px, 43vw, 520px);
+  height: 550px;
 
   border: 1px solid rgba(120, 180, 195, 0.3);
   border-radius: 18px;
@@ -36,7 +36,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-   object-position: center;
+  object-position: center;
   display: block;
   transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -59,9 +59,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
 }
 
 .counter-symbol {
+  display: flex;
+  align-items: center;
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   color: #6fd3d8;
   line-height: 1;
@@ -75,10 +78,9 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: clamp(1.5rem, 4vw, 4rem);
-  
-  max-width: 1400px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 20px 20px 80px 80px;
+  padding: 20px 20px 80px 0px;
 }
 
 .ev-about__content {
@@ -146,12 +148,19 @@
 .ev-about__lede {
   font-size: 1.3rem;
   line-height: 1.7;
-  color: #d6e3e6;
+  color: #ffffff;
+  font-weight: 900;
   margin: 0;
   margin-top: -0.8rem;
   text-align: center;
   max-width: 25rem;
   font-family: "Cormorant Garamond", serif;
+  text-shadow: 0 0 2px rgb(0 0 0 / 91%);
+}
+
+.btn-f {
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 4px;
 }
 
 .ev-about__features {
@@ -160,10 +169,11 @@
   margin: 0.5rem 0 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(0.75rem, 2vw, 1.5rem);
+  gap: clamp(0.8rem, 2vw, 3rem);
   max-width: 26rem;
   display: flex;
   align-items: center;
+  font-family: "Cronde", serif;
 }
 
 .ev-about__features li {
@@ -198,10 +208,14 @@
 }
 
 .ev-about__feature-label {
-  font-size: 0.82rem;
-  color: #d6e3e6;
+  font-size: 0.9rem;
+  /* color: #d6e3e6; */
   white-space: pre-line;
   line-height: 1.3;
+  letter-spacing: 2.3px;
+  color: #ffffff;
+  font-weight: 900;
+  text-shadow: 0 0 2px rgb(0 0 0 / 91%);
 }
 
 .ev-about__cta {
@@ -258,27 +272,39 @@
 }
 
 .ev-about__stats {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 1.5rem;
   padding: clamp(1.75rem, 3vw, 2.5rem) clamp(1.5rem, 2.5vw, 2.25rem);
   border: 1px solid rgba(120, 180, 195, 0.3);
   border-radius: 18px;
   background: rgba(8, 30, 42, 0.45);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(2px);
   min-width: 220px;
   min-height: clamp(360px, 50vh, 520px);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  z-index: 5;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -110px;
 }
 
 .ev-about__stat {
   position: relative;
   text-align: center;
-  padding: 0.5rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 
 .ev-about__stat-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 500;
@@ -288,9 +314,12 @@
 
 .ev-about__stat-label {
   margin-top: 0.5rem;
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   letter-spacing: 0.28em;
-  color: #cfe3e8;
+  /* color: #cfe3e8; */
+    color: #ffffff;
+  font-weight: 900;
+  text-shadow: 0 0 2px rgb(0 0 0 / 91%);
 }
 
 .ev-about__stat-divider {
@@ -312,6 +341,7 @@
     flex-direction: column;
     width: 100%;
     gap: 1.5rem;
+    align-items: center;
   }
 
   .ev-about__image-container {
@@ -339,13 +369,19 @@
   }
 
   .ev-about__stats {
+    position: relative; /* remove absolute positioning */
+    top: auto;
+    right: auto;
+
+    margin: 0 auto; /* center horizontally */
+
     flex-direction: row;
-    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: stretch;
-    min-height: auto;
+
     width: 100%;
-    padding: 1.5rem 1rem;
+    max-width: 700px;
+    min-height: auto;
   }
 
   .ev-about__stat {
@@ -410,6 +446,11 @@
 
   .counter-counter {
     font-size: 24px !important;
+  }
+
+  .ev-about__stats {
+    top: 10%;
+    transform: translateY(-10%);
   }
 
   .counter-symbol {
