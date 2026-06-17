@@ -62,7 +62,10 @@
   font-size: 1.4rem;
   line-height: 1.6;
   letter-spacing: 2px;
-  color: rgba(255, 248, 235, 0.88);
+  /* color: rgba(255, 248, 235, 0.88); */
+  color: #ffffff;
+  font-weight: 900;
+  text-shadow: 0 0 2px rgb(0 0 0 / 91%);
   font-family: "Cormorant Garamond", Georgia, serif;
 }
 
@@ -311,11 +314,15 @@
 }
 
 .t-head p {
-  color: var(--ivory-80);
+  /* color: var(--ivory-80); */
+  color: #ffffff;
   margin: 0;
   font-size: 1.1rem;
   line-height: 0.2;
+  letter-spacing: 2px;
   font-family: "Cronde", serif;
+  font-weight: 900;
+  text-shadow: 0 0 2px rgb(0 0 0 / 91%);
 }
 
 .slider {
@@ -871,6 +878,10 @@
   .paragraph {
     font-size: 0.85rem;
     line-height: 1.6;
+  }
+
+  .testimonial-heading {
+    gap: 0.5rem;
   }
 }
 

@@ -80,7 +80,7 @@ export default function AboutEVHomes() {
               window.open("https://evhomes.tech", "_blank");
             }}
           >
-            <span>EXPLORE PROJECTS</span>
+            <span className="btn-f">EXPLORE PROJECTS</span>
             <ArrowRight strokeWidth={2} />
           </button>
         </div>
