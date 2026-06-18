@@ -77,11 +77,9 @@ export default function Slider() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        setIsInView(entry.intersectionRatio >= 0.7)
       },
-      { 
-        threshold: 0.4 // Triggers explicitly at 40% section visibility
-      }
+     { threshold: [0, 0.7], }
     );
 
     if (sectionRef.current) {
