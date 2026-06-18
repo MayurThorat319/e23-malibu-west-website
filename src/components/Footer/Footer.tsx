@@ -10,7 +10,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { Warp } from "@paper-design/shaders-react";
+// import { Warp } from "@paper-design/shaders-react";
 
 interface FooterColumn {
   title: string;
@@ -56,7 +56,7 @@ const isTabletDown = useIsTabletDown();
   }`}
   id="contact"
 >
-  {isTabletDown && (
+  {/* {isTabletDown && (
     <div className={styles.warpBg}>
       <Warp
         style={{
@@ -78,8 +78,44 @@ const isTabletDown = useIsTabletDown();
 
       <div className={styles.bgOverlay} />
     </div>
-  )}
+  )} */}
       <div className={styles.waveTop} aria-hidden="true">
+         {isTabletDown ? (
+  <svg
+    viewBox="0 0 1440 330"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* Solid background that follows the top wave and hides the footer container edge */}
+    <path
+      d="
+        M0 120 
+        C250 260 650 250 980 110 
+        C1180 20 1320 40 1440 130
+        L1440 380
+        L0 380
+        Z
+      "
+      fill="none"
+    />
+
+    {/* Your original multi-line sea waves, now fully visible without cutting off */}
+    <g
+      fill="none"
+      stroke="#99d6d3"
+      strokeWidth="4"
+    >
+      <path d="M0 120 C250 260 650 250 980 110 C1180 20 1320 40 1440 130" />
+      <path d="M0 135 C250 275 650 265 980 125 C1180 35 1320 55 1440 145" />
+      <path d="M0 150 C250 290 650 280 980 140 C1180 50 1320 70 1440 160" />
+      <path d="M0 165 C250 305 650 295 980 155 C1180 65 1320 85 1440 175" />
+      <path d="M0 180 C250 320 650 310 980 170 C1180 80 1320 100 1440 190" />
+      <path d="M0 195 C250 335 650 325 980 185 C1180 95 1320 115 1440 205" />
+      <path d="M0 210 C250 350 650 340 980 200 C1180 110 1320 130 1440 220" />
+      <path d="M0 225 C250 365 650 355 980 215 C1180 125 1320 145 1440 235" />
+    </g>
+  </svg>
+) : (
         <svg
           viewBox="0 0 1440 160"
           preserveAspectRatio="none"
@@ -120,15 +156,19 @@ const isTabletDown = useIsTabletDown();
             strokeWidth="1"
           />
 
-          <path
-            d="M0,120 
-       C240,60 480,180 720,120 
-       C960,60 1200,180 1440,120 
-       L1440,160 
-       L0,160 Z"
-            fill="url(#waveFillGradient)"
-          />
+         <path
+  d="
+    M0 170
+    C300 250 600 90 1440 190
+    L1440 220
+    L0 220
+    Z
+  "
+  fill="#0b3b41"
+/>
         </svg>
+          )}
+
       </div>
 
       <div className="container">

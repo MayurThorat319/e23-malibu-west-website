@@ -317,7 +317,7 @@
   font-size: 0.9rem;
   letter-spacing: 0.28em;
   /* color: #cfe3e8; */
-    color: #ffffff;
+  color: #ffffff;
   font-weight: 900;
   text-shadow: 0 0 2px rgb(0 0 0 / 91%);
 }
@@ -432,6 +432,14 @@
     height: 18px;
   }
 
+  .ev-about__feature-label {
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    color: #ffffff;
+    font-family: "Cormorant Garamond", serif;
+    text-shadow: 0 0 1px rgba(7, 8, 20, 0.774);
+  }
+
   .ev-about__cta {
     min-width: 0;
     width: 100%;
@@ -458,8 +466,8 @@
   }
 
   .ev-about__stat-label {
-    font-size: 0.55rem;
-    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
     margin-top: 0.4rem;
   }
 

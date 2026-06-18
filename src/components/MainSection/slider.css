@@ -170,7 +170,7 @@ video {
 .corner-leaf {
   position: absolute;
   top: -40px;
-  width: 620px;
+  width: 860px;
   height: auto;
   pointer-events: none;
   user-select: none;
@@ -191,7 +191,7 @@ video {
 }
 
 .corner-leaf-right {
-  right: -60px;
+  right: -20px;
 
   /* animation:
     leafFloatRight 14s ease-in-out infinite alternate,
@@ -238,19 +238,19 @@ video {
   }
 
   25% {
-    transform: translate3d(-20px, 10px, 0) scale(1.03) rotate(-1deg);
+    transform: translate3d(-18px, -12px, 0) scale(1.02) rotate(-1deg);
   }
 
   50% {
-    transform: translate3d(-38px, 25px, 0) scale(1.05) rotate(-2deg);
+    transform: translate3d(-35px, -22px, 0) scale(1.04) rotate(-2deg);
   }
 
   75% {
-    transform: translate3d(-18px, 14px, 0) scale(1.02) rotate(0deg);
+    transform: translate3d(-15px, -10px, 0) scale(1.02) rotate(0deg);
   }
 
   100% {
-    transform: translate3d(10px, 28px, 0) scale(1) rotate(2deg);
+    transform: translate3d(10px, -25px, 0) scale(1) rotate(2deg);
   }
 }
 

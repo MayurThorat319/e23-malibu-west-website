@@ -171,7 +171,7 @@ export default function Slider() {
       >
         <img
           ref={leftLeafRef}
-          src="/images/left.png"
+          src="/images/left-leaf.png"
           alt=""
           className="corner-leaf corner-leaf-left"
           loading="lazy"
@@ -180,7 +180,7 @@ export default function Slider() {
 
         <img
           ref={rightLeafRef}
-          src="/images/right.png"
+          src="/images/right-leaf.png"
           alt=""
           className="corner-leaf corner-leaf-right"
           loading="lazy"
