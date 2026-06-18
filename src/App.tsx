@@ -88,13 +88,13 @@ function App() {
             </Suspense>
 
             <Suspense fallback={<div className="h-[40vh]" />}>
-              <div className="section-Slider" id="layout">
+              <div id="layout" className="section-Slider" >
                 <Slider />
               </div>
             </Suspense>
 
             <Suspense fallback={<div className="h-[50vh]" />}>
-              <div className="section-video"  id="Feedback">
+              <div  id="Feedback" className="section-video" >
                 <VideoTestimonials />
               </div>
             </Suspense>

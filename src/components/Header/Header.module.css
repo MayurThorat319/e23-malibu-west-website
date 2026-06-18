@@ -3,13 +3,13 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999 !important;
+  z-index: 999 ;
   padding: 1.25rem 0;
-  transition:
+  /* transition:
     background 0.5s var(--ease-luxury),
     padding 0.5s var(--ease-luxury),
     backdrop-filter 0.5s var(--ease-luxury);
-    pointer-events: none;
+    pointer-events: none; */
 }
 
 .scrolled {
@@ -196,7 +196,7 @@
     background: linear-gradient(135deg, #0d1e20e8 0%, #060e10f0 100%);
     border-left: 1px solid rgba(246, 221, 165, 0.2);
     padding: 6rem 2.5rem 3rem 2.5rem;
-    z-index: 999 !important;
+    z-index: 999 ;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     height: 100vh;
   }

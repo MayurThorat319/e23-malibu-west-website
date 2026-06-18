@@ -84,7 +84,7 @@ const TILES: Tile[] = [
   },
 ];
 
-const CITY_VIDEO = "/videos/amenitiesVideo.mp4";
+const CITY_VIDEO = "/videos/AmenitiesVideoTwo.mp4";
 function easeOut(t: number) { return 1 - Math.pow(1 - t, 3); }
 
 export function ScrollReveal() {

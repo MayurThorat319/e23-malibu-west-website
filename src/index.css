@@ -29,9 +29,7 @@
 }
 
 html {
-  scroll-behavior: auto;
-  scroll-snap-type: y proximity;
-  scroll-padding-top: 0;
+  scroll-behavior: smooth;
 }
 
 html.lenis,
@@ -40,7 +38,7 @@ html.lenis body {
 }
 
 .lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+  scroll-behavior: auto ;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
@@ -131,18 +129,9 @@ h4 {
 
 
 .section-Amenities {
-  position: sticky;
   background-color: #fff7e4;
-  top: 0;
-  z-index: 1;
 }
 
 .section-Slider {
-  position: relative;
-  z-index: 99 !important;
-}
-
-.section-video {
-  position: relative;
-  z-index: 2;
+  background-color: #fff7e4;
 }

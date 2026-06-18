@@ -27,8 +27,8 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     if (isMobile) return;
 
     const instance = new Lenis({
-      duration: 5,
-      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), 
+      duration: 5, 
+      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       touchMultiplier: 1.8,
       syncTouch: true,
@@ -45,8 +45,27 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 
     rafId = requestAnimationFrame(raf);
 
-    // क्लीनअप फ़ंक्शन
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest("a");
+
+      if (anchor && anchor.hash && anchor.hash.startsWith("#")) {
+        e.preventDefault(); 
+        const targetElement = document.querySelector(anchor.hash) as HTMLElement;
+        if (targetElement) {
+          instance.scrollTo(targetElement, {
+            offset: -80, 
+            duration: 1.2,
+          });
+        }
+      }
+    };
+
+    document.addEventListener("click", handleAnchorClick);
+
+    // Cleanup
     return () => {
+      document.removeEventListener("click", handleAnchorClick);
       document.documentElement.classList.remove("lenis");
       instance.destroy();
       cancelAnimationFrame(rafId);
