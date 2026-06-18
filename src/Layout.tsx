@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
 
 interface LayoutProps {
@@ -15,7 +15,7 @@ const Layout = ({ children, onOpenDialog, }: LayoutProps) => {
 
       <main>{children}</main>
 
-      <Footer />
+      {/* <Footer /> */}
     </SmoothScroll>
   );
 };

@@ -4,6 +4,7 @@ import YouTube from "./youtube";
 import LiquidEther from "./LiquidEther";
 import AboutEVHomes from "../Aboutev/Aboutev";
 import { Warp } from "@paper-design/shaders-react";
+import Footer from "../Footer/Footer";
 
 const videoReviews = [
   {
@@ -125,15 +126,17 @@ export default function VideoTestimonials() {
               height: "100%",
             }}
             colors={["#8de7e7", "#2C6A74", "#5DA9B0", "#99d6d3"]}
-            proportion={0.55}
+            proportion={0.75}
             softness={0.9}
             distortion={0.15}
-            swirl={0.75}
-            swirlIterations={7}
+            swirl={0.85}
+            swirlIterations={8}
             shape="checks"
-            shapeScale={0.2}
+            shapeScale={0.1}
             speed={1}
           />
+
+          
         ) : (
           <LiquidEther
             mouseForce={8}
@@ -318,6 +321,10 @@ export default function VideoTestimonials() {
           </div>
         </div>
       )}
+
+      <Footer />
+      <div className="bgOverlay" />
+
     </section>
   );
 }
