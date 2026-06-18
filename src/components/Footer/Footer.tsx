@@ -10,6 +10,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { HouseHeart } from "lucide-react";
 // import { Warp } from "@paper-design/shaders-react";
 
 interface FooterColumn {
@@ -30,33 +31,32 @@ const COLUMNS: FooterColumn[] = [
 
 export default function Footer() {
   const useIsTabletDown = () => {
-  const [isTablet, setIsTablet] = useState(false);
+    const [isTablet, setIsTablet] = useState(false);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 1024px)");
+    useEffect(() => {
+      const mq = window.matchMedia("(max-width: 1024px)");
 
-    const handler = (e: MediaQueryListEvent | MediaQueryList) => {
-      setIsTablet("matches" in e ? e.matches : mq.matches);
-    };
+      const handler = (e: MediaQueryListEvent | MediaQueryList) => {
+        setIsTablet("matches" in e ? e.matches : mq.matches);
+      };
 
-    handler(mq);
-    mq.addEventListener("change", handler);
+      handler(mq);
+      mq.addEventListener("change", handler);
 
-    return () => mq.removeEventListener("change", handler);
-  }, []);
+      return () => mq.removeEventListener("change", handler);
+    }, []);
 
-  return isTablet;
-};
+    return isTablet;
+  };
 
-const isTabletDown = useIsTabletDown();
+  const isTabletDown = useIsTabletDown();
   return (
-   <footer
-  className={`${styles.footer} ${
-    !isTabletDown ? styles.desktopGradient : ""
-  }`}
-  id="contact"
->
-  {/* {isTabletDown && (
+    <footer
+      className={`${styles.footer} ${!isTabletDown ? styles.desktopGradient : ""
+        }`}
+      id="contact"
+    >
+      {/* {isTabletDown && (
     <div className={styles.warpBg}>
       <Warp
         style={{
@@ -80,15 +80,15 @@ const isTabletDown = useIsTabletDown();
     </div>
   )} */}
       <div className={styles.waveTop} aria-hidden="true">
-         {isTabletDown ? (
-  <svg
-    viewBox="0 0 1440 330"
-    preserveAspectRatio="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    {/* Solid background that follows the top wave and hides the footer container edge */}
-    <path
-      d="
+        {isTabletDown ? (
+          <svg
+            viewBox="0 0 1440 330"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Solid background that follows the top wave and hides the footer container edge */}
+            <path
+              d="
         M0 120 
         C250 260 650 250 980 110 
         C1180 20 1320 40 1440 130
@@ -96,82 +96,82 @@ const isTabletDown = useIsTabletDown();
         L0 380
         Z
       "
-      fill="none"
-    />
+              fill="none"
+            />
 
-    {/* Your original multi-line sea waves, now fully visible without cutting off */}
-    <g
-      fill="none"
-      stroke="#99d6d3"
-      strokeWidth="4"
-    >
-      <path d="M0 120 C250 260 650 250 980 110 C1180 20 1320 40 1440 130" />
-      <path d="M0 135 C250 275 650 265 980 125 C1180 35 1320 55 1440 145" />
-      <path d="M0 150 C250 290 650 280 980 140 C1180 50 1320 70 1440 160" />
-      <path d="M0 165 C250 305 650 295 980 155 C1180 65 1320 85 1440 175" />
-      <path d="M0 180 C250 320 650 310 980 170 C1180 80 1320 100 1440 190" />
-      <path d="M0 195 C250 335 650 325 980 185 C1180 95 1320 115 1440 205" />
-      <path d="M0 210 C250 350 650 340 980 200 C1180 110 1320 130 1440 220" />
-      <path d="M0 225 C250 365 650 355 980 215 C1180 125 1320 145 1440 235" />
-    </g>
-  </svg>
-) : (
-        <svg
-          viewBox="0 0 1440 160"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id="waveLineGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.45)" />
-              <stop offset="100%" stopColor="rgba(255, 255, 255, 0.63)" />
-            </linearGradient>
+            {/* Your original multi-line sea waves, now fully visible without cutting off */}
+            <g
+              fill="none"
+              stroke="#99d6d3"
+              strokeWidth="4"
+            >
+              <path d="M0 120 C250 260 650 250 980 110 C1180 20 1320 40 1440 130" />
+              <path d="M0 135 C250 275 650 265 980 125 C1180 35 1320 55 1440 145" />
+              <path d="M0 150 C250 290 650 280 980 140 C1180 50 1320 70 1440 160" />
+              <path d="M0 165 C250 305 650 295 980 155 C1180 65 1320 85 1440 175" />
+              <path d="M0 180 C250 320 650 310 980 170 C1180 80 1320 100 1440 190" />
+              <path d="M0 195 C250 335 650 325 980 185 C1180 95 1320 115 1440 205" />
+              <path d="M0 210 C250 350 650 340 980 200 C1180 110 1320 130 1440 220" />
+              <path d="M0 225 C250 365 650 355 980 215 C1180 125 1320 145 1440 235" />
+            </g>
+          </svg>
+        ) : (
+          <svg
+            viewBox="0 0 1440 160"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="waveLineGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="rgba(255,255,255,0.45)" />
+                <stop offset="100%" stopColor="rgba(255, 255, 255, 0.63)" />
+              </linearGradient>
 
-            <linearGradient id="waveFillGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="rgba(139, 247, 247, 0.56)" />
-              <stop offset="100%" stopColor="rgba(22,55,66,0)" />
-            </linearGradient>
-          </defs>
+              <linearGradient id="waveFillGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="rgba(139, 247, 247, 0.56)" />
+                <stop offset="100%" stopColor="rgba(22,55,66,0)" />
+              </linearGradient>
+            </defs>
 
-          <path
-            d="M0,80 C240,20 480,140 720,80 C960,20 1200,140 1440,80"
-            fill="none"
-            stroke="url(#waveLineGradient)"
-            strokeWidth="1.5"
-          />
+            <path
+              d="M0,80 C240,20 480,140 720,80 C960,20 1200,140 1440,80"
+              fill="none"
+              stroke="url(#waveLineGradient)"
+              strokeWidth="1.5"
+            />
 
-          <path
-            d="M0,95 C240,35 480,155 720,95 C960,35 1200,155 1440,95"
-            fill="none"
-            stroke="url(#waveLineGradient)"
-            strokeOpacity="0.7"
-            strokeWidth="1.2"
-          />
+            <path
+              d="M0,95 C240,35 480,155 720,95 C960,35 1200,155 1440,95"
+              fill="none"
+              stroke="url(#waveLineGradient)"
+              strokeOpacity="0.7"
+              strokeWidth="1.2"
+            />
 
-          <path
-            d="M0,110 C240,50 480,170 720,110 C960,50 1200,170 1440,110"
-            fill="none"
-            stroke="url(#waveLineGradient)"
-            strokeOpacity="0.4"
-            strokeWidth="1"
-          />
+            <path
+              d="M0,110 C240,50 480,170 720,110 C960,50 1200,170 1440,110"
+              fill="none"
+              stroke="url(#waveLineGradient)"
+              strokeOpacity="0.4"
+              strokeWidth="1"
+            />
 
-         <path
-  d="
+            <path
+              d="
     M0 170
     C300 250 600 90 1440 190
     L1440 220
     L0 220
     Z
   "
-  fill="#0b3b41"
-/>
-        </svg>
-          )}
+              fill="#0b3b41"
+            />
+          </svg>
+        )}
 
       </div>
 
-      <div className="container">
+      <div className={styles.footercontainer}>
         <div className={styles.top}>
           <Reveal direction="up">
             <div className={styles.brand}>
@@ -184,8 +184,7 @@ const isTabletDown = useIsTabletDown();
               />
 
               <p className={styles.tagline}>
-                Designing experiences. Building brands that endure.
-              </p>
+                23 Malibu West is where luxury, connectivity, and modern living come together.              </p>
             </div>
           </Reveal>
 
@@ -193,7 +192,12 @@ const isTabletDown = useIsTabletDown();
             {COLUMNS.map((col) => (
               <StaggerItem key={col.title}>
                 <div className={styles.col}>
-                  <h4 className={styles.colTitle}>{col.title}</h4>
+                  <div className={styles.twolineMar}>
+                    {/* <div className={styles.lableIcon}>
+                      <HouseHeart className={styles.lableDen} />
+                    </div> */}
+                    <h4 className={styles.colTitle}>{col.title}</h4>
+                  </div>
 
                   <ul>
                     {col.links.map((link) => (
@@ -328,7 +332,7 @@ const isTabletDown = useIsTabletDown();
                     decoding="async"
                   />
 
-                  <p className={styles.qrText}>MAHARERA Registration Number:</p>
+                  <p className={styles.qrText}>MAHARERA <br/>Registration Number:</p>
 
                   <p className={styles.qrNumber}>P51700078094</p>
                 </div>
@@ -336,9 +340,6 @@ const isTabletDown = useIsTabletDown();
             </StaggerItem>
           </StaggerContainer>
         </div>
-
-        <div className="divider" />
-
         <Reveal direction="up" delay={0.1}>
           <div className={styles.bottom}>
             <span>

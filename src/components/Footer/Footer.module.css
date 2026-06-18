@@ -16,15 +16,16 @@
 }
 
 .desktopGradient {
-  background: linear-gradient(
-    to bottom,
-    rgb(29, 46, 58) 0%,
-    rgb(29, 46, 58) 12%,
-    rgb(22, 55, 66) 28%,
-    rgb(16, 67, 73) 45%,
-    #0b3b41 65%,
-    #285260 100%
-  );
+  /* background: linear-gradient(to bottom,
+      rgb(29, 46, 58) 0%,
+      rgb(29, 46, 58) 12%,
+      rgb(22, 55, 66) 28%,
+      rgb(16, 67, 73) 45%,
+      #0b3b41 65%,
+      #285260 100%); */
+
+  background: linear-gradient(to bottom, rgb(29 46 58 / 0%) 0%, rgb(29, 46, 58) 12%, rgb(22, 55, 66) 28%, rgb(16, 67, 73) 45%, #0b3b41 65%, #285260 100%);
+
 }
 
 .socialWrapper {
@@ -34,9 +35,9 @@
 
 .footerMap {
   position: relative;
-  width: 100%;
-  max-width: 200px;
-  height: 100px;
+ width: 150px;
+  /* max-width: 200px; */
+  height: 120px;
   border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
@@ -143,11 +144,9 @@
   position: absolute;
   inset: 0;
 
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.18),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0));
 
   z-index: 1;
 }
@@ -196,8 +195,8 @@
 
 .top {
   display: grid;
-  grid-template-columns: 1.2fr 5fr;
-  gap: 3rem;
+  grid-template-columns: 1fr 5fr;
+  gap: 1rem;
   align-items: start;
 }
 
@@ -222,30 +221,67 @@
 }
 
 .tagline {
-  font-size: 1.1rem;
-  color: var(--text-muted);
+  font-size: 0.9rem;
+  color: var(--text-primary);
   line-height: 1.7;
+  font-family: "Junge", serif;
+
 }
 
 .columns {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: repeat(5, 1fr) max-content;
+  gap: 1rem;
   align-items: start;
 }
 
+
 .colTitle {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.91rem;
+  font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 1.25rem;
-  font-weight: 500;
+}
+
+.twolineMar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.lableIcon {
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lableDen {
+  width: 15px;
+}
+
+.col {
+  padding-left: 2rem;
+  padding-right: 1rem;
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(to bottom,
+      rgb(15, 108, 88) 0%,
+      rgba(15, 108, 88, 0.5) 60%,
+      transparent 100%) 1;
+  min-height: 180px;
 }
 
 .col ul {
   list-style: none;
+  font-family: "Cormorant Garamond", serif;
 }
 
 .col li {
@@ -253,8 +289,9 @@
 }
 
 .col a {
-  font-size: 0.88rem;
-  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
   transition: color 0.3s ease;
 }
 
@@ -264,9 +301,12 @@
 
 .contact {
   font-size: 0.88rem;
-  color: var(--text-muted);
+  color: var(--text-primary);
   line-height: 1.8;
   margin-bottom: 1.25rem;
+  font-family: "Junge", serif;
+  letter-spacing: 1px;
+
 }
 
 .social {
@@ -280,6 +320,7 @@
   display: grid;
   place-items: center;
   border: 1px solid var(--border-gold);
+
   font-size: 0.7rem;
   letter-spacing: 0.05em;
   color: var(--gold);
@@ -302,6 +343,15 @@
   padding-top: 1rem;
   font-size: 0.78rem;
   color: var(--text-muted);
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(to right,
+      transparent 0%,
+      rgba(15, 108, 88, 0.4) 20%,
+      rgb(15, 108, 88) 50%,
+      rgba(15, 108, 88, 0.4) 80%,
+      transparent 100%) 1;
+  font-family: "Junge", serif;
+
 }
 
 .legal {
@@ -325,16 +375,24 @@
   opacity: 0.7;
 }
 
+.footercontainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0rem 2rem;
+  justify-content: center;
+  width: 100%;
+  gap: 5vh;
+}
+
 .qrContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+
 }
 
 .qrImage {
-  width: 100px;
-  height: auto;
+  width: 120px;
+  height: 100px;
   border-radius: 8px;
   margin-bottom: 12px;
   border: 1px solid rgba(201, 169, 98, 0.3);
@@ -342,16 +400,22 @@
 
 .qrText {
   font-size: 0.72rem;
-  color: var(--text-muted);
+  font-weight: 500;
+  color: var(--text-primary);
   margin: 0 0 4px;
   line-height: 1.4;
+  letter-spacing: 1px;
+  font-family: "Cormorant Garamond", serif;
+
 }
 
 .qrNumber {
   font-size: 0.85rem;
   color: var(--gold);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.04em;
+  font-family: "Junge", serif;
+
 }
 
 .footer {
@@ -386,17 +450,17 @@
 .bgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    #fffffffb,
-    #737e1400,
-    #29a6bb /* #146e7e00,
+  background: linear-gradient(to bottom,
+      #fffffffb,
+      #737e1400,
+      #29a6bb
+      /* #146e7e00,
     #14697e2f,
     #c3f11a48 */
       /* rgba(11, 114, 109, 0.329),
     rgba(2, 70, 66, 0.685),
     rgba(6, 73, 82, 0.479) */
-  );
+    );
 }
 
 /* ================= CONTENT LAYER ================= */
@@ -441,7 +505,8 @@
   } */
 
   .waveTop {
-    top: 0px; /* not -120px */
+    top: 0px;
+    /* not -120px */
     height: 160px;
   }
 
