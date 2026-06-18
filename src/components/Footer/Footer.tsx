@@ -10,7 +10,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { HouseHeart } from "lucide-react";
+// import { HouseHeart } from "lucide-react";
 // import { Warp } from "@paper-design/shaders-react";
 
 interface FooterColumn {
