@@ -309,7 +309,7 @@
   }
 
   .dm-header {
-    margin: 0 auto 0px;
+    margin: 20px auto 0px;
   }
 
   .dm-root {
@@ -320,6 +320,7 @@
     grid-template-columns: 1fr;
     gap: 16px;
     margin-bottom: 6px;
+
   }
 
   .dm-image-wrap {
@@ -408,7 +409,9 @@
   }
 
   .dm-heading {
-    font-size: clamp(25px, 3vw, 25px);
+    font-size: clamp(25px, 3vw, 25px);  
+    line-height: 2rem;
+    letter-spacing: 1.4px;
   }
 
   .dm-heading-accent {
@@ -418,7 +421,7 @@
 
 @media (max-width: 440px) {
   .dm-root {
-    padding: 70px 12px 2px;
+    padding: 30px 12px 2px;
   }
 
   .dm-heading-accent {
@@ -427,6 +430,8 @@
 
   .dm-heading {
     font-size: 21px;
+    font-weight: 600;
+
   }
 
   .dm-tagline-row {
@@ -465,7 +470,7 @@
 
 @media (max-width: 480px) {
   .dm-header {
-    margin: 0 auto 0px;
+    margin: 15px auto 0px;
   }
 
   .dm-root .dm-tagline {
