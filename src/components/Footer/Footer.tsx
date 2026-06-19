@@ -176,7 +176,7 @@ export default function Footer() {
           <Reveal direction="up">
             <div className={styles.brand}>
               <img
-                src="/images/Malibu_logo.png"
+                src="/images/Malibu_logo.webp"
                 alt="Malibu West Logo"
                 className={styles.logoImage}
                 loading="lazy"
@@ -325,7 +325,7 @@ export default function Footer() {
 
                 <div className={styles.qrContainer}>
                   <img
-                    src="/images/malibu_qr.jpg"
+                    src="/images/malibu_qr.webp"
                     alt="MAHARERA QR Code"
                     className={styles.qrImage}
                     loading="lazy"
