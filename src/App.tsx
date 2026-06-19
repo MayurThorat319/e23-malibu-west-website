@@ -51,7 +51,7 @@ function App() {
         title="EV23 Malibu West | Luxury Waterfront Residences"
         description="Luxury waterfront residences in Navi Mumbai."
         path="/"
-        image="/images/Malibu_logo.png"
+        image="/images/Malibu_logo.webp"
       />
 
       <Layout onOpenDialog={handleOpenDialog}>

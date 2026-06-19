@@ -29,7 +29,7 @@ const slides: Slide[] = [
     title: "LUXURY 2BHK",
     heading: "LUXURY 2BHK",
     description: "Experience elevated living with breathtaking views, modern design and world class amenities.",
-    image: "images/slider-1.jpg",
+    image: "images/slider-1.webp",
     bottomTitle: "The Sagar Ratna",
     price: "₹2.10",
     bedrooms: 2,
@@ -40,7 +40,7 @@ const slides: Slide[] = [
     title: "LUXURY 3BHK",
     heading: "LUXURY 3BHK",
     description: "Experience elevated living with breathtaking views, modern design and world class amenities.",
-    image: "images/slider-2.jpg",
+    image: "images/slider-2.webp",
     bottomTitle: "The Sagar Nivas",
     price: "₹2.45",
     bedrooms: 3,
@@ -51,7 +51,7 @@ const slides: Slide[] = [
     title: "LUXURY 3BHK",
     heading: "LUXURY 3BHK",
     description: "Experience elevated living with breathtaking views, modern design and world class amenities.",
-    image: "images/slider-3.jpg",
+    image: "images/slider-3.webp",
     bottomTitle: "The Anant Sagar",
     price: "₹2.67",
     bedrooms: 3,
@@ -169,7 +169,7 @@ export default function Slider() {
       >
         <img
           ref={leftLeafRef}
-          src="/images/left-leaf.png"
+          src="/images/left-leaf.webp"
           alt=""
           className="corner-leaf corner-leaf-left"
           loading="lazy"
@@ -178,7 +178,7 @@ export default function Slider() {
 
         <img
           ref={rightLeafRef}
-          src="/images/right-leaf.png"
+          src="/images/right-leaf.webp"
           alt=""
           className="corner-leaf corner-leaf-right"
           loading="lazy"

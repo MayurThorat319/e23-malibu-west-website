@@ -10,7 +10,7 @@ type SeoProps = {
 };
 
 const SITE_NAME = "EV23 Malibu West";
-const DEFAULT_IMAGE = "/images/Malibu_logo.png";
+const DEFAULT_IMAGE = "/images/Malibu_logo.webp";
 
 const getAbsoluteUrl = (path = "/") => {
   if (/^https?:\/\//i.test(path)) return path;
