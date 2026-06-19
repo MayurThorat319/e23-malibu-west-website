@@ -254,7 +254,7 @@ export default function Footer() {
 
                 <div className={styles.qrContainer}>
                   <img
-                    src="/images/malibu_qr.jpg"
+                    src="/images/malibu_qr.webp"
                     alt="MAHARERA QR Code"
                     className={styles.qrImage}
                     loading="lazy"
@@ -337,22 +337,7 @@ export default function Footer() {
             </StaggerItem>
 
             {/* MAHARERA COLUMN */}
-
-                <div className={styles.qrContainer}>
-                  <img
-                    src="/images/malibu_qr.webp"
-                    alt="MAHARERA QR Code"
-                    className={styles.qrImage}
-                    loading="lazy"
-                    decoding="async"
-                  />
-
-                  <p className={styles.qrText}>MAHARERA <br/>Registration Number:</p>
-
-                  <p className={styles.qrNumber}>P51700078094</p>
-                </div>
-              </div>
-            </StaggerItem>
+           
           </StaggerContainer>
         </div>
         <Reveal direction="up" delay={0.1}>
