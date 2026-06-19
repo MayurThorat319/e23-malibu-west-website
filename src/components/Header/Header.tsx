@@ -82,7 +82,7 @@ export default function Header({ onOpenDialog }: HeaderProps) {
         <a href="#home" className={styles.logo}>
           <img
             className={styles.cardImg}
-            src="/images/Malibu_logo.png"
+            src="/images/Malibu_logo.webp"
             alt="logo"
             loading="lazy"
   decoding="async"

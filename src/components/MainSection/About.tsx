@@ -290,7 +290,7 @@ export default function AboutSection() {
 
         <div className="dm-image-wrap dm-hero-image">
           <img
-            src="/images/aboutImage.png"
+            src="/images/aboutImage.webp"
             alt="10 Marina Bay - Garden View"
             className="dm-hero-img"
             loading="lazy"

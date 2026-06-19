@@ -40,7 +40,7 @@ export default function AboutEVHomes() {
             <span className="ev-about__title-ev">
               EV
               <img
-                src="/images/evlineslogo.png"
+                src="/images/evlineslogo.webp"
                 alt=""
                 className="ev-about__stripes-img"
                 aria-hidden="true"
@@ -87,7 +87,7 @@ export default function AboutEVHomes() {
         <div className="ev-about__right-side">
           <div className="ev-about__image-container">
             <img
-              src="/images/building.png"
+              src="/images/building.webp"
               alt="EV Homes Luxury Architecture"
               className="ev-about__building-img"
               loading="lazy"

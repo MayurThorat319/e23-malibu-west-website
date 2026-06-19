@@ -179,8 +179,8 @@ export function ScrollReveal() {
 
   return (
     <div ref={wrapRef} className={styles.wrapper}>
-      <img src="/images/bgdesignTop.png" alt="" className={styles.scrollIndicator} />
-      <img src="/images/bgdesign.png" alt="" className={styles.scrollIndiTwo} />
+      <img src="/images/bgdesignTop.webp" alt="" className={styles.scrollIndicator} />
+      <img src="/images/bgdesign.webp" alt="" className={styles.scrollIndiTwo} />
       <div className={styles.sticky}>
         {TILES.map((t, i) => {
           if (screenSize.isMobile && t.hideOnMobile) return null;
