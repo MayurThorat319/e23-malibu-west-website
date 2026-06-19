@@ -88,7 +88,7 @@ h4 {
   font-family: var(--font-display), Georgia, serif;
   font-weight: 500;
   letter-spacing: 0.12em;
-  line-height: 1.15;
+  /* line-height: 1.15; */
 }
 
 .goldText {

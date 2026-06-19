@@ -291,9 +291,9 @@ video {
 
 @media (max-width: 480px) {
   .corner-leaf {
-    width: 300px;
+    width: 400px;
     opacity: 0.3;
-    top: -20px;
+    top: -10px;
   }
 }
 

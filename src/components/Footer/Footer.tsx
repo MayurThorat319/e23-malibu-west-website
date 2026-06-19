@@ -196,7 +196,7 @@ export default function Footer() {
                     {/* <div className={styles.lableIcon}>
                       <HouseHeart className={styles.lableDen} />
                     </div> */}
-                    <h4 className={styles.colTitle}>{col.title}</h4>
+                    <h4 className={`${styles.colTitle} ${styles.extrasize}`}>{col.title}</h4>
                   </div>
 
                   <ul>
@@ -248,7 +248,25 @@ export default function Footer() {
                 </div> */}
               </div>
             </StaggerItem>
+            <StaggerItem>
+              <div className={styles.col}>
+                <h4 className={styles.colTitle}>MAHARERA</h4>
 
+                <div className={styles.qrContainer}>
+                  <img
+                    src="/images/malibu_qr.jpg"
+                    alt="MAHARERA QR Code"
+                    className={styles.qrImage}
+                    loading="lazy"
+                    decoding="async"
+                  />
+
+                  <p className={styles.qrText}>MAHARERA <br />Registration Number:</p>
+
+                  <p className={styles.qrNumber}>P51700078094</p>
+                </div>
+              </div>
+            </StaggerItem>
             {/* LET'S CONNECT COLUMN */}
             <StaggerItem>
               <div className={styles.col}>
@@ -319,9 +337,6 @@ export default function Footer() {
             </StaggerItem>
 
             {/* MAHARERA COLUMN */}
-            <StaggerItem>
-              <div className={styles.col}>
-                <h4 className={styles.colTitle}>MAHARERA</h4>
 
                 <div className={styles.qrContainer}>
                   <img
