@@ -44,8 +44,9 @@ export default function AboutEVHomes() {
                 alt=""
                 className="ev-about__stripes-img"
                 aria-hidden="true"
-                loading="lazy"
-  decoding="async"
+                fetchPriority="high"
+                decoding="async"
+                 width="123" height="57"
               />
             </span>
             <span className="ev-about__title-homes">Homes</span>
@@ -91,7 +92,7 @@ export default function AboutEVHomes() {
               alt="EV Homes Luxury Architecture"
               className="ev-about__building-img"
               loading="lazy"
-  decoding="async"
+              decoding="async"
             />
           </div>
           <aside
