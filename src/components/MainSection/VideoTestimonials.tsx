@@ -12,8 +12,7 @@ const videoReviews = [
     name: "Mr./Mrs. Bhati",
     role: "Homebuyer",
     img: "/images/bhatiinsta.webp",
-    instagramUrl:
-      "https://www.instagram.com/reel/DXJrwn_iEdS/?igsh=bGVjMThwcG5yZWJq",
+    instagramUrl: "https://www.instagram.com/reel/DXJrwn_iEdS/?igsh=bGVjMThwcG5yZWJq",
     bg: "/images/luxury2bhk_one.webp",
   },
   {
@@ -21,8 +20,7 @@ const videoReviews = [
     name: "Mr./Mrs. Kothari",
     role: "Homebuyer",
     img: "/images/kothariinsta.webp",
-    instagramUrl:
-      "https://www.instagram.com/reel/DV5CKykiPv0/?igsh=dnl2ZXh4ZzliOWpi",
+    instagramUrl: "https://www.instagram.com/reel/DV5CKykiPv0/?igsh=dnl2ZXh4ZzliOWpi",
     bg: "/images/bedroom3bhk.webp",
   },
   {
@@ -30,8 +28,7 @@ const videoReviews = [
     name: "Mr./Mrs. Kanse",
     role: "Homebuyer",
     img: "/images/kanseinsta.webp",
-    instagramUrl:
-      "https://www.instagram.com/reel/DWleelfiLyt/?igsh=Y3UzbGg4N28zYzBv",
+    instagramUrl: "https://www.instagram.com/reel/DWleelfiLyt/?igsh=Y3UzbGg4N28zYzBv",
     bg: "/images/luxury2bhk_one.webp",
   },
   {
@@ -39,8 +36,7 @@ const videoReviews = [
     name: "Mr./Mrs. Hathi",
     role: "Homebuyer",
     img: "/images/hathiinsta.webp",
-    instagramUrl:
-      "https://www.instagram.com/reel/DWnXjCij30a/?igsh=YmRiYmpkNXV2N2o4",
+    instagramUrl: "https://www.instagram.com/reel/DWnXjCij30a/?igsh=YmRiYmpkNXV2N2o4",
     bg: "/images/luxury2bhk_two.webp",
   },
 ];
@@ -49,9 +45,13 @@ export default function VideoTestimonials() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
+  const mainSectionRef = useRef<HTMLElement>(null);
+  
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isInView, setIsInView] = useState(false); // New state to lazy load elements
 
+  // Check mobile device
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 1024px)");
     const onChange = () => setIsMobile(mq.matches);
@@ -60,37 +60,66 @@ export default function VideoTestimonials() {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
+  // Lazy load this whole heavy section when it's near viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // Ek baar load ho gaya toh bas
+        }
+      },
+      { rootMargin: "400px 0px" } // Screen par aane se 400px pehle hi trigger kar dega
+    );
+
+    if (mainSectionRef.current) {
+      observer.observe(mainSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Scroll animation effect
   useEffect(() => {
     let rafId = 0;
     let ticking = false;
+    let cachedTotal = 0;
+
+    // Layout values ko pehle hi cache kar lo taaki har scroll pe recalculate na ho
+    const calculateLayout = () => {
+      const wrap = wrapRef.current;
+      if (wrap) {
+        cachedTotal = wrap.offsetHeight - window.innerHeight;
+      }
+    };
+
+    calculateLayout();
+    window.addEventListener("resize", calculateLayout);
 
     const update = () => {
       ticking = false;
       const wrap = wrapRef.current;
       const section = sectionRef.current;
       const cards = cardsRef.current;
-      if (!wrap || !section) return;
+      if (!wrap || !section || cachedTotal <= 0) return;
 
       const rect = wrap.getBoundingClientRect();
-      const total = wrap.offsetHeight - window.innerHeight;
-      const progress = Math.min(1, Math.max(0, -rect.top / total));
+      const progress = Math.min(1, Math.max(0, -rect.top / cachedTotal));
 
       const x = -progress * 65;
       const y = -progress * 40;
-      const sectionOpacity =
-        progress > 0.7 ? Math.max(0, 1 - (progress - 0.7) / 0.3) : 1;
+      const sectionOpacity = progress > 0.7 ? Math.max(0, 1 - (progress - 0.7) / 0.3) : 1;
 
+      // translate3d uses GPU layer - super smooth on mobile
       section.style.transform = `translate3d(${x}vw, ${y}vh, 0)`;
       section.style.opacity = `${sectionOpacity}`;
 
       if (cards) {
         const fadeStart = 0.1;
         const fadeEnd = 0.35;
-        let cardsOpacity =
-          progress > fadeStart
-            ? 1 - (progress - fadeStart) / (fadeEnd - fadeStart)
-            : 1;
+        let cardsOpacity = progress > fadeStart ? 1 - (progress - fadeStart) / (fadeEnd - fadeStart) : 1;
         cardsOpacity = Math.min(1, Math.max(0, cardsOpacity));
+        
         cards.style.opacity = `${cardsOpacity}`;
         cards.style.pointerEvents = cardsOpacity <= 0.02 ? "none" : "auto";
         cards.style.transform = `translate3d(0, ${-(progress * 30)}px, 0)`;
@@ -104,57 +133,58 @@ export default function VideoTestimonials() {
       }
     };
 
-    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
     return () => {
       cancelAnimationFrame(rafId);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", calculateLayout);
     };
   }, []);
 
   return (
-    <section className="scroll-section" id="feedback">
+    <section className="scroll-section" id="feedback" ref={mainSectionRef}>
       <div className="liquid-bg">
-        {isMobile ? (
-          <Warp
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-            }}
-            colors={["#8de7e7", "#2C6A74", "#5DA9B0", "#99d6d3"]}
-            proportion={0.75}
-            softness={0.9}
-            distortion={0.15}
-            swirl={0.85}
-            swirlIterations={8}
-            shape="checks"
-            shapeScale={0.1}
-            speed={1}
-          />
-
-          
-        ) : (
-          <LiquidEther
-            mouseForce={8}
-            iterationsViscous={4}
-            iterationsPoisson={8}
-            cursorSize={120}
-            resolution={0.18}
-            autoDemo={true}
-            autoSpeed={0.2}
-            autoIntensity={1.8}
-            takeoverDuration={0.15}
-            autoResumeDelay={3000}
-            autoRampDuration={0.3}
-            colors={["#0b6669", "#239dad", "#27a8cf", "#00d0df"]}
-          />
+        {/* Shaders tabhi render honge jab section near-view hoga */}
+        {isInView && (
+          isMobile ? (
+            <Warp
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+              }}
+              colors={["#8de7e7", "#2C6A74", "#5DA9B0", "#99d6d3"]}
+              proportion={0.75}
+              softness={0.9}
+              distortion={0.15}
+              swirl={0.85}
+              swirlIterations={8}
+              shape="checks"
+              shapeScale={0.1}
+              speed={1}
+            />
+          ) : (
+            <LiquidEther
+              mouseForce={8}
+              iterationsViscous={4}
+              iterationsPoisson={8}
+              cursorSize={120}
+              resolution={0.18}
+              autoDemo={true}
+              autoSpeed={0.2}
+              autoIntensity={1.8}
+              takeoverDuration={0.15}
+              autoResumeDelay={3000}
+              autoRampDuration={0.3}
+              colors={["#0b6669", "#239dad", "#27a8cf", "#00d0df"]}
+            />
+          )
         )}
       </div>
+      
       <AboutEVHomes />
+      
       <div className="scroll-wrap" ref={wrapRef}>
         <div className="scroll-sticky">
           <section className="video-section" ref={sectionRef}>
@@ -163,25 +193,14 @@ export default function VideoTestimonials() {
               <div className="video-grid">
                 <div className="video-content-div testimonials-content">
                   <span className="testimonial-tag">CLIENT TESTIMONIALS</span>
-
                   <h2 className="testimonial-heading">
-                    Homes That
-                    <span className="script-line">Truly Feel</span>
-                    Like Home
+                    Homes That <span className="script-line">Truly Feel</span> Like Home
                   </h2>
-
                   <p className="testimonial-description">
-                    Real experiences from residents who turned aspirations into
-                      everyday living
-                    <span className="script-span">
-                      {" "}
-                        with EV Homes.
-                    </span>
+                    Real experiences from residents who turned aspirations into everyday living
+                    <span className="script-span"> with EV Homes.</span>
                   </p>
-
-                  <button className="testimonial-btn">
-                    Discover their stories
-                  </button>
+                  <button className="testimonial-btn">Discover their stories</button>
                 </div>
               </div>
             </div>
@@ -193,11 +212,7 @@ export default function VideoTestimonials() {
                     <div className="video-review-slide" key={i}>
                       <div
                         className="video-review-card"
-                        style={
-                          {
-                            "--card-bg": `url(${review.bg})`,
-                          } as React.CSSProperties
-                        }
+                        style={{ "--card-bg": `url(${review.bg})` } as React.CSSProperties}
                       >
                         <div className="review-top">
                           <div className="review-stars">★★★★★</div>
@@ -207,9 +222,12 @@ export default function VideoTestimonials() {
 
                         <div className="video-review-bottom">
                           <div className="video-review-footer">
+                            {/* Width, Height explicit de diya taaki layout shift na ho */}
                             <img
                               src={review.img}
                               alt={review.name}
+                              width="40" 
+                              height="40"
                               className="video-review-avatar"
                               loading="lazy"
                               decoding="async"
@@ -222,25 +240,12 @@ export default function VideoTestimonials() {
 
                           <div
                             className="instagram-play-btn"
-                            onClick={() =>
-                              window.open(review.instagramUrl, "_blank")
-                            }
+                            onClick={() => window.open(review.instagramUrl, "_blank")}
                             style={{ cursor: "pointer" }}
                           >
-                            <svg
-                              width="32"
-                              height="32"
-                              viewBox="0 0 1000 1000"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
+                            <svg width="32" height="32" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
                               <defs>
-                                <linearGradient
-                                  id="ig-gradient"
-                                  x1="25.922%"
-                                  y1="104.041%"
-                                  x2="75.82%"
-                                  y2="-5.433%"
-                                >
+                                <linearGradient id="ig-gradient" x1="25.922%" y1="104.041%" x2="75.82%" y2="-5.433%">
                                   <stop stopColor="#FFD600" offset="0%" />
                                   <stop stopColor="#FF6900" offset="30%" />
                                   <stop stopColor="#F00" offset="50%" />
@@ -248,26 +253,10 @@ export default function VideoTestimonials() {
                                   <stop stopColor="#002FFF" offset="100%" />
                                 </linearGradient>
                               </defs>
-                              <rect
-                                rx="225"
-                                width="1000"
-                                height="1000"
-                                fill="url(#ig-gradient)"
-                              />
-                              <path
-                                d="M500,203c96.7,0,108.1,0.4,146.4,2.1c35.4,1.6,54.6,7.5,67.4,12.5c16.9,6.6,29,14.5,41.7,27.2c12.7,12.7,20.6,24.8,27.2,41.7c5,12.8,10.9,32,12.5,67.4c1.7,38.2,2.1,49.6,2.1,146.4s-0.4,108.1-2.1,146.4c-1.6,35.4-7.5,54.6-12.5,67.4c-6.6,16.9-14.5,29-27.2,41.7c-12.7,12.7-24.8,20.6-41.7,27.2c-12.8,5-32,10.9-67.4,12.5c-38.2,1.7-49.6,2.1-146.4,2.1s-108.1-0.4-146.4-2.1c-35.4-1.6-54.6-7.5-67.4-12.5c-16.9-6.6-29-14.5-41.7-27.2c-12.7-12.7-20.6-24.8-27.2-41.7c-5-12.8-10.9-32-12.5-67.4c-1.7-38.2-2.1-49.6-2.1-146.4s0.4-108.1,2.1-146.4c1.6-35.4,7.5-54.6,12.5-67.4c6.6-16.9,14.5-29,27.2-41.7c12.7-12.7,24.8-20.6,41.7-27.2c12.8-5,32-10.9,67.4-12.5C391.9,203.4,403.3,203,500,203 M500,123c-98.3,0-110.5,0.4-149.2,2.2c-38.6,1.8-65,7.9-88,16.9c-23.8,9.2-44,21.5-64.1,41.6c-20.1,20.1-32.4,40.3-41.6,64.1c-8.9,23-15.1,49.4-16.9,88C123.4,389.5,123,401.7,123,500s0.4,110.5,2.2,149.2c1.8,38.6,7.9,65,16.9,88c9.2,23.8,21.5,44,41.6,64.1c20.1,20.1,40.3,32.4,64.1,41.6c23,8.9,49.4,15.1,88,16.9c38.7,1.8,50.9,2.2,149.2,2.2s110.5-0.4,149.2-2.2c38.6-1.8,65-7.9,88-16.9c23.8-9.2,44-21.5,64.1-41.6c20.1-20.1,32.4-40.3,41.6-64.1c8.9-23,15.1-49.4,16.9-88c1.8-38.7,2.2-50.9,2.2-149.2s-0.4-110.5-2.2-149.2c-1.8-38.6-7.9-65-16.9-88c-9.2-23.8-21.5-44-41.6-64.1c-20.1-20.1-40.3-32.4-64.1-41.6c-23-8.9-49.4-15.1-88-16.9C610.5,123.4,598.3,123,500,123 L500,123z"
-                                fill="#FFF"
-                              />
-                              <path
-                                d="M500,295.3c-113,0-204.7,91.7-204.7,204.7c0,113,91.7,204.7,204.7,204.7c113,0,204.7-91.7,204.7-204.7C704.7,387,613,295.3,500,295.3 M500,624.7c-68.9,0-124.7-55.8-124.7-124.7c0-68.9,55.8-124.7,124.7-124.7c68.9,0,124.7,55.8,124.7,124.7C624.7,568.9,568.9,624.7,500,624.7"
-                                fill="#FFF"
-                              />
-                              <circle
-                                cx="688.5"
-                                cy="311.5"
-                                r="53.5"
-                                fill="#FFF"
-                              />
+                              <rect rx="225" width="1000" height="1000" fill="url(#ig-gradient)" />
+                              <path d="M500,203c96.7,0,108.1,0.4,146.4,2.1c35.4,1.6,54.6,7.5,67.4,12.5c16.9,6.6,29,14.5,41.7,27.2c12.7,12.7,20.6,24.8,27.2,41.7c5,12.8,10.9,32,12.5,67.4c1.7,38.2,2.1,49.6,2.1,146.4s-0.4,108.1-2.1,146.4c-1.6,35.4-7.5,54.6-12.5,67.4c-6.6,16.9-14.5,29-27.2,41.7c-12.7,12.7-24.8,20.6-41.7,27.2c-12.8,5-32,10.9-67.4,12.5c-38.2,1.7-49.6,2.1-146.4,2.1s-108.1-0.4-146.4-2.1c-35.4-1.6-54.6-7.5-67.4-12.5c-16.9-6.6-29-14.5-41.7-27.2c-12.7-12.7-20.6-24.8-27.2-41.7c-5-12.8-10.9-32-12.5-67.4c-1.7-38.2-2.1-49.6-2.1-146.4s0.4-108.1,2.1-146.4c1.6-35.4,7.5-54.6,12.5-67.4c6.6-16.9,14.5-29,27.2-41.7c12.7-12.7,24.8-20.6,41.7-27.2c12.8-5,32-10.9,67.4-12.5C391.9,203.4,403.3,203,500,203 M500,123c-98.3,0-110.5,0.4-149.2,2.2c-38.6,1.8-65,7.9-88,16.9c-23.8,9.2-44,21.5-64.1,41.6c-20.1,20.1-32.4,40.3-41.6,64.1c-8.9,23-15.1,49.4-16.9,88C123.4,389.5,123,401.7,123,500s0.4,110.5,2.2,149.2c1.8,38.6,7.9,65,16.9,88c9.2,23.8,21.5,44,41.6,64.1c20.1,20.1,40.3,32.4,64.1,41.6c23,8.9,49.4,15.1,88,16.9c38.7,1.8,50.9,2.2,149.2,2.2s110.5-0.4,149.2-2.2c38.6-1.8,65-7.9,88-16.9c23.8-9.2,44-21.5,64.1-41.6c20.1-20.1,32.4-40.3,41.6-64.1c8.9-23,15.1-49.4,16.9-88c1.8-38.7,2.2-50.9,2.2-149.2s-0.4-110.5-2.2-149.2c-1.8-38.6-7.9-65-16.9-88c-9.2-23.8-21.5-44-41.6-64.1c-20.1-20.1-40.3-32.4-64.1-41.6c-23-8.9-49.4-15.1-88-16.9C610.5,123.4,598.3,123,500,123 L500,123z" fill="#FFF" />
+                              <path d="M500,295.3c-113,0-204.7,91.7-204.7,204.7c0,113,91.7,204.7,204.7,204.7c113,0,204.7-91.7,204.7-204.7C704.7,387,613,295.3,500,295.3 M500,624.7c-68.9,0-124.7-55.8-124.7-124.7c0-68.9,55.8-124.7,124.7-124.7c68.9,0,124.7,55.8,124.7,124.7C624.7,568.9,568.9,624.7,500,624.7" fill="#FFF" />
+                              <circle cx="688.5" cy="311.5" r="53.5" fill="#FFF" />
                             </svg>
                           </div>
                         </div>
@@ -279,6 +268,7 @@ export default function VideoTestimonials() {
             </div>
           </section>
         </div>
+
         <section id="testimonials" className="testimonial-section">
           <div className="t-container">
             <div className="t-head">
@@ -288,30 +278,17 @@ export default function VideoTestimonials() {
               <p>Real experiences, Trusted Partnership, Proven results.</p>
             </div>
             <div className="slider">
-              <YouTube />
+              {/* YouTube tabhi render hoga jab user sach me scroll karke yahan tak aayega */}
+              {isInView && <YouTube />}
             </div>
           </div>
         </section>
       </div>
 
       {open && (
-        <div
-          className="lightbox-modal"
-          onClick={() => setOpen(false)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            className="lightbox-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="lightbox-close"
-              onClick={() => setOpen(false)}
-              aria-label="Close"
-            >
-              ×
-            </button>
+        <div className="lightbox-modal" onClick={() => setOpen(false)} role="dialog" aria-modal="true">
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={() => setOpen(false)} aria-label="Close">×</button>
             <iframe
               src="https://www.youtube.com/embed/5Peo-ivmupE?autoplay=1"
               title="Video tour"
@@ -324,7 +301,6 @@ export default function VideoTestimonials() {
 
       <Footer />
       <div className="bgOverlay" />
-
     </section>
   );
 }

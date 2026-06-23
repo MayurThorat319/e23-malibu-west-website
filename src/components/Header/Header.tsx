@@ -84,8 +84,9 @@ export default function Header({ onOpenDialog }: HeaderProps) {
             className={styles.cardImg}
             src="/images/Malibu_logo.webp"
             alt="logo"
-            loading="lazy"
-  decoding="async"
+            fetchPriority="high"
+            decoding="async"
+            width="123" height="57"
           />
         </a>
 

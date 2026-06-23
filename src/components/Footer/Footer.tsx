@@ -179,8 +179,9 @@ export default function Footer() {
                 src="/images/Malibu_logo.webp"
                 alt="Malibu West Logo"
                 className={styles.logoImage}
-                loading="lazy"
+                fetchPriority="high"
                 decoding="async"
+                width="123" height="57"
               />
 
               <p className={styles.tagline}>

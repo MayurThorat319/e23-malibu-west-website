@@ -91,31 +91,9 @@ h4 {
   /* line-height: 1.15; */
 }
 
-.goldText {
-  background: var(--gold-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 .container {
   width: var(--container);
   margin-inline: auto;
-}
-
-.sectionLabel {
-  display: inline-block;
-  font-size: 0.68rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.25rem;
-}
-
-.sectionTitle {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
 }
 
 .divider {

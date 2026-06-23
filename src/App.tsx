@@ -93,7 +93,7 @@ function App() {
               </div>
             </Suspense>
 
-            <Suspense fallback={<div className="h-[50vh]" />}>
+            <Suspense fallback={<div className="h-[50vh] bg-neutral-900 animate-pulse" />}>
               <div  id="Feedback" className="section-video" >
                 <VideoTestimonials />
               </div>
