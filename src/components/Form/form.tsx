@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "./form.css";
+import { createPortal } from "react-dom";
 
 interface EnquiryDialogProps {
   isOpen: boolean;
@@ -17,6 +18,18 @@ export default function EnquiryDialog({ isOpen, onClose }: EnquiryDialogProps) {
   });
   const [submitted, setSubmitted] = useState(false);
   const [countdown, setCountdown] = useState(10);
+
+  useEffect(() => {
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [isOpen]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const target = e.target;
@@ -77,7 +90,7 @@ export default function EnquiryDialog({ isOpen, onClose }: EnquiryDialogProps) {
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div className="aspire-enquiry-wrapper">
       <div className="dialog-overlay" onClick={handleClose}>
         {submitted ? (
@@ -212,6 +225,7 @@ export default function EnquiryDialog({ isOpen, onClose }: EnquiryDialogProps) {
           </div>
         )}
       </div>
-    </div>
+    </div>,
+      document.body
   );
 }

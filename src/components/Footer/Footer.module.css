@@ -7,6 +7,16 @@
   z-index: 10;
 }
 
+.footerLinkButton {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
 .desktopGradient {
   background: linear-gradient(to bottom,
       rgb(29 46 58 / 0%) 0%,

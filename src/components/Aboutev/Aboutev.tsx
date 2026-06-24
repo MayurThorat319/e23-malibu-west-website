@@ -19,6 +19,7 @@ const stats = [
 
 export default function AboutEVHomes() {
   const statsRef = useRef(null);
+  
 
   const isInView = useInView(statsRef, {
     amount: 0.5,
