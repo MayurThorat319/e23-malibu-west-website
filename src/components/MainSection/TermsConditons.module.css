@@ -1,0 +1,160 @@
+.termsConditions {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff7e4;
+  padding: 80px 20px;
+  position: relative;
+}
+
+.termsContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.termsSection a,
+.contactInfo a {
+  color: #1c9696;
+  text-decoration: none;
+}
+
+.termsSection a:hover,
+.contactInfo a:hover {
+  text-decoration: underline;
+}
+
+.termsMainTitle {
+  text-align: center;
+  font-family: "Junge", serif;
+  font-size: 5rem;
+  font-weight: 400;
+  color: #1c9696;
+  margin-bottom: 50px;
+}
+
+.goldText {
+  color: #1c9696;
+  font-weight: 600;
+}
+
+.termsIntro {
+  color: #1a1a1a;
+  line-height: 1.9;
+  font-size: 1.05rem;
+  margin-bottom: 50px;
+}
+
+.termsSection {
+  margin-bottom: 45px;
+  text-align: left;
+}
+
+.termsSection h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1c9696;
+  font-family: "Junge", serif;
+}
+
+.websiteLink {
+  color: #5b6dd6;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.websiteLink:hover {
+  text-decoration: underline;
+}
+
+.termsSection p,
+.termsSection li {
+  color: #1a1a1a;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.termsSection ul {
+  padding-left: 25px;
+  margin-top: 10px;
+}
+
+.termsSection li {
+  margin-bottom: 10px;
+}
+
+.contactInfo {
+  margin-top: 20px;
+}
+
+.contactInfo p {
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.contactLabel {
+  color: #1c9696;
+  font-weight: 700;
+}
+
+.closeButton {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #1c9696;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.closeButton:hover {
+  transform: scale(1.05);
+}
+
+.closeButton svg {
+  color: white;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 840px) {
+  .termsConditions {
+    padding: 120px 20px 60px;
+  }
+
+  .termsMainTitle {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+  }
+
+  .termsIntro {
+    font-size: 1rem;
+  }
+
+  .closeButton {
+    top: 16px;
+    right: 16px;
+  }
+
+  .closeButton svg {
+    font-size: 1.7rem;
+  }
+
+  .termsSection h2 {
+    font-size: 1.5rem;
+  }
+
+  .termsSection p,
+  .termsSection li {
+    font-size: 0.95rem;
+  }
+}

@@ -10,22 +10,24 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 // import { HouseHeart } from "lucide-react";
 // import { Warp } from "@paper-design/shaders-react";
 
-interface FooterColumn {
-  title: string;
-  links: string[];
-}
-
-const COLUMNS: FooterColumn[] = [
+const COLUMNS = [
   {
     title: "Company",
-    links: ["About", "Contact"],
+    links: [
+      { label: "About", href: "#about" },
+      { label: "Contact", href: "https://wa.me/918291668777" },
+    ],
   },
   {
     title: "Resources",
-    links: ["Privacy Policy", "Terms & Conditions"],
+    links: [
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms & Conditions", href: "/terms-and-conditions" },
+    ],
   },
 ];
 
@@ -52,8 +54,9 @@ export default function Footer() {
   const isTabletDown = useIsTabletDown();
   return (
     <footer
-      className={`${styles.footer} ${!isTabletDown ? styles.desktopGradient : ""
-        }`}
+      className={`${styles.footer} ${
+        !isTabletDown ? styles.desktopGradient : ""
+      }`}
       id="contact"
     >
       {/* {isTabletDown && (
@@ -100,11 +103,7 @@ export default function Footer() {
             />
 
             {/* Your original multi-line sea waves, now fully visible without cutting off */}
-            <g
-              fill="none"
-              stroke="#99d6d3"
-              strokeWidth="4"
-            >
+            <g fill="none" stroke="#99d6d3" strokeWidth="4">
               <path d="M0 120 C250 260 650 250 980 110 C1180 20 1320 40 1440 130" />
               <path d="M0 135 C250 275 650 265 980 125 C1180 35 1320 55 1440 145" />
               <path d="M0 150 C250 290 650 280 980 140 C1180 50 1320 70 1440 160" />
@@ -168,7 +167,6 @@ export default function Footer() {
             />
           </svg>
         )}
-
       </div>
 
       <div className={styles.footercontainer}>
@@ -181,11 +179,14 @@ export default function Footer() {
                 className={styles.logoImage}
                 fetchPriority="high"
                 decoding="async"
-                width="123" height="57"
+                width="123"
+                height="57"
               />
 
               <p className={styles.tagline}>
-                23 Malibu West is where luxury, connectivity, and modern living come together.              </p>
+                23 Malibu West is where luxury, connectivity, and modern living
+                come together.{" "}
+              </p>
             </div>
           </Reveal>
 
@@ -197,13 +198,15 @@ export default function Footer() {
                     {/* <div className={styles.lableIcon}>
                       <HouseHeart className={styles.lableDen} />
                     </div> */}
-                    <h4 className={`${styles.colTitle} ${styles.extrasize}`}>{col.title}</h4>
+                    <h4 className={`${styles.colTitle} ${styles.extrasize}`}>
+                      {col.title}
+                    </h4>
                   </div>
 
                   <ul>
                     {col.links.map((link) => (
-                      <li key={link}>
-                        <a href="#">{link}</a>
+                      <li key={link.label}>
+                        <Link to={link.href}>{link.label}</Link>
                       </li>
                     ))}
                   </ul>
@@ -262,7 +265,10 @@ export default function Footer() {
                     decoding="async"
                   />
 
-                  <p className={styles.qrText}>MAHARERA <br />Registration Number:</p>
+                  <p className={styles.qrText}>
+                    MAHARERA <br />
+                    Registration Number:
+                  </p>
 
                   <p className={styles.qrNumber}>P51700078094</p>
                 </div>
@@ -338,7 +344,6 @@ export default function Footer() {
             </StaggerItem>
 
             {/* MAHARERA COLUMN */}
-           
           </StaggerContainer>
         </div>
         <Reveal direction="up" delay={0.1}>
