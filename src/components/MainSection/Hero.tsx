@@ -11,7 +11,7 @@ const HeroVideo = () => {
         className={styles.heroVideo}
         poster="/poster.jpg"
         // @ts-ignore - tells modern browsers to prioritize this asset stream
-        fetchpriority="high" 
+        fetchPriority="high" 
       >
         <source src="/videos/Malibu_Hero_1.mp4" type="video/mp4" />
       </video>

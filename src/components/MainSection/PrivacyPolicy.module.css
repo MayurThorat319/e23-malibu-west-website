@@ -1,0 +1,155 @@
+.privacyPolicy {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff7e4;
+  padding: 50px 24px 40px;
+}
+
+.privacyContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.privacyMainTitle {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #1c9696;
+  margin-bottom: 40px;
+  font-family: "Junge", serif;
+}
+
+.highlight {
+  color: #1c9696;
+  font-weight: 600;
+}
+
+.privacyIntro {
+  color: #1a1a1a;
+  line-height: 1.9;
+  font-size: 1.05rem;
+  margin-bottom: 50px;
+}
+
+.policySection {
+  margin-bottom: 40px;
+}
+
+.policySection h2 {
+  color: #1c9696;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  font-family: "Junge", serif;
+
+}
+
+.policySection h3 {
+  color: #1c9696;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 18px 0 10px;
+}
+
+.policySection p,
+.policySection li {
+  color: #1a1a1a;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.policySection ul {
+  padding-left: 22px;
+}
+
+.policySection li {
+  margin-bottom: 10px;
+}
+
+.contactInfo {
+  margin-top: 15px;
+}
+
+.contactInfo p {
+  color: #1a1a1a;
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+
+.contactLabel {
+  color: #1c9696;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.closeButton {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: #1c9696;
+  color: #fff;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.closeButton svg {
+  font-size: 1.2rem;
+}
+
+.websiteLink {
+  color: #5b6dd6;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.websiteLink:hover {
+  text-decoration: underline;
+}
+
+.closeButton:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .privacyPolicy {
+    padding: 90px 20px 60px;
+  }
+
+  .privacyMainTitle {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+
+  .privacyIntro {
+    font-size: 1rem;
+  }
+
+  .policySection h2 {
+    font-size: 1.5rem;
+  }
+
+  .policySection h3 {
+    font-size: 1.1rem;
+  }
+
+  .policySection p,
+  .policySection li {
+    font-size: 0.95rem;
+  }
+
+  .closeButton {
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+}
