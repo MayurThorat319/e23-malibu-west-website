@@ -360,6 +360,7 @@
       rgba(6, 24, 33, 0.9) 55%,
       rgba(6, 24, 33, 0.96) 100%
     );
+    pointer-events: none;
   }
 
   .ev-about__inner {
