@@ -336,6 +336,25 @@
   );
 }
 
+.ev-about__overlay {
+  pointer-events: none;
+}
+
+.ev-about__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.ev-about__content {
+  position: relative;
+  z-index: 10;
+}
+
+.ev-about__cta {
+  position: relative;
+  z-index: 20;
+}
+
 @media (max-width: 900px) {
   .ev-about__right-side {
     flex-direction: column;
