@@ -20,7 +20,7 @@ const COLUMNS = [
     title: "Company",
     links: [
       { label: "About", href: "#about" },
-      { label: "Contact", action: "enquiry" },
+      { label: "Contact", href: "https://app.monstercampaigns.com/c/ugabdmkyycjoomnbtt6n/" },
     ],
   },
   {

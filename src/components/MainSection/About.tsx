@@ -271,7 +271,7 @@ export default function AboutSection() {
               </span>
             </motion.div>
           </div>
-          <motion.div
+          <motion.a
             className="dm-feature-item"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -281,11 +281,17 @@ export default function AboutSection() {
               ease: "easeOut",
               delay: 0.4,
             }}
+            href="https://app.monstercampaigns.com/c/ugabdmkyycjoomnbtt6n/"
           >
-            <a className="dm-cta" href="#">
+            <a
+              className="dm-cta"
+              href="https://app.monstercampaigns.com/c/ugabdmkyycjoomnbtt6n/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               EXPLORE ALL PROPERTIES <span className="dm-cta-arrow">→</span>
             </a>
-          </motion.div>
+          </motion.a>
         </div>
 
         <div className="dm-image-wrap dm-hero-image">
