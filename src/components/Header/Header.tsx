@@ -86,7 +86,8 @@ export default function Header({ onOpenDialog }: HeaderProps) {
             alt="logo"
             fetchPriority="high"
             decoding="async"
-            width="123" height="57"
+            width="123"
+            height="57"
           />
         </a>
 
@@ -105,15 +106,16 @@ export default function Header({ onOpenDialog }: HeaderProps) {
           ))}
         </nav>
 
-        <motion.button
+        <motion.a
           type="button"
           onClick={onOpenDialog}
           className={`${styles.cta} ${scrolled ? styles.ctascroll : ""}`}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
+          href="https://app.monstercampaigns.com/c/ugabdmkyycjoomnbtt6n/"
         >
           Contact Now
-        </motion.button>
+        </motion.a>
 
         <button
           type="button"
@@ -139,12 +141,13 @@ export default function Header({ onOpenDialog }: HeaderProps) {
               onClick={() => setMenuOpen(false)}
             />
 
-            <motion.div
+            <motion.a
               className={styles.mobileMenu}
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              href="https://app.monstercampaigns.com/c/ugabdmkyycjoomnbtt6n/"
             >
               <div className={styles.mobileNavLinks}>
                 {LINKS.map((link, i) => (
@@ -171,7 +174,7 @@ export default function Header({ onOpenDialog }: HeaderProps) {
               >
                 Contact Now
               </button>
-            </motion.div>
+            </motion.a>
           </>
         )}
       </AnimatePresence>
