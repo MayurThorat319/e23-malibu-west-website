@@ -167,18 +167,27 @@
   justify-content: center;
 }
 
-.lux-icon-wrap::before {
-  content: "";
-  position: absolute;
-  inset: 15%;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(143, 220, 255, 0.25),
-    rgba(143, 220, 255, 0)
-  );
-  filter: blur(25px);
-  animation: luxHalo 4s ease-in-out infinite;
+.lux-animated-svg {
+  position: relative;
+}
+
+.lux-icon-wrap::before,
+.lux-animated-svg::after,
+.lux-aura {
+  display: none;
+}
+
+@keyframes glowOrbit {
+  0%,
+  100% {
+    transform: scale(.9);
+    opacity: .5;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
 }
 
 @keyframes luxHalo {
@@ -205,44 +214,65 @@
   transform: scale(1.05);
 }
 
-.lux-line {
-  stroke: #74d8d1;
-  filter:
-    drop-shadow(0 0 2px rgba(116, 216, 209, 0.5))
-    drop-shadow(0 0 8px rgba(116, 216, 209, 0.25));
-  animation: luxGlow 3s ease-in-out infinite;
+.lux-line,
+.lux-trace {
+  fill: none;
+  stroke: url(#luxStrokeGradient);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+
+  animation:
+    luxDrawLoop 2.2s ease-in-out infinite alternate,
+    gradientPulse 3s ease-in-out infinite;
 }
 
-@keyframes luxGlow {
+@keyframes gradientPulse {
   0%,
   100% {
-    filter: drop-shadow(0 0 1px rgba(60, 170, 165, 0.35));
+    opacity: 0.7;
   }
 
   50% {
-    filter: drop-shadow(0 0 4px rgba(60, 190, 185, 0.7));
+    opacity: 1;
   }
 }
 
 .lux-trace {
-  fill: none;
-  stroke: #9efcf4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 20 250;
-  stroke-dashoffset: 270;
-  filter:
+  /* stroke: #9efcf4; */
+  stroke-width: 2.4;
+  /* filter:
     drop-shadow(0 0 4px #9efcf4)
     drop-shadow(0 0 10px #9efcf4)
-    drop-shadow(0 0 18px #9efcf4);
-  animation: luxTraceRun 2.5s linear infinite;
+    drop-shadow(0 0 18px #9efcf4); */
+  animation-duration: 2.4s;
 }
 
-@keyframes luxTraceRun {
-  to {
-    stroke-dashoffset: 0;
-  }
+@keyframes luxDrawLoop {
+  0%   { stroke-dashoffset: 1; }   /* hidden */
+  100% { stroke-dashoffset: 0; }   /* fully drawn — then `alternate` reverses back */
 }
+
+/* Stagger the strokes inside each icon so it draws like the bar-graph (one bar after another) */
+.lux-animated-svg .lux-line:nth-of-type(1) { animation-delay: 0s; }
+.lux-animated-svg .lux-line:nth-of-type(2) { animation-delay: 0.15s; }
+.lux-animated-svg .lux-line:nth-of-type(3) { animation-delay: 0.3s; }
+.lux-animated-svg .lux-line:nth-of-type(4) { animation-delay: 0.45s; }
+.lux-animated-svg .lux-line:nth-of-type(5) { animation-delay: 0.6s; }
+.lux-animated-svg .lux-line:nth-of-type(6) { animation-delay: 0.75s; }
+
+/* keep the soft halo + aura you already had */
+.lux-aura {
+  transform-origin: center;
+  animation: luxAuraPulse 2.5s ease-in-out infinite;
+}
+@keyframes luxAuraPulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.92); }
+  50%      { opacity: 1;    transform: scale(1.08); }
+}
+
 
 .lux-aura {
   transform-origin: center;
