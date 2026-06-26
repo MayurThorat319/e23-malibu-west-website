@@ -83,6 +83,8 @@ export default function YouTube() {
   const xPosRef = useRef<number>(0);
   const isDragging = useRef<boolean>(false);
   const lastTouchX = useRef<number>(0);
+  const velocityRef = useRef(0);
+const lastMoveTime = useRef(0);
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     const container = rowsRef.current;
@@ -107,26 +109,64 @@ export default function YouTube() {
     rafRef.current = requestAnimationFrame(tick);
    
     const onTouchStart = (e: TouchEvent) => {
-      isDragging.current = true;
-      lastTouchX.current = e.touches[0].clientX;
-      if (resumeTimer.current) clearTimeout(resumeTimer.current);
-    };
-    const onTouchMove = (e: TouchEvent) => {
-      if (!isDragging.current) return;
-      const delta = e.touches[0].clientX - lastTouchX.current;
-      lastTouchX.current = e.touches[0].clientX;
-      xPosRef.current += delta;
-      const half = inner.scrollWidth / 2;
-      if (xPosRef.current > 0) xPosRef.current -= half;
-      if (Math.abs(xPosRef.current) >= half) xPosRef.current += half;
-      inner.style.transform = `translateX(${xPosRef.current}px)`;
-    };
+  isDragging.current = true;
+  lastTouchX.current = e.touches[0].clientX;
+  lastMoveTime.current = Date.now();
+  velocityRef.current = 0;
+
+  if (resumeTimer.current) clearTimeout(resumeTimer.current);
+};
+   const onTouchMove = (e: TouchEvent) => {
+  if (!isDragging.current) return;
+
+  const now = Date.now();
+  const delta = e.touches[0].clientX - lastTouchX.current;
+  const dt = now - lastMoveTime.current || 1;
+
+  velocityRef.current = delta / dt;
+
+  lastTouchX.current = e.touches[0].clientX;
+  lastMoveTime.current = now;
+
+  xPosRef.current += delta;
+
+  const half = inner.scrollWidth / 2;
+
+  if (xPosRef.current > 0) xPosRef.current -= half;
+  if (Math.abs(xPosRef.current) >= half) xPosRef.current += half;
+
+  inner.style.transform = `translateX(${xPosRef.current}px)`;
+};
     const onTouchEnd = () => {
-      if (resumeTimer.current) clearTimeout(resumeTimer.current);
-      resumeTimer.current = setTimeout(() => {
-        isDragging.current = false;
-      }, 800);
-    };
+  isDragging.current = false;
+
+  let momentum = velocityRef.current * 10;
+
+  const glide = () => {
+    momentum *= 0.95;
+
+    if (Math.abs(momentum) < 0.5) return;
+
+    xPosRef.current += momentum;
+
+    const half = inner.scrollWidth / 2;
+
+    if (xPosRef.current > 0) xPosRef.current -= half;
+    if (Math.abs(xPosRef.current) >= half) xPosRef.current += half;
+
+    inner.style.transform = `translateX(${xPosRef.current}px)`;
+
+    requestAnimationFrame(glide);
+  };
+
+  requestAnimationFrame(glide);
+
+  if (resumeTimer.current) clearTimeout(resumeTimer.current);
+
+  resumeTimer.current = setTimeout(() => {
+    velocityRef.current = 0;
+  }, 800);
+};
     container.addEventListener("touchstart", onTouchStart, { passive: true });
     container.addEventListener("touchmove", onTouchMove, { passive: true });
     container.addEventListener("touchend", onTouchEnd, { passive: true });

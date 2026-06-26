@@ -30,7 +30,7 @@ export default function AboutEVHomes() {
     <section className="ev-about">
       <div className="ev-about__overlay" />
 
-      <div className="ev-about__inner">
+      <div className="ev-about__inner" id="about">
         <div className="ev-about__content">
           <div className="ev-about__about-row">
             <span className="ev-about__rule" />
