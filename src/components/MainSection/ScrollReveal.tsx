@@ -49,8 +49,9 @@ const TILES: Tile[] = [
   {
     url: IMG("1600607687939-ce8a6c25118c"),
     x: 43, y: -15, w: 11, h: 30, delay: 0.12, maxOpacity: 0.3,
-    hideOnMobile: true,
-    tabletX: 35, tabletY: 10, tabletW: 22, tabletH: 30
+    mobileX: 24, mobileY: 40, mobileW: 40, mobileH: 35,
+        tabletX: 12, tabletY: 35, tabletW: 18, tabletH: 25
+
   },
   {
     url: IMG("1512917774080-9991f1c4c750"),
@@ -62,13 +63,15 @@ const TILES: Tile[] = [
     url: IMG("1564013799919-ab600027ffc6"),
     x: -20, y: 30, w: 11, h: 30, delay: 0.25, maxOpacity: 0.5,
     mobileX: -28, mobileY: 30, mobileW: 40, mobileH: 35,
+    
     tabletX: -22, tabletY: 30, tabletW: 18, tabletH: 25
   },
   {
     url: IMG("1600585154526-990dced4db0d"),
     x: 24, y: 30, w: 11, h: 30, delay: 0.28, maxOpacity: 1.0,
-    mobileX: 24, mobileY: 40, mobileW: 40, mobileH: 35,
-    tabletX: 12, tabletY: 35, tabletW: 18, tabletH: 25
+    hideOnMobile: true,
+        tabletX: 35, tabletY: 10, tabletW: 22, tabletH: 30
+
   },
   {
     url: IMG("1600210492486-724fe5c67fb0"),

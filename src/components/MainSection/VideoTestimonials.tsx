@@ -143,7 +143,7 @@ export default function VideoTestimonials() {
 
   return (
     <section className="scroll-section" id="feedback" ref={mainSectionRef}>
-      <div className="liquid-bg">
+      <div className="liquid-bg" style={{ pointerEvents: "none" }}>
         {/* Shaders tabhi render honge jab section near-view hoga */}
         {isInView && (
           isMobile ? (
@@ -153,6 +153,7 @@ export default function VideoTestimonials() {
                 inset: 0,
                 width: "100%",
                 height: "100%",
+                pointerEvents: "none",
               }}
               colors={["#8de7e7", "#2C6A74", "#5DA9B0", "#99d6d3"]}
               proportion={0.75}

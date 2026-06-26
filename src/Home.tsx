@@ -62,7 +62,7 @@ function HomePage() {
 
         {/* Immediate Async Components */}
         <Suspense fallback={<div className="h-[40vh] bg-neutral-900 animate-pulse" />}>
-          <div id="about">
+          <div>
             <AboutSection />
           </div>
         </Suspense>
