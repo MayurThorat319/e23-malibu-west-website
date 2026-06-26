@@ -130,7 +130,7 @@
 
 .lux-card-title,
 .lux-card-text,
-.lux-icon-wrap {
+.lux-lottie-wrap {
   opacity: 0;
   transform: translateY(30px);
   transition:
@@ -140,7 +140,7 @@
 
 .lux-card.is-visible .lux-card-title,
 .lux-card.is-visible .lux-card-text,
-.lux-card.is-visible .lux-icon-wrap {
+.lux-card.is-visible .lux-lottie-wrap {
   opacity: 1;
   transform: translateY(0);
 }
@@ -210,7 +210,61 @@
   display: block;
 }
 
-.lux-card.is-visible:hover .lux-icon-wrap {
+.lux-card:hover .lux-lottie {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.lux-lottie-wrap {
+  width: 220px;
+  height: 220px;
+  margin: 30px auto 0;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+
+.lux-card.is-visible .lux-lottie-wrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lux-lottie {
+  width: 100%;
+  height: 100%;
+}
+
+.lux-card:hover .lux-lottie {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.lux-video-wrap {
+  width: 220px;
+  height: 220px;
+  margin: 30px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lux-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+
+  filter:
+    drop-shadow(0 0 12px rgba(116, 216, 209, 0.2))
+    drop-shadow(0 0 30px rgba(116, 216, 209, 0.15));
+
+  transition: transform 0.5s ease;
+}
+
+.lux-card:hover .lux-video {
   transform: scale(1.05);
 }
 
