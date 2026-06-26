@@ -18,13 +18,20 @@ const cards: CardItem[] = [
         aria-hidden="true"
       >
         <defs>
-          <radialGradient id="lux-glow-a" cx="50%" cy="45%" r="50%">
-            <stop offset="0%" stopColor="#8fdcff" stopOpacity="0.25" />
-            <stop offset="60%" stopColor="#8fdcff" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="#8fdcff" stopOpacity="0" />
-          </radialGradient>
+          <linearGradient
+            id="luxStrokeGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stopColor="#74d8d1" />
+            <stop offset="50%" stopColor="#b8fff9" />
+            <stop offset="100%" stopColor="#74d8d1" />
+          </linearGradient>
         </defs>
         <circle
+          pathLength={1}
           className="lux-aura"
           cx="60"
           cy="55"
@@ -37,13 +44,16 @@ const cards: CardItem[] = [
           fill="none"
           strokeWidth="2.2"
           strokeLinejoin="round"
+          pathLength={1}
         />
         <path
           className="lux-trace"
           d="M60 18c-12 0-21 9-21 21 0 16 21 38 21 38s21-22 21-38c0-12-9-21-21-21z"
           strokeWidth="2.4"
+          pathLength={1}
         />
         <circle
+          pathLength={1}
           className="lux-line"
           cx="60"
           cy="39"
@@ -52,10 +62,17 @@ const cards: CardItem[] = [
           strokeWidth="2.2"
         />
         <g className="lux-line" strokeWidth="1.6" fill="none">
-          <path d="M20 95 L30 95 L30 82 L40 82 L40 90 L50 90 L50 78 L58 78" />
-          <path d="M62 78 L70 78 L70 88 L80 88 L80 80 L90 80 L90 92 L100 92" />
+          <path
+            pathLength={1}
+            d="M20 95 L30 95 L30 82 L40 82 L40 90 L50 90 L50 78 L58 78"
+          />
+          <path
+            pathLength={1}
+            d="M62 78 L70 78 L70 88 L80 88 L80 80 L90 80 L90 92 L100 92"
+          />
         </g>
         <line
+          pathLength={1}
           className="lux-line"
           x1="14"
           y1="100"
@@ -76,13 +93,20 @@ const cards: CardItem[] = [
         aria-hidden="true"
       >
         <defs>
-          <radialGradient id="lux-glow-b" cx="50%" cy="50%" r="55%">
-            <stop offset="0%" stopColor="#8fdcff" stopOpacity="0.25" />
-            <stop offset="60%" stopColor="#8fdcff" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="#8fdcff" stopOpacity="0" />
-          </radialGradient>
+          <linearGradient
+            id="luxStrokeGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stopColor="#74d8d1" />
+            <stop offset="50%" stopColor="#b8fff9" />
+            <stop offset="100%" stopColor="#74d8d1" />
+          </linearGradient>
         </defs>
         <circle
+          pathLength={1}
           className="lux-aura"
           cx="60"
           cy="60"
@@ -95,17 +119,19 @@ const cards: CardItem[] = [
           strokeWidth="2.2"
           strokeLinejoin="round"
         >
-          <rect x="28" y="60" width="14" height="36" />
-          <rect x="46" y="40" width="12" height="56" />
-          <rect x="62" y="28" width="14" height="68" />
-          <rect x="80" y="50" width="12" height="46" />
+          <path pathLength="1" d="M28 96 V60 H42 V96 Z" />
+          <path pathLength="1" d="M46 96 V40 H58 V96 Z" />
+          <path pathLength="1" d="M62 96 V28 H76 V96 Z" />
+          <path pathLength="1" d="M80 96 V50 H92 V96 Z" />
         </g>
         <path
+          pathLength={1}
           className="lux-trace"
           d="M28 96 L28 60 M46 96 L46 40 M62 96 L62 28 M80 96 L80 50"
           strokeWidth="2.2"
         />
         <line
+          pathLength={1}
           className="lux-line"
           x1="18"
           y1="96"
@@ -126,13 +152,20 @@ const cards: CardItem[] = [
         aria-hidden="true"
       >
         <defs>
-          <radialGradient id="lux-glow-c" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#8fdcff" stopOpacity="0.25" />
-            <stop offset="60%" stopColor="#8fdcff" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="#8fdcff" stopOpacity="0" />
-          </radialGradient>
+          <linearGradient
+            id="luxStrokeGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stopColor="#74d8d1" />
+            <stop offset="50%" stopColor="#b8fff9" />
+            <stop offset="100%" stopColor="#74d8d1" />
+          </linearGradient>
         </defs>
         <circle
+          pathLength={1}
           className="lux-aura"
           cx="60"
           cy="60"
@@ -140,6 +173,7 @@ const cards: CardItem[] = [
           fill="url(#lux-glow-c)"
         />
         <path
+          pathLength={1}
           className="lux-line"
           d="M36 66 a24 24 0 0 1 48 0"
           fill="none"
@@ -150,18 +184,19 @@ const cards: CardItem[] = [
           strokeWidth="2.2"
           strokeLinecap="round"
         >
-          <line x1="60" y1="22" x2="60" y2="32" />
-          <line x1="32" y1="34" x2="38" y2="42" />
-          <line x1="88" y1="34" x2="82" y2="42" />
-          <line x1="22" y1="58" x2="32" y2="58" />
-          <line x1="88" y1="58" x2="98" y2="58" />
+          <line pathLength={1} x1="60" y1="22" x2="60" y2="32" />
+          <line pathLength={1} x1="32" y1="34" x2="38" y2="42" />
+          <line pathLength={1} x1="88" y1="34" x2="82" y2="42" />
+          <line pathLength={1} x1="22" y1="58" x2="32" y2="58" />
+          <line pathLength={1} x1="88" y1="58" x2="98" y2="58" />
         </g>
         <g className="lux-line" fill="none" strokeWidth="1.8">
-          <path d="M22 78 q10 -6 20 0 t20 0 t20 0 t16 0" />
-          <path d="M22 88 q10 -6 20 0 t20 0 t20 0 t16 0" />
-          <path d="M22 98 q10 -6 20 0 t20 0 t20 0 t16 0" />
+          <path pathLength={1} d="M22 78 q10 -6 20 0 t20 0 t20 0 t16 0" />
+          <path pathLength={1} d="M22 88 q10 -6 20 0 t20 0 t20 0 t16 0" />
+          <path pathLength={1} d="M22 98 q10 -6 20 0 t20 0 t20 0 t16 0" />
         </g>
         <path
+          pathLength={1}
           className="lux-trace"
           d="M22 88 q10 -6 20 0 t20 0 t20 0 t16 0"
           strokeWidth="2.2"
