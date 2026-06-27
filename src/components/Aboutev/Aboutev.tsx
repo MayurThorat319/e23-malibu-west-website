@@ -79,7 +79,7 @@ export default function AboutEVHomes() {
             type="button"
             className="ev-about__cta"
             onClick={() => {
-              window.open("https://evhomes.tech", "_blank");
+              window.open("https://www.evgroup.in/home.html", "_blank");
             }}
           >
             <span className="btn-f">EXPLORE PROJECTS</span>
