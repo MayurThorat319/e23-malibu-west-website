@@ -24,12 +24,10 @@
 .bgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(243, 243, 243, 0) 0%,
-    rgba(8, 55, 87, 0) 50%,
-    rgb(7, 57, 66) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(243, 243, 243, 0) 0%,
+      rgba(8, 55, 87, 0) 50%,
+      rgb(7, 57, 66) 100%);
 }
 
 .testimonial-tag {
@@ -101,12 +99,10 @@
 
 .scroll-section {
   position: relative;
-  background-image: linear-gradient(
-    180deg,
-    rgb(158, 228, 255) 0%,
-    rgb(63, 96, 108) 50%,
-    rgb(29, 46, 58) 100%
-  );
+  background-image: linear-gradient(180deg,
+      rgb(158, 228, 255) 0%,
+      rgb(63, 96, 108) 50%,
+      rgb(29, 46, 58) 100%);
   background-attachment: scroll;
   background-size: auto, cover;
   background-position:
@@ -124,12 +120,10 @@
   left: 0;
   width: 100%;
   height: 150px;
-  background: linear-gradient(
-    180deg,
-    #fff8e8 10%,
-    #d7ffff72 40%,
-    transparent 100%
-  );
+  background: linear-gradient(180deg,
+      #fff8e8 10%,
+      #d7ffff72 40%,
+      transparent 100%);
   pointer-events: none;
   z-index: 2;
 }
@@ -430,11 +424,13 @@
   margin-top: 40px;
 }
 
-.liquid-bg, .bgOverlay {
+.liquid-bg,
+.bgOverlay {
   pointer-events: none;
 }
 
-.testimonial-btn, .ev-about__cta {
+.testimonial-btn,
+.ev-about__cta {
   position: relative;
   z-index: 999;
   pointer-events: auto;
@@ -599,13 +595,11 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(
-      to right,
+    linear-gradient(to right,
       rgb(255, 255, 255) 0%,
       rgba(255, 255, 255, 0.94) 38%,
       rgba(255, 255, 255, 0.574) 60%,
-      rgba(255, 255, 255, 0) 100%
-    ),
+      rgba(255, 255, 255, 0) 100%),
     var(--card-bg);
   background-size: cover;
   background-position: center right;
@@ -624,7 +618,7 @@
   z-index: 1;
 }
 
-.video-review-card > * {
+.video-review-card>* {
   position: relative;
   z-index: 2;
 }
@@ -735,11 +729,15 @@
 }
 
 @media (max-width: 767px) {
+
   .testimonial-description,
   .testimonial-btn {
     display: none;
   }
+  .testimonial-tag {
+    margin-bottom: 0rem;
 
+  }
   .testimonial-heading {
     font-size: 2.4rem;
     align-items: center;
@@ -903,6 +901,8 @@
     font-size: 0.9rem;
     letter-spacing: 0.32em;
     -webkit-text-stroke-width: 0.5px;
+    margin-bottom: 0rem;
+
   }
 
   .h2-heading {
@@ -910,7 +910,7 @@
     line-height: 1.12;
     font-family: "Cormorant Garamond", serif;
     text-shadow: 0 0 1px rgba(7, 8, 20, 0.774);
-  padding: 0 40px;
+    padding: 0 40px;
 
   }
 

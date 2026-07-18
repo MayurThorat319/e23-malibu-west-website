@@ -36,7 +36,14 @@ html.lenis,
 html.lenis body {
   height: auto;
 }
+body {
+  cursor: default; 
+}
 
+input, textarea {
+  user-select: text;
+  cursor: text;
+}
 .lenis.lenis-smooth {
   scroll-behavior: auto ;
 }
