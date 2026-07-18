@@ -3,7 +3,7 @@
   --lux-ink: #1a1a1a;
   --lux-muted: #6b6b6b;
   --lux-gold: #74d8d1;
-  --lux-divider: #9dded8;
+  --lux-divider: #235d63;
 
   background: #FFF7E4;
   color: var(--lux-ink);
@@ -117,15 +117,15 @@
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(116, 216, 209, 0.15) 15%,
-    rgba(116, 216, 209, 0.65) 50%,
-    rgba(116, 216, 209, 0.15) 85%,
+    rgba(22, 47, 55, 0.2) 15%,
+    rgba(27, 92, 100, 0.85) 50%,
+    rgba(22, 47, 55, 0.2) 85%,
     transparent 100%
   );
 
   box-shadow:
-    0 0 6px rgba(116, 216, 209, 0.35),
-    0 0 12px rgba(116, 216, 209, 0.15);
+    0 0 4px rgba(27, 92, 100, 0.2),
+    0 0 8px rgba(27, 92, 100, 0.1);
 }
 
 .lux-card-title,
@@ -330,9 +330,21 @@
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: normal;
   font-weight: 500;
-  color: #74d8d1;
   font-size: clamp(20px, 1.8vw, 30px);
   margin: 0 0 10px;
+
+  background: linear-gradient(
+    to bottom,
+    #162f37 0%,
+    #184e57 30%,
+    #1b5c64 70%,
+    #236d73 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .lux-card-text {
