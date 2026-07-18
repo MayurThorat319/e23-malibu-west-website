@@ -22,12 +22,13 @@ const cards: CardItem[] = [
             id="luxStrokeGradient"
             x1="0%"
             y1="0%"
-            x2="100%"
+            x2="0%"
             y2="100%"
           >
-            <stop offset="0%" stopColor="#74d8d1" />
-            <stop offset="50%" stopColor="#b8fff9" />
-            <stop offset="100%" stopColor="#74d8d1" />
+            <stop offset="0%" stopColor="#162f37" />
+            <stop offset="30%" stopColor="#2f7078" />
+            <stop offset="70%" stopColor="#4a7989" />
+            <stop offset="100%" stopColor="#6eb3bb" />
           </linearGradient>
         </defs>
         <circle
@@ -97,12 +98,13 @@ const cards: CardItem[] = [
             id="luxStrokeGradient"
             x1="0%"
             y1="0%"
-            x2="100%"
+            x2="0%"
             y2="100%"
           >
-            <stop offset="0%" stopColor="#74d8d1" />
-            <stop offset="50%" stopColor="#b8fff9" />
-            <stop offset="100%" stopColor="#74d8d1" />
+            <stop offset="0%" stopColor="#162f37" />
+            <stop offset="30%" stopColor="#2f7078" />
+            <stop offset="70%" stopColor="#4a7989" />
+            <stop offset="100%" stopColor="#6eb3bb" />
           </linearGradient>
         </defs>
         <circle
@@ -156,12 +158,13 @@ const cards: CardItem[] = [
             id="luxStrokeGradient"
             x1="0%"
             y1="0%"
-            x2="100%"
+            x2="0%"
             y2="100%"
           >
-            <stop offset="0%" stopColor="#74d8d1" />
-            <stop offset="50%" stopColor="#b8fff9" />
-            <stop offset="100%" stopColor="#74d8d1" />
+            <stop offset="0%" stopColor="#162f37" />
+            <stop offset="30%" stopColor="#2f7078" />
+            <stop offset="70%" stopColor="#4a7989" />
+            <stop offset="100%" stopColor="#6eb3bb" />
           </linearGradient>
         </defs>
         <circle
