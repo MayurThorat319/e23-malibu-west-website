@@ -9,11 +9,15 @@ export default function AboutSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
+        // if (entry.isIntersecting) {
+        //   setIsIntersecting(true);
+        // } else {
+        //   setIsIntersecting(false);
+        // }
         if (entry.isIntersecting) {
-          setIsIntersecting(true);
-        } else {
-          setIsIntersecting(false);
-        }
+  setIsIntersecting(true);
+  observer.disconnect();
+}
       },
       {
         threshold: 0.3,
@@ -295,13 +299,12 @@ export default function AboutSection() {
         </div>
 
         <div className="dm-image-wrap dm-hero-image">
-          <img
-            src="/images/aboutImage.webp"
-            alt="10 Marina Bay - Garden View"
-            className="dm-hero-img"
-            loading="lazy"
-            decoding="async"
-          />
+         <img
+  src="/images/aboutImage.webp"
+  alt="23 Malibu West Waterfront View"
+  className="dm-hero-img"
+  fetchPriority="high"
+/>
         </div>
       </section>
     </div>
