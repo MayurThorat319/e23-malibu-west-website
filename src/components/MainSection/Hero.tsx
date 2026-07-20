@@ -1,17 +1,41 @@
+import { useEffect, useRef } from "react";
 import styles from "./Hero.module.css";
 
 const HeroVideo = () => {
+   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Don't autoplay immediately - wait for page to load
+    const playVideo = () => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => {
+          // Autoplay might be blocked, that's fine
+        });
+      }
+    };
+
+    // Wait for the page to be fully loaded
+    if (document.readyState === 'complete') {
+      playVideo();
+    } else {
+      window.addEventListener('load', playVideo);
+    }
+
+    return () => {
+      window.removeEventListener('load', playVideo);
+    };
+  }, []);
   return (
     <section id="hero" className={styles.hero}>
-      <video
-        autoPlay
+       <video
+        ref={videoRef}
         muted
         loop
         playsInline
         className={styles.heroVideo}
         poster="/poster.jpg"
-        // @ts-ignore - tells modern browsers to prioritize this asset stream
-        fetchPriority="high" 
+        preload="none" // Don't load video until needed
+        // fetchPriority and autoPlay removed
       >
         <source src="/videos/Malibu_Hero_1.mp4" type="video/mp4" />
       </video>
