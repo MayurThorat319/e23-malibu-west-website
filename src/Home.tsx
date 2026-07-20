@@ -30,7 +30,7 @@ function HomePage() {
     // 2. Delayed conversion dialog
     const timer = setTimeout(() => {
       setDialogOpen(true);
-    }, 25000);
+    }, 30000);
 
     return () => {
       if (window.cancelIdleCallback) window.cancelIdleCallback(handle);
