@@ -12,7 +12,7 @@ const HeroVideo = ({ id = "hero" }: HeroVideoProps) => {
   useEffect(() => {
     const playVideo = () => {
       if (videoRef.current) {
-        videoRef.current.play().catch(() => { });
+        videoRef.current.play().catch(() => {});
       }
     };
 
@@ -61,16 +61,37 @@ const HeroVideo = ({ id = "hero" }: HeroVideoProps) => {
 
           {/* Animated Moving Clouds */}
           <div className={styles.cloudsWrapper}>
-            <svg className={`${styles.cloud} ${styles.cloud1}`} viewBox="0 0 500 150" fill="none">
-              <path d="M50 100 Q80 50 140 60 Q180 20 240 50 Q290 20 350 50 Q400 40 430 80 Q470 70 480 100 Z" fill="rgba(255, 255, 255, 0.85)" />
+            <svg
+              className={`${styles.cloud} ${styles.cloud1}`}
+              viewBox="0 0 500 150"
+              fill="none"
+            >
+              <path
+                d="M50 100 Q80 50 140 60 Q180 20 240 50 Q290 20 350 50 Q400 40 430 80 Q470 70 480 100 Z"
+                fill="rgba(255, 255, 255, 0.85)"
+              />
             </svg>
 
-            <svg className={`${styles.cloud} ${styles.cloud2}`} viewBox="0 0 500 150" fill="none">
-              <path d="M40 110 Q70 60 130 70 Q170 30 230 60 Q280 30 330 60 Q380 40 420 90 Q450 80 470 110 Z" fill="rgba(235, 220, 195, 0.75)" />
+            <svg
+              className={`${styles.cloud} ${styles.cloud2}`}
+              viewBox="0 0 500 150"
+              fill="none"
+            >
+              <path
+                d="M40 110 Q70 60 130 70 Q170 30 230 60 Q280 30 330 60 Q380 40 420 90 Q450 80 470 110 Z"
+                fill="rgba(235, 220, 195, 0.75)"
+              />
             </svg>
 
-            <svg className={`${styles.cloud} ${styles.cloud3}`} viewBox="0 0 500 150" fill="none">
-              <path d="M60 90 Q90 40 150 50 Q190 10 250 40 Q300 10 360 40 Q400 30 440 70 Q470 60 480 90 Z" fill="rgba(255, 255, 255, 0.9)" />
+            <svg
+              className={`${styles.cloud} ${styles.cloud3}`}
+              viewBox="0 0 500 150"
+              fill="none"
+            >
+              <path
+                d="M60 90 Q90 40 150 50 Q190 10 250 40 Q300 10 360 40 Q400 30 440 70 Q470 60 480 90 Z"
+                fill="rgba(255, 255, 255, 0.9)"
+              />
             </svg>
           </div>
 
@@ -127,12 +148,21 @@ const HeroVideo = ({ id = "hero" }: HeroVideoProps) => {
           <div className={`${styles.palmTreeWrapper} ${styles.palmTreeLeft}`}>
             <svg viewBox="0 0 200 300" className={styles.palmTreeSvg}>
               <defs>
-                <linearGradient id="treeGradLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient
+                  id="treeGradLeft"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
                   <stop offset="0%" stopColor="#849d6a" />
                   <stop offset="100%" stopColor="#0a2530" />
                 </linearGradient>
               </defs>
-              <path d="M 20,300 C 60,200 80,120 90,60 C 92,54 84,52 80,58 C 70,118 48,200 0,300 Z" fill="url(#treeGradLeft)" />
+              <path
+                d="M 20,300 C 60,200 80,120 90,60 C 92,54 84,52 80,58 C 70,118 48,200 0,300 Z"
+                fill="url(#treeGradLeft)"
+              />
               <g fill="url(#treeGradLeft)">
                 <path d="M 85,57 C 50,10 10,20 -30,40 C 10,40 55,35 85,57 Z" />
                 <path d="M 85,57 C 30,35 -20,70 -50,110 C -10,80 40,70 85,57 Z" />
@@ -149,12 +179,21 @@ const HeroVideo = ({ id = "hero" }: HeroVideoProps) => {
           <div className={`${styles.palmTreeWrapper} ${styles.palmTreeRight}`}>
             <svg viewBox="0 0 200 300" className={styles.palmTreeSvg}>
               <defs>
-                <linearGradient id="treeGradRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <linearGradient
+                  id="treeGradRight"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
                   <stop offset="0%" stopColor="#849d6a" />
                   <stop offset="100%" stopColor="#0a2530" />
                 </linearGradient>
               </defs>
-              <path d="M 180,300 C 140,200 120,120 110,60 C 108,54 116,52 120,58 C 130,118 152,200 200,300 Z" fill="url(#treeGradRight)" />
+              <path
+                d="M 180,300 C 140,200 120,120 110,60 C 108,54 116,52 120,58 C 130,118 152,200 200,300 Z"
+                fill="url(#treeGradRight)"
+              />
               <g fill="url(#treeGradRight)">
                 <path d="M 115,57 C 150,10 190,20 230,40 C 190,40 145,35 115,57 Z" />
                 <path d="M 115,57 C 170,35 220,70 250,110 C 210,80 160,70 115,57 Z" />
@@ -178,15 +217,42 @@ const HeroVideo = ({ id = "hero" }: HeroVideoProps) => {
           </div>
 
           <div className={styles.waveLayer}>
-            <svg className={styles.waves} viewBox="0 24 150 28" preserveAspectRatio="none">
+            <svg
+              className={styles.waves}
+              viewBox="0 24 150 28"
+              preserveAspectRatio="none"
+            >
               <defs>
-                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                <path
+                  id="gentle-wave"
+                  d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                />
               </defs>
               <g className={styles.parallaxWave}>
-                <use href="#gentle-wave" x="48" y="0" fill="rgba(39, 114, 124, 0.15)" />
-                <use href="#gentle-wave" x="48" y="3" fill="rgba(220, 198, 156, 0.25)" />
-                <use href="#gentle-wave" x="48" y="5" fill="rgba(26, 75, 94, 0.35)" />
-                <use href="#gentle-wave" x="48" y="7" fill="rgba(252, 249, 242, 0.8)" />
+                <use
+                  href="#gentle-wave"
+                  x="48"
+                  y="0"
+                  fill="rgba(39, 114, 124, 0.15)"
+                />
+                <use
+                  href="#gentle-wave"
+                  x="48"
+                  y="3"
+                  fill="rgba(220, 198, 156, 0.25)"
+                />
+                <use
+                  href="#gentle-wave"
+                  x="48"
+                  y="5"
+                  fill="rgba(26, 75, 94, 0.35)"
+                />
+                <use
+                  href="#gentle-wave"
+                  x="48"
+                  y="7"
+                  fill="rgba(252, 249, 242, 0.8)"
+                />
               </g>
             </svg>
           </div>
@@ -202,6 +268,12 @@ const HeroVideo = ({ id = "hero" }: HeroVideoProps) => {
         poster="/poster.jpg"
         preload="none"
       >
+        <source
+          src="/videos/Malibu_Hero_Phone.mp4"
+          type="video/mp4"
+          media="(max-width: 480px)"
+        />
+
         <source src="/videos/Malibu_Hero_1.mp4" type="video/mp4" />
       </video>
     </section>
