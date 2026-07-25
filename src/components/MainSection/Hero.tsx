@@ -6,34 +6,67 @@ type HeroVideoProps = {
 };
 
 const HeroVideo = ({ id = "hero" }: HeroVideoProps) => {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+ const [videoLoaded, setVideoLoaded] = useState(false);
+const [videoSrc, setVideoSrc] = useState("");
 
-  useEffect(() => {
-    const playVideo = () => {
-      if (videoRef.current) {
-        videoRef.current.play().catch(() => {});
-      }
-    };
+const videoRef = useRef<HTMLVideoElement>(null);
 
-    if (document.readyState === "complete") {
-      playVideo();
-    } else {
-      window.addEventListener("load", playVideo);
-    }
+useEffect(() => {
+  const isMobile = window.matchMedia("(max-width: 480px)").matches;
 
-    return () => {
-      window.removeEventListener("load", playVideo);
-    };
-  }, []);
+  setVideoSrc(
+    isMobile
+      ? "/videos/Malibu_Hero_Phone.mp4"
+      : "/videos/Malibu_Hero_1.mp4"
+  );
+}, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
+useEffect(() => {
+  const video = videoRef.current;
+
+  if (!video || !videoSrc) return;
+
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+
+  const startVideo = async () => {
+    try {
+      await video.play();
       setVideoLoaded(true);
-    }, 5000);
+    } catch (error) {
+      console.log("Initial autoplay failed:", error);
+    }
+  };
 
-    return () => clearTimeout(timer);
-  }, []);
+  const handleLoadedMetadata = () => {
+    startVideo();
+  };
+
+  const handleCanPlay = () => {
+    startVideo();
+  };
+
+  const handlePageShow = () => {
+    startVideo();
+  };
+
+  video.addEventListener("loadedmetadata", handleLoadedMetadata);
+  video.addEventListener("canplay", handleCanPlay);
+  window.addEventListener("pageshow", handlePageShow);
+
+  video.load();
+  startVideo();
+
+  return () => {
+    video.removeEventListener(
+      "loadedmetadata",
+      handleLoadedMetadata
+    );
+    video.removeEventListener("canplay", handleCanPlay);
+    window.removeEventListener("pageshow", handlePageShow);
+  };
+}, [videoSrc]);
 
   return (
     <section id={id} className={styles.hero}>
@@ -260,22 +293,17 @@ const HeroVideo = ({ id = "hero" }: HeroVideoProps) => {
       )}
 
       <video
-        ref={videoRef}
-        muted
-        loop
-        playsInline
-        className={styles.heroVideo}
-        poster="/poster.jpg"
-        preload="none"
-      >
-        <source
-          src="/videos/Malibu_Hero_Phone.mp4"
-          type="video/mp4"
-          media="(max-width: 480px)"
-        />
-
-        <source src="/videos/Malibu_Hero_1.mp4" type="video/mp4" />
-      </video>
+  ref={videoRef}
+  key={videoSrc}
+  src={videoSrc}
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="none"
+  className={styles.heroVideo}
+  poster="/poster.jpg"
+/>
     </section>
   );
 };
