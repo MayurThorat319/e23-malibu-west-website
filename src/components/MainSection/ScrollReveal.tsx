@@ -87,7 +87,9 @@ const TILES: Tile[] = [
   },
 ];
 
-const CITY_VIDEO = "/videos/AmenitiesVideoTwo.mp4";
+const CITY_VIDEO_DESKTOP = "/videos/AmenitiesVideoTwo.mp4";
+const CITY_VIDEO_MOBILE = "/videos/AmenitiesVideoPhone.mp4";
+
 function easeOut(t: number) { return 1 - Math.pow(1 - t, 3); }
 
 export function ScrollReveal() {
@@ -269,14 +271,30 @@ export function ScrollReveal() {
           }}
         >
           <video
-            ref={videoRef}
-            src={CITY_VIDEO}
-            loop
-            muted
-            playsInline
-            preload="none"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
+  ref={videoRef}
+  loop
+  muted
+  playsInline
+  preload="metadata"
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  }}
+>
+  {/* Mobile video: 480px and below */}
+  <source
+    src={CITY_VIDEO_MOBILE}
+    type="video/mp4"
+    media="(max-width: 480px)"
+  />
+
+  {/* Desktop and tablet video */}
+  <source
+    src={CITY_VIDEO_DESKTOP}
+    type="video/mp4"
+  />
+</video>
         </div>
       </div>
     </div>
