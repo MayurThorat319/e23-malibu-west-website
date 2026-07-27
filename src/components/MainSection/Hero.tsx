@@ -6,70 +6,90 @@ type HeroVideoProps = {
 };
 
 const HeroVideo = ({ id = "hero" }: HeroVideoProps) => {
- const [videoLoaded, setVideoLoaded] = useState(false);
-const [videoSrc, setVideoSrc] = useState("");
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoSrc, setVideoSrc] = useState("");
+  
+  // Trackers for dual-condition check
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isMinTimeDone, setIsMinTimeDone] = useState(false);
 
-const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-useEffect(() => {
-  const isMobile = window.matchMedia("(max-width: 480px)").matches;
-
-  setVideoSrc(
-    isMobile
-      ? "/videos/Malibu_Hero_Phone.mp4"
-      : "/videos/Malibu_Hero_1.mp4"
-  );
-}, []);
-
-useEffect(() => {
-  const video = videoRef.current;
-
-  if (!video || !videoSrc) return;
-
-  video.muted = true;
-  video.defaultMuted = true;
-  video.playsInline = true;
-
-  const startVideo = async () => {
-    try {
-      await video.play();
-      setVideoLoaded(true);
-    } catch (error) {
-      console.log("Initial autoplay failed:", error);
-    }
-  };
-
-  const handleLoadedMetadata = () => {
-    startVideo();
-  };
-
-  const handleCanPlay = () => {
-    startVideo();
-  };
-
-  const handlePageShow = () => {
-    startVideo();
-  };
-
-  video.addEventListener("loadedmetadata", handleLoadedMetadata);
-  video.addEventListener("canplay", handleCanPlay);
-  window.addEventListener("pageshow", handlePageShow);
-
-  video.load();
-  startVideo();
-
-  return () => {
-    video.removeEventListener(
-      "loadedmetadata",
-      handleLoadedMetadata
+  // 1. Set Video Source based on screen size
+  useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 480px)").matches;
+    setVideoSrc(
+      isMobile
+        ? "/videos/Malibu_Hero_Phone.mp4"
+        : "/videos/Malibu_Hero_1.mp4"
     );
-    video.removeEventListener("canplay", handleCanPlay);
-    window.removeEventListener("pageshow", handlePageShow);
-  };
-}, [videoSrc]);
+  }, []);
+
+  // 2. Minimum 5 Seconds Timer
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsMinTimeDone(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !videoSrc) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.autoplay = false;
+
+    const handleCanPlay = () => {
+      // Video is buffered enough to play, but don't play yet.
+      setIsVideoReady(true);
+    };
+
+    video.addEventListener("canplay", handleCanPlay);
+    
+    // Explicitly load the video
+    video.load();
+
+    return () => {
+      video.removeEventListener("canplay", handleCanPlay);
+    };
+  }, [videoSrc]);
+
+  // 4. COORDINATION EFFECT: Play video ONLY when BOTH conditions are met
+  useEffect(() => {
+    const video = videoRef.current;
+
+    // Check if both conditions are true AND video element exists
+    if (isVideoReady && isMinTimeDone && video) {
+      
+      const playVideo = async () => {
+        try {
+          // ENSURE VIDEO STARTS FROM BEGINNING
+          video.currentTime = 0; 
+
+          await video.play();
+          
+          // Hide Loader ONLY after play() actually starts successfully
+          setVideoLoaded(true); 
+          
+        } catch (error) {
+          console.log("Playback failed (likely needs interaction):", error);
+          // Optional: Show a fallback play button here if absolutely necessary
+          // For now, we still hide the loader so user sees the static video poster/frame
+          setVideoLoaded(true);
+        }
+      };
+
+      playVideo();
+    }
+  }, [isVideoReady, isMinTimeDone]);
 
   return (
     <section id={id} className={styles.hero}>
+      {/* Cinematic Loader overlay */}
       {!videoLoaded && (
         <div className={styles.cinematicLoader}>
           <div className={styles.ambientOverlay}>
@@ -275,7 +295,7 @@ useEffect(() => {
                   fill="rgba(220, 198, 156, 0.25)"
                 />
                 <use
-                  href="#gentle-wave"
+              href="#gentle-wave"
                   x="48"
                   y="5"
                   fill="rgba(26, 75, 94, 0.35)"
@@ -293,17 +313,17 @@ useEffect(() => {
       )}
 
       <video
-  ref={videoRef}
-  key={videoSrc}
-  src={videoSrc}
-  autoPlay
-  muted
-  loop
-  playsInline
-  preload="none"
-  className={styles.heroVideo}
-  poster="/poster.jpg"
-/>
+        ref={videoRef}
+        key={videoSrc}
+        src={videoSrc}
+        // autolay removed from here
+        muted
+        loop
+        playsInline
+        preload="auto" // Important: Keep preloading data
+        className={styles.heroVideo}
+        poster="/poster.jpg"
+      />
     </section>
   );
 };
