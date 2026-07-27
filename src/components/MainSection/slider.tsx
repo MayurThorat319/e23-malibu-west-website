@@ -50,8 +50,8 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    title: "LUXURY 3BHK",
-    heading: "ULTRA LUXURY 3BHK",
+    title: "ULTRA-LUXURY 3BHK",
+    heading: "ULTRA-LUXURIOUS 3BHK",
     description:
       "Experience elevated living with breathtaking views, modern design and world class amenities.",
     image: "images/slider-3.webp",
