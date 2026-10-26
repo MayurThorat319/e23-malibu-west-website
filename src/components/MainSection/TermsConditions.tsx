@@ -36,16 +36,16 @@ export default function TermsConditions() {
           </p>
 
           <p>
-  <strong>Website:</strong>{" "}
-  <a
-    href="https://www.ev23malibuwest.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    className={styles.websiteLink}
-  >
-    www.ev23malibuwest.com
-  </a>
-</p>
+            <strong>Website:</strong>{" "}
+            <a
+              href="https://www.ev23malibuwest.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.websiteLink}
+            >
+              www.ev23malibuwest.com
+            </a>
+          </p>
 
           <p>
             For detailed project information, you may visit the MAHARERA website
@@ -57,7 +57,7 @@ export default function TermsConditions() {
           <h2>2. Rights To Advertise</h2>
 
           <p>
-            EV Homes Constructions Pvt Ltd has received full rights to
+            EV Homes Constructions Pvt Ltd has received rights to
             Market/Advertise/Sell the apartments in 23 Malibu West vide
             applicable MAHARERA Registration permissions and approvals.
           </p>
@@ -175,17 +175,27 @@ export default function TermsConditions() {
         </div>
 
         <div className={styles.termsSection}>
-          <h2>9. Limitation of Liability</h2>
+          <h2>9. Privacy, Cookies and Browser Storage</h2>
 
           <p>
-            EV Homes Constructions Pvt Ltd shall not be liable for any direct,
-            indirect, incidental, or consequential damages arising from the use
-            of this website or the information provided herein.
+            We may collect personal information, such as your name, phone number, or email address, when you voluntarily provide it through available contact or enquiry channels. Cookies and browser storage may be used where applicable for website functionality, preferences, or analytics.
+          </p>
+          <p>
+            Personal information may be shared with authorised service providers, such as website hosting, communication, or analytics providers, where necessary and permitted by law. Please refer to our Privacy Policy for further details.          </p>
+        </div>
+        <div className={styles.termsSection}>
+          <h2>10. Personal Data Rights, Deletion and Overseas Processing</h2>
+
+          <p>
+            Subject to applicable laws, users may request access to, correction of, or deletion of their personal information and withdraw consent where applicable.
+          </p>
+
+          <p>
+            Some of our service providers may store or process data outside India. When that happens we rely on providers with appropriate security safeguards, and we will follow any restrictions the Government of India places on such transfers.
           </p>
         </div>
-
         <div className={styles.termsSection}>
-          <h2>10. Governing Law</h2>
+          <h2>11. Governing Law</h2>
 
           <p>
             These Terms and Conditions are governed by and construed in
@@ -193,14 +203,12 @@ export default function TermsConditions() {
           </p>
 
           <p>
-            Any disputes arising out of or in connection with these terms shall
-            be subject to the exclusive jurisdiction of the courts located in{" "}
-            <strong>Navi Mumbai, Maharashtra</strong>.
+            Any disputes arising from the use of this website shall be subject to the jurisdiction of the competent courts, subject to applicable law.
           </p>
         </div>
 
         <div className={styles.termsSection}>
-          <h2>11. Amendments</h2>
+          <h2>12. Amendments</h2>
 
           <p>
             EV Homes Constructions Pvt Ltd reserves the right to update or
@@ -214,7 +222,7 @@ export default function TermsConditions() {
         </div>
 
         <div className={styles.termsSection}>
-          <h2>12. Contact Us</h2>
+          <h2>13. Contact Us</h2>
 
           <div className={styles.contactInfo}>
             <p>
@@ -232,24 +240,24 @@ export default function TermsConditions() {
             </p>
 
             <p>
-  <span className={styles.contactLabel}>Email:</span>{" "}
-  <a
-    href="mailto:sales@evhomes.net"
-    className={styles.websiteLink}
-  >
-    sales@evhomes.net
-  </a>
-</p>
+              <span className={styles.contactLabel}>Email:</span>{" "}
+              <a
+                href="mailto:sales@evhomes.net"
+                className={styles.websiteLink}
+              >
+                sales@evhomes.net
+              </a>
+            </p>
 
-           <p>
-  <span className={styles.contactLabel}>Phone:</span>{" "}
-  <a
-    href="tel:+919820909893"
-    className={styles.websiteLink}
-  >
-    +91 9820909893
-  </a>
-</p>
+            <p>
+              <span className={styles.contactLabel}>Phone:</span>{" "}
+              <a
+                href="tel:+919820909893"
+                className={styles.websiteLink}
+              >
+                +91 9820909893
+              </a>
+            </p>
           </div>
         </div>
       </div>
